@@ -30,34 +30,29 @@ app.use(morgan('tiny', {
 
 // get routes files
 const index = require('./routes/index')
-// const themes = require('./routes/themes')
-// const stories = require('./routes/stories')
-// const tools = require('./routes/tools')
-// const queries = require('./routes/queries')
-// const portal = require('./routes/portal')
+const themes = require('./routes/themes')
+const stories = require('./routes/stories')
+const queries = require('./routes/queries')
+const tools = require('./routes/tools')
+const portal = require('./routes/portal')
 // const api = require('./routes/api')
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', [path.join(__dirname, 'views'),
+  path.join(__dirname, 'views/themes'),
+  path.join(__dirname, 'views/stories'),
+  path.join(__dirname, 'views/queries'),
+  path.join(__dirname, 'views/tools'),
+  path.join(__dirname, 'views/portal')])
+
 app.set('view engine', 'pug')
 
-// point to the bootstrap and jquery files
-// app.use('/javascripts/vendor/bootstrap/js', express.static(
-//   path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'js')))
-// app.use('/stylesheets/bootstrap/css', express.static(
-//   path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'css')))
-// app.use('/javascripts/vendor/jquery', express.static(
-
-//   path.join(__dirname, 'node_modules', 'jquery', 'dist')));
-// https: //github.com/LiamOSullivan/bcd-dd-v2.git// app.use('/javascripts/vendor/popper.js', express.static(
-//   path.join(__dirname, 'node_modules', 'popper.js', 'dist')));
-
 app.use('/', index)
-// app.use('/themes', themes)
-// app.use('/stories', stories)
-// app.use('/tools', tools)
-// app.use('/queries', queries)
-// app.use('/portal', portal)
+app.use('/themes', themes)
+app.use('/stories', stories)
+app.use('/queries', queries)
+app.use('/tools', tools)
+app.use('/portal', portal)
 // app.use('/api', api)
 
 // //additional functionality from node modules

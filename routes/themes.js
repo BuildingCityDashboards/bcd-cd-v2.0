@@ -3,9 +3,11 @@ var router = express.Router({
   mergeParams: true
 })
 
-/* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Cork Dashboard Home' })
+  res.render('themes', {
+    title: 'Cork Dashboard | Themes',
+    active: 'themes'
+  })
 })
 
 module.exports = router

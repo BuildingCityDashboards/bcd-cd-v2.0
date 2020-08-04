@@ -1,0 +1,48 @@
+extends ../layout
+//- include component/card-stories
+
+//- block append head
+
+  link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
+  link(rel="stylesheet", href="/stylesheets/stories.css")
+  //- link(rel="stylesheet", href="/stylesheets/card.css")
+
+//- block navigation
+  +bcd-navbar("bcd-navbar","/","Dublin Dashboard", "Stories")
+
+//- block content
+  #stories-home 
+    #stories-home__grid
+      #stories-home__icon
+        img(src='/images/icons/icons-48px/Stories_Icon_48px.svg')
+      #stories-home__title
+        h1 Stories
+      #stories-home__description
+        p Data stories add context and meaning to 
+          |the raw data available for the city. The 
+          |stories below offer a narrative for issues affecting citizens 
+          |of Dublin, with key points supported through interactive visualisations.
+      #stories-home__carousel
+        <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
+          .carousel-cell
+              +card-stories({
+              title: "Housing in the Dublin Region, 1991 to present",
+              description: "A three-part story describing the historical phases of the housing crisis in Dublin.",
+              links: [
+              {href :"/stories/housing-crisis-phase-1",
+              name:'Phase 1: 1991-2003 (The Celtic Tiger years)'},
+              {href :"/stories/housing-crisis-phase-2",
+              name: 'Phase 2: 2007-2012 (the crash)'},
+              {href :"/stories/housing-crisis-phase-3",
+              name: 'Phase 3: 2013-present (post-crash)'}
+              ]
+              })
+          .carousel-cell
+              +card-stories({title: 'Story coming soon', description: 'New data story under construction, please check back soon.'})
+          
+        </div>
+
+//- block append scripts
+  script(src="./lib/flickity.pkgd.min.js" type="text/javascript")
+  script(src='javascripts/home/flickity_utils.js' type="text/javascript")
+  

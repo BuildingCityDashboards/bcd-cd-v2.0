@@ -1,0 +1,43 @@
+extends ../layout
+//- include component/card-tools
+
+//- block append head
+
+  link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
+  link(rel="stylesheet", href="/stylesheets/tools.css")
+  //- link(rel="stylesheet", href="/stylesheets/card.css")
+
+//- block navigation
+  +bcd-navbar("bcd-navbar","/","Dublin Dashboard", "Tools")
+//- block content
+  #tools-home 
+    #tools-home__grid
+      #tools-home__icon
+        img(src='/images/icons/icons-48px/Tools_Icon_48px.svg')
+      #tools-home__title
+        h1 Tools
+      #tools-home__description
+        p Tools provide more functionality for exploring Dublin Dashboard data. 
+          |Please wait for the tool to load, as a large amount of data may be included.
+
+      #tools-home__carousel
+        <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
+          .carousel-cell
+              +card-tools({
+              title: "Planning Applications",
+              description: "<p>Explore planning application data for Dublin. Survey applications by map location and plot historical trends with the latest data available.</p><br> <p><b>Under construction, please check back soon.</b></p>"
+              })
+          //- links: [
+          //- {href:"/tools",
+          //- name:'Launch the Planning Applications tool'},
+          //- ]
+          .carousel-cell
+              +card-tools({
+              title: 'Tool coming soon', 
+              description: '<b>New data tool under construction, please check back soon.</b>'
+              })
+          
+        </div>
+
+//- block append scripts
+  script(src="./lib/flickity.pkgd.min.js" type="text/javascript")
