@@ -1,15 +1,17 @@
-//- extends layout
+extends layout
 //- include component/card-rt
 //- include component/card-chart 
 
 block append head
+
+  link(rel='stylesheet', href='/stylesheets/style.css')
   //- link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
   //- link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
   //- link(rel="stylesheet", href="/stylesheets/home.css")
   //- link(rel="stylesheet", href="/stylesheets/home-about.css")
   //- link(rel="stylesheet", href="/stylesheets/card.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
-  link(rel='stylesheet', href='/stylesheets/style.css')
+  //- link(rel='stylesheet', href='/stylesheets/icon-nav.css')
 
 block navigation
 
@@ -195,6 +197,5 @@ block content
   script(src='javascripts/home/card_housecompletions.js' type="text/javascript" defer)
   script(src='javascripts/home/card_propertyprice.js' type="text/javascript" defer)
   script(src='javascripts/home/home_resize.js' type="text/javascript" defer)
-
   
   //- script(src='javascripts/search.js')
