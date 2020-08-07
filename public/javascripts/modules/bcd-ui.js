@@ -1,7 +1,7 @@
 const populateDropdown = (id, optionsArray) => {
-  let dd = document.getElementById(id)
+  const dd = document.getElementById(id)
   optionsArray.forEach((optionContent, i) => {
-    let o = document.createElement('option')
+    const o = document.createElement('option')
     o.textContent = optionContent
     o.value = optionContent
     dd.appendChild(o)
@@ -10,7 +10,7 @@ const populateDropdown = (id, optionsArray) => {
 
 const populateDropdownFromArray = (element, optionsArray) => {
   optionsArray.forEach((optionContent, i) => {
-    let o = document.createElement('option')
+    const o = document.createElement('option')
     o.textContent = optionContent
     o.value = optionContent
     element.appendChild(o)
@@ -22,23 +22,32 @@ export { populateDropdownFromArray }
 /**
  * Toggle UI button active class
  *
- * @param { Stirng } e DOM element reference string
+ * @param { String } e DOM element reference string
  *
  * @return { null }
  *
  */
 
-const activeBtn = function (e) {
-  let btn = e
-  $(btn).siblings().removeClass('active')
-  $(btn).addClass('active')
+const activeBtn = function (activate, deactivates = []) {
+  console.log('activate')
+  console.log(activate)
+  const btnToActivate = document.getElementById(activate)
+  if (!btnToActivate.classList.contains('active')) {
+    btnToActivate.classList.add('active')
+    deactivates.forEach((deactivate) => {
+      console.log('deactivate')
+      console.log(deactivate)
+      const btnToDeactivate = document.getElementById(deactivate)
+      btnToDeactivate.classList.remove('active')
+    })
+  }
 }
 
 export { activeBtn }
 
 const addSpinner = function (divID, src) {
   if (document.querySelector(`#${divID}`)) {
-    let spinner = document.createElement('DIV')
+    const spinner = document.createElement('DIV')
     spinner.className = 'theme__text-chart__spinner'
     spinner.innerHTML = `<p> Contacting ${src} </p> <div class="spinner"><div></div><div></div><div></div></div>`
     document.querySelector(`#${divID}`).appendChild(spinner)
@@ -56,10 +65,10 @@ export { removeSpinner }
 
 const addErrorMessageButton = function (divID, e) {
   if (document.querySelector(`#${divID}`)) {
-    let errMsg = document.createElement('DIV')
+    const errMsg = document.createElement('DIV')
     errMsg.className = 'theme__text-chart__error'
     errMsg.innerHTML = `<p> ${e} </p>`
-    let errBtn = document.createElement('BUTTON')
+    const errBtn = document.createElement('BUTTON')
     errBtn.className = 'theme-btn retry-btn'
     errBtn.innerHTML = 'Try again'
     errBtn.setAttribute('id', `${divID}-retry-btn`)
