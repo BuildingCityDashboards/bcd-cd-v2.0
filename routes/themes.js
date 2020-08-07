@@ -10,4 +10,18 @@ router.get('/', function (req, res, next) {
   })
 })
 
+router.get('/transport', function (req, res, next) {
+  res.render('transport', {
+    title: 'Cork Dashboard | Themes',
+    active: 'themes'
+  })
+})
+
+router.get('/housing', function (req, res, next) {
+  res.render('housing', {
+    title: 'Cork Dashboard | Themes',
+    active: 'themes'
+  })
+})
+
 module.exports = router
