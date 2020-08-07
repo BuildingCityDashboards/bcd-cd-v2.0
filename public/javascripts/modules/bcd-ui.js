@@ -1,13 +1,3 @@
-const populateDropdown = (id, optionsArray) => {
-  const dd = document.getElementById(id)
-  optionsArray.forEach((optionContent, i) => {
-    const o = document.createElement('option')
-    o.textContent = optionContent
-    o.value = optionContent
-    dd.appendChild(o)
-  })
-}
-
 const populateDropdownFromArray = (element, optionsArray) => {
   optionsArray.forEach((optionContent, i) => {
     const o = document.createElement('option')
@@ -20,23 +10,20 @@ const populateDropdownFromArray = (element, optionsArray) => {
 export { populateDropdownFromArray }
 
 /**
- * Toggle UI button active class
+ * Toggle UI buttons active class
+ * Adds radio-button group behaviour
  *
- * @param { String } e DOM element reference string
+ * @param { String , String [] } activate deactivates [] DOM element reference string
  *
  * @return { null }
  *
  */
 
 const activeBtn = function (activate, deactivates = []) {
-  // console.log('activate')
-  // console.log(activate)
   const btnToActivate = document.getElementById(activate)
   if (!btnToActivate.classList.contains('active')) {
     btnToActivate.classList.add('active')
     deactivates.forEach((deactivate) => {
-      // console.log('deactivate')
-      // console.log(deactivate)
       const btnToDeactivate = document.getElementById(deactivate)
       btnToDeactivate.classList.remove('active')
     })
