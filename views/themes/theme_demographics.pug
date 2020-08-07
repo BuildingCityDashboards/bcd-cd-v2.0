@@ -1,0 +1,75 @@
+.theme
+    +theme__header('demographics-header',
+    'Demographics',
+    'Statistical data relating to the population and particular groups within it',
+    '',
+    'demographics_background.png')
+    
+    +theme__text-chart(
+    'population-dublin',
+    [{
+    link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=CNA13&PLanguage=0',
+    name: 'CSO'
+    }],
+    'Population of Dublin',
+    '<p>The population of Dublin county has grown steadily in the past 100 years, as recorded in the censuses carried out every five years. This growth is a result of natural increase, but is driven in particular by internal national migration and international migration. The city has long had slightly more females than males, largely a function of a difference in average age of death. </p>',
+    '',
+    ['chart-population']
+    )
+    
+    +theme__text-chart(
+    'population-households',
+    [{
+    link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=CNA33&PLanguage=0',
+    name: 'CSO'
+    }],
+    'Households in Dublin',
+    '<p>The number of households in Dublin has grown with the rise of population, but at an increased pace given a shrinkage in the average size of household. While the Dublin City Council area has had a sizeable growth in households since 1986, the growth in Fingal is more dramatic, over doubling its number of households.</p>',
+    '',
+    ['chart-households','chart-households-size'],
+    [{
+    id: 'btn-households',
+    name: 'No. of households'
+    },{
+    id: 'btn-households-size',
+    name: 'Household size'
+    }]
+    
+    )
+    
+    +theme__text-chart(
+    'population-born-outside-state',
+    [{
+    link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=CNA31&PLanguage=0',
+    name: 'CSO'
+    }],
+    'Population Born Outside the State',
+    '<p>Just over a million people living in the state were born outside of Ireland (17.3%) at the time of the last census in 2016. In Dublin 330,000 people were born elsewhere. The rate nationally and in Dublin has been growing since 1996, coinciding with the Celtic Tiger growth in the economy and labour market. The result is the city has become increasingly cosmopolitan.</p><p>The chart excludes members of the population born in Northern Ireland</p>',
+    '',
+    ['chart-born-outside-dublin','chart-born-outside-state'],
+    [{
+    id: 'btn-born-outside-dublin',
+    name: 'Dublin'
+    },{
+    id: 'btn-born-outside-state',
+    name: 'State'
+    }]
+    )
+    
+    
+    
+    +theme__text-chart(
+    'population-household-comp',
+    [{
+    link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=CD101&PLanguage=0',
+    name: 'CSO'
+    }],
+    'Households by Number of Persons (2016)',
+    '<p>This chart from the 2016 census shows the number of private permanent households with a given number of persons resident. It is broken down for the four Dublin local authorities</p> <p>It can show us that, for example, the majority of properties in the Dublin city center region have 1 or 2 occupants, whereas the outer locales have a broader spread of household composition</p>',
+    '',
+    ['chart-householdComposition']
+    )
+
+        
+block append scripts
+  //- script(src="/javascripts/themes/transport/transport_traffic.js" type="module")

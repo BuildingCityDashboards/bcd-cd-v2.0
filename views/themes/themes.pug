@@ -1,8 +1,7 @@
 extends ../layout
-include themes__subnav
-//- include theme__header
-//- include component/theme__text-chart
-//- include component/theme__text-chart-chart
+include ../component/subnav
+include ../component/theme__header
+include ../component/theme__text-chart
 
 block append head
     link(rel='stylesheet', href='/stylesheets/themes/themes.css')
@@ -18,7 +17,7 @@ block append head
 block content
     //- .content.bg-dark-blue
     //- .container
-    +themes__subnav("themes__subnav")
+    +subnav("themes__subnav")
         //- .row
           .col-md-12
             h1= title
@@ -38,21 +37,21 @@ block content
 
     
 
-    //- 
-    //- #transport
-    //-   include themes/theme_transport
+    
+    #transport
+      include theme_transport
     //- #environment
-    //-   include themes/theme_environment
+    //-   include theme_environment
     //- #housing
-    //-   include themes/theme_housing
+    //-   include theme_housing
     //- #economy
-    //-   include themes/theme_economy
+    //-   include theme_economy
     //- #education
-    //-   include themes/theme_education
+    //-   include theme_education
     //- //- #health
     //-   include themes/theme_health
     //- #demographics
-    //-   include themes/theme_demographics
+    //-   include theme_demographics
 
 //- append scripts
   script(src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js")
