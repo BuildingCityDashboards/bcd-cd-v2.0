@@ -122,7 +122,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     d3.select('#chart-' + chart2).style('display', 'none')
     d3.select('#chart-' + chart3).style('display', 'none')
 
-    function redraw () {
+    const redraw = ()=>{
       if (document.querySelector('#chart-' + chart1).style.display !== 'none') {
         completionsHouseChart.drawChart()
         completionsHouseChart.addTooltip('Single house completions,  ', '', 'label')

@@ -29,14 +29,14 @@ export { populateDropdownFromArray }
  */
 
 const activeBtn = function (activate, deactivates = []) {
-  console.log('activate')
-  console.log(activate)
+  // console.log('activate')
+  // console.log(activate)
   const btnToActivate = document.getElementById(activate)
   if (!btnToActivate.classList.contains('active')) {
     btnToActivate.classList.add('active')
     deactivates.forEach((deactivate) => {
-      console.log('deactivate')
-      console.log(deactivate)
+      // console.log('deactivate')
+      // console.log(deactivate)
       const btnToDeactivate = document.getElementById(deactivate)
       btnToDeactivate.classList.remove('active')
     })

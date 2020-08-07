@@ -70,7 +70,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     let houseRppiChart = new MultiLineChart(houseRppi)
 
-    function redraw () {
+    const redraw = ()=>{
       houseRppiChart.drawChart()
       houseRppiChart.addTooltip('RPPI for ', '', 'label')
     }
