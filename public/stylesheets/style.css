@@ -1,5 +1,5 @@
 html {
-background-color: black;
+  background-color: white;
 }
 
 
@@ -12,6 +12,6 @@ a {
   color: #00B7FF;
 }
 
-h1{
-  color: white;
+h1, h2, h3 {
+  color: red;
 }
