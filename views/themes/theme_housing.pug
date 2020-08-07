@@ -57,26 +57,26 @@
     }]
     )
     
-    +theme__text-chart(
-    'quarterly-new-dwelling-completions',
-    [{
-    link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=NDQ06&PLanguage=0',
-    name: 'CSO'}],
-    'Quarterly New Dwelling Completions by Type',
-    '<p>The chart shows the house unit completion data for each of the Dublin local authorities, categorised by type of dwelling as <ul><li>\'House\': a single house build</li><li> \'Scheme\': house build as part of a scheme</li><li>\'Apartment\': an apartment completion.</li></ul></p>',
-    '',
-    ['chart-completions-house', 'chart-completions-scheme', 'chart-completions-apartment'],
-    [{
-    id: 'btn-completions-house',
-    name: 'House'
-    },{
-    id: 'btn-completions-scheme',
-    name: 'Scheme'
-    },{
-    id: 'btn-completions-apartment',
-    name: 'Apartment'
-    }]
-    )
+    //- +theme__text-chart(
+    //- 'quarterly-new-dwelling-completions',
+    //- [{
+    //- link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=NDQ06&PLanguage=0',
+    //- name: 'CSO'}],
+    //- 'Quarterly New Dwelling Completions by Type',
+    //- '<p>The chart shows the house unit completion data for each of the Dublin local authorities, categorised by type of dwelling as <ul><li>\'House\': a single house build</li><li> \'Scheme\': house build as part of a scheme</li><li>\'Apartment\': an apartment completion.</li></ul></p>',
+    //- '',
+    //- ['chart-completions-house', 'chart-completions-scheme', 'chart-completions-apartment'],
+    //- [{
+    //- id: 'btn-completions-house',
+    //- name: 'House'
+    //- },{
+    //- id: 'btn-completions-scheme',
+    //- name: 'Scheme'
+    //- },{
+    //- id: 'btn-completions-apartment',
+    //- name: 'Apartment'
+    //- }]
+    //- )
     
     //- +theme__text-chart(
       'available-housing-land',
@@ -94,5 +94,7 @@
 
         
 block append scripts
-    script(src="/lib/d3v5/d3.js" type="text/javascript")
-    //- script(src="/javascripts/themes/housing.js" type="text/javascript")
+  script(src="/javascripts/themes/housing/housing_prices.js" type="module")
+  script(src="/javascripts/themes/housing/housing_rppi.js" type="module")
+  script(src="/javascripts/themes/housing/housing_rent.js" type="module")
+  script(src="/javascripts/themes/housing/housing_completions.js" type="module")
