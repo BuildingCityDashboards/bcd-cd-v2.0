@@ -163,7 +163,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
-      console.log('retry')
+      // console.log('retry')
       removeErrorMessageButton(chartDivIds[0])
       main()
     })

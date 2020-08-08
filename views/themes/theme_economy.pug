@@ -25,22 +25,22 @@
     }]
     )
     
-    //- +theme__text-chart(
-    //- 'unemployment',
-    //- [{ link:'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=QLF08&PLanguage=0',
-    //- name: 'CSO'}],
-    //- 'Unemployed persons aged 15 or over',
-    //- '<p>From 2000 to 2008 the unemployment rate in Ireland and Dublin was between 4 and 5 percent. As the financial crisis hit, the unemployment rate rose steadily to reach 15 percent nationally and 13 percent in Dublin. From the end of 2012 as the economy recovered it fell steadily. </p>',
-    //- '',
-    //- ['chart-unemployment', 'chart-unemp-rate'],
-    //- [{
-    //- id: 'unemployment-count-btn',
-    //- name: 'Number unemployed'
-    //- },{
-    //- id: 'unemployment-rate-btn',
-    //- name: 'Unemployment rate'
-    //- }]
-    //- )
+    +theme__text-chart(
+    'ilo-employment',
+    [{ link:'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=QLF08&PLanguage=0',
+    name: 'CSO'}],
+    'Rates of participation & unemployment',
+    '<p>***Explain ILO rates here and describe observations*** </p>',
+    '',
+    ['chart-ilo-employment', 'chart-ilo-unemployment'],
+    [{
+    id: 'btn-ilo-employment',
+    name: 'Employed'
+    },{
+    id: 'btn-ilo-unemployment',
+    name: 'Unemployed'
+    }]
+    )
     
     //- //- +theme__text-chart(
     //-   'indicator-employment-sector',

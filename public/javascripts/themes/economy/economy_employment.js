@@ -7,7 +7,7 @@ import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErro
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
 (async function main () {
-  const chartDivIds = ['employment', 'labour', 'unemployed']
+  const chartDivIds = ['employment', 'labour', 'unemployed', 'ilo-employment', 'ilo-unemployment']
 
   const STATBANK_BASE_URL =
         'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
@@ -15,11 +15,13 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   const TABLE_CODE = 'QLF08'
   try {
     addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Labour Force</i>`)
+    addSpinner('chart-' + chartDivIds[3], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Labour Force</i>`)
 
     const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
 
     if (json) {
       removeSpinner(chartDivIds[0])
+      removeSpinner(chartDivIds[3])
     }
 
     const dataset = JSONstat(json).Dataset(0)
@@ -46,7 +48,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     console.log(categoriesStat)
 
     //
-    const employedCountTable = dataset.toTable(
+    const employmentTable = dataset.toTable(
       { type: 'arrobj' },
       (d, i) => {
         if ((d[dimensions[0]] === 'Southern' ||
@@ -60,11 +62,11 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         }
       })
     //
-    console.log(employedCountTable)
+    console.log(employmentTable)
 
     const employedCount = {
       e: '#chart-' + chartDivIds[0],
-      d: employedCountTable.filter(d => {
+      d: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[0]
       }),
       ks: categoriesRegion,
@@ -79,7 +81,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const labourCount = {
       e: '#chart-' + chartDivIds[1],
-      d: employedCountTable.filter(d => {
+      d: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[2]
       }),
       ks: categoriesRegion,
@@ -94,7 +96,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const unemployedCount = {
       e: '#chart-' + chartDivIds[2],
-      d: employedCountTable.filter(d => {
+      d: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[1]
       }),
       ks: categoriesRegion,
@@ -107,9 +109,41 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const unemployedCountChart = new MultiLineChart(unemployedCount)
 
+    const participationRate = {
+      e: '#chart-' + chartDivIds[3],
+      d: employmentTable.filter(d => {
+        return d[dimensions[2]] === categoriesStat[4]
+      }),
+      ks: categoriesRegion,
+      k: dimensions[0],
+      xV: 'date',
+      yV: 'value',
+      tX: 'Year',
+      tY: getShortLabel(categoriesStat[4])
+    }
+
+    const participationRateChart = new MultiLineChart(participationRate)
+
+    const unemployedRate = {
+      e: '#chart-' + chartDivIds[4],
+      d: employmentTable.filter(d => {
+        return d[dimensions[2]] === categoriesStat[3]
+      }),
+      ks: categoriesRegion,
+      k: dimensions[0],
+      xV: 'date',
+      yV: 'value',
+      tX: 'Year',
+      tY: getShortLabel(categoriesStat[3])
+    }
+
+    const unemployedRateChart = new MultiLineChart(unemployedRate)
+
     d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
     d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
     d3.select('#chart-' + chartDivIds[2]).style('display', 'none')
+    d3.select('#chart-' + chartDivIds[3]).style('display', 'block')
+    d3.select('#chart-' + chartDivIds[4]).style('display', 'none')
 
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
@@ -123,6 +157,14 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       if (document.querySelector('#chart-' + chartDivIds[2]).style.display !== 'none') {
         unemployedCountChart.drawChart()
         unemployedCountChart.addTooltip(', ', '', 'label')
+      }
+      if (document.querySelector('#chart-' + chartDivIds[3]).style.display !== 'none') {
+        participationRateChart.drawChart()
+        participationRateChart.addTooltip(', ', '', 'label')
+      }
+      if (document.querySelector('#chart-' + chartDivIds[4]).style.display !== 'none') {
+        unemployedRateChart.drawChart()
+        unemployedRateChart.addTooltip(', ', '', 'label')
       }
     }
     redraw()
@@ -151,6 +193,20 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       redraw()
     })
 
+    d3.select('#btn-' + chartDivIds[3]).on('click', function () {
+      activeBtn('btn-' + chartDivIds[3], ['btn-' + chartDivIds[4]])
+      d3.select('#chart-' + chartDivIds[3]).style('display', 'block')
+      d3.select('#chart-' + chartDivIds[4]).style('display', 'none')
+      redraw()
+    })
+
+    d3.select('#btn-' + chartDivIds[4]).on('click', function () {
+      activeBtn('btn-' + chartDivIds[4], ['btn-' + chartDivIds[3]])
+      d3.select('#chart-' + chartDivIds[4]).style('display', 'block')
+      d3.select('#chart-' + chartDivIds[3]).style('display', 'none')
+      redraw()
+    })
+
     window.addEventListener('resize', () => {
       redraw()
     })
@@ -175,7 +231,9 @@ const getShortLabel = function (s) {
   const SHORTS = {
     'Persons aged 15 years and over in Employment (Thousand)': 'Persons in Employment',
     'Unemployed Persons aged 15 years and over (Thousand)': 'Unemployed Persons',
-    'Persons aged 15 years and over in Labour Force (Thousand)': 'Persons in Labour Force'
+    'Persons aged 15 years and over in Labour Force (Thousand)': 'Persons in Labour Force',
+    'ILO Unemployment Rate (15 - 74 years) (%)': 'ILO Unemployment Rate (%)',
+    'ILO Participation Rate (15 years and over) (%)': 'ILO Participation Rate (%)'
   }
 
   return SHORTS[s] || s
