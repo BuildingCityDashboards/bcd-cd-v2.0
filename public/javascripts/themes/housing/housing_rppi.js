@@ -5,17 +5,17 @@ import { addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageBut
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
 (async function main () {
-  const chartDivIds = ['chart-house-rppi']
+  const chartDivIds = ['house-rppi']
   const parseYearMonth = d3.timeParse('%YM%m') // ie 2014-Jan = Wed Jan 01 2014 00:00:00
   const STATBANK_BASE_URL =
         'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // HPM05: Market-based Household Purchases of Residential Dwellings by Type of Dwelling, Dwelling Status, Stamp Duty Event, RPPI Region, Month and Statistic
   const TABLE_CODE = 'HPM09' // gives no of outsideState and ave household size
   try {
-    addSpinner(chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Market-based Household Purchases of Residential Dwellings</i>`)
+    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Market-based Household Purchases of Residential Dwellings</i>`)
     const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
     if (json) {
-      removeSpinner('chart-'+chartDivIds[0])
+      removeSpinner('chart-' + chartDivIds[0])
     }
     const dataset = JSONstat(json).Dataset(0)
 
@@ -72,9 +72,9 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     console.log('Error creating RPPI chart')
     console.log(e)
 
-    removeSpinner('chart-'+chartDivIds[0])
+    removeSpinner('chart-' + chartDivIds[0])
     e = (e instanceof TimeoutError) ? e : 'An error occured'
-    const errBtnID = addErrorMessageButton(chartDivIds[0], e)
+    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], e)
     console.log('e')
     console.log(e)
     d3.select(`#${errBtnID}`).on('click', function () {
