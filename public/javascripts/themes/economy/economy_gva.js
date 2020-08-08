@@ -16,7 +16,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
   try {
     const chartDivIds = ['gva']
-    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>New Dwelling Completion</i>`)
+    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Gross Value Added (GVA) per person at Basic Prices/i>`)
 
     const json = await fetchJsonFromUrlAsync(STATBANK_BASE_URL + TABLE_CODE)
     if (json) {

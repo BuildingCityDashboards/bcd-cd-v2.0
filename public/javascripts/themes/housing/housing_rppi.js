@@ -9,10 +9,10 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   const parseYearMonth = d3.timeParse('%YM%m') // ie 2014-Jan = Wed Jan 01 2014 00:00:00
   const STATBANK_BASE_URL =
         'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
-  // HPM05: Market-based Household Purchases of Residential Dwellings by Type of Dwelling, Dwelling Status, Stamp Duty Event, RPPI Region, Month and Statistic
-  const TABLE_CODE = 'HPM09' // gives no of outsideState and ave household size
+  // HPM09: Residential Property Price Index by Type of Residential Property, Month and Statistic
+  const TABLE_CODE = 'HPM09'
   try {
-    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Market-based Household Purchases of Residential Dwellings</i>`)
+    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Residential Property Price Index</i>`)
     const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
     if (json) {
       removeSpinner('chart-' + chartDivIds[0])
