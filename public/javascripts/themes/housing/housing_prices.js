@@ -131,7 +131,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     console.log(e)
     removeSpinner('chart-' + chartDivIds[0])
     const eMsg = e instanceof TimeoutError ? e : 'An error occured'
-    const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
+    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
       removeErrorMessageButton('chart-' + chartDivIds[0])
