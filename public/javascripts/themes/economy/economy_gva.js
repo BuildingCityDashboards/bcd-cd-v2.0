@@ -10,27 +10,25 @@ import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
   const STATBANK_BASE_URL =
           'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   const TABLE_CODE = 'RAA06'
-  let STAT = 'Gross Value Added (GVA) per person at Basic Prices (Euro)'
-  // document.getElementById('chart-gva').innerHTML = 'Fetching data from CSO...'
+  const STAT = 'Gross Value Added (GVA) per person at Basic Prices (Euro)'
 
   try {
-    let json = await fetchJsonFromUrlAsync(STATBANK_BASE_URL + TABLE_CODE)
-    let gvaDataset = JSONstat(json).Dataset(0)
+    const json = await fetchJsonFromUrlAsync(STATBANK_BASE_URL + TABLE_CODE)
+    const gvaDataset = JSONstat(json).Dataset(0)
 
-    let gvaFiltered = gvaDataset.toTable(
-     { type: 'arrobj' },
-     (d, i) => {
-       if ((d.Region === 'Dublin'
-       || d.Region === 'Dublin and Mid-East'
-       || d.Region === 'State')
-       && d.Statistic === STAT) {
-         d.label = d.Year
-         d.date = parseYear(+d.Year)
-         d.value = +d.value
-         return d
-       }
-     }
-  )
+    const gvaFiltered = gvaDataset.toTable(
+      { type: 'arrobj' },
+      (d, i) => {
+        if ((d.Region === 'South-West' ||
+       d.Region === 'State') &&
+       d.Statistic === STAT) {
+          d.label = d.Year
+          d.date = parseYear(+d.Year)
+          d.value = +d.value
+          return d
+        }
+      }
+    )
 
     const gvaContent = {
       e: '#chart-gva',
@@ -38,7 +36,7 @@ import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
       yV: 'value',
       d: gvaFiltered,
       k: 'Region',
-    // ks: ['Dublin', 'Dublin and Mid-East', 'State'],
+      // ks: ['Dublin', 'Dublin and Mid-East', 'State'],
       tX: 'Years',
       tY: '€'
 
@@ -46,11 +44,7 @@ import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 
     const gvaChart = new MultiLineChart(gvaContent)
 
-    function redraw () {
-      // let spinner = document.getElementById('grossValue').getElementsByClassName('theme__text-chart__spinner')[0]
-      // spinner.style.display = 'none'
-      // let plot = document.getElementById('chart-gva')
-      // plot.style.display = 'block'
+    const redraw = () => {
       gvaChart.drawChart()
       gvaChart.addTooltip(STAT + 'Year:', '', 'label')
     }

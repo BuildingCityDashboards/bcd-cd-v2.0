@@ -3,7 +3,6 @@ import { convertQuarterToDate } from '../../modules/bcd-date.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 import { MultiLineChart } from '../../modules/MultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
-
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
 (async function main () {
@@ -14,7 +13,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   // NDQ06: New Dwelling Completion by Local Authority, Type of House and Quarter
   const TABLE_CODE = 'NDQ06'
   try {
-    addSpinner(chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>New Dwelling Completion</i>`)
+    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>New Dwelling Completion</i>`)
 
     const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
 
