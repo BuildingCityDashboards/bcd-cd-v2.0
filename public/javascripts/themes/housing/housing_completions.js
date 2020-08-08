@@ -158,7 +158,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     console.log('Error creating housing completion charts')
     console.log(e)
 
-    removeSpinner(chartDivIds[0])
+    removeSpinner('chart-' + chartDivIds[0])
     const eMsg = e instanceof TimeoutError ? e : 'An error occured'
     const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
     // console.log(errBtnID)

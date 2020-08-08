@@ -12,59 +12,59 @@ let employedChart
   const STATBANK_BASE_URL =
           'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   const TABLE_CODE = 'BRA08'
-  let STATS = ['Active Enterprises (Number)', 'Persons Engaged (Number)', 'Employees (Number)']
+  const STATS = ['Active Enterprises (Number)', 'Persons Engaged (Number)', 'Employees (Number)']
 
-  let json = await fetchJsonFromUrlAsync(STATBANK_BASE_URL + TABLE_CODE)
+  const json = await fetchJsonFromUrlAsync(STATBANK_BASE_URL + TABLE_CODE)
 
-  let dataset = JSONstat(json).Dataset(0)
+  const dataset = JSONstat(json).Dataset(0)
   // the categories will be the label on each plot trace
-  let categories = dataset.Dimension(0).Category().map(c => {
+  const categories = dataset.Dimension(0).Category().map(c => {
     return c.label
   })
   // console.log(categories)
 
-  let EXCLUDE = categories[0] // exclude 'All size...' trace
+  const EXCLUDE = categories[0] // exclude 'All size...' trace
   //
-  let sizeFiltered = dataset.toTable(
-     { type: 'arrobj' },
-     (d, i) => {
-       if (d.County === 'Dublin'
-     && d.Statistic === STATS[2]
-     && d['Employment Size'] !== EXCLUDE) {
-         d.label = d.Year
-         d.date = parseYear(+d.Year)
-         d.value = +d.value
-         return d
-       }
-     }
+  const sizeFiltered = dataset.toTable(
+    { type: 'arrobj' },
+    (d, i) => {
+      if (d.County === 'Cork' &&
+     d.Statistic === STATS[2] &&
+     d['Employment Size'] !== EXCLUDE) {
+        d.label = d.Year
+        d.date = parseYear(+d.Year)
+        d.value = +d.value
+        return d
+      }
+    }
   )
 
-  let engagedFiltered = dataset.toTable(
-     { type: 'arrobj' },
-     (d, i) => {
-       if (d.County === 'Dublin'
-     && d.Statistic === STATS[1]
-     && d['Employment Size'] !== EXCLUDE) {
-         d.label = d.Year
-         d.date = parseYear(+d.Year)
-         d.value = +d.value
-         return d
-       }
-     }
+  const engagedFiltered = dataset.toTable(
+    { type: 'arrobj' },
+    (d, i) => {
+      if (d.County === 'Dublin' &&
+     d.Statistic === STATS[1] &&
+     d['Employment Size'] !== EXCLUDE) {
+        d.label = d.Year
+        d.date = parseYear(+d.Year)
+        d.value = +d.value
+        return d
+      }
+    }
   )
 
-  let activeFiltered = dataset.toTable(
-     { type: 'arrobj' },
-     (d, i) => {
-       if (d.County === 'Dublin'
-     && d.Statistic === STATS[0]
-     && d['Employment Size'] !== EXCLUDE) {
-         d.label = d.Year
-         d.date = parseYear(+d.Year)
-         d.value = +d.value
-         return d
-       }
-     }
+  const activeFiltered = dataset.toTable(
+    { type: 'arrobj' },
+    (d, i) => {
+      if (d.County === 'Dublin' &&
+     d.Statistic === STATS[0] &&
+     d['Employment Size'] !== EXCLUDE) {
+        d.label = d.Year
+        d.date = parseYear(+d.Year)
+        d.value = +d.value
+        return d
+      }
+    }
   )
 
   const sizeContent = {
@@ -103,52 +103,55 @@ let employedChart
   }
 
   employedChart = new MultiLineChart(sizeContent)
-  employedChart.drawChart()
-  employedChart.addTooltip(STATS[2] + ' for Year ', '', 'label')
 
   const engagedChart = new MultiLineChart(engagedContent)
-  engagedChart.drawChart()
-  engagedChart.addTooltip(STATS[1] + ' for Year ', '', 'label')
 
   const activeChart = new MultiLineChart(activeContent)
-  activeChart.drawChart()
-  activeChart.addTooltip(STATS[0] + ' for Year ', '', 'label')
 
-  d3.select('#chart-employees-by-size').style('display', 'block')
-  d3.select('#chart-engaged-by-size').style('display', 'none')
-  d3.select('#chart-active-enterprises').style('display', 'none')
+  const chartDivIds = ['employees-by-size', 'engaged-by-size', 'active-enterprises']
 
-  d3.select('#btn-employees-by-size').on('click', function () {
-    activeBtn(this)
-    d3.select('#chart-employees-by-size').style('display', 'block')
-    d3.select('#chart-engaged-by-size').style('display', 'none')
-    d3.select('#chart-active-enterprises').style('display', 'none')
-    // employedChart.tickNumber = 12
-    employedChart.drawChart()
-    employedChart.addTooltip(STATS[2] + ' for Year ', '', 'label')
-      // employedChart.hideRate(true) // hides the rate column in the tooltip when the % change chart is shown
+  d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
+  d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
+  d3.select('#chart-' + chartDivIds[2]).style('display', 'none')
+
+  const redraw = () => {
+    if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
+      employedChart.drawChart()
+      employedChart.addTooltip(STATS[2] + ' for Year ', '', 'label')
+    }
+    if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
+      engagedChart.drawChart()
+      engagedChart.addTooltip(STATS[1] + ' for Year ', '', 'label')
+    }
+    if (document.querySelector('#chart-' + chartDivIds[2]).style.display !== 'none') {
+      activeChart.drawChart()
+      activeChart.addTooltip(STATS[0] + ' for Year ', '', 'label')
+    }
+  }
+  redraw()
+
+  d3.select('#btn-' + chartDivIds[0]).on('click', function () {
+    activeBtn('btn-' + chartDivIds[0], ['btn-' + chartDivIds[1], 'btn-' + chartDivIds[2]])
+    d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
+    d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
+    d3.select('#chart-' + chartDivIds[2]).style('display', 'none')
+    redraw()
   })
-  //
-  d3.select('#btn-engaged-by-size').on('click', function () {
-    activeBtn(this)
-    d3.select('#chart-employees-by-size').style('display', 'none')
-    d3.select('#chart-engaged-by-size').style('display', 'block')
-    d3.select('#chart-active-enterprises').style('display', 'none')
-    // unemploymentStack.tickNumber = 12
-    //   unemploymentStack.getData(unempData);
-    engagedChart.drawChart()
-    engagedChart.addTooltip(STATS[1] + ' for Year ', '', 'label')
+
+  d3.select('#btn-' + chartDivIds[1]).on('click', function () {
+    activeBtn('btn-' + chartDivIds[1], ['btn-' + chartDivIds[2], 'btn-' + chartDivIds[0]])
+    d3.select('#chart-' + chartDivIds[0]).style('display', 'none')
+    d3.select('#chart-' + chartDivIds[1]).style('display', 'block')
+    d3.select('#chart-' + chartDivIds[2]).style('display', 'none')
+    redraw()
   })
 
-  d3.select('#btn-active-enterprises').on('click', function () {
-    activeBtn(this)
-    d3.select('#chart-employees-by-size').style('display', 'none')
-    d3.select('#chart-engaged-by-size').style('display', 'none')
-    d3.select('#chart-active-enterprises').style('display', 'block')
-    // activeChart.tickNumber = 12
-    activeChart.drawChart()
-    activeChart.addTooltip(STATS[0] + ' for Year ', '', 'label')
-    // activeChart.hideRate(true)
+  d3.select('#btn-' + chartDivIds[2]).on('click', function () {
+    activeBtn('btn-' + chartDivIds[2], ['btn-' + chartDivIds[0], 'btn-' + chartDivIds[1]])
+    d3.select('#chart-' + chartDivIds[0]).style('display', 'none')
+    d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
+    d3.select('#chart-' + chartDivIds[2]).style('display', 'block')
+    redraw()
   })
 
   window.addEventListener('resize', () => {
