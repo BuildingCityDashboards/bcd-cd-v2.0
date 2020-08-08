@@ -18,12 +18,12 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     }
 
     const dataset = JSONstat(json).Dataset(0)
-    console.log('dataset')
-    console.log(dataset)
+    // console.log('dataset')
+    // console.log(dataset)
     const dimensions = dataset.Dimension().map(dim => {
       return dim.label
     })
-    console.log(dimensions)
+    // console.log(dimensions)
 
     const categoriesCounty = dataset.Dimension(dimensions[0]).Category().map(c => {
       return c.label
@@ -49,7 +49,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         }
       })
 
-    console.log(nationalSchoolsTable)
+    // console.log(nationalSchoolsTable)
 
     const nationalSchools = {
       e: '#chart-' + chartDivIds[0],
@@ -117,7 +117,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   } catch (e) {
     console.log('Error creating National Schools chart')
     console.log(e)
-    removeSpinner('chart-'+chartDivIds[0])
+    removeSpinner('chart-' + chartDivIds[0])
     const eMsg = e instanceof TimeoutError ? e : 'An error occured'
     const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
     // console.log(errBtnID)
