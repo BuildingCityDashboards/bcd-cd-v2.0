@@ -7,14 +7,14 @@ import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErro
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
 (async function main () {
-  const chartDivIds = ['completions-house', 'completions-scheme', 'completions-apartment']
+  const chartDivIds = ['employment', 'labour', 'unemployed']
 
   const STATBANK_BASE_URL =
         'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
-  // NDQ06: New Dwelling Completion by Local Authority, Type of House and Quarter
-  const TABLE_CODE = 'NDQ06'
+  // QLF08: Persons aged 15 years and over by Region, Quarter and Statistic
+  const TABLE_CODE = 'QLF08'
   try {
-    addSpinner(chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>New Dwelling Completion</i>`)
+    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Labour Force</i>`)
 
     const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
 
@@ -23,89 +23,89 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     }
 
     const dataset = JSONstat(json).Dataset(0)
-    // console.log(dataset)
+    console.log(dataset)
 
     const dimensions = dataset.Dimension().map(dim => {
       return dim.label
     })
-    // console.log(dimensions)
+    console.log(dimensions)
 
-    const categoriesLA = dataset.Dimension(dimensions[0]).Category().map(c => {
+    const categoriesRegion = dataset.Dimension(dimensions[0]).Category().map(c => {
       return c.label
     })
-    // console.log(categoriesLA)
+    console.log(categoriesRegion)
 
-    const categoriesType = dataset.Dimension(dimensions[1]).Category().map(c => {
-      return c.label
-    })
+    // const categoriesType = dataset.Dimension(dimensions[1]).Category().map(c => {
+    //   return c.label
+    // })
     // console.log(categoriesType)
 
-    const categoriesStat = dataset.Dimension(dimensions[3]).Category().map(c => {
+    const categoriesStat = dataset.Dimension(dimensions[2]).Category().map(c => {
       return c.label
     })
-    // console.log(categoriesStat)
+    console.log(categoriesStat)
 
     //
-    const completionsTable = dataset.toTable(
+    const employedCountTable = dataset.toTable(
       { type: 'arrobj' },
       (d, i) => {
-        if ((d[dimensions[0]] === 'Cork (County Council)' ||
-          d[dimensions[0]] === 'Cork (City Council)' ||
-          d[dimensions[0]] === categoriesLA[0]) &&
+        if ((d[dimensions[0]] === 'Southern' ||
+          d[dimensions[0]] === 'South-West' ||
+          d[dimensions[0]] === categoriesRegion[0]) &&
           !isNaN(+d.value)) {
-          d[dimensions[0]] = getTraceNameLA(d[dimensions[0]])
           d.date = convertQuarterToDate(d.Quarter)
           d.label = d.Quarter
-          d.value = +d.value
+          d.value = +d.value * 1000
           return d
         }
       })
     //
-    // console.log(completionsTable)
+    console.log(employedCountTable)
 
-    const completionsHouse = {
+    const employedCount = {
       e: '#chart-' + chartDivIds[0],
-      d: completionsTable.filter(d => {
-        return d[dimensions[1]] === categoriesType[0]
+      d: employedCountTable.filter(d => {
+        return d[dimensions[2]] === categoriesStat[0]
       }),
-      ks: categoriesLA,
+      ks: categoriesRegion,
       k: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[0]
+      tY: getShortLabel(categoriesStat[0])
     }
-    //
-    const completionsHouseChart = new MultiLineChart(completionsHouse)
-    const completionsScheme = {
-      e: '#chart-' + chartDivIds[1],
-      d: completionsTable.filter(d => {
-        return d[dimensions[1]] === categoriesType[1]
-      }),
-      ks: categoriesLA,
-      k: dimensions[0],
-      xV: 'date',
-      yV: 'value',
-      tX: 'Year',
-      tY: categoriesStat[0]
-    }
-    //
-    const completionsSchemeChart = new MultiLineChart(completionsScheme)
+    // //
+    const employedCountChart = new MultiLineChart(employedCount)
 
-    const completionsApartment = {
-      e: '#chart-' + chartDivIds[2],
-      d: completionsTable.filter(d => {
-        return d[dimensions[1]] === categoriesType[2]
+    const labourCount = {
+      e: '#chart-' + chartDivIds[1],
+      d: employedCountTable.filter(d => {
+        return d[dimensions[2]] === categoriesStat[2]
       }),
-      ks: categoriesLA,
+      ks: categoriesRegion,
       k: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[0]
+      tY: getShortLabel(categoriesStat[2])
     }
-    //
-    const completionsApartmentChart = new MultiLineChart(completionsApartment)
+
+    const labourCountChart = new MultiLineChart(labourCount)
+
+    const unemployedCount = {
+      e: '#chart-' + chartDivIds[2],
+      d: employedCountTable.filter(d => {
+        return d[dimensions[2]] === categoriesStat[1]
+      }),
+      ks: categoriesRegion,
+      k: dimensions[0],
+      xV: 'date',
+      yV: 'value',
+      tX: 'Year',
+      tY: getShortLabel(categoriesStat[1])
+    }
+
+    const unemployedCountChart = new MultiLineChart(unemployedCount)
 
     d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
     d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
@@ -113,16 +113,16 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
-        completionsHouseChart.drawChart()
-        completionsHouseChart.addTooltip('Single house completions,  ', '', 'label')
+        employedCountChart.drawChart()
+        employedCountChart.addTooltip(',  ', '', 'label')
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
-        completionsSchemeChart.drawChart()
-        completionsSchemeChart.addTooltip('Scheme house completions, ', '', 'label')
+        labourCountChart.drawChart()
+        labourCountChart.addTooltip(', ', '', 'label')
       }
       if (document.querySelector('#chart-' + chartDivIds[2]).style.display !== 'none') {
-        completionsApartmentChart.drawChart()
-        completionsApartmentChart.addTooltip('Apartmnent completions, ', '', 'label')
+        unemployedCountChart.drawChart()
+        unemployedCountChart.addTooltip(', ', '', 'label')
       }
     }
     redraw()
@@ -158,9 +158,9 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     console.log('Error creating housing completion charts')
     console.log(e)
 
-    removeSpinner(chartDivIds[0])
+    removeSpinner('chart-' + chartDivIds[0])
     const eMsg = e instanceof TimeoutError ? e : 'An error occured'
-    const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
+    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
       console.log('retry')
@@ -170,13 +170,12 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   }
 })()
 
-const getTraceNameLA = function (s) {
+const getShortLabel = function (s) {
   // Allows color get by name when data order is not guaranteed
   const SHORTS = {
-    'Dublin (City Council)': 'Dublin City',
-    'Dun Laoire/Rathdown (County Council)': 'Dún Laoghaire-Rathdown',
-    'Fingal (County Council)': 'Fingal',
-    'South Dublin Co. Co. (County Council)': 'South Dublin'
+    'Persons aged 15 years and over in Employment (Thousand)': 'Persons in Employment',
+    'Unemployed Persons aged 15 years and over (Thousand)': 'Unemployed Persons',
+    'Persons aged 15 years and over in Labour Force (Thousand)': 'Persons in Labour Force'
   }
 
   return SHORTS[s] || s
