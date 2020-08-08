@@ -25,17 +25,17 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     }
 
     const dataset = JSONstat(json).Dataset(0)
-    console.log(dataset)
+    // console.log(dataset)
 
     const dimensions = dataset.Dimension().map(dim => {
       return dim.label
     })
-    console.log(dimensions)
+    // console.log(dimensions)
 
     const categoriesRegion = dataset.Dimension(dimensions[0]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesRegion)
+    // console.log(categoriesRegion)
 
     // const categoriesType = dataset.Dimension(dimensions[1]).Category().map(c => {
     //   return c.label
@@ -45,7 +45,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const categoriesStat = dataset.Dimension(dimensions[2]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesStat)
+    // console.log(categoriesStat)
 
     //
     const employmentTable = dataset.toTable(
@@ -62,7 +62,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         }
       })
     //
-    console.log(employmentTable)
+    // console.log(employmentTable)
 
     const employedCount = {
       e: '#chart-' + chartDivIds[0],
@@ -219,7 +219,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
-      console.log('retry')
+    //   console.log('retry')
       removeErrorMessageButton(chartDivIds[0])
       main()
     })
