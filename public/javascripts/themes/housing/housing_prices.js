@@ -15,7 +15,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     addSpinner(chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Market-based Household Purchases of Residential Dwellings</i>`)
     const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
     if (json) {
-      removeSpinner(chartDivIds[0])
+      removeSpinner('chart-' + chartDivIds[0])
     }
 
     const dataset = JSONstat(json).Dataset(0)
@@ -129,12 +129,12 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   } catch (e) {
     console.log('Error creating House Price chart')
     console.log(e)
-    removeSpinner(chartDivIds[0])
+    removeSpinner('chart-' + chartDivIds[0])
     const eMsg = e instanceof TimeoutError ? e : 'An error occured'
     const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
-      removeErrorMessageButton(chartDivIds[0])
+      removeErrorMessageButton('chart-' + chartDivIds[0])
       main()
     })
   }

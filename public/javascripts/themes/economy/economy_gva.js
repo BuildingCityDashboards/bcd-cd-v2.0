@@ -2,8 +2,10 @@
 import { MultiLineChart } from '../../modules/MultiLineChart.js'
 import { fetchJsonFromUrlAsync } from '../../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
+import { addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
+import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async () => {
+(async function main () {
   // console.log('fetch cso json')
   const parseYear = d3.timeParse('%Y')
 
@@ -13,7 +15,14 @@ import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
   const STAT = 'Gross Value Added (GVA) per person at Basic Prices (Euro)'
 
   try {
+    const chartDivIds = ['gva']
+    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>New Dwelling Completion</i>`)
+
     const json = await fetchJsonFromUrlAsync(STATBANK_BASE_URL + TABLE_CODE)
+    if (json) {
+      removeSpinner('chart-' + chartDivIds[0])
+    }
+
     const gvaDataset = JSONstat(json).Dataset(0)
 
     const gvaFiltered = gvaDataset.toTable(
@@ -54,6 +63,17 @@ import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
       redraw()
     })
   } catch (e) {
+    console.log('Error creating GVA charts')
     console.log(e)
+
+    removeSpinner('chart-' + chartDivIds[0])
+    const eMsg = e instanceof TimeoutError ? e : 'An error occured'
+    const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
+    // console.log(errBtnID)
+    d3.select(`#${errBtnID}`).on('click', function () {
+      // console.log('retry')
+      removeErrorMessageButton('chart-' + chartDivIds[0])
+      main()
+    })
   }
 })()

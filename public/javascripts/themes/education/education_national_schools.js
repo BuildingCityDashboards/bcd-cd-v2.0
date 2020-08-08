@@ -117,7 +117,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   } catch (e) {
     console.log('Error creating National Schools chart')
     console.log(e)
-    removeSpinner(chartDivIds[0])
+    removeSpinner('chart-'+chartDivIds[0])
     const eMsg = e instanceof TimeoutError ? e : 'An error occured'
     const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
     // console.log(errBtnID)

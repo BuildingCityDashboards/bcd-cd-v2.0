@@ -20,7 +20,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
 
     if (json) {
-      removeSpinner(chartDivIds[0])
+      removeSpinner('chart-' + chartDivIds[0])
       removeSpinner(chartDivIds[3])
     }
 
@@ -220,7 +220,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
     //   console.log('retry')
-      removeErrorMessageButton(chartDivIds[0])
+      removeErrorMessageButton('chart-' + chartDivIds[0])
       main()
     })
   }
