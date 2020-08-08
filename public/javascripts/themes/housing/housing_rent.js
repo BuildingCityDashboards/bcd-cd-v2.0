@@ -13,10 +13,10 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   // RIQ02: RTB Average Monthly Rent Report by Number of Bedrooms, Property Type, Location and Quarter
   const TABLE_CODE = 'RIQ02'
   try {
-    addSpinner(chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>RTB Average Monthly Rent Report</i>`)
+    addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>RTB Average Monthly Rent Report</i>`)
     const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
     if (json) {
-      removeSpinner('chart-'+chartDivIds[0])
+      removeSpinner('chart-' + chartDivIds[0])
     }
     const dataset = JSONstat(json).Dataset(0)
     // console.log(dataset)
@@ -128,12 +128,12 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
   } catch (e) {
     console.log('Error creating rent charts')
     console.log(e)
-    removeSpinner('chart-'+chartDivIds[0])
+    removeSpinner('chart-' + chartDivIds[0])
     e = (e instanceof TimeoutError) ? e : 'An error occured'
-    const errBtnID = addErrorMessageButton(chartDivIds[0], e)
+    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], e)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
-      console.log('retry')
+      // console.log('retry')
       removeErrorMessageButton('chart-' + chartDivIds[0])
       main()
     })
