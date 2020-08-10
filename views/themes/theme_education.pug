@@ -38,8 +38,19 @@
     //- name: 'Secondary level'
     //- }]
     //- )
+
+    +theme__text-chart(
+    'education-primary-nationality',
+    [{ link:'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=ED123&PLanguage=0',
+    name: 'CSO'}],
+    'Nationalities in Primary Schools',
+    '<p>*** content tbc ***</p>',
+    '',
+    ['education-primary-nationality']
+    )
     
 
         
 block append scripts
   script(src="/javascripts/themes/education/education_national_schools.js" type="module")
+  //- script(src="/javascripts/themes/education/education_nationality_primary.js" type="module")
