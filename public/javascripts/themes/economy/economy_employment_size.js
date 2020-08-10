@@ -121,7 +121,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         employedChart.drawChart()
-        employedChart.addTooltip(STATS[2] + ' for Year ', '', 'label')
+        employedChart.addTooltip(STATS[0] + ' for Year ', '', 'label')
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         engagedChart.drawChart()
@@ -129,7 +129,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       }
       if (document.querySelector('#chart-' + chartDivIds[2]).style.display !== 'none') {
         activeChart.drawChart()
-        activeChart.addTooltip(STATS[0] + ' for Year ', '', 'label')
+        activeChart.addTooltip(STATS[2] + ' for Year ', '', 'label')
       }
     }
     redraw()
@@ -159,12 +159,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     })
 
     window.addEventListener('resize', () => {
-      activeChart.drawChart()
-      activeChart.addTooltip(STATS[0] + ' for Year ', '', 'label')
-      engagedChart.drawChart()
-      engagedChart.addTooltip(STATS[1] + ' for Year ', '', 'label')
-      employedChart.drawChart()
-      employedChart.addTooltip(STATS[2] + ' for Year ', '', 'label')
+      redraw()
     })
   } catch (e) {
     removeSpinner('chart-' + chartDivIds[0])

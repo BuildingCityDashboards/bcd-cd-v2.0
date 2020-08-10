@@ -27,7 +27,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     }
 
     const dataset = JSONstat(json).Dataset(0)
-    console.log(dataset)
+    // console.log(dataset)
 
     const XAXIS = ['Number of Persons']
     const YAXIS = ['Private Permanent Households  (Number)']
@@ -49,13 +49,13 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
           return d
         }
       })
-    console.log(householdsCompFiltered)
+    // console.log(householdsCompFiltered)
     // convert long table to wide
     const householdsCompNested = d3.nest()
       .key(function (d) { return d['Number of Persons'] })
       .entries(householdsCompFiltered)
 
-    console.log(householdsCompNested)
+    // console.log(householdsCompNested)
 
     const householdsCompWide = householdsCompNested.map(function (d) {
       const obj = {
@@ -63,14 +63,14 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
       }
       d.values.forEach(function (v) {
-        console.log(v)
+        // console.log(v)
         // obj.date = v.date
         obj['Number of Persons'] = v['Number of Persons']
         obj[v['Province County or City']] = v.value
       })
       return obj
     })
-    console.log(householdsCompWide)
+    // console.log(householdsCompWide)
 
     const householdsCompContent = {
       e: '#chart-' + chartDivIds[0],
@@ -102,7 +102,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       redraw()
     })
   } catch (e) {
-    console.log('Error creating household charts')
+    console.log('Error creating household composition chart')
     console.log(e)
     removeSpinner('chart-' + chartDivIds[0])
     const eMsg = e instanceof TimeoutError ? e : 'An error occured'
