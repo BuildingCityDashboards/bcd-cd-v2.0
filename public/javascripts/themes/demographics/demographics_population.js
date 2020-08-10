@@ -2,7 +2,7 @@
 import { fetchJsonFromUrlAsync } from '../../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 import { MultiLineChart } from '../../modules/MultiLineChart.js'
-import { GroupedBarChart } from '../../modules/GroupedBarChart.js'
+import { StackedAreaChart } from '../../modules/StackedAreaChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
@@ -58,23 +58,48 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
           return d
         }
       })
+    console.log('populationFiltered')
     console.log(populationFiltered)
+
+    const populationNested = d3.nest()
+      .key(function (d) { return d.date })
+      .entries(populationFiltered)
+
+    console.log('populationNested')
+    console.log(populationNested)
+
+    const populationWide = populationNested.map(function (d) {
+      const obj = {
+        label: d.key
+      }
+      d.values.forEach(function (v) {
+        if (v.Statistic === categoriesStat[0] & v.Sex !== categoriesSex[0]) {
+          obj.date = v.date
+          obj[v.Sex] = v.value
+        }
+      })
+      return obj
+    })
+
+    console.log('populationWide')
+
+    console.log(populationWide)
 
     const populationCountContent = {
       e: '#chart-' + chartDivIds[0],
-      d: populationFiltered.filter(d => {
-        return d.Statistic === categoriesStat[0]
-      }),
-      ks: categoriesSex,
-      k: dimensions[0],
+      d: populationWide,
+      //   .filter(d => {
+      //     return d.Statistic === categoriesStat[0]
+      //   }),
+      ks: ['Male', 'Female'],
       xV: 'date',
-      yV: 'value',
+      yV: 'Sex',
       tX: 'Census years',
-      tY: ''
+      tY: 'Population'
     }
-    // console.log(populationCountContent)
+    console.log(populationCountContent)
 
-    const populationCountChart = new MultiLineChart(populationCountContent)
+    const populationCountChart = new StackedAreaChart(populationCountContent)
 
     const populationChangeContent = {
       e: '#chart-' + chartDivIds[1],
