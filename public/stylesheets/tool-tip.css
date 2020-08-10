@@ -1,0 +1,173 @@
+.axis {
+  font: 10px sans-serif;
+}
+
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.overlay, .overlay2 {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus-circles {
+  stroke-width: 2px;
+}
+
+.focus_line {
+  stroke: #c4cdd5;
+  stroke-width: 1px;
+  /* stroke-dasharray: 5,5; */
+}
+
+.tool-tip {
+  position: static;
+  width: 100%;
+  height: 100px;
+  overflow-y: scroll;
+  max-height: 100px;
+  padding: 4px;
+  background     : transparent;
+  /* background-color: rgba(0, 0 ,0, 0.95); */
+  border         : solid 1px rgba(255, 255, 255, 0.12);
+  border-radius  : 4px;
+  pointer-events: none;
+  font-family: 'Roboto';
+  font-size: 12px;
+  line-height: 1.5;
+  color: white;
+  opacity: 0.9;
+  padding-right: 0;
+  visibility: visible;
+  transition: 250ms ease;
+  outline        : none;
+  box-shadow     : none;
+  /* display: none; */
+}
+
+.tip-box{
+  opacity: 0.75;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  float: left;
+}
+
+.tooltip-body {
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+}
+
+.bcd-dot{
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 6px;
+  margin-top: 4px;
+}
+
+.bcd-rect{
+  height: 12px;
+  width: 12px;
+  float: left;
+  margin-right: 6px;
+  margin-top: 4px;
+}
+
+.bcd-text{
+  /* font-size: .75rem; */
+  margin: 0;
+  display: flex;
+  width: 92%;
+  font-size: 12px;
+  font-family: 'Roboto';
+}
+
+.bcd-text-rate, .bcd-text-value, .bcd-text-slice{
+  flex: 0 0 22.5%;
+  max-width: 22.5%;
+  text-align: right;
+  /* border-left: 1px solid #c4cdd5; */
+  /* padding: 0 1px; */
+}
+
+.bcd-text-indicator{
+  flex: 0 0 5%;
+  max-width: 5%;
+  text-align: right;
+}
+
+/* {
+  flex: 0 0 20%;
+  max-width: 20%;
+  text-align: right;
+} */
+
+.bcd-text-title{
+  flex: 0 0 45%;
+  max-width: 45%;
+}
+
+.legend.active{
+  opacity: .25;
+}
+
+.legendText{
+  display:none;
+}
+
+/* .tip-text{
+  line-height: 1.25rem;
+} */
+
+
+@media (min-width: 768px){
+  .tool-tip{
+    position: relative;
+    width: 305px;
+    max-height: 300px;
+    height: auto;
+    padding: 8px;
+    background-color      : #1c2022;
+    /* background-color: rgba(0, 0 ,0, 0.95); */
+    border         : solid 1px rgba(255, 255, 255, 0.12);
+    opacity: 0.98;
+    padding-right: 0;
+    visibility: visible;
+    overflow-y: visible;
+    /* display: none; */
+    display: block;
+
+  }
+  .focus{
+    visibility: hidden;
+  }
+  .legendText{
+    display:block;
+  }
+}
+
+/* @media (min-width: 1280px){
+  .tool-tip{
+    position: relative;
+    width: 305px;
+    max-height: none;
+    height: auto;
+    padding: 8px;
+
+    padding-right: 0;
+    visibility: visible;
+    overflow-y: visible;
+  }
+  .focus{
+    visibility: hidden;
+  }
+  .legendText{
+    display:block;
+  }
+} */
