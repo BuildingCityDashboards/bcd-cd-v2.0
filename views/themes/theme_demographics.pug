@@ -5,17 +5,27 @@
     '',
     'demographics_background.png')
     
-    //- +theme__text-chart(
-    //- 'population-cork',
-    //- [{
-    //- link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=CNA13&PLanguage=0',
-    //- name: 'CSO'
-    //- }],
-    //- 'Population of cork',
-    //- '<p>The population of Cork county has grown steadily in the past 100 years, as recorded in the censuses carried out every five years. This growth is a result of natural increase, but is driven in particular by internal national migration and international migration. The city has long had slightly more females than males, largely a function of a difference in average age of death. </p>',
-    //- '',
-    //- ['chart-population']
-    //- )
+    +theme__text-chart(
+    'population',
+    [{
+    link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=CNA13&PLanguage=0',
+    name: 'CSO'
+    }],
+    'Population of cork',
+    '<p>The population of Cork has grown steadily in the past 100 years, as recorded in the censuses carried out every five years. This growth is a result of natural increase, but is driven in particular by internal national migration and international migration. The city has long had slightly more females than males, largely a function of a difference in average age of death. </p>',
+    '',
+    ['chart-population', 'chart-population-change', 'chart-population-rate'],
+    [{
+    id: 'btn-population',
+    name: 'Population'
+    },{
+    id: 'btn-population-change',
+    name: 'Population change'
+    },{
+    id: 'btn-population-rate',
+    name: 'Rate of change (%)'
+    }]
+    )
     
     +theme__text-chart(
     'households',
@@ -71,7 +81,7 @@
 
         
 block append scripts
-  //- script(src="/javascripts/themes/demographics/demographics.js" type="module")
+  script(src="/javascripts/themes/demographics/demographics_population.js" type="module")
   script(src="/javascripts/themes/demographics/demographics_households.js" type="module")
   script(src="/javascripts/themes/demographics/demographics_households_composition.js" type="module")
   //- script(src="/javascripts/themes/demographics/demographics_born_outside_state.js" type="module")
