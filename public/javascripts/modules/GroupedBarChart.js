@@ -2,7 +2,6 @@ import { Chart } from './Chart.js'
 import { textWrap } from '../modules/bcd-chart-utils.js'
 
 class GroupedBarChart extends Chart {
-
   constructor (obj) {
     super(obj)
 
@@ -10,7 +9,7 @@ class GroupedBarChart extends Chart {
   }
 
   drawChart () {
-    let c = this
+    const c = this
 
     super.init()
     super.addAxis()
@@ -23,11 +22,11 @@ class GroupedBarChart extends Chart {
   }
 
   createScales () {
-    let c = this,
-      yAxisCall,
-      xAxisCall,
-      x,
-      y
+    const c = this
+    let yAxisCall
+    let xAxisCall
+    let x
+    let y
 
     yAxisCall = d3.axisLeft()
     xAxisCall = d3.axisBottom()
@@ -75,7 +74,7 @@ class GroupedBarChart extends Chart {
   }
 
   drawBars () {
-    let c = this
+    const c = this
 
     c.drawGridLines()
 
@@ -154,21 +153,21 @@ class GroupedBarChart extends Chart {
   }
 
   addLegend () {
-    let c = this
+    const c = this
 
-    let legend = c.g.append('g')
+    const legend = c.g.append('g')
       .attr('transform', 'translate(0,0)')
 
-    let legendArray = []
+    const legendArray = []
 
     c.ks.forEach((d, i) => {
-      let obj = {}
+      const obj = {}
       obj.label = d
       obj.colour = c.colour(d)
       legendArray.push(obj)
     })
     // TODO: compute padding for legend elements
-    let legends = legend.selectAll('.legend')
+    const legends = legend.selectAll('.legend')
       .data(legendArray)
       .enter()
       .append('g')
@@ -196,9 +195,9 @@ class GroupedBarChart extends Chart {
   }
 
   tooltipHeaders () {
-    let c = this,
-      div,
-      p
+    const c = this
+    let div
+    let p
 
     div = c.newToolTip
       .append('div')
@@ -229,10 +228,10 @@ class GroupedBarChart extends Chart {
   }
 
   tooltipBody () {
-    let c = this,
-      keys = c.ks,
-      div,
-      p
+    const c = this
+    const keys = c.ks
+    let div
+    let p
 
     keys.forEach((d, i) => {
       div = c.newToolTip
@@ -251,7 +250,7 @@ class GroupedBarChart extends Chart {
   }
 
   addTooltip (obj) {
-    let c = this
+    const c = this
 
     c.title = obj.title
     c.datelabel = obj.data || 'date'
@@ -264,14 +263,14 @@ class GroupedBarChart extends Chart {
   }
 
   mousemove (d, e, a) {
-    let c = this
+    const c = this
     if (!c.sscreens) {
-      let x = c.x0(d[c.xV]),
-        y = -400,
-        tooltipX = c.getTooltipPosition(x),
-        data = a[e].__data__,
-        prevData = a[e - 1] ? a[e - 1].__data__ : null,
-        key = c.ks
+      const x = c.x0(d[c.xV])
+      const y = -400
+      const tooltipX = c.getTooltipPosition(x)
+      const data = a[e].__data__
+      const prevData = a[e - 1] ? a[e - 1].__data__ : null
+      const key = c.ks
 
       // console.log(`d: ${JSON.stringify(d)}, e: ${e}, a: ${JSON.stringify(a[0])}`);
 
@@ -282,10 +281,10 @@ class GroupedBarChart extends Chart {
   }
 
   getTooltipPosition (mouseX) {
-    let c = this,
-      ttX,
-      cW,
-      offset
+    const c = this
+    let ttX
+    let cW
+    let offset
 
     cW = c.w - c.ttWidth
     offset = c.x1.bandwidth() < 20 ? c.x1.bandwidth() : 15
@@ -301,7 +300,7 @@ class GroupedBarChart extends Chart {
   }
 
   hideRate (value) {
-    let c = this
+    const c = this
 
     if (value) {
       // console.log("value of hide", value);
@@ -315,18 +314,18 @@ class GroupedBarChart extends Chart {
   }
 
   ttContent (d, pD, k) {
-    let c = this
+    const c = this
     k.forEach((v, i) => {
-      let id = '#bcd-tt' + i,
-        div = c.newToolTip.select(id),
-        p = div.select('.bcd-text'),
-        newD = d[k[i]],
-        oldD = pD ? pD[k[i]] : null,
-        diff = pD ? (newD - oldD) / oldD : 0,
-        indicator = diff > 0 ? ' ▲' : diff < 0 ? ' ▼' : '',
-        indicatorColour = diff > 0 ? '#20c997' : diff < 0 ? '#da1e4d' : '#f8f8f8',
-        rate = indicator !== '' ? d3.format('.1%')(diff) : 'N/A',
-        vString = c.valueFormat ? c.valueFormat(newD) : newD
+      const id = '#bcd-tt' + i
+      const div = c.newToolTip.select(id)
+      const p = div.select('.bcd-text')
+      const newD = d[k[i]]
+      const oldD = pD ? pD[k[i]] : null
+      const diff = pD ? (newD - oldD) / oldD : 0
+      const indicator = diff > 0 ? ' ▲' : diff < 0 ? ' ▼' : ''
+      const indicatorColour = diff > 0 ? '#20c997' : diff < 0 ? '#da1e4d' : '#f8f8f8'
+      const rate = indicator !== '' ? d3.format('.1%')(diff) : 'N/A'
+      const vString = c.valueFormat ? c.valueFormat(newD) : newD
       c.newToolTipTitle.text(c.title + ' ' + (d[c.xV])) // label needs to be passed to this function
       div.select('.bcd-rect').style('background-color', c.colour(v))
       p.select('.bcd-text-title').text(v)
@@ -337,8 +336,8 @@ class GroupedBarChart extends Chart {
   }
 
   showSelectedLabels (array) {
-    let c = this,
-      e = c.xAxis
+    const c = this
+    const e = c.xAxis
     c.axisArray = array || c.axisArray
 
     e.selectAll('.x-axis .tick')
@@ -349,7 +348,6 @@ class GroupedBarChart extends Chart {
         .style('display', 'block')
     })
   }
-
 }
 
 export { GroupedBarChart }

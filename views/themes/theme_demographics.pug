@@ -18,7 +18,7 @@
     //- )
     
     +theme__text-chart(
-    'population-households',
+    'households',
     [{
     link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=CNA33&PLanguage=0',
     name: 'CSO'
@@ -34,7 +34,6 @@
     id: 'btn-residents',
     name: 'Persons resident'
     }]
-    
     )
     
     //- +theme__text-chart(
@@ -59,7 +58,7 @@
     
     
     +theme__text-chart(
-    'population-household-comp',
+    'households-composition',
     [{
     link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=CNA29&PLanguage=0',
     name: 'CSO'
@@ -67,12 +66,12 @@
     'Households by Number of Persons (2016)',
     '<p>***rewrite***</p><p>This chart from the 2016 census shows the number of private permanent households with a given number of persons resident. It is broken down for the 2 Cork local authorities</p> ',
     '',
-    ['chart-householdComposition']
+    ['chart-households-composition']
     )
 
         
 block append scripts
   //- script(src="/javascripts/themes/demographics/demographics.js" type="module")
   script(src="/javascripts/themes/demographics/demographics_households.js" type="module")
-  //- script(src="/javascripts/themes/demographics/demographics_households_composition.js" type="module")
+  script(src="/javascripts/themes/demographics/demographics_households_composition.js" type="module")
   //- script(src="/javascripts/themes/demographics/demographics_born_outside_state.js" type="module")
