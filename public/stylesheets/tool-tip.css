@@ -2,7 +2,6 @@
   font: 10px sans-serif;
 }
 
-
 .line {
   fill: none;
   stroke-width: 2px;
@@ -24,14 +23,13 @@
 }
 
 .tool-tip {
+  background-color      : white;
   position: static;
   width: 100%;
   height: 100px;
   overflow-y: scroll;
   max-height: 100px;
   padding: 4px;
-  background     : transparent;
-  /* background-color: rgba(0, 0 ,0, 0.95); */
   border         : solid 1px rgba(255, 255, 255, 0.12);
   border-radius  : 4px;
   pointer-events: none;
@@ -39,7 +37,7 @@
   font-size: 12px;
   line-height: 1.5;
   color: white;
-  opacity: 0.9;
+  opacity: 0.75;
   padding-right: 0;
   visibility: visible;
   transition: 250ms ease;
@@ -133,7 +131,7 @@
     max-height: 300px;
     height: auto;
     padding: 8px;
-    background-color      : #1c2022;
+   
     /* background-color: rgba(0, 0 ,0, 0.95); */
     border         : solid 1px rgba(255, 255, 255, 0.12);
     opacity: 0.98;
