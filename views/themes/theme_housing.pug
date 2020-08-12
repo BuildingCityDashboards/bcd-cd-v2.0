@@ -11,16 +11,19 @@
     link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM05&PLanguage=0',
     name: 'CSO'
     }],
-    'House Prices',
+    'Mean Sale Prices for Housing',
     '<p>Over the past decade property prices initally fell following the financial crash of 2008, then exhibitied a period of recovery. This chart shows mean and median house prices nationally ("All") and across the Cork local authorities for each month since the beginning of 2010. </p>',
     '',
-    ['chart-house-price-mean', 'chart-house-price-median'],
+    ['chart-housing-price-all', 'chart-housing-price-house', 'chart-housing-price-apartment'],
     [{
-    id: 'btn-house-price-mean',
-    name: 'Mean price'
+    id: 'btn-housing-price-all',
+    name: 'All housing'
     },{
-    id: 'btn-house-price-median',
-    name: 'Median price'
+    id: 'btn-housing-price-house',
+    name: 'House'
+    },{
+    id: 'btn-housing-price-apartment',
+    name: 'Apartment'
     }]
     )
     
@@ -54,6 +57,28 @@
     },{
     id: 'btn-rent-by-beds',
     name: 'By no. of bedrooms'
+    }]
+    )
+
+    +theme__text-chart(
+    'house-sales',
+    [{
+    link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM05&PLanguage=0',
+    name: 'CSO'
+    }],
+    'Volume of House Sales',
+    '<p> *** tbc*** </p>',
+    '',
+    ['chart-housing-sales-all', 'chart-housing-sales-house', 'chart-housing-sales-apartment'],
+    [{
+    id: 'btn-housing-sales-all',
+    name: 'All housing'
+    },{
+    id: 'btn-housing-sales-house',
+    name: 'House'
+    },{
+    id: 'btn-housing-sales-apartment',
+    name: 'Apartment'
     }]
     )
     

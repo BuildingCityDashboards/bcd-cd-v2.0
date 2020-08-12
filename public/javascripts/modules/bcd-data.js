@@ -1,3 +1,17 @@
+/**
+ *
+ *
+ * @param { Object }
+ * @return { boolean } isClean
+ *
+ *
+ */
+
+const hasCleanValue = d => {
+  return d.value != null && !isNaN(+d.value)
+}
+
+export { hasCleanValue }
 
 /**
  * Coerce data for each column in wide-format table (csv)
@@ -9,7 +23,7 @@
  *
  */
 function coerceWideTable (data, columnNames) {
-  let coercedData = data.map(d => {
+  const coercedData = data.map(d => {
     for (var i = 0, n = columnNames.length; i < n; i++) {
       // d[columns[i]] !== "null" ? d[columns[i]] = +d[columns[i]] : d[columns[i]] = "unavailable";
       d[columnNames[i]] = +d[columnNames[i]]
@@ -19,11 +33,11 @@ function coerceWideTable (data, columnNames) {
   return coercedData
 }
 
-export { coerceWideTable}
+export { coerceWideTable }
 
 function extractObjectArrayWithKey (dataArray, key) {
-  let outArray = dataArray.map(d => {
-    let obj = {
+  const outArray = dataArray.map(d => {
+    const obj = {
       label: d.Quarter,
       value: parseInt(d[key].replace(/,/g, '')),
       variable: key,
@@ -51,9 +65,9 @@ const formatWideToLong = csv => {
 export { formatWideToLong }
 
 const stackNest = (data, date, name, value) => {
-  let nested_data = d3Nest(data, date)
-  let mqpdata = nested_data.map(function (d) {
-    let obj = {
+  const nested_data = d3Nest(data, date)
+  const mqpdata = nested_data.map(function (d) {
+    const obj = {
       label: d.key
     }
     d.values.forEach(function (v) {
@@ -66,7 +80,7 @@ const stackNest = (data, date, name, value) => {
   return mqpdata
 }
 
-export { stackNest}
+export { stackNest }
 
 /**
  * // TODO: Change tabular data from long (flat) to wide format
