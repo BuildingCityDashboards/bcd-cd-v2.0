@@ -93,7 +93,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         householdsCompChart.drawChart()
         // householdsCompChart.addTooltip(STATS[0].split('(')[0], '', 'label')
-        // householdsCompChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+        // householdsCompChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
         // householdsCompChart.hideRate(true)
       }
     }

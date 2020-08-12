@@ -74,7 +74,7 @@ import { activeBtn } from '../../modules/bcd-ui.js'
   bornOutsideDublinChart.drawChart()
   // bornOutsideDublinChart.addTooltip(outsideStateTT)
   bornOutsideDublinChart.addTooltip('Population (thousands) in census year ', '', 'label')
-  // bornOutsideDublinChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+  // bornOutsideDublinChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
   //
 
   let bornOutsideState = {
@@ -109,7 +109,7 @@ import { activeBtn } from '../../modules/bcd-ui.js'
     bornOutsideDublinChart.addTooltip('Population (thousands) in census year ', '', 'label')
     // bornOutsideDublinChart.addTooltip(outsideStateTT)
     // bornOutsideDublinChart.addTooltip(STATS[0].split('(')[0], '', 'label')
-    // bornOutsideDublinChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+    // bornOutsideDublinChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
   })
 
   d3.select('#btn-' + chart2).on('click', function () {
@@ -134,6 +134,6 @@ import { activeBtn } from '../../modules/bcd-ui.js'
     // bornOutsideDublinChart.addTooltip(outsideStateTT)
     // bornOutsideDublinChart.addTooltip('Population (thousands) in census year ', '', 'label')
     // bornOutsideStateChart.addTooltip('Population (thousands) in census year ', '', 'label')
-    // bornOutsideDublinChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+    // bornOutsideDublinChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
   })
 })()

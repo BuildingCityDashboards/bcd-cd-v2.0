@@ -55,13 +55,13 @@ if (document.getElementById('chart-population')) {
 
     // add the tooltip
     populationChart.addTooltip('Year: ', 'thousands', 'label')
-    populationChart.showSelectedLabels([0, 16, 26, 36, 46, 56, 66, 76, 86, 96, 106])
-    // populationChart.showSelectedLabels([0, 16, 26, 36, 41, 46, 51, 56, 61, 69, 71, 76, 81, 86, 92, 96, 101, 106]);
+    populationChart.showSelectedLabelsX([0, 16, 26, 36, 46, 56, 66, 76, 86, 96, 106])
+    // populationChart.showSelectedLabelsX([0, 16, 26, 36, 41, 46, 51, 56, 61, 69, 71, 76, 81, 86, 92, 96, 101, 106]);
 
     // d3.select(window).on("resize", function() {
     //   populationChart.drawChart();
     //   populationChart.addTooltip("Year: ", "thousands", "label");
-    //   populationChart.showSelectedLabels([0, 16, 26, 36, 41, 46, 51, 56, 61, 69, 71, 76, 81, 86, 92, 96, 101, 106]);
+    //   populationChart.showSelectedLabelsX([0, 16, 26, 36, 41, 46, 51, 56, 61, 69, 71, 76, 81, 86, 92, 96, 101, 106]);
     //
     // });
 
@@ -73,7 +73,7 @@ if (document.getElementById('chart-population')) {
 
       // add the tooltip
       populationChart.addTooltip('Year: ', 'thousands', 'label')
-      populationChart.showSelectedLabels([0, 16, 26, 36, 46, 56, 66, 76, 86, 96, 106])
+      populationChart.showSelectedLabelsX([0, 16, 26, 36, 46, 56, 66, 76, 86, 96, 106])
     })
   }).catch(function (error) {
     console.log(error)
@@ -150,7 +150,7 @@ if (document.getElementById('chart-population')) {
 //   // outsideStateChart.tickNumber = 1;
 //     outsideStateChart.drawChart()
 //     outsideStateChart.addTooltip(outsideStateTT)
-//     outsideStateChart.showSelectedLabels([0, 2, 4, 6, 8, 10, 12, 14])
+//     outsideStateChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12, 14])
 //
 //   // d3.select(window).on("resize", function() {
 //   //   outsideStateChart.drawChart();
@@ -160,7 +160,7 @@ if (document.getElementById('chart-population')) {
 //       console.log('redraw outside')
 //       outsideStateChart.drawChart()
 //       outsideStateChart.addTooltip(outsideStateTT)
-//       outsideStateChart.showSelectedLabels([0, 2, 4, 6, 8, 10, 12, 14])
+//       outsideStateChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12, 14])
 //     })
 //   }).catch(function (error) {
 //     console.log(error)

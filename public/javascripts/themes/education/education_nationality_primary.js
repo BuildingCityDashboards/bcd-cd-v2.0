@@ -89,7 +89,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     //   if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
     //     nationalityChart.drawChart()
     //     // nationalityChart.addTooltip(STATS[0].split('(')[0], '', 'label')
-    //     // nationalityChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+    //     // nationalityChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
     //     // nationalityChart.hideRate(true)
     //   }
     // }

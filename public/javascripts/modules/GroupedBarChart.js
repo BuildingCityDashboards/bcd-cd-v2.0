@@ -335,7 +335,7 @@ class GroupedBarChart extends Chart {
     })
   }
 
-  showSelectedLabels (array) {
+  showSelectedLabelsX (array) {
     const c = this
     const e = c.xAxis
     c.axisArray = array || c.axisArray

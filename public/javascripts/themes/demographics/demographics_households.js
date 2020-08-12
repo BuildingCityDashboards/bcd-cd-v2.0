@@ -83,12 +83,12 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         householdsCountChart.drawChart()
         householdsCountChart.addTooltip(STATS[0].split('(')[0], '', 'label')
-        householdsCountChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+        householdsCountChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         residentsChart.drawChart()
         residentsChart.addTooltip(STATS[1].split('(')[0], '', 'label')
-        residentsChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+        residentsChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
         // completionsSchemeChart.addTooltip('Scheme house completions, ', '', 'label')
       }
     }

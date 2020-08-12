@@ -24,27 +24,22 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     }
 
     const dataset = JSONstat(json).Dataset(0)
-    console.log(dataset)
+    // console.log(dataset)
 
     const dimensions = dataset.Dimension().map(dim => {
       return dim.label
     })
-    console.log(dimensions)
+    // console.log(dimensions)
 
     const categoriesSex = dataset.Dimension(dimensions[0]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesSex)
-
-    const categoriesCounty = dataset.Dimension(dimensions[1]).Category().map(c => {
-      return c.label
-    })
-    console.log(categoriesCounty)
+    // console.log(categoriesSex)
 
     const categoriesStat = dataset.Dimension(dimensions[3]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesStat)
+    // console.log(categoriesStat)
 
     const populationFiltered = dataset.toTable(
       { type: 'arrobj' },
@@ -58,15 +53,15 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
           return d
         }
       })
-    console.log('populationFiltered')
-    console.log(populationFiltered)
+    // console.log('populationFiltered')
+    // console.log(populationFiltered)
 
     const populationNested = d3.nest()
       .key(function (d) { return d.date })
       .entries(populationFiltered)
 
-    console.log('populationNested')
-    console.log(populationNested)
+    // console.log('populationNested')
+    // console.log(populationNested)
 
     const populationWide = populationNested.map(function (d) {
       const obj = {
@@ -81,9 +76,9 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       return obj
     })
 
-    console.log('populationWide')
+    // console.log('populationWide')
 
-    console.log(populationWide)
+    // console.log(populationWide)
 
     const populationCountContent = {
       e: '#chart-' + chartDivIds[0],
@@ -97,7 +92,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       tX: 'Census years',
       tY: 'Population'
     }
-    console.log(populationCountContent)
+    // console.log(populationCountContent)
 
     const populationCountChart = new StackedAreaChart(populationCountContent)
 
@@ -139,12 +134,12 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         populationCountChart.drawChart()
         // populationCountChart.addTooltip(STATS[0].split('(')[0], '', 'label')
-        // populationCountChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+        // populationCountChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         populationChangeChart.drawChart()
         // populationChangeChart.addTooltip(STATS[1].split('(')[0], '', 'label')
-        // populationChangeChart.showSelectedLabels([1, 6, 11, 17, 21, 26, 31])
+        // populationChangeChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
         // populationChangeChart.addTooltip('Scheme house completions, ', '', 'label')
       }
       if (document.querySelector('#chart-' + chartDivIds[2]).style.display !== 'none') {
