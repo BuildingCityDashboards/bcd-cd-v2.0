@@ -34,20 +34,15 @@ class Chart {
   // initialise method to draw c area
   init () {
     const c = this
-    let eN
-    let eW
-    let aR
-    let cScheme
+    const eN = d3.select(c.e).node()
+    const eW = eN.getBoundingClientRect().width
+    const aR = eW < 800 ? eW * 0.55 : eW * 0.5
+    const cScheme = c.cS || d3.schemeReds[5]
     const m = c.m = {}
     let w
     let h
-    let bP
+    const bP = 450
 
-    eN = d3.select(c.e).node(),
-    eW = eN.getBoundingClientRect().width,
-    aR = eW < 800 ? eW * 0.55 : eW * 0.5,
-    cScheme = c.cS || d3.schemeBlues[5],
-    bP = 450
     // console.log("ew: " + eW);
     // margins
     m.t = eW < bP ? 40 : 50

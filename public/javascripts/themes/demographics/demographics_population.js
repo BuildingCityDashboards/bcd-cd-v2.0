@@ -89,7 +89,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       ks: ['Male', 'Female'],
       xV: 'date',
       // yV: 'Sex',
-      tX: 'Years',
+      tX: 'Year',
       tY: 'Population'
     }
     // console.log(populationCountContent)
@@ -105,8 +105,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       k: dimensions[0],
       xV: 'date',
       yV: 'value',
-      tX: 'Census years',
-      tY: '',
+      tX: 'Year',
+      tY: 'Population change',
       ySF: 'thousands'
     }
     // console.log(populationCountContent)
@@ -121,8 +121,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       k: dimensions[0],
       xV: 'date',
       yV: 'value',
-      tX: 'Census years',
-      tY: ''
+      tX: 'Year',
+      tY: 'Rate of change (%)'
     }
     // console.log(populationCountContent)
     const populationRateChart = new MultiLineChart(populationRateContent)
@@ -134,17 +134,21 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         populationCountChart.drawChart()
-        populationCountChart.addTooltip('test', '', 'label')
-        // populationCountChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
+        populationCountChart.addTooltip('test', 'test', 'label')
+        populationCountChart.showSelectedLabelsX([0, 3, 6, 9, 12, 15])
+        populationCountChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         populationChangeChart.drawChart()
         // populationChangeChart.addTooltip(STATS[1].split('(')[0], '', 'label')
-        // populationChangeChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
+        populationChangeChart.showSelectedLabelsX([0, 3, 6, 9, 12, 15])
+        populationChangeChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
         // populationChangeChart.addTooltip('Scheme house completions, ', '', 'label')
       }
       if (document.querySelector('#chart-' + chartDivIds[2]).style.display !== 'none') {
         populationRateChart.drawChart()
+        populationRateChart.showSelectedLabelsX([0, 3, 6, 9, 12, 15])
+        populationRateChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
       }
     }
     redraw()
