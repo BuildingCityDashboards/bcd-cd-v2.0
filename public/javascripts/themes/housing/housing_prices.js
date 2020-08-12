@@ -97,10 +97,15 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         housePriceMeanChart.drawChart()
+        housePriceMeanChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12])
+        housePriceMeanChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12])
         housePriceMeanChart.addTooltip('Mean house price,  ', '', 'label')
+        // housePriceMeanChart.showSelectedLabelsX([])
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         housePriceMedianChart.drawChart()
+        housePriceMedianChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12])
+        housePriceMedianChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
         housePriceMedianChart.addTooltip('Median house price, ', '', 'label')
       }
     }

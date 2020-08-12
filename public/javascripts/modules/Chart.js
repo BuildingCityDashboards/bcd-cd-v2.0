@@ -331,21 +331,21 @@ class Chart {
       .style('display', 'none')
 
     c.axisArray.forEach(n => {
-      d3.select(e._groups[0][0].childNodes[n])
+      d3.select(e._groups[0][0].childNodes[n + 1])
         .style('display', 'block')
     })
   }
 
   showSelectedLabelsY (array) {
     const c = this
-    const e = c.xAxis
+    const e = c.yAxis
     c.axisArray = array || c.axisArray
 
     e.selectAll('.y-axis .tick')
       .style('display', 'none')
 
     c.axisArray.forEach(n => {
-      d3.select(e._groups[0][0].childNodes[n])
+      d3.select(e._groups[0][0].childNodes[n + 1])
         .style('display', 'block')
     })
   }
