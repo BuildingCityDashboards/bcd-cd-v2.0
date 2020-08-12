@@ -71,7 +71,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       tX: 'Census years',
-      tY: STATS[1].split('(')[0]
+      tY: STATS[1].split('f ')[1].split('(')[0]
     }
 
     const residentsChart = new MultiLineChart(residentsContent)
@@ -84,11 +84,13 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         householdsCountChart.drawChart()
         householdsCountChart.addTooltip(STATS[0].split('(')[0], '', 'label')
         householdsCountChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
+        householdsCountChart.showSelectedLabelsY([0, 2, 4, 6, 8])
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         residentsChart.drawChart()
         residentsChart.addTooltip(STATS[1].split('(')[0], '', 'label')
         residentsChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
+        residentsChart.showSelectedLabelsY([0, 2, 4, 6, 8])
         // completionsSchemeChart.addTooltip('Scheme house completions, ', '', 'label')
       }
     }
