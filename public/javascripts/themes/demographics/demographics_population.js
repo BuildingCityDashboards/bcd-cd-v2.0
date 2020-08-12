@@ -78,7 +78,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     // console.log('populationWide')
 
-    // console.log(populationWide)
+    console.log(populationWide)
 
     const populationCountContent = {
       e: '#chart-' + chartDivIds[0],
@@ -88,8 +88,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       //   }),
       ks: ['Male', 'Female'],
       xV: 'date',
-      yV: 'Sex',
-      tX: 'Census years',
+      // yV: 'Sex',
+      tX: 'Years',
       tY: 'Population'
     }
     // console.log(populationCountContent)
@@ -106,7 +106,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       tX: 'Census years',
-      tY: ''
+      tY: '',
+      ySF: 'thousands'
     }
     // console.log(populationCountContent)
     const populationChangeChart = new MultiLineChart(populationChangeContent)
@@ -133,7 +134,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         populationCountChart.drawChart()
-        // populationCountChart.addTooltip(STATS[0].split('(')[0], '', 'label')
+        populationCountChart.addTooltip('test', '', 'label')
         // populationCountChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
