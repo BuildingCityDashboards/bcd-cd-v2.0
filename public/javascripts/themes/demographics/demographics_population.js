@@ -140,15 +140,17 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         populationChangeChart.drawChart()
-        // populationChangeChart.addTooltip(STATS[1].split('(')[0], '', 'label')
+
         populationChangeChart.showSelectedLabelsX([0, 3, 6, 9, 12, 15])
         populationChangeChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
-        // populationChangeChart.addTooltip('Scheme house completions, ', '', 'label')
+        populationChangeChart.addTooltip('Test1', 'test2', 'label')
       }
       if (document.querySelector('#chart-' + chartDivIds[2]).style.display !== 'none') {
         populationRateChart.drawChart()
         populationRateChart.showSelectedLabelsX([0, 3, 6, 9, 12, 15])
         populationRateChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
+        populationRateChart.addTooltip()
+        populationRateChart.hideRate(true)
       }
     }
     redraw()
