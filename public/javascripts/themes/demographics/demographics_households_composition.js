@@ -80,7 +80,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: XAXIS,
       // yV: 'value',
       tX: XAXIS,
-      tY: YAXIS
+      tY: 'Households (Number)'
     }
 
     const householdsCompChart = new GroupedBarChart(householdsCompContent)
@@ -94,7 +94,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         householdsCompChart.drawChart()
         // householdsCompChart.addTooltip(STATS[0].split('(')[0], '', 'label')
         // householdsCompChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
-        // householdsCompChart.hideRate(true)
+        householdsCompChart.hideRate(true)
       }
     }
     redraw()
