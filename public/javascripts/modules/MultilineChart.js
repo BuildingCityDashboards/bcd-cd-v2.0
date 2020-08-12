@@ -607,19 +607,5 @@ class MultiLineChart extends Chart {
       return !!(isNum(d[v]) && d[v] !== 0)
     }
   }
-
-  showSelectedLabelsX (array) {
-    const c = this
-    const e = c.xAxis
-    c.axisArray = array || c.axisArray
-
-    e.selectAll('.x-axis .tick')
-      .style('display', 'none')
-
-    c.axisArray.forEach(n => {
-      d3.select(e._groups[0][0].childNodes[n])
-        .style('display', 'block')
-    })
-  }
 }
 export { MultiLineChart }
