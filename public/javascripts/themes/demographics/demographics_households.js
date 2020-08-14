@@ -1,5 +1,5 @@
-
 import { fetchJsonFromUrlAsync } from '../../modules/bcd-async.js'
+import { hasCleanValue } from '../../modules/bcd-data.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 import { MultiLineChart } from '../../modules/MultiLineChart.js'
 import { GroupedBarChart } from '../../modules/GroupedBarChart.js'
@@ -8,7 +8,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
 (async function main () {
   const parseYear = d3.timeParse('%Y')
-  const chartDivIds = ['households', 'residents']
+  const chartDivIds = ['households', 'household-size']
   const STATBANK_BASE_URL =
           'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // CNA33 - Number of households and number of persons resident by Type of Private Accommodation, Province County or City, CensusYear and Statistic
@@ -35,16 +35,15 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       (d, i) => {
         if ((d[DIMENSION] === corkLAs[0] ||
           d[DIMENSION] === corkLAs[1]) &&
-        d.value !== null &&
         d['Type of Private Accommodation'] === 'All households' &&
-        +d['Census Year'] >= 1986) {
+        hasCleanValue(d)) {
           d.date = parseYear(+d['Census Year'])
           d.label = +d['Census Year']
           d.value = +d.value
           return d
         }
       })
-    //  console.log(householdsFiltered)
+    // console.log(householdsFiltered)
 
     const householdsCountContent = {
       e: '#chart-' + chartDivIds[0],
@@ -55,7 +54,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       k: DIMENSION,
       xV: 'date',
       yV: 'value',
-      tX: 'Census years',
+      tX: 'Year',
       tY: STATS[0].split('(')[0]
     }
 
@@ -70,11 +69,62 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       k: DIMENSION,
       xV: 'date',
       yV: 'value',
-      tX: 'Census years',
+      tX: 'Year',
       tY: STATS[1].split('f ')[1].split('(')[0]
     }
 
     const residentsChart = new MultiLineChart(residentsContent)
+
+    // const householdsSizeValid = householdsFiltered.filter(function (d) {
+    //   // console.log(d)
+    //   return +d['Census Year'] >= 1979
+    // })
+
+    // const householdsSizeNested = d3.nest()
+    //   .key(function (d) { return d.date })
+    //   .entries(householdsSizeValid)
+
+    // console.log('householdsSizeNested')
+    // console.log(householdsSizeNested)
+
+    // [
+    //   {date1 , la1, mean},
+    //   {date1 , la2, mean},
+    //   {date2 , la1, mean},
+    //   {date2 , la2, mean},
+    // ]
+
+    // const householdsSize = householdsSizeValid.map((d) => {
+    //   d[`${d.Statistic}`] = d.value
+    //   return d
+    // })
+
+    // console.log('householdsSize')
+    // console.log(householdsSize)
+
+    // const householdsSizeNested = d3.nest()
+    //   .key(function (d) { return d.date })
+    //   .key(function (d) { return d[DIMENSION] })
+    //   .entries(householdsSize)
+
+    // console.log(householdsSizeNested)
+
+    // householdsSizeNested.reduce()
+
+    // const householdSizeContent = {
+    //   e: '#chart-' + chartDivIds[1],
+    //   d: householdsSizeWide.map(d => {
+    //     d.mean = parseFloat((d[STATS[1]] / d[STATS[0]]).toFixed(2))
+    //   }),
+    //   ks: corkLAs,
+    //   k: DIMENSION,
+    //   xV: 'date',
+    //   yV: 'mean',
+    //   tX: 'Year',
+    //   tY: 'Average Household Size (Persons)'
+    // }
+
+    // const householdSizeChart = new MultiLineChart(householdSizeContent)
 
     d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
     d3.select('#chart-' + chartDivIds[1]).style('display', 'none')

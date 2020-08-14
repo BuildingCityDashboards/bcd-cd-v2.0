@@ -39,31 +39,31 @@ export { getTrafficQueryForDate }
 
 const groupByNumber = (readings, key, object = {}) => {
   try {
-    let grouped = readings.reduce((obj, d) => {
+    const grouped = readings.reduce((obj, d) => {
     // create the key if it doesn't exist
       // console.log(obj)
       if (!obj.hasOwnProperty(`${+d[key]}`)) {
 		    obj[`${+d[key]}`] = {
-      dates: {}
-    }
+          dates: {}
+        }
       }
-      let dateKey = `${d.year}-${d.month.padStart(2, '0')}-${d.day.padStart(2, '0')}`
-    // add to date object if it doesn't have the date as a key
+      const dateKey = `${d.year}-${d.month.padStart(2, '0')}-${d.day.padStart(2, '0')}`
+      // add to date object if it doesn't have the date as a key
       if (!obj[`${+d[key]}`].dates.hasOwnProperty(dateKey)) {
         obj[`${+d[key]}`].dates[dateKey] = {
           values: [],
           total: 0
         }
       }
-    // TODO: generalise by passing keys as args
-    // add an object with the values
+      // TODO: generalise by passing keys as args
+      // add an object with the values
       obj[`${+d[key]}`].dates[dateKey].values.push(
         {
           count: +d.VehicleCount,
           class: +d.class
         })
 
-    // add a convenience property to keep a total
+      // add a convenience property to keep a total
       obj[`${+d[key]}`].dates[dateKey].total += +d.VehicleCount
 
       return obj

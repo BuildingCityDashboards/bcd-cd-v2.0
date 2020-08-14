@@ -78,7 +78,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     // console.log('populationWide')
 
-    console.log(populationWide)
+    // console.log(populationWide)
 
     const populationCountContent = {
       e: '#chart-' + chartDivIds[0],
