@@ -69,8 +69,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[0]
       }),
-      ks: categoriesRegion,
-      k: dimensions[0],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -84,8 +84,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[2]
       }),
-      ks: categoriesRegion,
-      k: dimensions[0],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -99,8 +99,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[1]
       }),
-      ks: categoriesRegion,
-      k: dimensions[0],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -114,8 +114,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[4]
       }),
-      ks: categoriesRegion,
-      k: dimensions[0],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -129,8 +129,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[3]
       }),
-      ks: categoriesRegion,
-      k: dimensions[0],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',

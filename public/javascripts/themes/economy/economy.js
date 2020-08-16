@@ -10,7 +10,7 @@
 //   incomeContent = {
 //     elementId: 'chart-poverty-rate',
 //     data: incomeData,
-//     k: 'type',
+//     tracekey: 'type',
 //     xV: 'date',
 //     yV: 'value',
 //     tY: '%',
@@ -68,7 +68,7 @@
 //   disosableIncomeContent = {
 //     elementId: 'chart-disposable-income',
 //     data: dataFiltered,
-//     ks: key,
+//     tracenames: key,
 //     xV: 'year',
 //     tX: 'Years',
 //     tY: '',
@@ -114,7 +114,7 @@
 //       xV: 'date',
 //       yV: 'value',
 //       data: employeesBySizeData,
-//       k: 'type',
+//       tracekey: 'type',
 //       tX: 'Years',
 //       tY: 'Persons Engaged',
 //       ySF: 'millions'
@@ -153,7 +153,7 @@
 //     overseasVisitorContent = {
 //       elementId: 'chart-overseas-vistors',
 //       data: overseasVisitorsData,
-//       ks: columnNames,
+//       tracenames: columnNames,
 //       xV: xValue,
 //       tX: 'Years',
 //       tY: 'Visitors (Millions)'

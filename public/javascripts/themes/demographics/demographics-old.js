@@ -39,7 +39,7 @@ if (document.getElementById('chart-population')) {
 
     const population = {
       elementId: 'chart-population',
-      ks: grouping,
+      tracenames: grouping,
       xV: 'date',
       yV: columnNames[0],
       data: types,
@@ -131,7 +131,7 @@ if (document.getElementById('chart-population')) {
 //     let outsideStateContent = {
 //       elementId: 'chart-bornOutsideState',
 //       data: array,
-//       ks: columnNames,
+//       tracenames: columnNames,
 //       xV: xValue,
 //       tX: 'Years',
 //       tY: 'Population',

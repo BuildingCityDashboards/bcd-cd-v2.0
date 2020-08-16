@@ -78,8 +78,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       data: sizeFiltered,
-      k: 'Employment Size',
-      ks: categories, // used for the tooltip
+      tracekey: 'Employment Size',
+      tracenames: categories, // used for the tooltip
       tX: 'Years',
       tY: 'Persons employed'
 
@@ -89,8 +89,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       data: engagedFiltered,
-      k: 'Employment Size',
-      ks: categories, // used for the tooltip
+      tracekey: 'Employment Size',
+      tracenames: categories, // used for the tooltip
       tX: 'Years',
       tY: 'Persons engaged'
 
@@ -101,8 +101,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       data: activeFiltered,
-      k: 'Employment Size',
-      ks: categories, // used for the tooltip
+      tracekey: 'Employment Size',
+      tracenames: categories, // used for the tooltip
       tX: 'Years',
       tY: 'Active enterprises'
 

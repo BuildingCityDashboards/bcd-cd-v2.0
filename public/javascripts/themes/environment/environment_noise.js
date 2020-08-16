@@ -73,8 +73,8 @@ import { getDefaultMapOptions, getDublinLatLng } from '../../modules/bcd-maps.js
     const noiseChartOptions = {
       elementId: 'chart-noise-monitors',
       d: allSitesFlat,
-      k: 'name', // ?
-      // ks: keys, // For StackedAreaChart-formatted data need to provide keys
+      tracekey: 'name', // ?
+      // tracenames: keys, // For StackedAreaChart-formatted data need to provide keys
       xV: 'date', // expects a date object
       yV: 'value',
       tX: 'Time today', // string axis title

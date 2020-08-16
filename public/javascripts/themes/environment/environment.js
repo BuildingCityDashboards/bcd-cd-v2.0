@@ -55,7 +55,7 @@ Promise.all([
     const recyclingsContent = {
       elementId: 'chart-recyclings',
       data: recyclingsDataProcessed,
-      ks: recyclingsTypes,
+      tracenames: recyclingsTypes,
       xV: recyclingsDate,
       yV: 'value',
       tX: 'Years',
@@ -85,7 +85,7 @@ Promise.all([
     const organicrecyclingsContent = {
       elementId: 'chart-organicrecyclings',
       data: organicrecyclingsDataProcessed,
-      ks: organicrecyclingsTypes,
+      tracenames: organicrecyclingsTypes,
       xV: organicrecyclingsDate,
       tX: 'Years',
       tY: '%',
@@ -114,7 +114,7 @@ Promise.all([
     const waterconsContent = {
       elementId: 'chart-watercons',
       data: waterconsDataProcessed,
-      ks: waterconsTypes,
+      tracenames: waterconsTypes,
       xV: waterconsDate,
       tX: 'Years',
       tY: 'Litres'
@@ -143,7 +143,7 @@ Promise.all([
     const riverqualitiesContent = {
       elementId: 'chart-riverqualities',
       data: riverqualitiesDataProcessed,
-      ks: riverqualitiesTypes,
+      tracenames: riverqualitiesTypes,
       xV: riverqualitiesDate,
       tX: 'Years',
       tY: '% of Surveryed Channel Length (1156.5km)'
@@ -171,7 +171,7 @@ Promise.all([
     const greenflagsContent = {
       elementId: 'chart-greenflags',
       data: greenflagsDataProcessed,
-      ks: greenflagsTypes,
+      tracenames: greenflagsTypes,
       xV: greenflagsDate,
       tX: 'Years',
       tY: 'Number of Schools'

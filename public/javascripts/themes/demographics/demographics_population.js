@@ -86,7 +86,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       //   .filter(d => {
       //     return d.Statistic === categoriesStat[0]
       //   }),
-      ks: ['Male', 'Female'],
+      tracenames: ['Male', 'Female'],
       xV: 'date',
       // yV: 'Sex',
       tX: 'Year',
@@ -101,8 +101,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: populationFiltered.filter(d => {
         return d.Statistic === categoriesStat[1]
       }),
-      ks: categoriesSex,
-      k: dimensions[0],
+      tracenames: categoriesSex,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -117,8 +117,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: populationFiltered.filter(d => {
         return d.Statistic === categoriesStat[2]
       }),
-      ks: categoriesSex,
-      k: dimensions[0],
+      tracenames: categoriesSex,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
