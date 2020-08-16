@@ -1,4 +1,5 @@
 // import { locale } from from './bcd-date.js'
+
 class Chart {
   /**
    * @description
