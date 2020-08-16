@@ -75,7 +75,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
 
     const housePriceAll = {
       e: '#chart-' + chartDivIdsPrices[0],
-      d: houseSalesTable.filter(d => {
+      data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[0] && d[dimensions[5]] === categoriesStat[2]
       }),
       ks: categoriesRegion,
@@ -90,7 +90,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
 
     const housePriceHouse = {
       e: '#chart-' + chartDivIdsPrices[1],
-      d: houseSalesTable.filter(d => {
+      data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[1] && d[dimensions[5]] === categoriesStat[2]
       }),
       ks: categoriesRegion,
@@ -105,7 +105,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
 
     const housePriceApartment = {
       e: '#chart-' + chartDivIdsPrices[2],
-      d: houseSalesTable.filter(d => {
+      data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[2] && d[dimensions[5]] === categoriesStat[2]
       }),
       ks: categoriesRegion,
@@ -120,7 +120,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
 
     const houseSalesAll = {
       e: '#chart-' + chartDivIdsSales[0],
-      d: houseSalesTable.filter(d => {
+      data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[0] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0] // exclude state figures
       }),
       ks: categoriesRegion,
@@ -135,7 +135,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
 
     const houseSalesHouse = {
       e: '#chart-' + chartDivIdsSales[1],
-      d: houseSalesTable.filter(d => {
+      data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[1] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0]
       }),
       ks: categoriesRegion,
@@ -150,7 +150,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
 
     const houseSalesApartment = {
       e: '#chart-' + chartDivIdsSales[2],
-      d: houseSalesTable.filter(d => {
+      data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[2] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0]
       }),
       ks: categoriesRegion,

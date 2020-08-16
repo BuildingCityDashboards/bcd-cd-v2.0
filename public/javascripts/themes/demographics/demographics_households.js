@@ -5,6 +5,7 @@ import { MultiLineChart } from '../../modules/MultiLineChart.js'
 import { GroupedBarChart } from '../../modules/GroupedBarChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
+import { Chart } from '../../modules/Chart.js'
 
 (async function main () {
   const parseYear = d3.timeParse('%Y')
@@ -47,7 +48,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const householdsCountContent = {
       e: '#chart-' + chartDivIds[0],
-      d: householdsFiltered.filter(d => {
+      data: householdsFiltered.filter(d => {
         return d.Statistic === STATS[0]
       }),
       ks: corkLAs,
@@ -62,7 +63,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const residentsContent = {
       e: '#chart-' + chartDivIds[1],
-      d: householdsFiltered.filter(d => {
+      data: householdsFiltered.filter(d => {
         return d.Statistic === STATS[1]
       }),
       ks: corkLAs,
@@ -113,7 +114,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     // const householdSizeContent = {
     //   e: '#chart-' + chartDivIds[1],
-    //   d: householdsSizeWide.map(d => {
+    //   data: householdsSizeWide.map(d => {
     //     d.mean = parseFloat((d[STATS[1]] / d[STATS[0]]).toFixed(2))
     //   }),
     //   ks: corkLAs,

@@ -9,7 +9,7 @@
 //
 //   incomeContent = {
 //     e: '#chart-poverty-rate',
-//     d: incomeData,
+//     data: incomeData,
 //     k: 'type',
 //     xV: 'date',
 //     yV: 'value',
@@ -67,7 +67,7 @@
 //
 //   disosableIncomeContent = {
 //     e: '#chart-disposable-income',
-//     d: dataFiltered,
+//     data: dataFiltered,
 //     ks: key,
 //     xV: 'year',
 //     tX: 'Years',
@@ -113,7 +113,7 @@
 //       e: '#chart-employees-by-size',
 //       xV: 'date',
 //       yV: 'value',
-//       d: employeesBySizeData,
+//       data: employeesBySizeData,
 //       k: 'type',
 //       tX: 'Years',
 //       tY: 'Persons Engaged',
@@ -152,7 +152,7 @@
 //
 //     overseasVisitorContent = {
 //       e: '#chart-overseas-vistors',
-//       d: overseasVisitorsData,
+//       data: overseasVisitorsData,
 //       ks: columnNames,
 //       xV: xValue,
 //       tX: 'Years',
@@ -178,10 +178,10 @@ function coerceData (d, k) {
 }
 
 function join (lookupTable, mainTable, lookupKey, mainKey, select) {
-  var l = lookupTable.length,
-    m = mainTable.length,
-    lookupIndex = [],
-    output = []
+  var l = lookupTable.length;
+    var m = mainTable.length;
+    var lookupIndex = [];
+    var output = []
 
   for (var i = 0; i < l; i++) { // loop through the lookup array
     var row = lookupTable[i]
@@ -198,7 +198,7 @@ function join (lookupTable, mainTable, lookupKey, mainKey, select) {
 }
 
 function d3Nest (d, n) {
-  let nest = d3.nest()
+  const nest = d3.nest()
     .key(name => {
       return name[n]
     })
@@ -219,9 +219,9 @@ function filterbyDate (data, dateField, date) {
 }
 
 function stackNest (data, date, name, value) {
-  let nested_data = d3Nest(data, date),
-    mqpdata = nested_data.map(function (d) {
-      let obj = {
+  const nested_data = d3Nest(data, date);
+    let mqpdata = nested_data.map(function (d) {
+      const obj = {
         label: d.key
       }
       d.values.forEach(function (v) {
@@ -235,7 +235,7 @@ function stackNest (data, date, name, value) {
 }
 
 function activeBtn (e) {
-  let btn = e
+  const btn = e
   $(btn).siblings().removeClass('active')
   $(btn).addClass('active')
 }

@@ -64,7 +64,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const completionsHouse = {
       e: '#chart-' + chartDivIds[0],
-      d: completionsTable.filter(d => {
+      data: completionsTable.filter(d => {
         return d[dimensions[1]] === categoriesType[0]
       }),
       ks: categoriesLA,
@@ -78,7 +78,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const completionsHouseChart = new MultiLineChart(completionsHouse)
     const completionsScheme = {
       e: '#chart-' + chartDivIds[1],
-      d: completionsTable.filter(d => {
+      data: completionsTable.filter(d => {
         return d[dimensions[1]] === categoriesType[1]
       }),
       ks: categoriesLA,
@@ -93,7 +93,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const completionsApartment = {
       e: '#chart-' + chartDivIds[2],
-      d: completionsTable.filter(d => {
+      data: completionsTable.filter(d => {
         return d[dimensions[1]] === categoriesType[2]
       }),
       ks: categoriesLA,

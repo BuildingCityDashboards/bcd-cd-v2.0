@@ -63,7 +63,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     //
     const rent = {
       e: '#chart-' + chartDivIds[0],
-      d: rentTable.filter(d => {
+      data: rentTable.filter(d => {
         return d[dimensions[0]] === categoriesBeds[0] // all beds
       }),
       ks: categoriesLocation,
@@ -78,7 +78,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const rentByBeds = {
       e: '#chart-' + chartDivIds[1],
-      d: rentTable,
+      data: rentTable,
       // .filter(d => {
       // return parseInt(d.date.getFullYear()) >= 2010
       // }),

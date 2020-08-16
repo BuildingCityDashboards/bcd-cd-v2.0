@@ -53,7 +53,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const nationalSchools = {
       e: '#chart-' + chartDivIds[0],
-      d: nationalSchoolsTable,
+      data: nationalSchoolsTable,
       // .filter(d => {
       //   return d[dimensions[5]] === categoriesStat[2]
       // }),
@@ -69,7 +69,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     // const nationalSchoolsMedian = {
     //   e: '#chart-' + chartDivIds[1],
-    //   d: nationalSchoolsTable.filter(d => {
+    //   data: nationalSchoolsTable.filter(d => {
     //     return d[dimensions[5]] === categoriesStat[3]
     //   }),
     //   ks: categoriesRegion,

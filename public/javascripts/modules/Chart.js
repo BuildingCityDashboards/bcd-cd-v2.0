@@ -2,10 +2,10 @@
 class Chart {
   /**
    * @description
-   * Compliment someone on their something.
+   * Base class for creating BCD d3 charts
    *
    * @param {Object} options
-   * @param {String} options.d    input data
+   * @param {String} options.data    an array of objects
    * @param {String} options.e    DOM selector (div id)
    * @param {String} options.k    key
    * @param {String} options.ks    key
@@ -15,11 +15,11 @@ class Chart {
    * @param {String} options.tX
    * @param {String} options.tY
    * @param {String} options.ySF  format for y axis
-
+   *
    */
 
   constructor (options) {
-    this.d = options.d // the data
+    this.d = options.data // the data
     this.e = options.e // selector element
     this.k = options.k // key
     this.ks = options.ks

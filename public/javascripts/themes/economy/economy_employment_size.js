@@ -77,7 +77,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       e: '#chart-employees-by-size',
       xV: 'date',
       yV: 'value',
-      d: sizeFiltered,
+      data: sizeFiltered,
       k: 'Employment Size',
       ks: categories, // used for the tooltip
       tX: 'Years',
@@ -88,7 +88,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       e: '#chart-engaged-by-size',
       xV: 'date',
       yV: 'value',
-      d: engagedFiltered,
+      data: engagedFiltered,
       k: 'Employment Size',
       ks: categories, // used for the tooltip
       tX: 'Years',
@@ -100,7 +100,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       e: '#chart-active-enterprises',
       xV: 'date',
       yV: 'value',
-      d: activeFiltered,
+      data: activeFiltered,
       k: 'Employment Size',
       ks: categories, // used for the tooltip
       tX: 'Years',

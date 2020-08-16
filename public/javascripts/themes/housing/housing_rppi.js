@@ -46,7 +46,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const houseRppi = {
       e: '#chart-house-rppi',
-      d: houseRppiTable.filter(d => {
+      data: houseRppiTable.filter(d => {
         return parseInt(d.date.getFullYear()) >= 2010
       }),
       ks: categoriesRegion,

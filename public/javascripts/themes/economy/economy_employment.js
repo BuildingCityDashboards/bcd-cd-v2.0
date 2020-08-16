@@ -66,7 +66,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const employedCount = {
       e: '#chart-' + chartDivIds[0],
-      d: employmentTable.filter(d => {
+      data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[0]
       }),
       ks: categoriesRegion,
@@ -81,7 +81,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const labourCount = {
       e: '#chart-' + chartDivIds[1],
-      d: employmentTable.filter(d => {
+      data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[2]
       }),
       ks: categoriesRegion,
@@ -96,7 +96,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const unemployedCount = {
       e: '#chart-' + chartDivIds[2],
-      d: employmentTable.filter(d => {
+      data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[1]
       }),
       ks: categoriesRegion,
@@ -111,7 +111,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const participationRate = {
       e: '#chart-' + chartDivIds[3],
-      d: employmentTable.filter(d => {
+      data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[4]
       }),
       ks: categoriesRegion,
@@ -126,7 +126,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const unemployedRate = {
       e: '#chart-' + chartDivIds[4],
-      d: employmentTable.filter(d => {
+      data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[3]
       }),
       ks: categoriesRegion,

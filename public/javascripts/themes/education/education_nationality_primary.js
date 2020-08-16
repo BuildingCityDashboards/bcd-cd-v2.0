@@ -70,7 +70,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     // const nationalityContent = {
     //   e: '#chart-' + chartDivIds[0],
-    //   d: nationalityWide,
+    //   data: nationalityWide,
     //   ks: corkLAs,
     //   // k: DIMENSION,
     //   xV: XAXIS,

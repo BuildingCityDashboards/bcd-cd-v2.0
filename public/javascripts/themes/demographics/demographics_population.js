@@ -82,7 +82,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const populationCountContent = {
       e: '#chart-' + chartDivIds[0],
-      d: populationWide,
+      data: populationWide,
       //   .filter(d => {
       //     return d.Statistic === categoriesStat[0]
       //   }),
@@ -98,7 +98,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const populationChangeContent = {
       e: '#chart-' + chartDivIds[1],
-      d: populationFiltered.filter(d => {
+      data: populationFiltered.filter(d => {
         return d.Statistic === categoriesStat[1]
       }),
       ks: categoriesSex,
@@ -114,7 +114,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const populationRateContent = {
       e: '#chart-' + chartDivIds[2],
-      d: populationFiltered.filter(d => {
+      data: populationFiltered.filter(d => {
         return d.Statistic === categoriesStat[2]
       }),
       ks: categoriesSex,

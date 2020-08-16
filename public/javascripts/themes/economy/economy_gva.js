@@ -43,7 +43,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       e: '#chart-gva',
       xV: 'date',
       yV: 'value',
-      d: gvaFiltered,
+      data: gvaFiltered,
       k: 'Region',
       // ks: ['Dublin', 'Dublin and Mid-East', 'State'],
       tX: 'Years',
