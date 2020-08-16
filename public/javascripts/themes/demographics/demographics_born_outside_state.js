@@ -56,7 +56,7 @@ import { activeBtn } from '../../modules/bcd-ui.js'
   // console.log(bornOutsideTable)
 
   const bornOutsideDublin = {
-    e: '#chart-born-outside-dublin',
+    elementId: 'chart-born-outside-dublin',
     data: bornOutsideTable.filter(d => {
       return d.County === 'Dublin'
     }),
@@ -78,7 +78,7 @@ import { activeBtn } from '../../modules/bcd-ui.js'
   //
 
   const bornOutsideState = {
-    e: '#chart-born-outside-state',
+    elementId: 'chart-born-outside-state',
     data: bornOutsideTable.filter(d => {
       return d.County === 'State'
     }),

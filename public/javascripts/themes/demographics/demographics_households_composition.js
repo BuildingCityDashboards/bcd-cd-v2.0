@@ -73,7 +73,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     // console.log(householdsCompWide)
 
     const householdsCompContent = {
-      e: '#chart-' + chartDivIds[0],
+      elementId: 'chart-' + chartDivIds[0],
       data: householdsCompWide,
       ks: corkLAs,
       // k: DIMENSION,

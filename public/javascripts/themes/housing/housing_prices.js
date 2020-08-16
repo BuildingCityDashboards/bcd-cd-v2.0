@@ -74,7 +74,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       })
 
     const housePriceAll = {
-      e: '#chart-' + chartDivIdsPrices[0],
+      elementId: 'chart-' + chartDivIdsPrices[0],
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[0] && d[dimensions[5]] === categoriesStat[2]
       }),
@@ -89,7 +89,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     const housePriceAllChart = new MultiLineChart(housePriceAll)
 
     const housePriceHouse = {
-      e: '#chart-' + chartDivIdsPrices[1],
+      elementId: 'chart-' + chartDivIdsPrices[1],
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[1] && d[dimensions[5]] === categoriesStat[2]
       }),
@@ -104,7 +104,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     const housePriceHouseChart = new MultiLineChart(housePriceHouse)
 
     const housePriceApartment = {
-      e: '#chart-' + chartDivIdsPrices[2],
+      elementId: 'chart-' + chartDivIdsPrices[2],
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[2] && d[dimensions[5]] === categoriesStat[2]
       }),
@@ -119,7 +119,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     const housePriceApartmentChart = new MultiLineChart(housePriceApartment)
 
     const houseSalesAll = {
-      e: '#chart-' + chartDivIdsSales[0],
+      elementId: 'chart-' + chartDivIdsSales[0],
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[0] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0] // exclude state figures
       }),
@@ -134,7 +134,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     const houseSalesAllChart = new MultiLineChart(houseSalesAll)
 
     const houseSalesHouse = {
-      e: '#chart-' + chartDivIdsSales[1],
+      elementId: 'chart-' + chartDivIdsSales[1],
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[1] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0]
       }),
@@ -149,7 +149,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     const houseSalesHouseChart = new MultiLineChart(houseSalesHouse)
 
     const houseSalesApartment = {
-      e: '#chart-' + chartDivIdsSales[2],
+      elementId: 'chart-' + chartDivIdsSales[2],
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[2] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0]
       }),

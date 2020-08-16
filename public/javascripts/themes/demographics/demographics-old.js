@@ -38,7 +38,7 @@ if (document.getElementById('chart-population')) {
     const grouping = types.map(d => d.key)
 
     const population = {
-      e: '#chart-population',
+      elementId: 'chart-population',
       ks: grouping,
       xV: 'date',
       yV: columnNames[0],
@@ -129,7 +129,7 @@ if (document.getElementById('chart-population')) {
 //     console.log(columnNames)
 //
 //     let outsideStateContent = {
-//       e: '#chart-bornOutsideState',
+//       elementId: 'chart-bornOutsideState',
 //       data: array,
 //       ks: columnNames,
 //       xV: xValue,

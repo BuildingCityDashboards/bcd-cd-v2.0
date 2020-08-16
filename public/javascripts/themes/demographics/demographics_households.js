@@ -47,7 +47,7 @@ import { Chart } from '../../modules/Chart.js'
     // console.log(householdsFiltered)
 
     const householdsCountContent = {
-      e: '#chart-' + chartDivIds[0],
+      elementId: 'chart-' + chartDivIds[0],
       data: householdsFiltered.filter(d => {
         return d.Statistic === STATS[0]
       }),
@@ -62,7 +62,7 @@ import { Chart } from '../../modules/Chart.js'
     const householdsCountChart = new MultiLineChart(householdsCountContent)
 
     const residentsContent = {
-      e: '#chart-' + chartDivIds[1],
+      elementId: 'chart-' + chartDivIds[1],
       data: householdsFiltered.filter(d => {
         return d.Statistic === STATS[1]
       }),
@@ -113,7 +113,7 @@ import { Chart } from '../../modules/Chart.js'
     // householdsSizeNested.reduce()
 
     // const householdSizeContent = {
-    //   e: '#chart-' + chartDivIds[1],
+    //   elementId: 'chart-' + chartDivIds[1],
     //   data: householdsSizeWide.map(d => {
     //     d.mean = parseFloat((d[STATS[1]] / d[STATS[0]]).toFixed(2))
     //   }),

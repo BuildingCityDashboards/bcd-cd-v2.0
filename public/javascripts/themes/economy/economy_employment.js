@@ -65,7 +65,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     // console.log(employmentTable)
 
     const employedCount = {
-      e: '#chart-' + chartDivIds[0],
+      elementId: 'chart-' + chartDivIds[0],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[0]
       }),
@@ -80,7 +80,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const employedCountChart = new MultiLineChart(employedCount)
 
     const labourCount = {
-      e: '#chart-' + chartDivIds[1],
+      elementId: 'chart-' + chartDivIds[1],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[2]
       }),
@@ -95,7 +95,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const labourCountChart = new MultiLineChart(labourCount)
 
     const unemployedCount = {
-      e: '#chart-' + chartDivIds[2],
+      elementId: 'chart-' + chartDivIds[2],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[1]
       }),
@@ -110,7 +110,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const unemployedCountChart = new MultiLineChart(unemployedCount)
 
     const participationRate = {
-      e: '#chart-' + chartDivIds[3],
+      elementId: 'chart-' + chartDivIds[3],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[4]
       }),
@@ -125,7 +125,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const participationRateChart = new MultiLineChart(participationRate)
 
     const unemployedRate = {
-      e: '#chart-' + chartDivIds[4],
+      elementId: 'chart-' + chartDivIds[4],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[3]
       }),

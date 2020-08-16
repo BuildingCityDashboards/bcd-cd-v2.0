@@ -40,7 +40,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     )
 
     const gvaContent = {
-      e: '#chart-gva',
+      elementId: 'chart-gva',
       xV: 'date',
       yV: 'value',
       data: gvaFiltered,

@@ -52,7 +52,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     // console.log(nationalSchoolsTable)
 
     const nationalSchools = {
-      e: '#chart-' + chartDivIds[0],
+      elementId: 'chart-' + chartDivIds[0],
       data: nationalSchoolsTable,
       // .filter(d => {
       //   return d[dimensions[5]] === categoriesStat[2]
@@ -68,7 +68,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const nationalSchoolsChart = new MultiLineChart(nationalSchools)
 
     // const nationalSchoolsMedian = {
-    //   e: '#chart-' + chartDivIds[1],
+    //   elementId: 'chart-' + chartDivIds[1],
     //   data: nationalSchoolsTable.filter(d => {
     //     return d[dimensions[5]] === categoriesStat[3]
     //   }),

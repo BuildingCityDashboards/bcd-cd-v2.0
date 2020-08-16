@@ -69,7 +69,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     // // console.log(nationalityWide)
 
     // const nationalityContent = {
-    //   e: '#chart-' + chartDivIds[0],
+    //   elementId: 'chart-' + chartDivIds[0],
     //   data: nationalityWide,
     //   ks: corkLAs,
     //   // k: DIMENSION,

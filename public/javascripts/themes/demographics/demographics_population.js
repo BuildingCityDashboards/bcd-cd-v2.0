@@ -81,7 +81,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     // console.log(populationWide)
 
     const populationCountContent = {
-      e: '#chart-' + chartDivIds[0],
+      elementId: 'chart-' + chartDivIds[0],
       data: populationWide,
       //   .filter(d => {
       //     return d.Statistic === categoriesStat[0]
@@ -97,7 +97,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const populationCountChart = new StackedAreaChart(populationCountContent)
 
     const populationChangeContent = {
-      e: '#chart-' + chartDivIds[1],
+      elementId: 'chart-' + chartDivIds[1],
       data: populationFiltered.filter(d => {
         return d.Statistic === categoriesStat[1]
       }),
@@ -113,7 +113,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const populationChangeChart = new MultiLineChart(populationChangeContent)
 
     const populationRateContent = {
-      e: '#chart-' + chartDivIds[2],
+      elementId: 'chart-' + chartDivIds[2],
       data: populationFiltered.filter(d => {
         return d.Statistic === categoriesStat[2]
       }),

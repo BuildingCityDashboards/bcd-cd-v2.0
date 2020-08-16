@@ -27,7 +27,7 @@ Promise.all([
       })
 
       const portTonnageCount = {
-        e: '#chart-indicator-port-total',
+        elementId: 'chart-indicator-port-total',
         data: longData,
         k: 'variable', // key whose value will name the traces (group by)
         xV: 'date',
@@ -63,7 +63,7 @@ Promise.all([
       })
 
       const portTonnageBreakdown = {
-        e: '#chart-indicator-port-breakdown',
+        elementId: 'chart-indicator-port-breakdown',
         data: portBreakdownData,
         ks: breakdownCols,
         xV: 'date',

@@ -74,7 +74,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     )
 
     const sizeContent = {
-      e: '#chart-employees-by-size',
+      elementId: 'chart-employees-by-size',
       xV: 'date',
       yV: 'value',
       data: sizeFiltered,
@@ -85,7 +85,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     }
     const engagedContent = {
-      e: '#chart-engaged-by-size',
+      elementId: 'chart-engaged-by-size',
       xV: 'date',
       yV: 'value',
       data: engagedFiltered,
@@ -97,7 +97,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     }
 
     const activeContent = {
-      e: '#chart-active-enterprises',
+      elementId: 'chart-active-enterprises',
       xV: 'date',
       yV: 'value',
       data: activeFiltered,

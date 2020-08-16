@@ -20,7 +20,7 @@ Promise.all([
         const longData = busEireannData.concat(dublinBusData).concat(irishRailData).concat(luasData)
 
         const publicTransportOptions = {
-          e: '#chart-public-transport-trips',
+          elementId: 'chart-public-transport-trips',
           data: longData,
           k: 'variable', // key whose value will name the traces (group by)
           xV: 'date',

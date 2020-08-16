@@ -6,7 +6,7 @@ class Chart {
    *
    * @param {Object} options
    * @param {String} options.data    an array of objects
-   * @param {String} options.e    DOM selector (div id)
+   * @param {String} options.elementId    DOM selector (div id)
    * @param {String} options.k    key
    * @param {String} options.ks    key
    * @param {String} options.xV    key
@@ -20,7 +20,7 @@ class Chart {
 
   constructor (options) {
     this.d = options.data // the data
-    this.e = options.e // selector element
+    this.e = options.elementId // selector element
     this.k = options.k // key
     this.ks = options.ks
     this.xV = options.xV // x value
@@ -34,7 +34,8 @@ class Chart {
   // initialise method to draw c area
   init () {
     const c = this
-    const eN = d3.select(c.e).node()
+    const eN = d3.select('#' + c.e).node()
+    console.log('#' + c.e)
     const eW = eN.getBoundingClientRect().width
     const aR = eW < 800 ? eW * 0.55 : eW * 0.5
     const cScheme = c.cS || d3.schemeReds[5]
@@ -60,10 +61,10 @@ class Chart {
     c.sscreens = eW < bP
 
     // to remove existing svg on resize
-    d3.select(c.e).select('svg').remove()
+    d3.select('#' + c.e).select('svg').remove()
 
     // add the svg to the target element
-    c.svg = d3.select(c.e)
+    c.svg = d3.select('#' + c.e)
       .append('svg')
       .attr('width', w + m.l + m.r)
       .attr('height', h + m.t + m.b)
@@ -136,9 +137,9 @@ class Chart {
   drawTooltip () {
     const c = this
 
-    d3.select(c.e).select('.tool-tip.bcd').remove()
+    d3.select('#' + c.e).select('.tool-tip.bcd').remove()
 
-    c.newToolTip = d3.select(c.e)
+    c.newToolTip = d3.select('#' + c.e)
       .append('div')
       .attr('class', 'tool-tip bcd')
 
@@ -235,7 +236,7 @@ class Chart {
 
   getElement (name) {
     const c = this
-    const s = d3.select(c.e)
+    const s = d3.select('#' + c.e)
     const e = s.selectAll(name)
     return e
   }

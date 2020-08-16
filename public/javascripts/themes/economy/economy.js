@@ -8,7 +8,7 @@
 //   })
 //
 //   incomeContent = {
-//     e: '#chart-poverty-rate',
+//     elementId: 'chart-poverty-rate',
 //     data: incomeData,
 //     k: 'type',
 //     xV: 'date',
@@ -66,7 +66,7 @@
 //   }
 //
 //   disosableIncomeContent = {
-//     e: '#chart-disposable-income',
+//     elementId: 'chart-disposable-income',
 //     data: dataFiltered,
 //     ks: key,
 //     xV: 'year',
@@ -110,7 +110,7 @@
 //
 //   const employeesBySizeData = data,
 //     employeesBySize = {
-//       e: '#chart-employees-by-size',
+//       elementId: 'chart-employees-by-size',
 //       xV: 'date',
 //       yV: 'value',
 //       data: employeesBySizeData,
@@ -151,7 +151,7 @@
 //     },
 //
 //     overseasVisitorContent = {
-//       e: '#chart-overseas-vistors',
+//       elementId: 'chart-overseas-vistors',
 //       data: overseasVisitorsData,
 //       ks: columnNames,
 //       xV: xValue,

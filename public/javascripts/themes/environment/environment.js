@@ -33,7 +33,7 @@ Promise.all([
   // console.log("wasteDataNested " + JSON.stringify(wasteDataNested));
 
   const wasteContent = {
-    e: '#chart-waste',
+    elementId: 'chart-waste',
     yV: wasteType[0],
     xV: wasteDate,
     data: wasteDataNested,
@@ -53,7 +53,7 @@ Promise.all([
     const recyclingsDataProcessed = dataSets(recyclingsData, recyclingsTypes);
 
     const recyclingsContent = {
-      e: '#chart-recyclings',
+      elementId: 'chart-recyclings',
       data: recyclingsDataProcessed,
       ks: recyclingsTypes,
       xV: recyclingsDate,
@@ -83,7 +83,7 @@ Promise.all([
     const organicrecyclingsDataProcessed = dataSets(organicrecyclingsData, organicrecyclingsTypes);
 
     const organicrecyclingsContent = {
-      e: '#chart-organicrecyclings',
+      elementId: 'chart-organicrecyclings',
       data: organicrecyclingsDataProcessed,
       ks: organicrecyclingsTypes,
       xV: organicrecyclingsDate,
@@ -112,7 +112,7 @@ Promise.all([
     const waterconsDataProcessed = dataSets(waterconsData, waterconsTypes);
 
     const waterconsContent = {
-      e: '#chart-watercons',
+      elementId: 'chart-watercons',
       data: waterconsDataProcessed,
       ks: waterconsTypes,
       xV: waterconsDate,
@@ -141,7 +141,7 @@ Promise.all([
     const riverqualitiesDataProcessed = dataSets(riverqualitiesData, riverqualitiesTypes);
 
     const riverqualitiesContent = {
-      e: '#chart-riverqualities',
+      elementId: 'chart-riverqualities',
       data: riverqualitiesDataProcessed,
       ks: riverqualitiesTypes,
       xV: riverqualitiesDate,
@@ -169,7 +169,7 @@ Promise.all([
     const greenflagsDataProcessed = dataSets(greenflagsData, greenflagsTypes);
 
     const greenflagsContent = {
-      e: '#chart-greenflags',
+      elementId: 'chart-greenflags',
       data: greenflagsDataProcessed,
       ks: greenflagsTypes,
       xV: greenflagsDate,
@@ -217,7 +217,7 @@ Promise.all([
   })
 
   const localagendasContent = {
-    e: '#chart-localagendas',
+    elementId: 'chart-localagendas',
     data: localagendasDataNested,
     xV: localagendasDate,
     yV: localagendasType[0],

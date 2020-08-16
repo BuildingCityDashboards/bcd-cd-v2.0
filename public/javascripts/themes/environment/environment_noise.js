@@ -71,7 +71,7 @@ import { getDefaultMapOptions, getDublinLatLng } from '../../modules/bcd-maps.js
     // console.log(allSitesFlat)
 
     const noiseChartOptions = {
-      e: '#chart-noise-monitors',
+      elementId: 'chart-noise-monitors',
       d: allSitesFlat,
       k: 'name', // ?
       // ks: keys, // For StackedAreaChart-formatted data need to provide keys
@@ -207,7 +207,7 @@ async function getPopupPlot (d_) {
     data[2].date.toString().split(' ')[2]
     const options = {
       data: data,
-      e: '#' + divId + '-plot',
+      elementId: '' + divId + '-plot',
       yV: 'value',
       xV: 'date',
       dL: 'label',

@@ -61,7 +61,7 @@ Promise.all([
         })
 
       const employmentSector = {
-        e: '#chart-indicator-employment-sector',
+        elementId: 'chart-indicator-employment-sector',
         data: broadSectorData,
         ks: broadSectorCols,
         xV: 'date',
@@ -107,7 +107,7 @@ Promise.all([
       // console.log(serviceData)
 
       const employmentService = {
-        e: '#chart-indicator-employment-services',
+        elementId: 'chart-indicator-employment-services',
         data: serviceData,
         ks: serviceCols,
         xV: 'date',
