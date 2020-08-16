@@ -71,8 +71,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     // const nationalityContent = {
     //   elementId: 'chart-' + chartDivIds[0],
     //   data: nationalityWide,
-    //   ks: corkLAs,
-    //   // k: DIMENSION,
+    //   tracenames: corkLAs,
+    //   // tracekey: DIMENSION,
     //   xV: XAXIS,
     //   // yV: 'value',
     //   tX: XAXIS,

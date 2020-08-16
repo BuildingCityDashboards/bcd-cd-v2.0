@@ -44,8 +44,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       data: gvaFiltered,
-      k: 'Region',
-      // ks: ['Dublin', 'Dublin and Mid-East', 'State'],
+      tracekey: 'Region',
+      // tracenames: ['Dublin', 'Dublin and Mid-East', 'State'],
       tX: 'Years',
       tY: '€'
 

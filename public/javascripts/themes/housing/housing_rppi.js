@@ -49,8 +49,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: houseRppiTable.filter(d => {
         return parseInt(d.date.getFullYear()) >= 2010
       }),
-      ks: categoriesRegion,
-      k: dimensions[0],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',

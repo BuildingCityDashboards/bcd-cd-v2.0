@@ -57,8 +57,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       // .filter(d => {
       //   return d[dimensions[5]] === categoriesStat[2]
       // }),
-      ks: categoriesCounty,
-      k: dimensions[0],
+      tracenames: categoriesCounty,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -72,8 +72,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     //   data: nationalSchoolsTable.filter(d => {
     //     return d[dimensions[5]] === categoriesStat[3]
     //   }),
-    //   ks: categoriesRegion,
-    //   k: dimensions[3],
+    //   tracenames: categoriesRegion,
+    //   tracekey: dimensions[3],
     //   xV: 'date',
     //   yV: 'value',
     //   tX: 'Year',

@@ -5,28 +5,30 @@ class Chart {
    * @description
    * Base class for creating BCD d3 charts
    *
-   * @param {Object} options
-   * @param {String} options.data    an array of objects
-   * @param {String} options.elementId    DOM selector (div id)
-   * @param {String} options.k    key
-   * @param {String} options.ks    key
-   * @param {String} options.xV    key
-   * @param {String} options.yV    key
-   * @param {String} options.cS    color scheme
-   * @param {String} options.tX
-   * @param {String} options.tY
-   * @param {String} options.ySF  format for y axis
+   * @param { Object } options
+   * @param { Object [] } options.data          an array of objects each containing a datum
+   * @param { String } options.elementId        DOM selector (div/element id)
+   * @param { String } options.traceKey         name of variable used to categorise traces (e.g. 'Region')
+   * @param { String [] } options.traceNames    array of the possibkle trace key values used as trace names
+   * @param { String [] } options.colourscheme  color scheme for traces
+   * @param { String } options.xV               name of variable for x-axis
+   * @param { String } options.yV               name of variable for y-axis
+   * @param { String } options.tX               title of x-axis
+   * @param { String } options.tY               title of y-axis
+   * @param { String } options.ySF              number format for y axis
    *
    */
 
   constructor (options) {
     this.d = options.data // the data
     this.e = options.elementId // selector element
-    this.k = options.k // key
-    this.ks = options.ks
+    this.k = options.tracekey // trace key
+    this.ks = options.tracenames // array of trace names
+    this.cS = options.colourscheme // colour scheme
+
     this.xV = options.xV // x value
     this.yV = options.yV // y value
-    this.cS = options.cS // colour scheme
+
     this.tX = options.tX
     this.tY = options.tY
     this.ySF = options.ySF || 'thousands' // format for y axis
@@ -41,8 +43,6 @@ class Chart {
     const aR = eW < 800 ? eW * 0.55 : eW * 0.5
     const cScheme = c.cS || d3.schemeReds[5]
     const m = c.m = {}
-    let w
-    let h
     const bP = 450
 
     // console.log("ew: " + eW);
@@ -53,8 +53,8 @@ class Chart {
     m.l = eW < bP ? 9 : 72
 
     // dimensions
-    w = eW - m.l - m.r
-    h = aR - m.t - m.b
+    const w = eW - m.l - m.r
+    const h = aR - m.t - m.b
 
     c.w = w
     c.h = h

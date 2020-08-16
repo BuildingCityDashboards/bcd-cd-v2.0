@@ -66,8 +66,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: rentTable.filter(d => {
         return d[dimensions[0]] === categoriesBeds[0] // all beds
       }),
-      ks: categoriesLocation,
-      k: dimensions[2],
+      tracenames: categoriesLocation,
+      tracekey: dimensions[2],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -82,8 +82,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       // .filter(d => {
       // return parseInt(d.date.getFullYear()) >= 2010
       // }),
-      ks: categoriesBeds,
-      k: dimensions[0],
+      tracenames: categoriesBeds,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',

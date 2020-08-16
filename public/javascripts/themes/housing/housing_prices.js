@@ -78,8 +78,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[0] && d[dimensions[5]] === categoriesStat[2]
       }),
-      ks: categoriesRegion,
-      k: dimensions[3],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -93,8 +93,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[1] && d[dimensions[5]] === categoriesStat[2]
       }),
-      ks: categoriesRegion,
-      k: dimensions[3],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -108,8 +108,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[2] && d[dimensions[5]] === categoriesStat[2]
       }),
-      ks: categoriesRegion,
-      k: dimensions[3],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -123,8 +123,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[0] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0] // exclude state figures
       }),
-      ks: categoriesRegion,
-      k: dimensions[3],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -138,8 +138,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[1] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0]
       }),
-      ks: categoriesRegion,
-      k: dimensions[3],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -153,8 +153,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[2] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0]
       }),
-      ks: categoriesRegion,
-      k: dimensions[3],
+      tracenames: categoriesRegion,
+      tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
       tX: 'Year',

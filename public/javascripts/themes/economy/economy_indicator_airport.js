@@ -24,7 +24,7 @@ Promise.all([
       const airportPaxCount = {
         elementId: 'chart-indicator-airport-count',
         data: longData,
-        k: 'variable', // give the key whose value will name the traces (group by)
+        tracekey: 'variable', // give the key whose value will name the traces (group by)
         xV: 'date',
         yV: 'value',
         tX: 'Quarter',

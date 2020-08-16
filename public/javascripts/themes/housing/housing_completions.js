@@ -67,8 +67,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: completionsTable.filter(d => {
         return d[dimensions[1]] === categoriesType[0]
       }),
-      ks: categoriesLA,
-      k: dimensions[0],
+      tracenames: categoriesLA,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -81,8 +81,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: completionsTable.filter(d => {
         return d[dimensions[1]] === categoriesType[1]
       }),
-      ks: categoriesLA,
-      k: dimensions[0],
+      tracenames: categoriesLA,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -96,8 +96,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: completionsTable.filter(d => {
         return d[dimensions[1]] === categoriesType[2]
       }),
-      ks: categoriesLA,
-      k: dimensions[0],
+      tracenames: categoriesLA,
+      tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
       tX: 'Year',

@@ -51,8 +51,8 @@ import { Chart } from '../../modules/Chart.js'
       data: householdsFiltered.filter(d => {
         return d.Statistic === STATS[0]
       }),
-      ks: corkLAs,
-      k: DIMENSION,
+      tracenames: corkLAs,
+      tracekey: DIMENSION,
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -66,8 +66,8 @@ import { Chart } from '../../modules/Chart.js'
       data: householdsFiltered.filter(d => {
         return d.Statistic === STATS[1]
       }),
-      ks: corkLAs,
-      k: DIMENSION,
+      tracenames: corkLAs,
+      tracekey: DIMENSION,
       xV: 'date',
       yV: 'value',
       tX: 'Year',
@@ -117,8 +117,8 @@ import { Chart } from '../../modules/Chart.js'
     //   data: householdsSizeWide.map(d => {
     //     d.mean = parseFloat((d[STATS[1]] / d[STATS[0]]).toFixed(2))
     //   }),
-    //   ks: corkLAs,
-    //   k: DIMENSION,
+    //   tracenames: corkLAs,
+    //   tracekey: DIMENSION,
     //   xV: 'date',
     //   yV: 'mean',
     //   tX: 'Year',

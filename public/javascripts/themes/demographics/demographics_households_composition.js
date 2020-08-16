@@ -75,8 +75,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const householdsCompContent = {
       elementId: 'chart-' + chartDivIds[0],
       data: householdsCompWide,
-      ks: corkLAs,
-      // k: DIMENSION,
+      tracenames: corkLAs,
+      // tracekey: DIMENSION,
       xV: XAXIS,
       // yV: 'value',
       tX: XAXIS,

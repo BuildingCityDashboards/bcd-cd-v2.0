@@ -60,8 +60,8 @@ import { activeBtn } from '../../modules/bcd-ui.js'
     data: bornOutsideTable.filter(d => {
       return d.County === 'Dublin'
     }),
-    ks: categoriesOfCountry,
-    k: dimensions[0],
+    tracenames: categoriesOfCountry,
+    tracekey: dimensions[0],
     xV: 'date',
     yV: 'value',
     tX: 'Year',
@@ -82,8 +82,8 @@ import { activeBtn } from '../../modules/bcd-ui.js'
     data: bornOutsideTable.filter(d => {
       return d.County === 'State'
     }),
-    ks: categoriesOfCountry,
-    k: dimensions[0],
+    tracenames: categoriesOfCountry,
+    tracekey: dimensions[0],
     xV: 'date',
     yV: 'value',
     tX: 'Year',
