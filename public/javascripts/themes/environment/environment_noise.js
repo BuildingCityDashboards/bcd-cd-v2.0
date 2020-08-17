@@ -1,6 +1,5 @@
 import { ChartLinePopup } from '../../modules/bcd-chart-line-popup.js'
 import { MultiLineChart } from '../../modules/MultiLineChart.js'
-import { formatDateAsDDMMYY, isToday } from '../../modules/bcd-date.js'
 
 import { getDefaultMapOptions, getDublinLatLng } from '../../modules/bcd-maps.js'
 
