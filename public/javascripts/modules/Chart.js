@@ -38,7 +38,7 @@ class Chart {
   init () {
     const c = this
     const eN = d3.select('#' + c.e).node()
-    console.log('#' + c.e)
+    // console.log('#' + c.e)
     const eW = eN.getBoundingClientRect().width
     const aR = eW < 800 ? eW * 0.55 : eW * 0.5
     const cScheme = c.cS || d3.schemeReds[5]

@@ -268,42 +268,6 @@ if (app.get('env') === 'development') {
 //   })
 // })
 
-// const readFileAsync = () => {
-//   const FILE_NAME = './public/data/Environment/waterlevel.json'
-//   fs.readFile(FILE_NAME, (error, data) => {
-//     // console.log('Async Read: starting...')
-//     if (error) {
-//       // console.log('Async Read: NOT successful!')
-
-//       console.log(error)
-//     } else {
-//       try {
-//         const dataJson = JSON.parse(data)
-//         const data_ = dataJson.features
-//         const regionData = data_.filter(function (d) {
-//           return d.properties['station.region_id'] === null || d.properties['station.region_id'] === 10
-//         })
-
-//         regionData.forEach(function (d, i) {
-//           const station_ref = d.properties['station.ref'].substring(5, 10)
-//           const sensor_ref = d.properties['sensor.ref']
-//           const fname = station_ref.concat('_', sensor_ref)
-
-//           // console.log(i + '---'+ fname);
-//           var file = fs.createWriteStream('./public/data/Environment/water_levels/' + fname + '.csv')
-//           var http = require('http')
-//           // http://waterlevel.ie/data/month/25017_0001.csv
-//           http.get('http://waterlevel.ie/data/month/' + fname + '.csv',
-//             function (response) {
-//               response.pipe(file)
-//             })
-//         })
-//       } catch (error) {
-//         console.log(error)
-//       }
-//     }
-//   })
-// }
 // readFileAsync()
 
 module.exports = app

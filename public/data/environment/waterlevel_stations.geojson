@@ -1,0 +1,6918 @@
+{
+    "crs": 4326,
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.575758,
+                    54.838318
+                ]
+            },
+            "type": "Feature",
+            "id": 3,
+            "properties": {
+                "ref": "0000001041",
+                "name": "Sandy Mills",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.790748999999999,
+                    54.79976899999998
+                ]
+            },
+            "type": "Feature",
+            "id": 5,
+            "properties": {
+                "ref": "0000001043",
+                "name": "Ballybofey",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.894343999999999,
+                    54.32328099999996
+                ]
+            },
+            "type": "Feature",
+            "id": 6,
+            "properties": {
+                "ref": "0000003055",
+                "name": "Glaslough",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.021297000000008,
+                    54.266808999999995
+                ]
+            },
+            "type": "Feature",
+            "id": 7,
+            "properties": {
+                "ref": "0000003058",
+                "name": "Cappog Bridge",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.596076999999998,
+                    54.011573999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 8,
+            "properties": {
+                "ref": "0000006011",
+                "name": "Moyles Mill",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.666055999999992,
+                    54.092856
+                ]
+            },
+            "type": "Feature",
+            "id": 9,
+            "properties": {
+                "ref": "0000006012",
+                "name": "Clarebane",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.413996000000005,
+                    53.855842999999986
+                ]
+            },
+            "type": "Feature",
+            "id": 10,
+            "properties": {
+                "ref": "0000006013",
+                "name": "Charleville Weir",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.54957,
+                    53.921092
+                ]
+            },
+            "type": "Feature",
+            "id": 11,
+            "properties": {
+                "ref": "0000006014",
+                "name": "Tallanstown Weir",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.416475134747469,
+                    53.99360568804035
+                ]
+            },
+            "type": "Feature",
+            "id": 2348,
+            "properties": {
+                "ref": "0000006015",
+                "name": "Brewery Park ",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.444490999999998,
+                    53.896603999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 12,
+            "properties": {
+                "ref": "0000006021",
+                "name": "Mansfieldstown",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.594341000000011,
+                    53.84803799999992
+                ]
+            },
+            "type": "Feature",
+            "id": 13,
+            "properties": {
+                "ref": "0000006025",
+                "name": "Burley",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.640018999999998,
+                    53.924764999999965
+                ]
+            },
+            "type": "Feature",
+            "id": 14,
+            "properties": {
+                "ref": "0000006026",
+                "name": "Aclint",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.405590730574078,
+                    53.99375863785035
+                ]
+            },
+            "type": "Feature",
+            "id": 2330,
+            "properties": {
+                "ref": "0000006036",
+                "name": "Ladyswell",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.221440988462057,
+                    53.79804067873333
+                ]
+            },
+            "type": "Feature",
+            "id": 15,
+            "properties": {
+                "ref": "0000006060",
+                "name": "Port Oriel",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.385468798531836,
+                    54.00768862093954
+                ]
+            },
+            "type": "Feature",
+            "id": 2269,
+            "properties": {
+                "ref": "0000006061",
+                "name": "Dundalk Port",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.855642999999999,
+                    53.56206499999998
+                ]
+            },
+            "type": "Feature",
+            "id": 16,
+            "properties": {
+                "ref": "0000007001",
+                "name": "Tremblestown",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.970770999999999,
+                    53.487771
+                ]
+            },
+            "type": "Feature",
+            "id": 17,
+            "properties": {
+                "ref": "0000007002",
+                "name": "Killyon",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.921849999999998,
+                    53.485524
+                ]
+            },
+            "type": "Feature",
+            "id": 18,
+            "properties": {
+                "ref": "0000007003",
+                "name": "Castlerickard",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.043613,
+                    53.79629799999996
+                ]
+            },
+            "type": "Feature",
+            "id": 19,
+            "properties": {
+                "ref": "0000007004",
+                "name": "Stramatt",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.791843999999996,
+                    53.55640499999996
+                ]
+            },
+            "type": "Feature",
+            "id": 20,
+            "properties": {
+                "ref": "0000007005",
+                "name": "Trim",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8028830000000085,
+                    53.72582299999997
+                ]
+            },
+            "type": "Feature",
+            "id": 21,
+            "properties": {
+                "ref": "0000007006",
+                "name": "Fyanstown",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.958843999999999,
+                    53.45313699999998
+                ]
+            },
+            "type": "Feature",
+            "id": 22,
+            "properties": {
+                "ref": "0000007007",
+                "name": "Boyne Aqueduct",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.672057999999999,
+                    53.643559
+                ]
+            },
+            "type": "Feature",
+            "id": 23,
+            "properties": {
+                "ref": "0000007009",
+                "name": "Navan Weir",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.720332999999998,
+                    53.66326899999997
+                ]
+            },
+            "type": "Feature",
+            "id": 24,
+            "properties": {
+                "ref": "0000007010",
+                "name": "Liscartan",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.011202999999992,
+                    53.76898199999999
+                ]
+            },
+            "type": "Feature",
+            "id": 25,
+            "properties": {
+                "ref": "0000007011",
+                "name": "O'Dalys Bridge",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.56242300000001,
+                    53.707212
+                ]
+            },
+            "type": "Feature",
+            "id": 26,
+            "properties": {
+                "ref": "0000007012",
+                "name": "Slane Castle",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.0785770000000126,
+                    53.83436999999999
+                ]
+            },
+            "type": "Feature",
+            "id": 27,
+            "properties": {
+                "ref": "0000007033",
+                "name": "Virginia Hatchery",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.680585999999992,
+                    53.65469699999999
+                ]
+            },
+            "type": "Feature",
+            "id": 28,
+            "properties": {
+                "ref": "0000007037",
+                "name": "Blackcastle",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.331586999999989,
+                    53.34453399999998
+                ]
+            },
+            "type": "Feature",
+            "id": 29,
+            "properties": {
+                "ref": "0000007049",
+                "name": "Tinker's Bridge",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.254402999999997,
+                    53.71942699999999
+                ]
+            },
+            "type": "Feature",
+            "id": 30,
+            "properties": {
+                "ref": "0000007062",
+                "name": "Mornington Bridge",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.090788000000001,
+                    53.83161499999999
+                ]
+            },
+            "type": "Feature",
+            "id": 31,
+            "properties": {
+                "ref": "0000007081",
+                "name": "Virginia",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.340713458926638,
+                    53.72368847259281
+                ]
+            },
+            "type": "Feature",
+            "id": 2323,
+            "properties": {
+                "ref": "0000007115",
+                "name": "Newfield",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.231774999999987,
+                    53.474921999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 32,
+            "properties": {
+                "ref": "0000008008",
+                "name": "Broadmeadow",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.407709000000007,
+                    53.656184
+                ]
+            },
+            "type": "Feature",
+            "id": 33,
+            "properties": {
+                "ref": "0000008011",
+                "name": "Duleek D/S",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.490439000000007,
+                    53.36866500000001
+                ]
+            },
+            "type": "Feature",
+            "id": 38,
+            "properties": {
+                "ref": "0000009001",
+                "name": "Leixlip",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.266962434034011,
+                    53.305816595140925
+                ]
+            },
+            "type": "Feature",
+            "id": 2266,
+            "properties": {
+                "ref": "0000009010",
+                "name": "Waldron's Bridge",
+                "region_id": null
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.276198983552806,
+                    53.37515905387629
+                ]
+            },
+            "type": "Feature",
+            "id": 2335,
+            "properties": {
+                "ref": "0000009045",
+                "name": "Botanic Gardens Backup",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.62551577650018,
+                    53.20487431610196
+                ]
+            },
+            "type": "Feature",
+            "id": 2304,
+            "properties": {
+                "ref": "0000009107",
+                "name": "Tipper",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.672742547147854,
+                    53.194734045683475
+                ]
+            },
+            "type": "Feature",
+            "id": 2303,
+            "properties": {
+                "ref": "0000009108",
+                "name": "Killashee",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.593050318600525,
+                    53.216592444131024
+                ]
+            },
+            "type": "Feature",
+            "id": 2305,
+            "properties": {
+                "ref": "0000009109",
+                "name": "Haynestown",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.676842528204879,
+                    53.20809576614427
+                ]
+            },
+            "type": "Feature",
+            "id": 2302,
+            "properties": {
+                "ref": "0000009110",
+                "name": "Bluebell",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.529315667984528,
+                    53.33054399776574
+                ]
+            },
+            "type": "Feature",
+            "id": 2301,
+            "properties": {
+                "ref": "0000009111",
+                "name": "Hazelhatch",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.152069000000011,
+                    52.79826499999999
+                ]
+            },
+            "type": "Feature",
+            "id": 40,
+            "properties": {
+                "ref": "0000010042",
+                "name": "Arklow Town Bridge",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.126190381939001,
+                    53.24733666741724
+                ]
+            },
+            "type": "Feature",
+            "id": 2353,
+            "properties": {
+                "ref": "0000010047",
+                "name": "Glenavon Park",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.137616592337251,
+                    53.24700284035764
+                ]
+            },
+            "type": "Feature",
+            "id": 2354,
+            "properties": {
+                "ref": "0000010048",
+                "name": "Cherry Wood",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.153028565338063,
+                    53.26958967381791
+                ]
+            },
+            "type": "Feature",
+            "id": 2352,
+            "properties": {
+                "ref": "0000010049",
+                "name": "Meadow Vale Park",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.145230999999994,
+                    52.79204699999998
+                ]
+            },
+            "type": "Feature",
+            "id": 41,
+            "properties": {
+                "ref": "0000010060",
+                "name": "Arklow Harbour",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.2707939999999995,
+                    52.64368999999999
+                ]
+            },
+            "type": "Feature",
+            "id": 42,
+            "properties": {
+                "ref": "0000011001",
+                "name": "Boleany",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.55022200000001,
+                    52.54851299999999
+                ]
+            },
+            "type": "Feature",
+            "id": 43,
+            "properties": {
+                "ref": "0000012001",
+                "name": "Scarawalsh",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.566851999999991,
+                    52.50230699999999
+                ]
+            },
+            "type": "Feature",
+            "id": 44,
+            "properties": {
+                "ref": "0000012002",
+                "name": "Enniscorthy",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7383729999999895,
+                    52.802013
+                ]
+            },
+            "type": "Feature",
+            "id": 45,
+            "properties": {
+                "ref": "0000012005",
+                "name": "Tullow Town Bridge U/S",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.738397,
+                    52.796064
+                ]
+            },
+            "type": "Feature",
+            "id": 46,
+            "properties": {
+                "ref": "0000012006",
+                "name": "Tullowbeg",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.573358999999998,
+                    52.493290999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 47,
+            "properties": {
+                "ref": "0000012007",
+                "name": "St. Johns Bridge",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.564173000000009,
+                    52.500917999999984
+                ]
+            },
+            "type": "Feature",
+            "id": 48,
+            "properties": {
+                "ref": "0000012008",
+                "name": "Rafter Bridge D/S",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5641980000000055,
+                    52.501060999999986
+                ]
+            },
+            "type": "Feature",
+            "id": 49,
+            "properties": {
+                "ref": "0000012009",
+                "name": "Rafter Bridge U/S",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.562577999999999,
+                    52.454093999999984
+                ]
+            },
+            "type": "Feature",
+            "id": 50,
+            "properties": {
+                "ref": "0000012061",
+                "name": "Edermine Bridge",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.435540000000001,
+                    52.27905399999997
+                ]
+            },
+            "type": "Feature",
+            "id": 51,
+            "properties": {
+                "ref": "0000012063",
+                "name": "Assaly",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5114519999999905,
+                    52.350836999999935
+                ]
+            },
+            "type": "Feature",
+            "id": 52,
+            "properties": {
+                "ref": "0000012064",
+                "name": "Ferrycarrig Bridge",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.383140999999999,
+                    52.21100399999999
+                ]
+            },
+            "type": "Feature",
+            "id": 53,
+            "properties": {
+                "ref": "0000013070",
+                "name": "Lady's Island",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.454423027896701,
+                    52.20186061013917
+                ]
+            },
+            "type": "Feature",
+            "id": 2382,
+            "properties": {
+                "ref": "0000013072",
+                "name": "Sigginstown ",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.629580999999989,
+                    52.204543999999984
+                ]
+            },
+            "type": "Feature",
+            "id": 55,
+            "properties": {
+                "ref": "0000013081",
+                "name": "Cull Pump House",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.938008999999989,
+                    52.834223999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 56,
+            "properties": {
+                "ref": "0000014001",
+                "name": "Carlow",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.308428999999997,
+                    53.132248999999995
+                ]
+            },
+            "type": "Feature",
+            "id": 57,
+            "properties": {
+                "ref": "0000014003",
+                "name": "Borness",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.086853999999992,
+                    53.258656
+                ]
+            },
+            "type": "Feature",
+            "id": 58,
+            "properties": {
+                "ref": "0000014004",
+                "name": "Clonbulloge",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.192953000000006,
+                    53.161812999999995
+                ]
+            },
+            "type": "Feature",
+            "id": 59,
+            "properties": {
+                "ref": "0000014005",
+                "name": "Portarlington",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.070580999999997,
+                    53.14592299999999
+                ]
+            },
+            "type": "Feature",
+            "id": 60,
+            "properties": {
+                "ref": "0000014006",
+                "name": "Pass Bridge",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.0850319999999885,
+                    53.03905199999994
+                ]
+            },
+            "type": "Feature",
+            "id": 61,
+            "properties": {
+                "ref": "0000014007",
+                "name": "Derrybrock",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.17449299999999,
+                    53.194320999999995
+                ]
+            },
+            "type": "Feature",
+            "id": 62,
+            "properties": {
+                "ref": "0000014009",
+                "name": "Cushina",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.992655000000011,
+                    53.220616
+                ]
+            },
+            "type": "Feature",
+            "id": 63,
+            "properties": {
+                "ref": "0000014011",
+                "name": "Rathangan",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.898154000000004,
+                    52.824263999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 64,
+            "properties": {
+                "ref": "0000014013",
+                "name": "Ballinacarrig",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.9814580000000115,
+                    52.70019799999998
+                ]
+            },
+            "type": "Feature",
+            "id": 65,
+            "properties": {
+                "ref": "0000014018",
+                "name": "Royal Oak",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.949797000000009,
+                    52.93537799999998
+                ]
+            },
+            "type": "Feature",
+            "id": 66,
+            "properties": {
+                "ref": "0000014019",
+                "name": "Levitstown",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.931752000000006,
+                    52.846137999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 67,
+            "properties": {
+                "ref": "0000014022",
+                "name": "Barrow New Bridge",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.950884000000007,
+                    52.54075400000001
+                ]
+            },
+            "type": "Feature",
+            "id": 68,
+            "properties": {
+                "ref": "0000014029",
+                "name": "Graiguenamanagh U/S",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.963588999999991,
+                    52.77818799999999
+                ]
+            },
+            "type": "Feature",
+            "id": 69,
+            "properties": {
+                "ref": "0000014056",
+                "name": "Milford Lock",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.924289999999992,
+                    52.485472999999956
+                ]
+            },
+            "type": "Feature",
+            "id": 70,
+            "properties": {
+                "ref": "0000014067",
+                "name": "St. Mullins",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.337003904112465,
+                    53.11949674645301
+                ]
+            },
+            "type": "Feature",
+            "id": 2336,
+            "properties": {
+                "ref": "0000014120",
+                "name": "Chapel Street",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.33881421577221,
+                    53.11567663610579
+                ]
+            },
+            "type": "Feature",
+            "id": 2334,
+            "properties": {
+                "ref": "0000014121",
+                "name": "Manor Road",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.955819087801805,
+                    52.540405116802
+                ]
+            },
+            "type": "Feature",
+            "id": 2345,
+            "properties": {
+                "ref": "0000014122",
+                "name": "Turf Market",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.991390543748398,
+                    52.54706857103485
+                ]
+            },
+            "type": "Feature",
+            "id": 2363,
+            "properties": {
+                "ref": "0000014123",
+                "name": "Coolroe",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.199625000000001,
+                    52.54845799999997
+                ]
+            },
+            "type": "Feature",
+            "id": 71,
+            "properties": {
+                "ref": "0000015001",
+                "name": "Annamult",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.250433000000013,
+                    52.65339199999999
+                ]
+            },
+            "type": "Feature",
+            "id": 72,
+            "properties": {
+                "ref": "0000015002",
+                "name": "John's Bridge  Nore ",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.291780999999997,
+                    52.715345
+                ]
+            },
+            "type": "Feature",
+            "id": 73,
+            "properties": {
+                "ref": "0000015003",
+                "name": "Dinin Bridge",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.379327000000008,
+                    52.86702399999995
+                ]
+            },
+            "type": "Feature",
+            "id": 74,
+            "properties": {
+                "ref": "0000015004",
+                "name": "Mcmahons Bridge",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.397986999999999,
+                    52.847063999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 75,
+            "properties": {
+                "ref": "0000015005",
+                "name": "Durrow Foot Bridge",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.091699999999993,
+                    52.50076999999998
+                ]
+            },
+            "type": "Feature",
+            "id": 76,
+            "properties": {
+                "ref": "0000015006",
+                "name": "Brownsbarn",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.461606000000005,
+                    52.959251999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 77,
+            "properties": {
+                "ref": "0000015007",
+                "name": "Kilbricken",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.64411300000001,
+                    52.94309099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 78,
+            "properties": {
+                "ref": "0000015008",
+                "name": "Borris-In-Ossory",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.388463000000001,
+                    52.54510099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 79,
+            "properties": {
+                "ref": "0000015009",
+                "name": "Callan",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.454002999999994,
+                    52.84692199999999
+                ]
+            },
+            "type": "Feature",
+            "id": 80,
+            "properties": {
+                "ref": "0000015010",
+                "name": "Ballyboodin",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.189299000000011,
+                    52.53125099999998
+                ]
+            },
+            "type": "Feature",
+            "id": 81,
+            "properties": {
+                "ref": "0000015011",
+                "name": "Mount Juliet",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.2594538373255775,
+                    52.65428775659741
+                ]
+            },
+            "type": "Feature",
+            "id": 82,
+            "properties": {
+                "ref": "0000015050",
+                "name": "Blackfriar's Bridge",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.256382,
+                    52.66592
+                ]
+            },
+            "type": "Feature",
+            "id": 83,
+            "properties": {
+                "ref": "0000015104",
+                "name": "Sycamores",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.217501,
+                    52.641541
+                ]
+            },
+            "type": "Feature",
+            "id": 84,
+            "properties": {
+                "ref": "0000015105",
+                "name": "Archers Grove",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.739544000000004,
+                    52.68610099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 85,
+            "properties": {
+                "ref": "0000016001",
+                "name": "Athlummon",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.864804000000006,
+                    52.648838999999995
+                ]
+            },
+            "type": "Feature",
+            "id": 86,
+            "properties": {
+                "ref": "0000016002",
+                "name": "Beakstown",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.924926000000001,
+                    52.62930299999997
+                ]
+            },
+            "type": "Feature",
+            "id": 87,
+            "properties": {
+                "ref": "0000016003",
+                "name": "Rathkennan",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.809622000000003,
+                    52.67906399999997
+                ]
+            },
+            "type": "Feature",
+            "id": 88,
+            "properties": {
+                "ref": "0000016004",
+                "name": "Thurles",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.014062999999993,
+                    52.523496
+                ]
+            },
+            "type": "Feature",
+            "id": 89,
+            "properties": {
+                "ref": "0000016005",
+                "name": "Aughnagross",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.022296000000003,
+                    52.51946899999997
+                ]
+            },
+            "type": "Feature",
+            "id": 90,
+            "properties": {
+                "ref": "0000016006",
+                "name": "Ballinaclogh",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.975714,
+                    52.41727599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 91,
+            "properties": {
+                "ref": "0000016007",
+                "name": "Killardry",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.99789,
+                    52.45947
+                ]
+            },
+            "type": "Feature",
+            "id": 92,
+            "properties": {
+                "ref": "0000016008",
+                "name": "New Bridge  Suir ",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.922937,
+                    52.357673
+                ]
+            },
+            "type": "Feature",
+            "id": 93,
+            "properties": {
+                "ref": "0000016009",
+                "name": "Caher Park",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.628552,
+                    52.382079
+                ]
+            },
+            "type": "Feature",
+            "id": 94,
+            "properties": {
+                "ref": "0000016010",
+                "name": "Anner",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.694598,
+                    52.351525
+                ]
+            },
+            "type": "Feature",
+            "id": 95,
+            "properties": {
+                "ref": "0000016011",
+                "name": "Clonmel",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.842907,
+                    52.273004
+                ]
+            },
+            "type": "Feature",
+            "id": 96,
+            "properties": {
+                "ref": "0000016012",
+                "name": "Tar Bridge",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.756046000000011,
+                    52.273799
+                ]
+            },
+            "type": "Feature",
+            "id": 97,
+            "properties": {
+                "ref": "0000016013",
+                "name": "Fourmilewater FFWS Main Logger",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.791764,
+                    52.71583099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 98,
+            "properties": {
+                "ref": "0000016051",
+                "name": "Clobanna",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.315921000000004,
+                    52.32801199999996
+                ]
+            },
+            "type": "Feature",
+            "id": 99,
+            "properties": {
+                "ref": "0000016061",
+                "name": "Fiddown",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.4103739999999965,
+                    52.34410399999997
+                ]
+            },
+            "type": "Feature",
+            "id": 100,
+            "properties": {
+                "ref": "0000016062",
+                "name": "Carrick On Suir",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.127922906748909,
+                    52.224183150713415
+                ]
+            },
+            "type": "Feature",
+            "id": 101,
+            "properties": {
+                "ref": "0000016115",
+                "name": "Sheep's Bridge Weir",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.324867000000006,
+                    52.349317000000006
+                ]
+            },
+            "type": "Feature",
+            "id": 102,
+            "properties": {
+                "ref": "0000016125",
+                "name": "Piltown",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.119043999999997,
+                    52.24692199999995
+                ]
+            },
+            "type": "Feature",
+            "id": 103,
+            "properties": {
+                "ref": "0000016128",
+                "name": "Tramore RD RDBT",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.110892000000003,
+                    52.25630599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 104,
+            "properties": {
+                "ref": "0000016129",
+                "name": "John's Bridge",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.83718699999999,
+                    52.792650999999964
+                ]
+            },
+            "type": "Feature",
+            "id": 106,
+            "properties": {
+                "ref": "0000016136",
+                "name": "Small Bridge  Templemore ",
+                "region_id": 9
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.810275,
+                    52.274915
+                ]
+            },
+            "type": "Feature",
+            "id": 107,
+            "properties": {
+                "ref": "0000016137",
+                "name": "Newcastle Bridge",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.794498,
+                    52.296807
+                ]
+            },
+            "type": "Feature",
+            "id": 108,
+            "properties": {
+                "ref": "0000016138",
+                "name": "Ballydonagh",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.789266,
+                    52.336734
+                ]
+            },
+            "type": "Feature",
+            "id": 109,
+            "properties": {
+                "ref": "0000016139",
+                "name": "Knocklofyty",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.746476556099161,
+                    52.34147454091488
+                ]
+            },
+            "type": "Feature",
+            "id": 110,
+            "properties": {
+                "ref": "0000016146",
+                "name": "Ardfinnan Road",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.70670698787223,
+                    52.351555156161865
+                ]
+            },
+            "type": "Feature",
+            "id": 111,
+            "properties": {
+                "ref": "0000016147",
+                "name": "Joyce's Lane",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.716815859993853,
+                    52.349656727813745
+                ]
+            },
+            "type": "Feature",
+            "id": 112,
+            "properties": {
+                "ref": "0000016148",
+                "name": "Workhouse Bridge",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.694477992731058,
+                    52.351521548661324
+                ]
+            },
+            "type": "Feature",
+            "id": 505,
+            "properties": {
+                "ref": "0000016149",
+                "name": "Clonmel FFWS back-up",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.922936999999999,
+                    52.357673
+                ]
+            },
+            "type": "Feature",
+            "id": 506,
+            "properties": {
+                "ref": "0000016150",
+                "name": "Caher Park FFWS back-up",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.842906999999986,
+                    52.27300400000001
+                ]
+            },
+            "type": "Feature",
+            "id": 507,
+            "properties": {
+                "ref": "0000016151",
+                "name": "Tar Bridge FFWS back-up",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.757987337777354,
+                    52.27374497932691
+                ]
+            },
+            "type": "Feature",
+            "id": 496,
+            "properties": {
+                "ref": "0000016152",
+                "name": "Fourmilewater FFWS back-up",
+                "region_id": 4
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.997889999999998,
+                    52.45946999999998
+                ]
+            },
+            "type": "Feature",
+            "id": 508,
+            "properties": {
+                "ref": "0000016153",
+                "name": "New Bridge  Suir  FFWS back-up",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.97571400000001,
+                    52.41727599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 509,
+            "properties": {
+                "ref": "0000016154",
+                "name": "Killardry FFWS back-up",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.102432999999992,
+                    52.25966599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 113,
+            "properties": {
+                "ref": "0000016160",
+                "name": "Adelphi Quay",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.990828999999997,
+                    52.14752299999997
+                ]
+            },
+            "type": "Feature",
+            "id": 114,
+            "properties": {
+                "ref": "0000017061",
+                "name": "Dunmore East",
+                "region_id": 5
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.064302999999999,
+                    52.099557000000004
+                ]
+            },
+            "type": "Feature",
+            "id": 115,
+            "properties": {
+                "ref": "0000018001",
+                "name": "Mogeely",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.05195199999999,
+                    52.14434500000001
+                ]
+            },
+            "type": "Feature",
+            "id": 116,
+            "properties": {
+                "ref": "0000018002",
+                "name": "Ballyduff",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.515394000000008,
+                    52.14919799999998
+                ]
+            },
+            "type": "Feature",
+            "id": 117,
+            "properties": {
+                "ref": "0000018003",
+                "name": "Killavullen",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.503225,
+                    52.219141
+                ]
+            },
+            "type": "Feature",
+            "id": 118,
+            "properties": {
+                "ref": "0000018004",
+                "name": "Ballynamona",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.258960000000004,
+                    52.168533999999994
+                ]
+            },
+            "type": "Feature",
+            "id": 119,
+            "properties": {
+                "ref": "0000018005",
+                "name": "Downing Bridge",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.88902499999999,
+                    52.12074099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 120,
+            "properties": {
+                "ref": "0000018019",
+                "name": "Fr Murphy's Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.405722999999993,
+                    52.24857099999998
+                ]
+            },
+            "type": "Feature",
+            "id": 121,
+            "properties": {
+                "ref": "0000018024",
+                "name": "Glenavuddig Bridge",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.220838,
+                    52.149811
+                ]
+            },
+            "type": "Feature",
+            "id": 122,
+            "properties": {
+                "ref": "0000018053",
+                "name": "Glandalane",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.656718999999995,
+                    52.13112399999998
+                ]
+            },
+            "type": "Feature",
+            "id": 123,
+            "properties": {
+                "ref": "0000018055",
+                "name": "Mallow Railway Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.641608,
+                    52.13234
+                ]
+            },
+            "type": "Feature",
+            "id": 124,
+            "properties": {
+                "ref": "0000018056",
+                "name": "Mallow Town Bridge U/S",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.641037,
+                    52.132218
+                ]
+            },
+            "type": "Feature",
+            "id": 125,
+            "properties": {
+                "ref": "0000018057",
+                "name": "Mallow Town Bridge D/S",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.8476053053681065,
+                    51.95722612743287
+                ]
+            },
+            "type": "Feature",
+            "id": 2325,
+            "properties": {
+                "ref": "0000018061",
+                "name": "Youghal Quay",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.46025,
+                    52.1737
+                ]
+            },
+            "type": "Feature",
+            "id": 126,
+            "properties": {
+                "ref": "0000018102",
+                "name": "Castletownroche Weir",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.62286100000001,
+                    52.13470499999999
+                ]
+            },
+            "type": "Feature",
+            "id": 127,
+            "properties": {
+                "ref": "0000018105",
+                "name": "Castlelands",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.276634,
+                    52.138568
+                ]
+            },
+            "type": "Feature",
+            "id": 128,
+            "properties": {
+                "ref": "0000018106",
+                "name": "Fermoy Bridge U/S",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.275397999999988,
+                    52.139550999999976
+                ]
+            },
+            "type": "Feature",
+            "id": 129,
+            "properties": {
+                "ref": "0000018107",
+                "name": "Fermoy Bridge D/S",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.220864,
+                    52.166895
+                ]
+            },
+            "type": "Feature",
+            "id": 130,
+            "properties": {
+                "ref": "0000018108",
+                "name": "Araglin Bridge",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.783209000000003,
+                    52.12261499999998
+                ]
+            },
+            "type": "Feature",
+            "id": 131,
+            "properties": {
+                "ref": "0000018109",
+                "name": "Lombardstown Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.903999906745817,
+                    52.17920312171822
+                ]
+            },
+            "type": "Feature",
+            "id": 132,
+            "properties": {
+                "ref": "0000018110",
+                "name": "Kilbrin Road",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.910823,
+                    52.17876599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 133,
+            "properties": {
+                "ref": "0000018111",
+                "name": "Church Street",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.028994999999991,
+                    52.08962199999997
+                ]
+            },
+            "type": "Feature",
+            "id": 134,
+            "properties": {
+                "ref": "0000018112",
+                "name": "Keale Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.132805000000012,
+                    52.096076000000004
+                ]
+            },
+            "type": "Feature",
+            "id": 135,
+            "properties": {
+                "ref": "0000018113",
+                "name": "Ahane Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.681001000000006,
+                    52.08298699999999
+                ]
+            },
+            "type": "Feature",
+            "id": 136,
+            "properties": {
+                "ref": "0000018114",
+                "name": "Clashmorgan",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.625179,
+                    52.078048
+                ]
+            },
+            "type": "Feature",
+            "id": 137,
+            "properties": {
+                "ref": "0000018115",
+                "name": "Jordans Bridge",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.271953,
+                    52.13972
+                ]
+            },
+            "type": "Feature",
+            "id": 138,
+            "properties": {
+                "ref": "0000018117",
+                "name": "Fermoy Mill",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.654214411859428,
+                    52.131390087880526
+                ]
+            },
+            "type": "Feature",
+            "id": 139,
+            "properties": {
+                "ref": "0000018119",
+                "name": "Ballydahin",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.6518317148581,
+                    52.08315195617364
+                ]
+            },
+            "type": "Feature",
+            "id": 140,
+            "properties": {
+                "ref": "0000018120",
+                "name": "Nursetownbeg",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.888915583087519,
+                    52.11067678223292
+                ]
+            },
+            "type": "Feature",
+            "id": 141,
+            "properties": {
+                "ref": "0000018121",
+                "name": "Shronebeha",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.030316449644427,
+                    52.089880254590206
+                ]
+            },
+            "type": "Feature",
+            "id": 142,
+            "properties": {
+                "ref": "0000018122",
+                "name": "Gortageen",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.904016000000006,
+                    52.178988999999966
+                ]
+            },
+            "type": "Feature",
+            "id": 143,
+            "properties": {
+                "ref": "0000018123",
+                "name": "Greenane",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.281061010950118,
+                    52.13838144174633
+                ]
+            },
+            "type": "Feature",
+            "id": 2234,
+            "properties": {
+                "ref": "0000018124",
+                "name": "Fermoy U/S Rowing",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.421563000000006,
+                    51.82208099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 144,
+            "properties": {
+                "ref": "0000019001",
+                "name": "Ballea",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.588573000000004,
+                    51.98953399999997
+                ]
+            },
+            "type": "Feature",
+            "id": 145,
+            "properties": {
+                "ref": "0000019044",
+                "name": "Kilmona Bridge",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.558213999999984,
+                    51.92805699999998
+                ]
+            },
+            "type": "Feature",
+            "id": 146,
+            "properties": {
+                "ref": "0000019045",
+                "name": "Gothic Bridge",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.161190348140957,
+                    51.93947531776088
+                ]
+            },
+            "type": "Feature",
+            "id": 499,
+            "properties": {
+                "ref": "0000019054",
+                "name": "Ballyvourney",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.146320181362361,
+                    51.934349801640586
+                ]
+            },
+            "type": "Feature",
+            "id": 500,
+            "properties": {
+                "ref": "0000019055",
+                "name": "Ballymakera",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.456144886586557,
+                    51.92232292180544
+                ]
+            },
+            "type": "Feature",
+            "id": 2222,
+            "properties": {
+                "ref": "0000019056",
+                "name": "Ballincolly",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.452116208637491,
+                    51.91290293756725
+                ]
+            },
+            "type": "Feature",
+            "id": 2221,
+            "properties": {
+                "ref": "0000019057",
+                "name": "Glen Park",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.473423677064158,
+                    51.91657918342427
+                ]
+            },
+            "type": "Feature",
+            "id": 2219,
+            "properties": {
+                "ref": "0000019058",
+                "name": "Blackpool Retail Park",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.47734506663807,
+                    51.92925677880244
+                ]
+            },
+            "type": "Feature",
+            "id": 2220,
+            "properties": {
+                "ref": "0000019059",
+                "name": "Glennamought Br.",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.001473000000003,
+                    51.828182999999974
+                ]
+            },
+            "type": "Feature",
+            "id": 147,
+            "properties": {
+                "ref": "0000019068",
+                "name": "Ballycotton",
+                "region_id": 15
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.305565672508422,
+                    51.83496264100221
+                ]
+            },
+            "type": "Feature",
+            "id": 497,
+            "properties": {
+                "ref": "0000019069",
+                "name": "Ringaskiddy NMCI",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.66162355477134,
+                    51.90008170220352
+                ]
+            },
+            "type": "Feature",
+            "id": 2342,
+            "properties": {
+                "ref": "0000019094",
+                "name": "Inniscarra Headrace",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.86411424211054,
+                    51.89697004686146
+                ]
+            },
+            "type": "Feature",
+            "id": 2344,
+            "properties": {
+                "ref": "0000019095",
+                "name": "Carrigadrohid Headrace",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.945926981469581,
+                    51.905393990018794
+                ]
+            },
+            "type": "Feature",
+            "id": 2326,
+            "properties": {
+                "ref": "0000019100",
+                "name": "Macroom WWTP",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.96249230434564,
+                    51.90603936536619
+                ]
+            },
+            "type": "Feature",
+            "id": 2327,
+            "properties": {
+                "ref": "0000019101",
+                "name": "Macroom Town Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.50994463499775,
+                    51.8939643459737
+                ]
+            },
+            "type": "Feature",
+            "id": 2329,
+            "properties": {
+                "ref": "0000019102",
+                "name": "Waterworks Weir",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.655078964773592,
+                    51.88053502050774
+                ]
+            },
+            "type": "Feature",
+            "id": 2347,
+            "properties": {
+                "ref": "0000019103",
+                "name": "Ovens Bridge",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.936169105082522,
+                    51.929307017238955
+                ]
+            },
+            "type": "Feature",
+            "id": 2374,
+            "properties": {
+                "ref": "0000019104",
+                "name": "Morris's Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.601826386997535,
+                    51.91471710820958
+                ]
+            },
+            "type": "Feature",
+            "id": 2381,
+            "properties": {
+                "ref": "0000019105",
+                "name": "Muskerry",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.02229483653987,
+                    51.85766825148704
+                ]
+            },
+            "type": "Feature",
+            "id": 2377,
+            "properties": {
+                "ref": "0000019106",
+                "name": "Cooldaniel",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.633395987101583,
+                    51.892008635555335
+                ]
+            },
+            "type": "Feature",
+            "id": 2380,
+            "properties": {
+                "ref": "0000019109",
+                "name": "Inniscarra Tailrace",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.443842193664969,
+                    51.901557638840366
+                ]
+            },
+            "type": "Feature",
+            "id": 2331,
+            "properties": {
+                "ref": "0000019160",
+                "name": "Currach Club",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.731538,
+                    51.746954
+                ]
+            },
+            "type": "Feature",
+            "id": 148,
+            "properties": {
+                "ref": "0000020001",
+                "name": "Bandon",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.682671999999998,
+                    51.76523199999999
+                ]
+            },
+            "type": "Feature",
+            "id": 149,
+            "properties": {
+                "ref": "0000020002",
+                "name": "Curranure",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.097887,
+                    51.724699
+                ]
+            },
+            "type": "Feature",
+            "id": 150,
+            "properties": {
+                "ref": "0000020008",
+                "name": "Long Bridge Dunmanway",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.097986999999996,
+                    51.749135999999986
+                ]
+            },
+            "type": "Feature",
+            "id": 151,
+            "properties": {
+                "ref": "0000020015",
+                "name": "Ardcahan Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.075759,
+                    51.709436
+                ]
+            },
+            "type": "Feature",
+            "id": 152,
+            "properties": {
+                "ref": "0000020016",
+                "name": "Bealaboy Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.894235276719638,
+                    51.62263447028514
+                ]
+            },
+            "type": "Feature",
+            "id": 2224,
+            "properties": {
+                "ref": "0000020019",
+                "name": "Clonakilty ",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.264852362134762,
+                    51.551973158068954
+                ]
+            },
+            "type": "Feature",
+            "id": 2349,
+            "properties": {
+                "ref": "0000020020",
+                "name": "Skibbereen",
+                "region_id": 6
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.89929135359275,
+                    51.84175089717266
+                ]
+            },
+            "type": "Feature",
+            "id": 2233,
+            "properties": {
+                "ref": "0000021018",
+                "name": "Sneem D/S",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.570732000000005,
+                    52.19762099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 154,
+            "properties": {
+                "ref": "0000022003",
+                "name": "Riverville",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.506220000000006,
+                    52.00097699999999
+                ]
+            },
+            "type": "Feature",
+            "id": 155,
+            "properties": {
+                "ref": "0000022005",
+                "name": "Torc Weir",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.497946999999991,
+                    52.04803399999999
+                ]
+            },
+            "type": "Feature",
+            "id": 156,
+            "properties": {
+                "ref": "0000022006",
+                "name": "Flesk Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.527219000000011,
+                    52.054920999999986
+                ]
+            },
+            "type": "Feature",
+            "id": 157,
+            "properties": {
+                "ref": "0000022009",
+                "name": "White Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.549443,
+                    52.00743599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 158,
+            "properties": {
+                "ref": "0000022016",
+                "name": "Old Weir Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.61709200000001,
+                    52.06155
+                ]
+            },
+            "type": "Feature",
+            "id": 159,
+            "properties": {
+                "ref": "0000022035",
+                "name": "Laune Bridge",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.702769999999987,
+                    52.16759499999997
+                ]
+            },
+            "type": "Feature",
+            "id": 160,
+            "properties": {
+                "ref": "0000022061",
+                "name": "Castlemaine",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.605025000000008,
+                    52.056842999999986
+                ]
+            },
+            "type": "Feature",
+            "id": 161,
+            "properties": {
+                "ref": "0000022071",
+                "name": "Tomies Pier",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.50649100000001,
+                    52.02336199999999
+                ]
+            },
+            "type": "Feature",
+            "id": 162,
+            "properties": {
+                "ref": "0000022082",
+                "name": "Bvm Park",
+                "region_id": 12
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.534399000000006,
+                    52.46805200000001
+                ]
+            },
+            "type": "Feature",
+            "id": 163,
+            "properties": {
+                "ref": "0000023001",
+                "name": "Inch Bridge  Galey ",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.475688999999994,
+                    52.44265499999995
+                ]
+            },
+            "type": "Feature",
+            "id": 164,
+            "properties": {
+                "ref": "0000023002",
+                "name": "Listowel",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.691574999999998,
+                    52.260058999999984
+                ]
+            },
+            "type": "Feature",
+            "id": 165,
+            "properties": {
+                "ref": "0000023012",
+                "name": "Ballymullen",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.63691800000001,
+                    52.43261599999997
+                ]
+            },
+            "type": "Feature",
+            "id": 166,
+            "properties": {
+                "ref": "0000023030",
+                "name": "Sleveen Main Channel",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.637055845626948,
+                    52.432678113128695
+                ]
+            },
+            "type": "Feature",
+            "id": 413,
+            "properties": {
+                "ref": "0000023033",
+                "name": "Sleveen Back Channel",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.636029416559419,
+                    52.43849886553334
+                ]
+            },
+            "type": "Feature",
+            "id": 2341,
+            "properties": {
+                "ref": "0000023039",
+                "name": "Sleveen Back Channel Rattoo Pump House",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.635125952171634,
+                    52.43796959135901
+                ]
+            },
+            "type": "Feature",
+            "id": 2337,
+            "properties": {
+                "ref": "0000023040",
+                "name": "Sleeveen Back channel 100m U/S",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.635651665139363,
+                    52.43872317463234
+                ]
+            },
+            "type": "Feature",
+            "id": 2338,
+            "properties": {
+                "ref": "0000023041",
+                "name": "Sleeveen Main Channel DS",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.63690693895468,
+                    52.44122828139138
+                ]
+            },
+            "type": "Feature",
+            "id": 2339,
+            "properties": {
+                "ref": "0000023042",
+                "name": "Sleeveen Back Channel D/S",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.699118094833576,
+                    52.288341188588845
+                ]
+            },
+            "type": "Feature",
+            "id": 2372,
+            "properties": {
+                "ref": "0000023044",
+                "name": "Lisloose",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.641718821915896,
+                    52.25619034417562
+                ]
+            },
+            "type": "Feature",
+            "id": 2376,
+            "properties": {
+                "ref": "0000023045",
+                "name": "Ballyseedy",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.689855574210709,
+                    52.25465947172071
+                ]
+            },
+            "type": "Feature",
+            "id": 2379,
+            "properties": {
+                "ref": "0000023046",
+                "name": "Spring Water Lane",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.681367235578662,
+                    52.285828463102355
+                ]
+            },
+            "type": "Feature",
+            "id": 2378,
+            "properties": {
+                "ref": "0000023047",
+                "name": "Oakpark Road",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.633366999999982,
+                    52.46900099999996
+                ]
+            },
+            "type": "Feature",
+            "id": 167,
+            "properties": {
+                "ref": "0000023061",
+                "name": "Ferry Bridge  Feale ",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.735781999999984,
+                    52.257898999999995
+                ]
+            },
+            "type": "Feature",
+            "id": 168,
+            "properties": {
+                "ref": "0000023062",
+                "name": "Blennerville",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.711964999999985,
+                    52.26276799999999
+                ]
+            },
+            "type": "Feature",
+            "id": 169,
+            "properties": {
+                "ref": "0000023063",
+                "name": "Ballyard",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.863564329519216,
+                    52.270703702398414
+                ]
+            },
+            "type": "Feature",
+            "id": 510,
+            "properties": {
+                "ref": "0000023066",
+                "name": "Fenit",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.68092299999999,
+                    52.48275000000001
+                ]
+            },
+            "type": "Feature",
+            "id": 170,
+            "properties": {
+                "ref": "0000023068",
+                "name": "Moneycashen",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.718468999999992,
+                    52.51922400000001
+                ]
+            },
+            "type": "Feature",
+            "id": 171,
+            "properties": {
+                "ref": "0000024001",
+                "name": "Croom",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.619797999999987,
+                    52.51298799999996
+                ]
+            },
+            "type": "Feature",
+            "id": 172,
+            "properties": {
+                "ref": "0000024002",
+                "name": "Gray's Bridge",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.660843999999997,
+                    52.42322499999997
+                ]
+            },
+            "type": "Feature",
+            "id": 174,
+            "properties": {
+                "ref": "0000024004",
+                "name": "Bruree",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.651165999999998,
+                    52.45876599999998
+                ]
+            },
+            "type": "Feature",
+            "id": 175,
+            "properties": {
+                "ref": "0000024005",
+                "name": "Athlacca",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.767415999999999,
+                    52.54344099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 177,
+            "properties": {
+                "ref": "0000024008",
+                "name": "Castleroberts",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.777367999999987,
+                    52.56441299999998
+                ]
+            },
+            "type": "Feature",
+            "id": 178,
+            "properties": {
+                "ref": "0000024009",
+                "name": "Adare Manor",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.031112999999994,
+                    52.44214499999998
+                ]
+            },
+            "type": "Feature",
+            "id": 179,
+            "properties": {
+                "ref": "0000024011",
+                "name": "Deel Bridge",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.018853999999994,
+                    52.462812999999976
+                ]
+            },
+            "type": "Feature",
+            "id": 180,
+            "properties": {
+                "ref": "0000024012",
+                "name": "Grange Bridge",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.943546000000003,
+                    52.52096000000001
+                ]
+            },
+            "type": "Feature",
+            "id": 181,
+            "properties": {
+                "ref": "0000024013",
+                "name": "Rathkeale",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.540768999999987,
+                    52.387574
+                ]
+            },
+            "type": "Feature",
+            "id": 182,
+            "properties": {
+                "ref": "0000024034",
+                "name": "Riversfield Weir",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.632614,
+                    52.636085999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 183,
+            "properties": {
+                "ref": "0000024047",
+                "name": "Rossbrien Railway Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.764818000000004,
+                    52.62122599999995
+                ]
+            },
+            "type": "Feature",
+            "id": 186,
+            "properties": {
+                "ref": "0000024061",
+                "name": "Ferry Bridge  Maigue ",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.798122999999993,
+                    52.56886699999999
+                ]
+            },
+            "type": "Feature",
+            "id": 187,
+            "properties": {
+                "ref": "0000024062",
+                "name": "Adare Quay",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.644473510330197,
+                    52.65849979387086
+                ]
+            },
+            "type": "Feature",
+            "id": 2324,
+            "properties": {
+                "ref": "0000024063",
+                "name": "Limerick Dock",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.10126979875674,
+                    52.61415968311111
+                ]
+            },
+            "type": "Feature",
+            "id": 2350,
+            "properties": {
+                "ref": "0000024064",
+                "name": "Foynes",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.825605999999986,
+                    52.559809
+                ]
+            },
+            "type": "Feature",
+            "id": 188,
+            "properties": {
+                "ref": "0000024067",
+                "name": "Normoyle's Bridge",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.715255000000006,
+                    52.509115999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 189,
+            "properties": {
+                "ref": "0000024082",
+                "name": "Islandmore Weir",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.050871000000004,
+                    52.44866599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 190,
+            "properties": {
+                "ref": "0000024100",
+                "name": "Gortboy Hotel",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.529146999999988,
+                    52.669275999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 191,
+            "properties": {
+                "ref": "0000025001",
+                "name": "Annacotty",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.475033000000009,
+                    52.644945999999976
+                ]
+            },
+            "type": "Feature",
+            "id": 192,
+            "properties": {
+                "ref": "0000025002",
+                "name": "Barrington's Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.421221000000003,
+                    52.63186799999999
+                ]
+            },
+            "type": "Feature",
+            "id": 193,
+            "properties": {
+                "ref": "0000025003",
+                "name": "Abington",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.314669000000004,
+                    52.591644
+                ]
+            },
+            "type": "Feature",
+            "id": 194,
+            "properties": {
+                "ref": "0000025004",
+                "name": "New Bridge  Bilboa ",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.329348000000005,
+                    52.58146799999999
+                ]
+            },
+            "type": "Feature",
+            "id": 195,
+            "properties": {
+                "ref": "0000025005",
+                "name": "Sunville",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.828062999999993,
+                    53.26993799999998
+                ]
+            },
+            "type": "Feature",
+            "id": 196,
+            "properties": {
+                "ref": "0000025006",
+                "name": "Ferbane",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.9320549999999965,
+                    53.23825299999999
+                ]
+            },
+            "type": "Feature",
+            "id": 197,
+            "properties": {
+                "ref": "0000025011",
+                "name": "Moystown",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.797950000000007,
+                    53.21954599999998
+                ]
+            },
+            "type": "Feature",
+            "id": 200,
+            "properties": {
+                "ref": "0000025014",
+                "name": "Millbrook",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.715861999999999,
+                    53.281348999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 201,
+            "properties": {
+                "ref": "0000025015",
+                "name": "Pollagh",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.615676000000009,
+                    53.28079900000001
+                ]
+            },
+            "type": "Feature",
+            "id": 202,
+            "properties": {
+                "ref": "0000025016",
+                "name": "Rahan  Clodiagh ",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.993647000000003,
+                    53.19378699999999
+                ]
+            },
+            "type": "Feature",
+            "id": 203,
+            "properties": {
+                "ref": "0000025017",
+                "name": "Banagher",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.370800999999998,
+                    53.114750999999984
+                ]
+            },
+            "type": "Feature",
+            "id": 204,
+            "properties": {
+                "ref": "0000025019",
+                "name": "Conicar",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.303336000000002,
+                    53.149715
+                ]
+            },
+            "type": "Feature",
+            "id": 205,
+            "properties": {
+                "ref": "0000025020",
+                "name": "Killeen",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.920462,
+                    53.10174200000001
+                ]
+            },
+            "type": "Feature",
+            "id": 206,
+            "properties": {
+                "ref": "0000025021",
+                "name": "Croghan",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.88158,
+                    53.092805
+                ]
+            },
+            "type": "Feature",
+            "id": 207,
+            "properties": {
+                "ref": "0000025022",
+                "name": "Syngefield",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.897309,
+                    52.96926
+                ]
+            },
+            "type": "Feature",
+            "id": 208,
+            "properties": {
+                "ref": "0000025023",
+                "name": "Milltown",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.975742999999997,
+                    53.13191199999999
+                ]
+            },
+            "type": "Feature",
+            "id": 209,
+            "properties": {
+                "ref": "0000025024",
+                "name": "New Bridge  Little Brosna ",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.205766,
+                    53.01445
+                ]
+            },
+            "type": "Feature",
+            "id": 210,
+            "properties": {
+                "ref": "0000025025",
+                "name": "Ballyhooney",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.168575,
+                    52.868412
+                ]
+            },
+            "type": "Feature",
+            "id": 211,
+            "properties": {
+                "ref": "0000025027",
+                "name": "Gourdeen",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.20771,
+                    52.891623
+                ]
+            },
+            "type": "Feature",
+            "id": 212,
+            "properties": {
+                "ref": "0000025029",
+                "name": "Clarianna",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.533125,
+                    52.908365
+                ]
+            },
+            "type": "Feature",
+            "id": 213,
+            "properties": {
+                "ref": "0000025030",
+                "name": "Scarriff",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.334808999999998,
+                    53.527883
+                ]
+            },
+            "type": "Feature",
+            "id": 214,
+            "properties": {
+                "ref": "0000025050",
+                "name": "Mullingar Pump Hse",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.076067999999998,
+                    53.176080000000006
+                ]
+            },
+            "type": "Feature",
+            "id": 215,
+            "properties": {
+                "ref": "0000025056",
+                "name": "Meelick Weir",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.080451,
+                    53.168772
+                ]
+            },
+            "type": "Feature",
+            "id": 216,
+            "properties": {
+                "ref": "0000025058",
+                "name": "Victoria Lock",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.61938,
+                    52.666458000000006
+                ]
+            },
+            "type": "Feature",
+            "id": 217,
+            "properties": {
+                "ref": "0000025061",
+                "name": "Ball's Bridge",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.501241,
+                    53.273214
+                ]
+            },
+            "type": "Feature",
+            "id": 219,
+            "properties": {
+                "ref": "0000025149",
+                "name": "Tullamore",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.351569,
+                    53.549125
+                ]
+            },
+            "type": "Feature",
+            "id": 220,
+            "properties": {
+                "ref": "0000025213",
+                "name": "Culleen Fish Farm",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.504751999999998,
+                    53.180797000000005
+                ]
+            },
+            "type": "Feature",
+            "id": 221,
+            "properties": {
+                "ref": "0000025301",
+                "name": "Bracknagh Bridge",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.464589,
+                    52.695246
+                ]
+            },
+            "type": "Feature",
+            "id": 222,
+            "properties": {
+                "ref": "0000025308",
+                "name": "Waterpark Bridge",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.431994,
+                    52.685081
+                ]
+            },
+            "type": "Feature",
+            "id": 223,
+            "properties": {
+                "ref": "0000025309",
+                "name": "Clonsingle Bridge",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.366002,
+                    53.489786
+                ]
+            },
+            "type": "Feature",
+            "id": 224,
+            "properties": {
+                "ref": "0000026001",
+                "name": "Ballinamore",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.292659,
+                    53.563717
+                ]
+            },
+            "type": "Feature",
+            "id": 225,
+            "properties": {
+                "ref": "0000026002",
+                "name": "Rookwood",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.512284,
+                    53.705593
+                ]
+            },
+            "type": "Feature",
+            "id": 226,
+            "properties": {
+                "ref": "0000026004",
+                "name": "Bookala",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.262762,
+                    53.431764
+                ]
+            },
+            "type": "Feature",
+            "id": 227,
+            "properties": {
+                "ref": "0000026005",
+                "name": "Derrycahill",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.466028,
+                    53.729357
+                ]
+            },
+            "type": "Feature",
+            "id": 228,
+            "properties": {
+                "ref": "0000026006",
+                "name": "Willsbrook",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.238554,
+                    53.361687
+                ]
+            },
+            "type": "Feature",
+            "id": 229,
+            "properties": {
+                "ref": "0000026007",
+                "name": "Bellagill",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.862746,
+                    53.82777
+                ]
+            },
+            "type": "Feature",
+            "id": 230,
+            "properties": {
+                "ref": "0000026008",
+                "name": "Johnston's Bridge",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.805157,
+                    53.854401
+                ]
+            },
+            "type": "Feature",
+            "id": 231,
+            "properties": {
+                "ref": "0000026009",
+                "name": "Bellantra Bridge",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.815074,
+                    53.931213
+                ]
+            },
+            "type": "Feature",
+            "id": 232,
+            "properties": {
+                "ref": "0000026010",
+                "name": "Riverstown",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.557031,
+                    53.897014
+                ]
+            },
+            "type": "Feature",
+            "id": 234,
+            "properties": {
+                "ref": "0000026014",
+                "name": "Banada Bridge  Lung ",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.9188661951064985,
+                    53.886635663816314
+                ]
+            },
+            "type": "Feature",
+            "id": 235,
+            "properties": {
+                "ref": "0000026015",
+                "name": "Corrascoffy",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.075036,
+                    53.827979
+                ]
+            },
+            "type": "Feature",
+            "id": 238,
+            "properties": {
+                "ref": "0000026018",
+                "name": "Bellavahan Bridge",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.823850644180285,
+                    53.73294242650246
+                ]
+            },
+            "type": "Feature",
+            "id": 239,
+            "properties": {
+                "ref": "0000026019",
+                "name": "Mullagh",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.725933347221378,
+                    53.76385541976579
+                ]
+            },
+            "type": "Feature",
+            "id": 240,
+            "properties": {
+                "ref": "0000026020",
+                "name": "Argar",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.757923,
+                    53.562867
+                ]
+            },
+            "type": "Feature",
+            "id": 241,
+            "properties": {
+                "ref": "0000026021",
+                "name": "Ballymahon",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.872534,
+                    53.710257
+                ]
+            },
+            "type": "Feature",
+            "id": 242,
+            "properties": {
+                "ref": "0000026022",
+                "name": "Kilmore",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.407165,
+                    53.728937
+                ]
+            },
+            "type": "Feature",
+            "id": 243,
+            "properties": {
+                "ref": "0000026025",
+                "name": "Camagh",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.940756,
+                    53.421534
+                ]
+            },
+            "type": "Feature",
+            "id": 244,
+            "properties": {
+                "ref": "0000026027",
+                "name": "Athlone",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.049581000000003,
+                    53.27987300000001
+                ]
+            },
+            "type": "Feature",
+            "id": 245,
+            "properties": {
+                "ref": "0000026028",
+                "name": "Shannonbridge",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.050638,
+                    54.04846199999998
+                ]
+            },
+            "type": "Feature",
+            "id": 246,
+            "properties": {
+                "ref": "0000026074",
+                "name": "Blackrock Lock",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.406391483467072,
+                    53.958279343187314
+                ]
+            },
+            "type": "Feature",
+            "id": 247,
+            "properties": {
+                "ref": "0000026075",
+                "name": "Cuppanagh",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.851744,
+                    53.893989
+                ]
+            },
+            "type": "Feature",
+            "id": 248,
+            "properties": {
+                "ref": "0000026079",
+                "name": "Lough Rinn",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.30328,
+                    53.611316
+                ]
+            },
+            "type": "Feature",
+            "id": 249,
+            "properties": {
+                "ref": "0000026082",
+                "name": "Lough Derravaragh",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.283102,
+                    53.820952
+                ]
+            },
+            "type": "Feature",
+            "id": 250,
+            "properties": {
+                "ref": "0000026083",
+                "name": "Mount Nugent",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.030334,
+                    53.92306
+                ]
+            },
+            "type": "Feature",
+            "id": 251,
+            "properties": {
+                "ref": "0000026085",
+                "name": "Jamestown",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.434775669975238,
+                    53.92911678112863
+                ]
+            },
+            "type": "Feature",
+            "id": 252,
+            "properties": {
+                "ref": "0000026086",
+                "name": "Cuil Bridge",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.467149,
+                    53.924673
+                ]
+            },
+            "type": "Feature",
+            "id": 253,
+            "properties": {
+                "ref": "0000026087",
+                "name": "Lomcloon",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.986860232986334,
+                    53.4674253733161
+                ]
+            },
+            "type": "Feature",
+            "id": 254,
+            "properties": {
+                "ref": "0000026088",
+                "name": "Hodson's Bay",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.008173,
+                    53.923144
+                ]
+            },
+            "type": "Feature",
+            "id": 255,
+            "properties": {
+                "ref": "0000026089",
+                "name": "Drumsna",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.849053,
+                    53.556108
+                ]
+            },
+            "type": "Feature",
+            "id": 256,
+            "properties": {
+                "ref": "0000026093",
+                "name": "Derry Bay  L. Ree ",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.474758,
+                    53.631409999999974
+                ]
+            },
+            "type": "Feature",
+            "id": 257,
+            "properties": {
+                "ref": "0000026104",
+                "name": "Ballinalack",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.296673,
+                    53.972839
+                ]
+            },
+            "type": "Feature",
+            "id": 258,
+            "properties": {
+                "ref": "0000026108",
+                "name": "Boyle Abbey Bridge",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.331003,
+                    53.392636
+                ]
+            },
+            "type": "Feature",
+            "id": 259,
+            "properties": {
+                "ref": "0000026140",
+                "name": "Ahascragh Pump Hse",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.566716,
+                    53.648283
+                ]
+            },
+            "type": "Feature",
+            "id": 260,
+            "properties": {
+                "ref": "0000026305",
+                "name": "Glen Lough Lower",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.565994,
+                    53.647894
+                ]
+            },
+            "type": "Feature",
+            "id": 262,
+            "properties": {
+                "ref": "0000026307",
+                "name": "Glen Lough Sluice",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.095558601188694,
+                    53.943210314852095
+                ]
+            },
+            "type": "Feature",
+            "id": 263,
+            "properties": {
+                "ref": "0000026324",
+                "name": "Carrick-On-Shannon",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.941778,
+                    53.422891
+                ]
+            },
+            "type": "Feature",
+            "id": 264,
+            "properties": {
+                "ref": "0000026333",
+                "name": "Athlone Weir U/S",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.001045583566658,
+                    53.24801499989348
+                ]
+            },
+            "type": "Feature",
+            "id": 2282,
+            "properties": {
+                "ref": "0000026351",
+                "name": "Derryholmes  u/s",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.994703012140948,
+                    53.24391321151076
+                ]
+            },
+            "type": "Feature",
+            "id": 2286,
+            "properties": {
+                "ref": "0000026352",
+                "name": "Derryholmes d/s",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.039517360351374,
+                    53.2681363374647
+                ]
+            },
+            "type": "Feature",
+            "id": 2287,
+            "properties": {
+                "ref": "0000026353",
+                "name": "W.O.P.S Rail Bridge",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.214933829911992,
+                    53.32950076316511
+                ]
+            },
+            "type": "Feature",
+            "id": 2375,
+            "properties": {
+                "ref": "0000026354",
+                "name": "Ballinasloe Town",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.218675019369762,
+                    53.33048469295928
+                ]
+            },
+            "type": "Feature",
+            "id": 2340,
+            "properties": {
+                "ref": "0000026355",
+                "name": "Ballinasloe Old Channel",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.08629508558075,
+                    53.274019094858396
+                ]
+            },
+            "type": "Feature",
+            "id": 2343,
+            "properties": {
+                "ref": "0000026356",
+                "name": "Raherbeg Rail Bridge",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.366132694016756,
+                    53.58536641441947
+                ]
+            },
+            "type": "Feature",
+            "id": 2311,
+            "properties": {
+                "ref": "0000026374",
+                "name": "Scragh Bog",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.036242,
+                    52.825291
+                ]
+            },
+            "type": "Feature",
+            "id": 265,
+            "properties": {
+                "ref": "0000027001",
+                "name": "Inch Bridge  Claureen ",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.974654,
+                    52.870043
+                ]
+            },
+            "type": "Feature",
+            "id": 266,
+            "properties": {
+                "ref": "0000027002",
+                "name": "Ballycorey",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.061919,
+                    52.943762
+                ]
+            },
+            "type": "Feature",
+            "id": 267,
+            "properties": {
+                "ref": "0000027003",
+                "name": "Corrofin  Fergus ",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.936797,
+                    52.808478
+                ]
+            },
+            "type": "Feature",
+            "id": 268,
+            "properties": {
+                "ref": "0000027004",
+                "name": "Carnelly",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.771001,
+                    52.732704
+                ]
+            },
+            "type": "Feature",
+            "id": 269,
+            "properties": {
+                "ref": "0000027011",
+                "name": "Owenogarney Railway Bridge",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.990842,
+                    52.848558
+                ]
+            },
+            "type": "Feature",
+            "id": 270,
+            "properties": {
+                "ref": "0000027023",
+                "name": "Victoria Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.972516999999998,
+                    52.848178999999995
+                ]
+            },
+            "type": "Feature",
+            "id": 271,
+            "properties": {
+                "ref": "0000027025",
+                "name": "Knox's Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.970893999999998,
+                    52.853952
+                ]
+            },
+            "type": "Feature",
+            "id": 272,
+            "properties": {
+                "ref": "0000027026",
+                "name": "Tulla Road Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.95047,
+                    52.852006
+                ]
+            },
+            "type": "Feature",
+            "id": 273,
+            "properties": {
+                "ref": "0000027028",
+                "name": "Gaurus Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.967171999999998,
+                    52.83877800000001
+                ]
+            },
+            "type": "Feature",
+            "id": 274,
+            "properties": {
+                "ref": "0000027060",
+                "name": "Doora Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.698758678830908,
+                    52.600790238802645
+                ]
+            },
+            "type": "Feature",
+            "id": 2351,
+            "properties": {
+                "ref": "0000027063",
+                "name": "Carrigaholt Pier ",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.962932559524413,
+                    52.81743716936417
+                ]
+            },
+            "type": "Feature",
+            "id": 275,
+            "properties": {
+                "ref": "0000027064",
+                "name": "Clarecastle U/S",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.962663169311465,
+                    52.8173698801184
+                ]
+            },
+            "type": "Feature",
+            "id": 276,
+            "properties": {
+                "ref": "0000027065",
+                "name": "Clarecastle Barrage D/S",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.981788999999997,
+                    52.84667399999998
+                ]
+            },
+            "type": "Feature",
+            "id": 277,
+            "properties": {
+                "ref": "0000027066",
+                "name": "Ennis Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.961536,
+                    52.81539699999997
+                ]
+            },
+            "type": "Feature",
+            "id": 278,
+            "properties": {
+                "ref": "0000027068",
+                "name": "Clarecastle Bridge",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.917919354942425,
+                    52.67870487846389
+                ]
+            },
+            "type": "Feature",
+            "id": 2357,
+            "properties": {
+                "ref": "0000027069",
+                "name": "Shannon Airport",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.293865745400186,
+                    52.93886254388729
+                ]
+            },
+            "type": "Feature",
+            "id": 280,
+            "properties": {
+                "ref": "0000028001",
+                "name": "Ennistimon (New Location)",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.521525,
+                    52.728373
+                ]
+            },
+            "type": "Feature",
+            "id": 281,
+            "properties": {
+                "ref": "0000028002",
+                "name": "Doonbeg",
+                "region_id": 7
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.679536,
+                    53.257849
+                ]
+            },
+            "type": "Feature",
+            "id": 282,
+            "properties": {
+                "ref": "0000029001",
+                "name": "Rathgorgin",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.807869,
+                    53.216947
+                ]
+            },
+            "type": "Feature",
+            "id": 283,
+            "properties": {
+                "ref": "0000029002",
+                "name": "Rahasane Turlough",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.874783,
+                    53.229342
+                ]
+            },
+            "type": "Feature",
+            "id": 284,
+            "properties": {
+                "ref": "0000029004",
+                "name": "Clarinbridge",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.733144,
+                    53.227709
+                ]
+            },
+            "type": "Feature",
+            "id": 285,
+            "properties": {
+                "ref": "0000029007",
+                "name": "Craughwell",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.772402,
+                    53.053411
+                ]
+            },
+            "type": "Feature",
+            "id": 286,
+            "properties": {
+                "ref": "0000029009",
+                "name": "Russaun",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.743236,
+                    53.220817
+                ]
+            },
+            "type": "Feature",
+            "id": 287,
+            "properties": {
+                "ref": "0000029010",
+                "name": "Aggard Bridge",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.871329,
+                    53.214109
+                ]
+            },
+            "type": "Feature",
+            "id": 288,
+            "properties": {
+                "ref": "0000029011",
+                "name": "Kilcolgan",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.790411,
+                    53.265585
+                ]
+            },
+            "type": "Feature",
+            "id": 289,
+            "properties": {
+                "ref": "0000029014",
+                "name": "Caherfinesker",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.929459,
+                    53.271762
+                ]
+            },
+            "type": "Feature",
+            "id": 290,
+            "properties": {
+                "ref": "0000029015",
+                "name": "Oranmore Bridge",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.642418,
+                    53.183557
+                ]
+            },
+            "type": "Feature",
+            "id": 291,
+            "properties": {
+                "ref": "0000029020",
+                "name": "Gortmackan",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.752354,
+                    53.099393
+                ]
+            },
+            "type": "Feature",
+            "id": 292,
+            "properties": {
+                "ref": "0000029021",
+                "name": "Ballycahalan",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.739264,
+                    53.045508
+                ]
+            },
+            "type": "Feature",
+            "id": 293,
+            "properties": {
+                "ref": "0000029022",
+                "name": "Kilcrimple",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.76927,
+                    53.023239
+                ]
+            },
+            "type": "Feature",
+            "id": 294,
+            "properties": {
+                "ref": "0000029023",
+                "name": "Killafeen",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.890516000000007,
+                    53.058588
+                ]
+            },
+            "type": "Feature",
+            "id": 295,
+            "properties": {
+                "ref": "0000029024",
+                "name": "Poulataggle",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.890456245001763,
+                    53.058571960802944
+                ]
+            },
+            "type": "Feature",
+            "id": 462,
+            "properties": {
+                "ref": "0000029025",
+                "name": "Gort 1B",
+                "region_id": 8
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.312859,
+                    53.742967
+                ]
+            },
+            "type": "Feature",
+            "id": 296,
+            "properties": {
+                "ref": "0000030001",
+                "name": "Cartronbower",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.160028999999998,
+                    53.481485
+                ]
+            },
+            "type": "Feature",
+            "id": 297,
+            "properties": {
+                "ref": "0000030002",
+                "name": "Ower Bridge",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.863839,
+                    53.437557
+                ]
+            },
+            "type": "Feature",
+            "id": 298,
+            "properties": {
+                "ref": "0000030004",
+                "name": "Corrofin  Clare ",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.154240000000009,
+                    53.65817299999998
+                ]
+            },
+            "type": "Feature",
+            "id": 299,
+            "properties": {
+                "ref": "0000030005",
+                "name": "Foxhill",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.874377,
+                    53.530827
+                ]
+            },
+            "type": "Feature",
+            "id": 300,
+            "properties": {
+                "ref": "0000030007",
+                "name": "Ballygaddy",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.289989,
+                    53.573557
+                ]
+            },
+            "type": "Feature",
+            "id": 301,
+            "properties": {
+                "ref": "0000030017",
+                "name": "Carrownagower",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.28876,
+                    53.538599
+                ]
+            },
+            "type": "Feature",
+            "id": 302,
+            "properties": {
+                "ref": "0000030031",
+                "name": "Cong Weir",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.289413,
+                    53.545681
+                ]
+            },
+            "type": "Feature",
+            "id": 303,
+            "properties": {
+                "ref": "0000030034",
+                "name": "Cregaree",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.117484,
+                    53.65304899999998
+                ]
+            },
+            "type": "Feature",
+            "id": 304,
+            "properties": {
+                "ref": "0000030037",
+                "name": "Clooncormick",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.055651347221389,
+                    53.26998200840272
+                ]
+            },
+            "type": "Feature",
+            "id": 305,
+            "properties": {
+                "ref": "0000030061",
+                "name": "Wolfe Tone Bridge",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.299349,
+                    53.610987
+                ]
+            },
+            "type": "Feature",
+            "id": 306,
+            "properties": {
+                "ref": "0000030081",
+                "name": "Caher Pier",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.249069,
+                    53.732912
+                ]
+            },
+            "type": "Feature",
+            "id": 307,
+            "properties": {
+                "ref": "0000030082",
+                "name": "Burriscara",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.076388,
+                    53.387032
+                ]
+            },
+            "type": "Feature",
+            "id": 308,
+            "properties": {
+                "ref": "0000030083",
+                "name": "Annaghdown Pier",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.275412,
+                    53.530592
+                ]
+            },
+            "type": "Feature",
+            "id": 309,
+            "properties": {
+                "ref": "0000030084",
+                "name": "Cong Pier",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.066216,
+                    53.317909
+                ]
+            },
+            "type": "Feature",
+            "id": 311,
+            "properties": {
+                "ref": "0000030089",
+                "name": "Angligham",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.075881576541427,
+                    53.29594626430898
+                ]
+            },
+            "type": "Feature",
+            "id": 2,
+            "properties": {
+                "ref": "0000030098",
+                "name": "Dangan",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.05627200000001,
+                    53.27799399999998
+                ]
+            },
+            "type": "Feature",
+            "id": 313,
+            "properties": {
+                "ref": "0000030099",
+                "name": "Galway Barrage",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.321143999999995,
+                    53.431399000000006
+                ]
+            },
+            "type": "Feature",
+            "id": 314,
+            "properties": {
+                "ref": "0000030101",
+                "name": "Oughterard",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.562055999999998,
+                    53.266925
+                ]
+            },
+            "type": "Feature",
+            "id": 315,
+            "properties": {
+                "ref": "0000031061",
+                "name": "Rossaveel Pier",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.308305999999998,
+                    53.274344999999975
+                ]
+            },
+            "type": "Feature",
+            "id": 316,
+            "properties": {
+                "ref": "0000031075",
+                "name": "Shannagurraun",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.546362000000004,
+                    53.674948
+                ]
+            },
+            "type": "Feature",
+            "id": 317,
+            "properties": {
+                "ref": "0000032013",
+                "name": "Derrinkee",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.60812899999999,
+                    53.697039
+                ]
+            },
+            "type": "Feature",
+            "id": 318,
+            "properties": {
+                "ref": "0000032014",
+                "name": "Owenmore Bridge",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.671157000000001,
+                    53.617748999999975
+                ]
+            },
+            "type": "Feature",
+            "id": 319,
+            "properties": {
+                "ref": "0000032060",
+                "name": "Aasleagh Bridge",
+                "region_id": 11
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.15768300000001,
+                    54.103927000000006
+                ]
+            },
+            "type": "Feature",
+            "id": 320,
+            "properties": {
+                "ref": "0000034001",
+                "name": "Rahans  Moy ",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.102894999999986,
+                    53.937939999999976
+                ]
+            },
+            "type": "Feature",
+            "id": 321,
+            "properties": {
+                "ref": "0000034004",
+                "name": "Ballylahan",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.060982999999986,
+                    53.92268399999999
+                ]
+            },
+            "type": "Feature",
+            "id": 322,
+            "properties": {
+                "ref": "0000034005",
+                "name": "Scarrownageeragh",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.344144000000002,
+                    54.08613999999997
+                ]
+            },
+            "type": "Feature",
+            "id": 323,
+            "properties": {
+                "ref": "0000034007",
+                "name": "Ballycarroon",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.834877000000004,
+                    54.01308099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 324,
+            "properties": {
+                "ref": "0000034009",
+                "name": "Curraughbonaun",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.930502779098545,
+                    53.96741795465641
+                ]
+            },
+            "type": "Feature",
+            "id": 325,
+            "properties": {
+                "ref": "0000034010",
+                "name": "Cloonacannana",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.181783999999992,
+                    53.863946999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 326,
+            "properties": {
+                "ref": "0000034011",
+                "name": "Gneeve Bridge",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.816832,
+                    54.03651899999998
+                ]
+            },
+            "type": "Feature",
+            "id": 327,
+            "properties": {
+                "ref": "0000034013",
+                "name": "Banada  Moy ",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.184441999999992,
+                    53.90906899999999
+                ]
+            },
+            "type": "Feature",
+            "id": 328,
+            "properties": {
+                "ref": "0000034014",
+                "name": "Mill Bridge  Clydagh ",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.208033999999996,
+                    53.88554500000001
+                ]
+            },
+            "type": "Feature",
+            "id": 329,
+            "properties": {
+                "ref": "0000034018",
+                "name": "Turlough",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.098442750451353,
+                    54.22018934391951
+                ]
+            },
+            "type": "Feature",
+            "id": 2356,
+            "properties": {
+                "ref": "0000034060",
+                "name": "Enniscrone Pier",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.146781000000008,
+                    54.11718399999996
+                ]
+            },
+            "type": "Feature",
+            "id": 330,
+            "properties": {
+                "ref": "0000034061",
+                "name": "Ballina",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.129625999999986,
+                    53.96528399999998
+                ]
+            },
+            "type": "Feature",
+            "id": 331,
+            "properties": {
+                "ref": "0000034071",
+                "name": "Pollagh",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.20807600000001,
+                    53.97766499999999
+                ]
+            },
+            "type": "Feature",
+            "id": 332,
+            "properties": {
+                "ref": "0000034081",
+                "name": "Pontoon",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.298326000000001,
+                    54.09336299999999
+                ]
+            },
+            "type": "Feature",
+            "id": 333,
+            "properties": {
+                "ref": "0000034082",
+                "name": "Gortnaraby",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.227889000000006,
+                    53.98538899999999
+                ]
+            },
+            "type": "Feature",
+            "id": 334,
+            "properties": {
+                "ref": "0000034083",
+                "name": "Corryosla",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.514662580923343,
+                    54.08134624483771
+                ]
+            },
+            "type": "Feature",
+            "id": 2274,
+            "properties": {
+                "ref": "0000034114",
+                "name": "Keenagh Deel Bridge",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.309022980182526,
+                    54.09042738052906
+                ]
+            },
+            "type": "Feature",
+            "id": 2279,
+            "properties": {
+                "ref": "0000034117",
+                "name": "Mullenmore Spring",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.372725444281727,
+                    54.07780881773209
+                ]
+            },
+            "type": "Feature",
+            "id": 2292,
+            "properties": {
+                "ref": "0000034118",
+                "name": "Richmond Bridge",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.31921537443994,
+                    54.100128367153715
+                ]
+            },
+            "type": "Feature",
+            "id": 2289,
+            "properties": {
+                "ref": "0000034119",
+                "name": "Crossmolina",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.324923115222543,
+                    54.093316737928696
+                ]
+            },
+            "type": "Feature",
+            "id": 2312,
+            "properties": {
+                "ref": "0000034120",
+                "name": "Crossmolina Weir U/S",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.32312067076497,
+                    54.09332932213922
+                ]
+            },
+            "type": "Feature",
+            "id": 2313,
+            "properties": {
+                "ref": "0000034121",
+                "name": "Crossmolina Weir D/S",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.29975326583109,
+                    54.12470246978415
+                ]
+            },
+            "type": "Feature",
+            "id": 2370,
+            "properties": {
+                "ref": "0000034122",
+                "name": "Knockglass House",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.321135836097424,
+                    54.095990797037466
+                ]
+            },
+            "type": "Feature",
+            "id": 2366,
+            "properties": {
+                "ref": "0000034123",
+                "name": "Chapel View",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -9.319344120472618,
+                    54.10003183953587
+                ]
+            },
+            "type": "Feature",
+            "id": 2365,
+            "properties": {
+                "ref": "0000034124",
+                "name": "Crossmolina U/S",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.549059999999999,
+                    54.143969999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 335,
+            "properties": {
+                "ref": "0000035001",
+                "name": "Ballynacarrow",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.553356000000013,
+                    54.17926599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 336,
+            "properties": {
+                "ref": "0000035002",
+                "name": "Billa Bridge",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.468385000000007,
+                    54.181718999999966
+                ]
+            },
+            "type": "Feature",
+            "id": 337,
+            "properties": {
+                "ref": "0000035003",
+                "name": "Ballygrania",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.511155999999994,
+                    54.05928299999996
+                ]
+            },
+            "type": "Feature",
+            "id": 338,
+            "properties": {
+                "ref": "0000035004",
+                "name": "Big Bridge",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.50929400000001,
+                    54.20919599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 339,
+            "properties": {
+                "ref": "0000035005",
+                "name": "Ballysadare",
+                "region_id": 2
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.299486999999997,
+                    54.22705899999999
+                ]
+            },
+            "type": "Feature",
+            "id": 340,
+            "properties": {
+                "ref": "0000035011",
+                "name": "Dromahair",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.201255999999999,
+                    54.31981199999998
+                ]
+            },
+            "type": "Feature",
+            "id": 341,
+            "properties": {
+                "ref": "0000035028",
+                "name": "New Bridge  Manorhamilton ",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.260686000000005,
+                    54.459444999999974
+                ]
+            },
+            "type": "Feature",
+            "id": 342,
+            "properties": {
+                "ref": "0000035029",
+                "name": "Four Masters Bridge",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.240013999999999,
+                    54.45230099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 343,
+            "properties": {
+                "ref": "0000035071",
+                "name": "Lareen",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.582531000000007,
+                    54.11164099999999
+                ]
+            },
+            "type": "Feature",
+            "id": 344,
+            "properties": {
+                "ref": "0000035078",
+                "name": "Templehouse Demesne",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.309196999999996,
+                    54.061021999999994
+                ]
+            },
+            "type": "Feature",
+            "id": 345,
+            "properties": {
+                "ref": "0000035087",
+                "name": "Ballynary",
+                "region_id": 1
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.377088000000009,
+                    54.041879
+                ]
+            },
+            "type": "Feature",
+            "id": 346,
+            "properties": {
+                "ref": "0000036010",
+                "name": "Butlers Bridge",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.457175999999996,
+                    53.96262399999998
+                ]
+            },
+            "type": "Feature",
+            "id": 347,
+            "properties": {
+                "ref": "0000036011",
+                "name": "Bellahillan",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.503404999999993,
+                    53.886690999999985
+                ]
+            },
+            "type": "Feature",
+            "id": 348,
+            "properties": {
+                "ref": "0000036012",
+                "name": "Sallaghan",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.558753999999995,
+                    54.01275799999999
+                ]
+            },
+            "type": "Feature",
+            "id": 349,
+            "properties": {
+                "ref": "0000036013",
+                "name": "Derreskit",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.177330999999991,
+                    54.177074999999974
+                ]
+            },
+            "type": "Feature",
+            "id": 350,
+            "properties": {
+                "ref": "0000036015",
+                "name": "Anlore",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.12114599999999,
+                    54.07216499999999
+                ]
+            },
+            "type": "Feature",
+            "id": 352,
+            "properties": {
+                "ref": "0000036018",
+                "name": "Ashfield",
+                "region_id": 10
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.450868999999994,
+                    54.097957999999984
+                ]
+            },
+            "type": "Feature",
+            "id": 353,
+            "properties": {
+                "ref": "0000036019",
+                "name": "Belturbet",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.691128000000011,
+                    54.08032699999999
+                ]
+            },
+            "type": "Feature",
+            "id": 354,
+            "properties": {
+                "ref": "0000036020",
+                "name": "Killywillin",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.860887999999992,
+                    54.05727599999999
+                ]
+            },
+            "type": "Feature",
+            "id": 355,
+            "properties": {
+                "ref": "0000036021",
+                "name": "Kiltybardan",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.926414000000007,
+                    54.04731699999998
+                ]
+            },
+            "type": "Feature",
+            "id": 356,
+            "properties": {
+                "ref": "0000036022",
+                "name": "Aghacashlaun",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.401795999999998,
+                    54.037961999999986
+                ]
+            },
+            "type": "Feature",
+            "id": 357,
+            "properties": {
+                "ref": "0000036023",
+                "name": "Derryheen Bridge",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.618701999999989,
+                    54.089335999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 358,
+            "properties": {
+                "ref": "0000036027",
+                "name": "Bellaheady",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.797111856483426,
+                    54.02839547086986
+                ]
+            },
+            "type": "Feature",
+            "id": 359,
+            "properties": {
+                "ref": "0000036028",
+                "name": "Aghoo",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.519246999999988,
+                    54.10787299999998
+                ]
+            },
+            "type": "Feature",
+            "id": 360,
+            "properties": {
+                "ref": "0000036029",
+                "name": "Tomkinroad",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.449005000000002,
+                    54.102523
+                ]
+            },
+            "type": "Feature",
+            "id": 361,
+            "properties": {
+                "ref": "0000036036",
+                "name": "Kilconny",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.405639000000003,
+                    54.04891499999999
+                ]
+            },
+            "type": "Feature",
+            "id": 362,
+            "properties": {
+                "ref": "0000036037",
+                "name": "Urney Bridge",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.958086000000001,
+                    54.02251899999999
+                ]
+            },
+            "type": "Feature",
+            "id": 363,
+            "properties": {
+                "ref": "0000036071",
+                "name": "Gowly",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.86659,
+                    54.050742
+                ]
+            },
+            "type": "Feature",
+            "id": 364,
+            "properties": {
+                "ref": "0000036073",
+                "name": "Wood Island",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.4706489999999866,
+                    54.00786499999999
+                ]
+            },
+            "type": "Feature",
+            "id": 365,
+            "properties": {
+                "ref": "0000036083",
+                "name": "Killykeen Forest Park",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.458314,
+                    54.016974
+                ]
+            },
+            "type": "Feature",
+            "id": 366,
+            "properties": {
+                "ref": "0000036084",
+                "name": "Innisconnell Pier",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.693641,
+                    54.056571
+                ]
+            },
+            "type": "Feature",
+            "id": 367,
+            "properties": {
+                "ref": "0000036091",
+                "name": "Ballinacur",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.436735067459142,
+                    54.13889027098174
+                ]
+            },
+            "type": "Feature",
+            "id": 368,
+            "properties": {
+                "ref": "0000036171",
+                "name": "Foalies Bridge",
+                "region_id": 13
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.36527799999999,
+                    54.781705999999986
+                ]
+            },
+            "type": "Feature",
+            "id": 369,
+            "properties": {
+                "ref": "0000038001",
+                "name": "Clonconwal",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -8.285969453452752,
+                    54.79339029935681
+                ]
+            },
+            "type": "Feature",
+            "id": 2359,
+            "properties": {
+                "ref": "0000038010",
+                "name": "Glenties",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.817926000000013,
+                    54.931112999999996
+                ]
+            },
+            "type": "Feature",
+            "id": 370,
+            "properties": {
+                "ref": "0000039001",
+                "name": "New Mills",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.4523949999999965,
+                    55.143612
+                ]
+            },
+            "type": "Feature",
+            "id": 371,
+            "properties": {
+                "ref": "0000039003",
+                "name": "Tullyarvan",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.894476,
+                    55.000253
+                ]
+            },
+            "type": "Feature",
+            "id": 372,
+            "properties": {
+                "ref": "0000039008",
+                "name": "Gartan Bridge",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.720693,
+                    55.043786
+                ]
+            },
+            "type": "Feature",
+            "id": 373,
+            "properties": {
+                "ref": "0000039009",
+                "name": "Aghawoney",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.714146,
+                    54.948446999999966
+                ]
+            },
+            "type": "Feature",
+            "id": 374,
+            "properties": {
+                "ref": "0000039061",
+                "name": "Port Bridge",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.26268525673378,
+                    55.24711530346442
+                ]
+            },
+            "type": "Feature",
+            "id": 2355,
+            "properties": {
+                "ref": "0000040008",
+                "name": "Ballyloskey",
+                "region_id": 3
+            }
+        },
+        {
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -7.334644999999995,
+                    55.371617999999984
+                ]
+            },
+            "type": "Feature",
+            "id": 375,
+            "properties": {
+                "ref": "0000040060",
+                "name": "Malin Head",
+                "region_id": 3
+            }
+        }
+    ]
+}

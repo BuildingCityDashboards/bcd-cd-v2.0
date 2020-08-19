@@ -1,12 +1,14 @@
 import { ChartLinePopup } from '../../modules/bcd-chart-line-popup.js'
 import { MultiLineChart } from '../../modules/MultiLineChart.js'
 import { getDefaultMapOptions, getLatLng } from '../../modules/bcd-maps.js'
+import { toUnicode } from 'punycode'
 
 (async () => {
   // console.log('load waterLevel charts')
   const stamenTonerUrl_Lite = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
 
   try {
+    //  TODO: abstract to function in bcd-maps
     proj4.defs('EPSG:29902', '+proj=tmerc +lat_0=53.5 +lon_0=-8 +k=1.000035 \n\+x_0=200000 \n\+y_0=250000 +a=6377340.189 +b=6356034.447938534 +units=m +no_defs')
     var firstProjection = 'EPSG:29902'
     var secondProjection = 'EPSG:4326'
@@ -19,14 +21,15 @@ import { getDefaultMapOptions, getLatLng } from '../../modules/bcd-maps.js'
     waterLevelMap.setView(getLatLng(), 8)
     waterLevelMap.addLayer(waterLevelTiles)
     const waterLevelMapIcon = L.icon({
-      iconUrl: './images/environment/microphone-black-shape.svg',
+      iconUrl: './images/environment/water-15.svg',
       iconSize: [20, 20] // orig size
     // iconAnchor: [iconAX, iconAY] //,
       // popupAnchor: [-3, -76]
     })
-    const waterLevelMarker = L.Marker.extend({
+    const WaterLevelMarker = L.Marker.extend({
       options: {
-        id: 0
+        sid: 0,
+        sfn: ''
       }
     })
 
@@ -35,89 +38,93 @@ import { getDefaultMapOptions, getLatLng } from '../../modules/bcd-maps.js'
     // 'className': 'leaflet-popup'
     }
 
-    const waterLevelSitesLayer = new L.LayerGroup()
-    const waterLevelSites = await getSites('./data/Environment/soundsites.json', 'sound_monitoring_sites')
-    const allSitesPromises = waterLevelSites.map(async d => {
-      const marker = new waterLevelMarker(
-        new L.LatLng(d.lng, d.lat), {
-          id: d.id,
-          opacity: 0.9,
-          title: 'waterLevel Monitor Site', // shown in rollover tooltip
-          alt: 'waterLevel monitor icon',
-          icon: waterLevelMapIcon,
-          type: 'waterLevel Level Monitor'
-        })
-      marker.bindPopup(getPopup(d), waterLevelPopupOptons)
-      marker.on('popupopen', () => {
-        getPopupPlot(d)
-      })
-      waterLevelSitesLayer.addLayer(marker)
-      const siteReadings = await getSiteReadings(d)
-      return siteReadings
-    })
-    const allSitesData = await Promise.all(allSitesPromises)
-    let allSitesFlat = allSitesData.flat(1)
-    allSitesFlat = allSitesFlat.filter((s, i) => {
-      return isToday(s.date) && (parseInt(s.date.getHours()) < 10) // // TODO: remove demo hack
-    })
-    // console.log('allSitesFlat')
-    // console.log(allSitesFlat)
+    const waterLevelSitesCluster = L.markerClusterGroup()
+    const waterLevelSites = await getSites('./data/environment/waterlevel_stations.geojson')
 
-    waterLevelMap.addLayer(waterLevelSitesLayer)
-    // waterLevelMap.fitBounds(waterLevelCluster.getBounds())
-    // console.log(allSitesFlat)
+    // console.log(waterLevelSites)
+    // waterLevelSitesCluster = await waterLevelSites.features.map(async d => {
+    //   let mc = L.markerClusterGroup()
+    //   const marker = new WaterLevelMarker(
+    //     new L.LatLng(d.geometry.coordinates[0], d.geometry.coordinates[1]), {
+    //       // id: d.id,
+    //       // opacity: 0.9,
+    //       title: 'Water Level Monitor Site', // shown in rollover tooltip
+    //       alt: 'Water Level monitor site icon',
+    //       // icon: waterLevelMapIcon,
+    //       type: 'Water Level Monitor'
+    //     })
+    //   // marker.bindPopup(getPopup(d), waterLevelPopupOptons)
+    //   // marker.on('popupopen', () => {
+    //   //   getPopupPlot(d)
+    //   // })
+    //   mc.addMarker(marker)
+    //   // const siteReadings = await getSiteReadings(d)
+    //   return mc
+    // })
+    // waterLevelMap.addLayer(mc)
+    // const allSitesData = await Promise.all(allSitesPromises)
+    // let allSitesFlat = allSitesData.flat(1)
+    // allSitesFlat = allSitesFlat.filter((s, i) => {
+    //   return isToday(s.date) && (parseInt(s.date.getHours()) < 10) // // TODO: remove demo hack
+    // })
+    // // console.log('allSitesFlat')
+    // // console.log(allSitesFlat)
 
-    const waterLevelChartOptions = {
-      elementId: 'chart-water-level-monitors',
-      d: allSitesFlat,
-      tracekey: 'name', // ?
-      // tracenames: keys, // For StackedAreaChart-formatted data need to provide keys
-      xV: 'date', // expects a date object
-      yV: 'value',
-      tX: 'Time today', // string axis title
-      tY: 'dB'
-    }
+    // waterLevelMap.addLayer(waterLevelSitesLayer)
+    // // waterLevelMap.fitBounds(waterLevelCluster.getBounds())
+    // // console.log(allSitesFlat)
 
-    const waterLevelChart = new MultiLineChart(waterLevelChartOptions)
+    // const waterLevelChartOptions = {
+    //   elementId: 'chart-water-level-monitors',
+    //   d: allSitesFlat,
+    //   tracekey: 'name', // ?
+    //   // tracenames: keys, // For StackedAreaChart-formatted data need to provide keys
+    //   xV: 'date', // expects a date object
+    //   yV: 'value',
+    //   tX: 'Time today', // string axis title
+    //   tY: 'dB'
+    // }
 
-    const redraw = () => {
-      if (document.querySelector('#chart-water-level-monitors').style.display !== 'none') {
-        waterLevelChart.drawChart()
-        waterLevelChart.addTooltip('waterLevel Level (Decibels) - ', '', 'label')
-      }
-    }
-    redraw()
+    // const waterLevelChart = new MultiLineChart(waterLevelChartOptions)
 
-    d3.select('#map-water-level-monitors').style('display', 'block')
-    d3.select('#chart-water-level-monitors').style('display', 'none')
+    // const redraw = () => {
+    //   if (document.querySelector('#chart-water-level-monitors').style.display !== 'none') {
+    //     waterLevelChart.drawChart()
+    //     waterLevelChart.addTooltip('waterLevel Level (Decibels) - ', '', 'label')
+    //   }
+    // }
+    // redraw()
 
-    d3.select('#btn-water-level-chart').on('click', function () {
-      activeBtn(this)
-      d3.select('#chart-water-level-monitors').style('display', 'block')
-      d3.select('#map-water-level-monitors').style('display', 'none')
-      waterLevelChart.drawChart()
-      waterLevelChart.addTooltip('waterLevel level (Decibels) - ', '', 'label')
-    })
+    // d3.select('#map-water-level-monitors').style('display', 'block')
+    // d3.select('#chart-water-level-monitors').style('display', 'none')
 
-    d3.select('#btn-water-level-map').on('click', function () {
-      activeBtn(this)
-      d3.select('#chart-water-level-monitors').style('display', 'none')
-      d3.select('#map-water-level-monitors').style('display', 'block')
-    })
+    // d3.select('#btn-water-level-chart').on('click', function () {
+    //   activeBtn(this)
+    //   d3.select('#chart-water-level-monitors').style('display', 'block')
+    //   d3.select('#map-water-level-monitors').style('display', 'none')
+    //   waterLevelChart.drawChart()
+    //   waterLevelChart.addTooltip('waterLevel level (Decibels) - ', '', 'label')
+    // })
 
-    window.addEventListener('resize', () => {
-      redraw()
-    })
+    // d3.select('#btn-water-level-map').on('click', function () {
+    //   activeBtn(this)
+    //   d3.select('#chart-water-level-monitors').style('display', 'none')
+    //   d3.select('#map-water-level-monitors').style('display', 'block')
+    // })
+
+    // window.addEventListener('resize', () => {
+    //   redraw()
+    // })
   } catch (e) {
     console.log(e)
   }
 })()
 
-async function getSites (url, key) {
+async function getSites (url) {
   // need to be able to look up the static data using cosit as key
   // want an array of objects for dublin counters
-  const siteData = [{}]
-  // await d3.json(url)
+  const siteData = await d3.json(url)
+
   // siteData = siteData[key].map(site => {
   //   const obj = {
   //     id: +site.site_id,
@@ -189,6 +196,43 @@ async function getSiteReadings (d_) {
     return datum
   })
   return data
+}
+
+const getWaterLevels = async () => {
+  const FILE_NAME = './public/data/Environment/waterlevel_latest.json'
+  fs.readFile(FILE_NAME, (error, data) => {
+    // console.log('Async Read: starting...')
+    if (error) {
+      // console.log('Async Read: NOT successful!')
+
+      console.log(error)
+    } else {
+      try {
+        const dataJson = JSON.parse(data)
+        const data_ = dataJson.features
+        const regionData = data_.filter(function (d) {
+          return d.properties['station.region_id'] === null || d.properties['station.region_id'] === 10
+        })
+
+        regionData.forEach(function (d, i) {
+          const station_ref = d.properties['station.ref'].substring(5, 10)
+          const sensor_ref = d.properties['sensor.ref']
+          const fname = station_ref.concat('_', sensor_ref)
+
+          // console.log(i + '---'+ fname);
+          var file = fs.createWriteStream('./public/data/Environment/water_levels/' + fname + '.csv')
+          var http = require('http')
+          // http://waterlevel.ie/data/month/25017_0001.csv
+          http.get('http://waterlevel.ie/data/month/' + fname + '.csv',
+            function (response) {
+              response.pipe(file)
+            })
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  })
 }
 
 async function getPopupPlot (d_) {
