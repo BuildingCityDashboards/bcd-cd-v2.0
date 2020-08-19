@@ -328,22 +328,6 @@ class MultiLineChart extends Chart {
     return year + ' Q' + q
   }
 
-  // hides the rate column in the tooltip e.g. when showing % change
-  hideRate (value) {
-    const c = this
-    const i = c.getElement('.bcd-text-indicator')
-    const r = c.getElement('.bcd-text-rate')
-
-    if (value) {
-      i.style('display', 'none')
-      r.style('display', 'none')
-    } else {
-      i.style('display', 'block')
-      r.style('display', 'block')
-    }
-    // value ? g.selectAll(".tp-text-indicator").style("display", "none") : g.selectAll(".tp-text-indicator").style("display", "block")
-  }
-
   addBaseLine (value) {
     const c = this
     const gLines = c.getElement('.grid-lines')
