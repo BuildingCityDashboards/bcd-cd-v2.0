@@ -21,22 +21,22 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       removeSpinner('chart-' + chartDivIds[0])
     }
     const dataset = JSONstat(json).Dataset(0)
-    console.log(dataset)
+    // console.log(dataset)
 
     const dimensions = dataset.Dimension().map(dim => {
       return dim.label
     })
-    console.log(dimensions)
+    // console.log(dimensions)
 
     const categoriesAirport = dataset.Dimension(dimensions[0]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesAirport)
+    // console.log(categoriesAirport)
     // //
     const categoriesStat = dataset.Dimension(dimensions[2]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesStat)
+    // console.log(categoriesStat)
 
     const airportPassengersTable = dataset.toTable(
       { type: 'arrobj' },
@@ -52,7 +52,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         }
       })
 
-    console.log(airportPassengersTable)
+    // console.log(airportPassengersTable)
     const airportPassengers = {
       elementId: 'chart-' + chartDivIds[0],
       data: airportPassengersTable,
@@ -68,7 +68,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 
     const redraw = () => {
       airportPassengersChart.drawChart()
-    //   airportPassengersChart.addTooltip('RPPI for ', '', 'label')
+      airportPassengersChart.addTooltip('Aiprport passengers in ', '', 'label')
     }
     redraw()
 
