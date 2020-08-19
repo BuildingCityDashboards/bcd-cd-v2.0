@@ -299,18 +299,20 @@ class GroupedBarChart extends Chart {
     return ttX
   }
 
+  // hides the rate column in the tooltip e.g. when showing % change
   hideRate (value) {
     const c = this
+    const i = c.getElement('.bcd-text-indicator')
+    const r = c.getElement('.bcd-text-rate')
 
     if (value) {
-      // console.log("value of hide", value);
-      d3.selectAll(c.e + ' .bcd-text-indicator').style('display', 'none')
-      d3.selectAll(c.e + ' .bcd-text-rate').style('display', 'none')
+      i.style('display', 'none')
+      r.style('display', 'none')
     } else {
-      d3.selectAll(c.e + ' .bcd-text-indicator').style('display', 'block')
-      d3.selectAll(c.e + ' .bcd-text-rate').style('display', 'block')
+      i.style('display', 'block')
+      r.style('display', 'block')
     }
-    // value ? c.svg.selectAll(".bcd-text-indicator").style("display", "none") : c.svg.selectAll(".bcd-text-indicator").style("display", "block");
+    // value ? g.selectAll(".tp-text-indicator").style("display", "none") : g.selectAll(".tp-text-indicator").style("display", "block")
   }
 
   ttContent (d, pD, k) {
