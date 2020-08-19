@@ -132,7 +132,7 @@ const getShortName = function (s) {
     'Type of Selected Service and Infrastructure': 'Type of Service',
     'HSE Adult Emergency Department hospital': 'A&E',
     'HSE Maternity hospital': 'Maternity Hosp.',
-    'Average Distance of Residential Dwellings to Selected Services and Infrastructure (Kilometres)': 'Average Distance to Services (Km)'
+    'Average Distance of Residential Dwellings to Selected Services and Infrastructure (Kilometres)': 'Average Distance (Km)'
   }
 
   return SHORTS[s] || s
