@@ -7,7 +7,6 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
 import { hasCleanValue } from '../../modules/bcd-data.js'
 
 (async function main () {
-  const parseYear = d3.timeParse('%Y')
   const chartDivIds = ['distance-health-service']
   const STATBANK_BASE_URL =
           'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
@@ -49,7 +48,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     const XAXIS_CATEGORIES = ['HSE Adult Emergency Department hospital', 'HSE Maternity hospital', 'Pharmacy', 'GP']
     const YAXIS = ['Average Distance of Residential Dwellings to Selected Services and Infrastructure (Kilometres)']
     const TRACES = 'Region and County'
-    const INCLUDE_REGIONS = ['State', 'Dublin', 'Cork City', 'Cork County']
+    const INCLUDE_REGIONS = ['State', 'Dublin City', 'Cork City', 'Cork County']
 
     const distanceHealthServiceFiltered = dataset.toTable(
       { type: 'arrobj' },
@@ -103,8 +102,6 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         distanceHealthServiceChart.drawChart()
-        // distanceHealthServiceChart.addTooltip(STATS[0].split('(')[0], '', 'label')
-        // distanceHealthServiceChart.showSelectedLabelsX([1, 6, 11, 17, 21, 26, 31])
         distanceHealthServiceChart.hideRate(true)
       }
     }
@@ -130,7 +127,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
 const getShortName = function (s) {
   const SHORTS = {
     'Type of Selected Service and Infrastructure': 'Type of Service',
-    'HSE Adult Emergency Department hospital': 'A&E',
+    'HSE Adult Emergency Department hospital': 'A&E Hosp.',
     'HSE Maternity hospital': 'Maternity Hosp.',
     'Average Distance of Residential Dwellings to Selected Services and Infrastructure (Kilometres)': 'Average Distance (Km)'
   }
