@@ -23,6 +23,17 @@
       '<img src = "../images/transport/bus-w-15.svg"><h3>39.5 Million </h3><p> trips were taken on <b>Dublin Bus</b> in the last quarter of 2019</p>',
       ['chart-public-transport-trips']
       )
+
+    +theme__text-chart(
+      'airport-passengers',
+      [{ 
+      link:'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=TAQ01&PLanguage=0',
+      name: 'CSO'}],
+      'Cork Airport Passengers',
+      '<p> ***tbc*** </p>',
+      '<img src = "../images/transport/bus-w-15.svg"><h3>39.5 Million </h3><p> trips were taken on <b>Dublin Bus</b> in the last quarter of 2019</p>',
+      ['chart-airport-passengers']
+      )
     
     //- +theme__text-chart(
       'dublin-bikes',
@@ -51,7 +62,7 @@
       )
     
     
-    +theme__text-chart(
+    //- +theme__text-chart(
       'traffic-counters',
       [{
       link: 'https://www.nratrafficdata.ie/c2/gmapbasic.asp?sgid=ZvyVmXU8jBt9PJE$c7UXt6',
@@ -69,4 +80,5 @@
 
         
 block append scripts
+  script(src="/javascripts/themes/transport/airport_passengers.js" type="module")
   //- script(src="/javascripts/themes/transport/transport_traffic.js" type="module")

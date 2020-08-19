@@ -1,7 +1,7 @@
 import { ChartLinePopup } from '../../modules/bcd-chart-line-popup.js'
 import { MultiLineChart } from '../../modules/MultiLineChart.js'
 import { getDefaultMapOptions, getLatLng } from '../../modules/bcd-maps.js'
-import { toUnicode } from 'punycode'
+// import { toUnicode } from 'punycode'
 
 (async () => {
   // console.log('load waterLevel charts')
