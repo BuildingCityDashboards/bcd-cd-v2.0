@@ -126,6 +126,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     }
     // console.log(populationCountContent)
     const populationRateChart = new MultiLineChart(populationRateContent)
+    populationRateChart.hideRate(true)
 
     d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
     d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
