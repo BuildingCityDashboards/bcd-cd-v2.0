@@ -126,7 +126,8 @@ html {
 #hero-weather__box {
   display            : flex;
   position           : relative;
-  width              : 150px;
+  min-width              : 175px;
+  width: auto;
   height             : 24px;
   padding-top        : 0px;
   padding-bottom     : 0px;
@@ -135,7 +136,7 @@ html {
   font-weight        : 500;
   flex-direction     : row;
   flex-wrap          : nowrap;
-  justify-content    : space-around;
+  justify-content    : space-evenly;
   line-height        : 1.2;
   letter-spacing     : 0.15px;
   word-wrap          : break-word;
@@ -143,7 +144,7 @@ html {
 
 #hero-weather__left-top {
   height         : 12px;
-  color          : #6fd1f6;
+  color          :#ee8176;
   font-size      : 12px;
   line-height    : 1;
   letter-spacing : 0.15px;
@@ -158,7 +159,7 @@ html {
   width       : 16px;
   height      : 16px;
   align-items : center;
-  /* background-color : rgba(255, 255, 255, 0.3); */
+
 }
 
 #hero-weather__symbol img {
@@ -167,38 +168,9 @@ html {
   /* background-color : rgba(255, 255, 255, 0.3); */
 }
 
-.tooltiptext {
-  z-index       : 1;
-  visibility    : hidden;
-  position      : absolute;
-  bottom        : 90%;
-  left          : 50%;
-  min-width         : 100px;
-  /* margin-top    : -5px; */
-  padding       : 8px;
-  color         : rgba(255, 255, 255, 0.6);
-  opacity       : 1;
-  border-radius : 6px;
-  background    : rgba(28, 32, 34, 0.8);
-  text-align    : center;
-  font-family   : 'Roboto',
-                  sans-serif;
-  font-size     : 16px;
-}
-
-/**
- * .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%;
- * margin-left: -5px; border-width: 5px; border-style: solid; border-color:
- * black transparent transparent transparent; }
- */
-
-#hero-weather__center:hover .tooltiptext {
-  visibility : visible;
-}
-
 #hero-weather__right-top {
   display        : flex;
-  color          : #6fd1f6;
+  color          : #ee8176;
   align-items    : center;
   font-size      : 12px;
   flex-direction : row;
@@ -220,7 +192,35 @@ html {
   display : none;
 }
 
+.tooltiptext {
+  z-index       : 1;
+  visibility    : hidden;
+  position      : absolute;
+  bottom        : 90%;
+  left          : 50%;
+  min-width         : 100px;
+  /* margin-top    : -5px; */
+  padding       : 8px;
+  color         : rgba(18, 18, 18, 0.34);
+  opacity       : 1;
+  border-radius : 6px;
+  background    : rgba(28, 32, 34, 0.8);
+  text-align    : center;
+  font-size     : 16px;
+}
+
+/**
+ * .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%;
+ * margin-left: -5px; border-width: 5px; border-style: solid; border-color:
+ * black transparent transparent transparent; }
+ */
+
+#hero-weather__center:hover .tooltiptext {
+  visibility : visible;
+}
+
 #hero-carousel {
+  background-color: #ee8176;
   grid-column : span 4;
   grid-row    : 3 / 7;
 }
@@ -287,7 +287,7 @@ html {
 
 .hero-carousel__card {}
 
-#hero-icon-navs {
+#hero__icon-navs {
   display            : flex;
   align-self         : flex-end;
   flex-direction     : row;
@@ -315,14 +315,21 @@ html {
 }
 
 .icon-nav__icon {
-  width  : 24px;
-  height : 24px;
+  width  : 48px;
+  height : 48px;
   border : none;
+  display : flex;
+  outline        : none;
+  box-shadow     : none;
 }
 
-.icon-nav__icon img {
-  width  : 100%;
-  height : 100%;
+.icon-nav__icon svg {
+  background-color: transparent;
+  fill: transparent;
+  stroke: red;
+  width  : 48px;
+  height : 48px;
+
 }
 
 .icon-nav__title {
