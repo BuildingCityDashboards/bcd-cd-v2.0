@@ -7,7 +7,7 @@ block append head
   
   //- link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
   //- link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
-  link(rel="stylesheet", href="/stylesheets/home.css")
+  link(rel="stylesheet", href="/stylesheets/home/home.css")
   //- link(rel="stylesheet", href="/stylesheets/home-about.css")
   //- link(rel="stylesheet", href="/stylesheets/card.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
@@ -21,13 +21,13 @@ block content
         #hero-title
             #hero-title__text--top CORK
             #hero-title__text--bottom DASHBOARD
-        //- #hero-time-weather
+        #hero-time-weather
             #hero-time
                 #hero-time__box  
                     #hero-time__clock  
                     #hero-time__date
             #hero-weather
-                include component/card-weather
+                //- include component/card-weather
       
         //- #hero-carousel
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
