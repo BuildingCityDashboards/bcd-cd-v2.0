@@ -7,7 +7,7 @@ block append head
   
   //- link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
   //- link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
-  //- link(rel="stylesheet", href="/stylesheets/home.css")
+  link(rel="stylesheet", href="/stylesheets/home.css")
   //- link(rel="stylesheet", href="/stylesheets/home-about.css")
   //- link(rel="stylesheet", href="/stylesheets/card.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
@@ -16,14 +16,12 @@ block append head
 //- block navigation
 
 block content
-  H1 Cork Dashboard
-  //- #hero 
+  #hero 
     #hero-grid
         #hero-title
-            div 
-              #hero-title__text--top DUBLIN
-              #hero-title__text--bottom DASHBOARD
-        #hero-time-weather
+            #hero-title__text--top CORK
+            #hero-title__text--bottom DASHBOARD
+        //- #hero-time-weather
             #hero-time
                 #hero-time__box  
                     #hero-time__clock  
@@ -31,11 +29,11 @@ block content
             #hero-weather
                 include component/card-weather
       
-        #hero-carousel
+        //- #hero-carousel
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
               .carousel-cell
                 #bikes-card.card-wrapper
-                  +card-rt("themes#dublin-bikes", "card", "Dublin Bikes", "Updating", "rt-bikes")
+                  +card-rt("themes#dublin-bikes", "card", "Cork Bikes", "Updating", "rt-bikes")
               
               .carousel-cell
                 #traveltimes-card.card-wrapper
@@ -65,9 +63,9 @@ block content
             
           
             //-         //- include component/carousel-charts.pug
-        #hero-icon-navs
+        //- #hero-icon-navs
             include component/icon-nav.pug
-        #hero-scroll-arrow.home-scroll-arrow
+        //- #hero-scroll-arrow.home-scroll-arrow
           a(href='#about-dublin')
             <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
         
@@ -75,21 +73,21 @@ block content
   //- #about-dublin 
     //-.position-anchor
     #about-dublin__header 
-      h1 ABOUT DUBLIN
+      h1 ABOUT CORK
     #about-dublin__card
-      p#region__open Dublin is the capital and largest city in Ireland. 
+      p#region__open Cork is the capital and largest city in Ireland. 
         |It is located in the province of Leinster and covers a total area of 
         span#region__area xxx.xx
         |. 
 
-        |Dublin has a total population of 
+        |Cork has a total population of 
         span#region__population x,xxx,xxx 
         |  people, with a median age of 
         span#region__age xx.x 
         |  years. The median household income is 
         span#region__income €xx.xx
         |.
-      p Between 2011 and 2016, the population of Dublin 
+      p Between 2011 and 2016, the population of Cork 
         span#region__populationIndicator declined/increased 
         |from 
         span#region__prePopulation xxxxxx 
@@ -107,7 +105,7 @@ block content
         |, a 
         span#region__income__change x.xx% decrease/increase
         |.
-      p There are four local authorities whose remit collectively encompasses the geographic area of the county and city of Dublin. 
+      p There are four local authorities whose remit collectively encompasses the geographic area of the county and city of Cork. 
         | Select a council on the map in the next section to see specific information. 
         //- #regions-map
         
@@ -124,7 +122,7 @@ block content
       <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
     #regions-info__card
       #regions-info__card__header
-        h1#local__title Dublin City
+        h1#local__title Cork City
       #regions-info__card__body
         p 
           span#local__open 
@@ -140,7 +138,7 @@ block content
           //- |and a median household income of 
           //- span#local__income €xx.xx.
         p Between 2011 and 2016 the population of  
-          span#local__title__small Dublin
+          span#local__title__small Cork
           |  
           span#local__populationIndicator  
           |from 
@@ -157,8 +155,8 @@ block content
     #about-dublin-dashboard__twitter
       p Follow @dublindashboard on Twitter
     #about-dublin-dashboard__card
-      p Dublin Dashboard provides citizens, public sector workers and companies with real-time information, time-series indicator data, and interactive maps about all aspects of the city. It enables users to gain detailed, up to date intelligence about the city that aids everyday decision making and fosters evidence-informed analysis. 
-      p Data is pulled together from major  sources -- including Dublin City Council, Dublinked, Central Statistics Office, Eurostat, and government departments, and links to a variety of existing applications -- to provide thousands of interactive data visualisations. The underlying data is freely available so others can undertake their own analysis and build their own applications and visualisations.
+      p Cork Dashboard provides citizens, public sector workers and companies with real-time information, time-series indicator data, and interactive maps about all aspects of the city. It enables users to gain detailed, up to date intelligence about the city that aids everyday decision making and fosters evidence-informed analysis. 
+      p Data is pulled together from major  sources -- including Cork City Council, Corkked, Central Statistics Office, Eurostat, and government departments, and links to a variety of existing applications -- to provide thousands of interactive data visualisations. The underlying data is freely available so others can undertake their own analysis and build their own applications and visualisations.
         
     //- #about-dublin-dashboard.position-anchor
   //- section.map
