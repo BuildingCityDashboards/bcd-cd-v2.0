@@ -311,24 +311,25 @@ html {
   background         : transparent;
   align-items        : center;
   flex-direction     : column;
-  justify-content    : space-evenly;
+  justify-content    : center;
 }
 
 .icon-nav__icon {
   width  : 48px;
   height : 48px;
   border : none;
-  display : flex;
-  outline        : none;
-  box-shadow     : none;
+ align-self: center;
 }
 
 .icon-nav__icon svg {
   background-color: transparent;
-  fill: transparent;
+  fill: red;
   stroke: red;
   width  : 48px;
   height : 48px;
+  outline        : none;
+  box-shadow     : none;
+
 
 }
 
