@@ -35,7 +35,7 @@ const stories = require('./routes/stories')
 const queries = require('./routes/queries')
 const tools = require('./routes/tools')
 const portal = require('./routes/portal')
-// const api = require('./routes/api')
+const api = require('./routes/api')
 
 // view engine setup
 app.set('views', [path.join(__dirname, 'views'),
@@ -43,7 +43,8 @@ app.set('views', [path.join(__dirname, 'views'),
   path.join(__dirname, 'views/stories'),
   path.join(__dirname, 'views/queries'),
   path.join(__dirname, 'views/tools'),
-  path.join(__dirname, 'views/portal')])
+  path.join(__dirname, 'views/portal'),
+  path.join(__dirname, 'views/api')])
 
 app.set('view engine', 'pug')
 
@@ -53,7 +54,7 @@ app.use('/stories', stories)
 app.use('/queries', queries)
 app.use('/tools', tools)
 app.use('/portal', portal)
-// app.use('/api', api)
+app.use('/api', api)
 
 // //additional functionality from node modules
 
