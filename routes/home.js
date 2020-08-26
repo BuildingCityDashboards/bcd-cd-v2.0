@@ -5,7 +5,7 @@ var router = express.Router({
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Cork Dashboard Home' })
+  res.render('home', { title: 'Cork Dashboard Home' })
 })
 
 module.exports = router

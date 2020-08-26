@@ -29,7 +29,7 @@ app.use(morgan('tiny', {
 }))
 
 // get routes files
-const index = require('./routes/index')
+const home = require('./routes/home')
 const themes = require('./routes/themes')
 const stories = require('./routes/stories')
 const queries = require('./routes/queries')
@@ -47,7 +47,7 @@ app.set('views', [path.join(__dirname, 'views'),
 
 app.set('view engine', 'pug')
 
-app.use('/', index)
+app.use('/', home)
 app.use('/themes', themes)
 app.use('/stories', stories)
 app.use('/queries', queries)
