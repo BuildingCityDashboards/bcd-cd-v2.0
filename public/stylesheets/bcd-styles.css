@@ -1,13 +1,16 @@
 html {
-  background-color: white;
-  padding: 0;
-  margin: 0;
+    background-color: white;
+    padding: 0;
+    margin: 0;
 }
 
 
 body {
-  font-family         : 'Roboto',
+    padding: 0;
+    margin: 0;
+    font-family         : 'Roboto',
                         sans-serif;
+                    
 }
 
 a {
