@@ -38,7 +38,7 @@ async function processWeather (xmlWeather) {
   // let arr = observations[0].getElementsByTagName('station').namedItem('Dublin')
   const stations = observations[0].getElementsByTagName('station')
   for (s of stations) {
-    if (s.getAttribute('name') === 'Dublin') {
+    if (s.getAttribute('name') === 'Cork') {
       d3.select('#hero-weather__left-top')
         .html(getStringForAttribute(s, 'temp'))
       const rainfall = getStringForAttribute(s, 'rainfall')
