@@ -583,14 +583,13 @@ and (orientation: portrait) {
     width: 100%;
   }
 
-  .hero-carousel__card {}
 
-  #hero-icon-navs {
-    display: flex;
+  #hero__icon-navs {
+    /* display: flex; */
     border: none;
     align-self: center;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-around; 
     grid-column: span 12;
     grid-row: 10 / 12;
   }
@@ -606,7 +605,7 @@ and (orientation: portrait) {
   .icon-nav__box {
     display: flex;
     width: 165px;
-    height: 72px;
+    /* height: 72px; */
     margin: 0;
     padding: 0;
     border: none;
@@ -614,26 +613,43 @@ and (orientation: portrait) {
     background-color: rgba(142, 191, 214, 0.12);
     align-items: center;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    background-color : #e95d4f;
   }
 
   .icon-nav__icon {
     width: 48px;
     height: 48px;
     border: none;
-    /* background-color : rgba(155, 155, 155, 0.0); */
+    padding-top: 8px;
+    padding-bottom: 8px;
+    
+  }
+
+  .icon-nav__icon svg {
+    background-color: transparent;
+    stroke: #e95d4f;
+    fill: white;
+    stroke-width: 0.5px;
+    width: 48px;
+    height: 48px;
+    outline: none;
+    box-shadow: none;
   }
 
   .icon-nav__title {
-    width: 62px;
-    height: 16px;
-    color: #6fd1f6;
+    width: auto;
+    height: auto;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 1.14;
     letter-spacing: 1.25px;
+    color: white;
+    text-align: center;
+    padding-left: 8px;
+
   }
 
   .icon-nav__text {
