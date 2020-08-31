@@ -420,7 +420,7 @@ and (orientation: portrait) {
     font-weight     : 500;
     font-stretch    : normal;
     flex-wrap       : nowrap;
-    justify-content : center;
+    justify-content : space-evenly;
     line-height     : 1.2;
     letter-spacing  : 0.15px;
   }
