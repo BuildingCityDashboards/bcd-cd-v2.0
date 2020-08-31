@@ -316,11 +316,8 @@ html {
 
 .icon-nav__icon {
   width  : 48px;
-  /* height : 48px; */
   border : none;
   display: block;
-  /* align-self: center;
-  justify-self: center; */
   margin-top: auto;
   margin-bottom: auto;
 
@@ -352,16 +349,18 @@ html {
 }
 
 #hero-scroll-arrow {
-  align-self  : flex-end;
+  width            : 24px;
+  align-self  : center;
+  justify-self: center;
   grid-column : 2 / 4;
   grid-row    : 8 / 9;
 }
 
-.home-scroll-arrow svg {
-  width            : 24px;
-  height           : auto;
+.scroll-arrow svg {
+  width            : 18px;
   background-color : transparent;
-  fill             : grey;
+  fill             : black;
+  opacity: 0.6;
   transform        : rotate(-90deg);
 }
 
