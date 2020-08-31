@@ -32,7 +32,7 @@ block content
             #hero-weather
                 include home/hero__card-weather
       
-        #hero-carousel
+        //- #hero-carousel
           //- <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
               .carousel-cell
                 #bikes-card.card-wrapper
@@ -66,15 +66,15 @@ block content
             
           
           //-         //- include component/carousel-charts.pug
-        #hero__icon-navs
+        //- #hero__icon-navs
             include home/hero__icon-nav.pug
             
-        #hero-scroll-arrow.scroll-arrow
+        //- #hero-scroll-arrow.scroll-arrow
             a(href='#about-cork')
                 <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
           
             //- include component/toggle-button.pug
-  #about-cork.home__about 
+  //- #about-cork.home__about 
     #about-cork__header.home__about__header  
       h1 ABOUT CORK
     #about-cork__card.home__about__card
@@ -148,14 +148,14 @@ block content
           span#local__populationChange x.xx% decrease/increase
           |.
     
-  #about-cork-dashboard.home__about
+  //- #about-cork-dashboard.home__about
     #about-cork-dashboard__header.home__about__header 
       h1 ABOUT THE DASHBOARD
     #about-cork-dashboard__twitter
       p Follow @corkdashboard on Twitter
     #about-cork-dashboard__card.home__about__card
-      p Cork Dashboard provides citizens, public sector workers and companies with real-time information, time-series indicator data, and interactive maps about all aspects of the city. It enables users to gain detailed, up to date intelligence about the city that aids everyday decision making and fosters evidence-informed analysis. 
-      p Data is pulled together from major  sources -- including Cork City Council, Corkked, Central Statistics Office, Eurostat, and government departments, and links to a variety of existing applications -- to provide thousands of interactive data visualisations. The underlying data is freely available so others can undertake their own analysis and build their own applications and visualisations.
+      p Cork Dashboard provides citizens, public sector workers and companies with real-time information, time-series indicator data, and interactive maps about all aspects of the city and county. It enables users to gain detailed, up to date intelligence about the city that aids everyday decision making and fosters evidence-informed analysis. 
+      p Data is pulled together from major sources -- including Cork City Council, Central Statistics Office, Eurostat, government departments and others, and includes links to a variety of existing external applications -- to provide interactive data visualisations. The underlying data is freely available, so others can undertake their own analysis and build their own applications and visualisations.
         
     //- #about-cork-dashboard.position-anchor
   //- section.map
