@@ -6,14 +6,13 @@ block append head
   //- link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
   //- link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
   link(rel="stylesheet", href="/stylesheets/home/home.css")
-  //- link(rel="stylesheet", href="/stylesheets/home-about.css")
+  link(rel="stylesheet", href="/stylesheets/home/home-about.css")
   //- link(rel="stylesheet", href="/stylesheets/card.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
   //- link(rel='stylesheet', href='/stylesheets/icon-nav.css')
   script(src='/lib/d3v5/d3.min.js' type="text/javascript" defer)
   //- script(src='/lib/set-interval-async.iife.js' type="text/javascript" defer)
   script(src="https://unpkg.com/set-interval-async" type="text/javascript" defer)
-
   script(src='javascripts/home/card_time.js' type="text/javascript" defer)
   script(src='javascripts/home/card_weather_current.js' type="text/javascript" defer)
 
@@ -37,7 +36,7 @@ block content
           //- <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
               .carousel-cell
                 #bikes-card.card-wrapper
-                  +card-rt("themes#dublin-bikes", "card", "Cork Bikes", "Updating", "rt-bikes")
+                  +card-rt("themes#cork-bikes", "card", "Cork Bikes", "Updating", "rt-bikes")
               
               .carousel-cell
                 #traveltimes-card.card-wrapper
@@ -69,16 +68,17 @@ block content
           //-         //- include component/carousel-charts.pug
         #hero__icon-navs
             include home/hero__icon-nav.pug
-            //- #hero-scroll-arrow.home-scroll-arrow
-            //- a(href='#about-dublin')
+            
+        //- #hero-scroll-arrow.home-scroll-arrow
+          a(href='#about-cork')
               <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
           
             //- include component/toggle-button.pug
-    //- #about-dublin 
+    //- #about-cork 
     //-.position-anchor
-    #about-dublin__header 
+    #about-cork__header 
       h1 ABOUT CORK
-    #about-dublin__card
+    #about-cork__card
       p#region__open Cork is the capital and largest city in Ireland. 
         |It is located in the province of Leinster and covers a total area of 
         span#region__area xxx.xx
@@ -153,20 +153,20 @@ block content
           span#local__populationChange x.xx% decrease/increase
           |.
     
-  //- #about-dublin-dashboard
-    #about-dublin-dashboard__header 
+  //- #about-cork-dashboard
+    #about-cork-dashboard__header 
       h1 ABOUT THE DASHBOARD
-    #about-dublin-dashboard__twitter
-      p Follow @dublindashboard on Twitter
-    #about-dublin-dashboard__card
+    #about-cork-dashboard__twitter
+      p Follow @corkdashboard on Twitter
+    #about-cork-dashboard__card
       p Cork Dashboard provides citizens, public sector workers and companies with real-time information, time-series indicator data, and interactive maps about all aspects of the city. It enables users to gain detailed, up to date intelligence about the city that aids everyday decision making and fosters evidence-informed analysis. 
       p Data is pulled together from major  sources -- including Cork City Council, Corkked, Central Statistics Office, Eurostat, and government departments, and links to a variety of existing applications -- to provide thousands of interactive data visualisations. The underlying data is freely available so others can undertake their own analysis and build their own applications and visualisations.
         
-    //- #about-dublin-dashboard.position-anchor
+    //- #about-cork-dashboard.position-anchor
   //- section.map
     .content-wrapper.content-wrapper--very-dark-blue
       .container
-      //- .position-anchor#about-dublin-dashboard
+      //- .position-anchor#about-cork-dashboard
         include component/about-dd.pug
 
   //- include component/scroll-to-top
@@ -180,9 +180,9 @@ block content
   script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" defer)
   
  
-  script(src='javascripts/dublinco.js' type="text/javascript" defer)
+  script(src='javascripts/corkco.js' type="text/javascript" defer)
   script(src='javascripts/home/home-helper-functions.js' type="text/javascript" defer)
-  script(src='javascripts/home/about-dublin.js' type="text/javascript" defer)
+  script(src='javascripts/home/about-cork.js' type="text/javascript" defer)
   script(src='javascripts/home/about-regions.js' type="text/javascript" defer)
   //- script(src='javascripts/map.js')
   

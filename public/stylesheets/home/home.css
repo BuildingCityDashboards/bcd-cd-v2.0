@@ -323,10 +323,11 @@ html {
 
 .icon-nav__icon svg {
   background-color: transparent;
-  fill: red;
-  stroke: red;
-  width  : 48px;
-  height : 48px;
+  fill: #e95d4f;
+  stroke: white;
+  stroke-width: 1px;
+  width  : 24px;
+  height : 24px;
   outline        : none;
   box-shadow     : none;
 
