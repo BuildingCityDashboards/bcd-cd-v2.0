@@ -303,7 +303,7 @@ html {
 .icon-nav__box {
   display            : flex;
   width              : 64px;
-  min-height         : 72px;
+  /* min-height         : 72px; */
   margin             : 0;
   padding            : 0;
   border             : none;
@@ -316,28 +316,31 @@ html {
 
 .icon-nav__icon {
   width  : 48px;
-  height : 48px;
+  /* height : 48px; */
   border : none;
- align-self: center;
+  display: block;
+  /* align-self: center;
+  justify-self: center; */
+  margin-top: auto;
+  margin-bottom: auto;
+
 }
 
 .icon-nav__icon svg {
   background-color: transparent;
   fill: #e95d4f;
   stroke: white;
-  stroke-width: 1px;
+  stroke-width: 0.5px;
   width  : 24px;
   height : 24px;
   outline        : none;
   box-shadow     : none;
-
-
 }
 
 .icon-nav__title {
-  width          : 54px;
+  /* width          : 54px; */
   height         : 12px;
-  color          : rgba(111, 209, 246, 0.5);
+  color          : #e95d4f;
   font-size      : 12px;
   font-weight    : 500;
   line-height    : 1.33;
