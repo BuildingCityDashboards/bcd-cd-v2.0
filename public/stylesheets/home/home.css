@@ -668,7 +668,7 @@ and (orientation: portrait) {
     grid-row: 12 / 13;
   }
 
-  .home-scroll-arrow svg {
+  .scroll-arrow svg {
     width: 32px;
   }
 }
