@@ -376,10 +376,10 @@ html {
 
   #hero {
     position: relative;
-    width: 100vw;
     min-width: 320px;
+    width: 100vw;
+    min-height: 320px;
     height: 100vh;
-    min-height: 540px;
     max-height: 100vh;
     overflow-y: hidden;
     background-image: url('../../images/home/cork-hero-mobile.png');
@@ -388,11 +388,8 @@ html {
     background-size: cover;
     text-align: center;
     align-self: center;
-    min-height: 320px;
-    background-image: url('../../images/home/cork-hero-tablet.png');
-  
   }
-  
+
   #hero-grid {
     display: grid;
     /* subtract l and r padding from grid width */
@@ -409,9 +406,9 @@ html {
     padding-left: 16px;
     grid-gap: 8px;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(7, 1fr);
   }
-  
+
   #hero-title {
     display: flex;
     display: -ms-flexbox;
@@ -430,7 +427,7 @@ html {
     letter-spacing: -0.5px;
     transform: translate(0, 32px);
   }
-  
+
   #hero-time-weather {
     display: flex;
     flex-direction: column;
@@ -440,23 +437,23 @@ html {
     /* translate by padding */
     transform: translate(32px, 32px);
   }
-  
 
-  
+
+
   #hero-carousel {
     background-color: #ee8176;
     grid-column: span 8;
-    grid-row: 3 / 5;
+    grid-row: 3 / 6;
   }
-  
+
   /* { box-sizing : border-box; } */
-  
+
   .carousel {
     margin: 0 20px;
     background: transparent;
     /* space for prev/next buttons */
   }
-  
+
   .carousel-cell {
     width: 100%;
     height: 200px;
@@ -466,64 +463,64 @@ html {
     /* counter-increment : gallery-cell; */
     /* gap between cards */
   }
-  
+
   /* cell number */
-  
+
   .carousel-cell:before {}
-  
+
   /* smaller, dark, rounded square */
-  
+
   .flickity-button {
     background: transparent;
   }
-  
+
   .flickity-button:hover {
     /* background: #F90; */
     background: transparent;
   }
-  
+
   .flickity-prev-next-button {
     width: 24px;
     height: 24px;
     border-radius: 4px;
   }
-  
+
   /* icon color */
-  
+
   .flickity-button-icon {
     /* fill : #6fd1f6; */
     fill: grey;
   }
-  
+
   /* position outside */
-  
+
   .flickity-prev-next-button.previous {
     left: -32px;
   }
-  
+
   .flickity-prev-next-button.next {
     right: -32px;
   }
-  
+
   .flickity-button:focus {
     /* outline: none; box-shadow: 0 0 0 5px #19F; */
   }
-  
+
   .hero-carousel__card {}
-  
+
   #hero__icon-navs {
     display: flex;
     align-self: flex-end;
     flex-direction: row;
     justify-content: space-around;
     grid-column: span 8;
-    grid-row: 5 / 6;
+    grid-row: 6 / 7;
   }
-  
+
   .icon-nav a {
     text-decoration: none;
   }
-  
+
   .icon-nav__box {
     display: flex;
     width: 64px;
@@ -537,16 +534,16 @@ html {
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .icon-nav__icon {
     width: 48px;
     border: none;
     display: block;
     margin-top: auto;
     margin-bottom: auto;
-  
+
   }
-  
+
   .icon-nav__icon svg {
     background-color: transparent;
     fill: #e95d4f;
@@ -557,7 +554,7 @@ html {
     outline: none;
     box-shadow: none;
   }
-  
+
   .icon-nav__title {
     height: 10px;
     color: #e95d4f;
@@ -566,21 +563,21 @@ html {
     line-height: 1.33;
     letter-spacing: 1.25px;
   }
-  
+
   .icon-nav__text {
     display: none;
   }
-  
+
   #hero-scroll-arrow {
     width: 24px;
     align-self: flex-end;
     justify-self: center;
     grid-column: 4 / 6;
-    grid-row: 6 / 7;
+    grid-row: 7 / 8;
   }
-  
+
   .scroll-arrow svg {
-    width: 18px;
+    width: 16px;
     background-color: transparent;
     fill: black;
     opacity: 0.6;
@@ -746,7 +743,7 @@ html {
 
   #hero-carousel {
     grid-column: span 12;
-    grid-row: 5 / 10;
+    grid-row: 4 / 9;
   }
 
   .carousel {
@@ -808,7 +805,7 @@ html {
     flex-direction: row;
     justify-content: space-around;
     grid-column: span 12;
-    grid-row: 10 / 12;
+    grid-row: 9 / 11;
   }
 
   .icon-nav a {
@@ -883,6 +880,7 @@ html {
   #hero-scroll-arrow {
     grid-column: 6/8;
     grid-row: 12 / 13;
+    align-items: center;
   }
 
   .scroll-arrow svg {
@@ -915,7 +913,7 @@ html {
     grid-row: 2 / 3;
     line-height: 0.71;
     align-self: center;
-    transform: translate(0,0);
+    transform: translate(0, 0);
 
   }
 
@@ -1196,4 +1194,3 @@ html {
     width: 32px;
   }
 }
-
