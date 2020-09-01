@@ -1,4 +1,4 @@
-/* xs/ iphone 5 :  320px x 568px <MOCKUP> */
+/* xs/ iPhone 5 :  320px x 568px <MOCKUP> */
 
 html {
   scroll-behavior: smooth;
@@ -371,6 +371,225 @@ html {
   transform: rotate(-90deg);
 }
 
+/* iPhone 5 horizontal */
+@media only screen and (orientation: landscape) {
+
+  #hero {
+    position: relative;
+    width: 100vw;
+    min-width: 320px;
+    height: 100vh;
+    min-height: 540px;
+    max-height: 100vh;
+    overflow-y: hidden;
+    background-image: url('../../images/home/cork-hero-mobile.png');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    text-align: center;
+    align-self: center;
+    min-height: 320px;
+    background-image: url('../../images/home/cork-hero-tablet.png');
+  
+  }
+  
+  #hero-grid {
+    display: grid;
+    /* subtract l and r padding from grid width */
+    width: calc(100vw - 32px);
+    /* min width of parent - 36px */
+    min-width: 320px;
+    height: 100vh;
+    min-height: inherit;
+    max-height: inherit;
+    margin: 0;
+    justify-content: center;
+    grid-gap: 16px;
+    padding-right: 16px;
+    padding-left: 16px;
+    grid-gap: 8px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+  }
+  
+  #hero-title {
+    display: flex;
+    display: -ms-flexbox;
+    min-width: 168px;
+    min-height: 43px;
+    /* padding-left    : 8px; */
+    text-align: left;
+    align-self: top;
+    font-size: 28px;
+    font-weight: bold;
+    flex-direction: column;
+    justify-content: center;
+    grid-column: 1 / 5;
+    grid-row: 1 / 2;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    transform: translate(0, 32px);
+  }
+  
+  #hero-time-weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    grid-column: 5 / 9;
+    grid-row: 1 / 2;
+    /* translate by padding */
+    transform: translate(32px, 32px);
+  }
+  
+
+  
+  #hero-carousel {
+    background-color: #ee8176;
+    grid-column: span 8;
+    grid-row: 3 / 5;
+  }
+  
+  /* { box-sizing : border-box; } */
+  
+  .carousel {
+    margin: 0 20px;
+    background: transparent;
+    /* space for prev/next buttons */
+  }
+  
+  .carousel-cell {
+    width: 100%;
+    height: 200px;
+    margin-right: 16px;
+    border-radius: 4px;
+    background: transparent;
+    /* counter-increment : gallery-cell; */
+    /* gap between cards */
+  }
+  
+  /* cell number */
+  
+  .carousel-cell:before {}
+  
+  /* smaller, dark, rounded square */
+  
+  .flickity-button {
+    background: transparent;
+  }
+  
+  .flickity-button:hover {
+    /* background: #F90; */
+    background: transparent;
+  }
+  
+  .flickity-prev-next-button {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+  }
+  
+  /* icon color */
+  
+  .flickity-button-icon {
+    /* fill : #6fd1f6; */
+    fill: grey;
+  }
+  
+  /* position outside */
+  
+  .flickity-prev-next-button.previous {
+    left: -32px;
+  }
+  
+  .flickity-prev-next-button.next {
+    right: -32px;
+  }
+  
+  .flickity-button:focus {
+    /* outline: none; box-shadow: 0 0 0 5px #19F; */
+  }
+  
+  .hero-carousel__card {}
+  
+  #hero__icon-navs {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: row;
+    justify-content: space-around;
+    grid-column: span 8;
+    grid-row: 5 / 6;
+  }
+  
+  .icon-nav a {
+    text-decoration: none;
+  }
+  
+  .icon-nav__box {
+    display: flex;
+    width: 64px;
+    /* min-height         : 72px; */
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .icon-nav__icon {
+    width: 48px;
+    border: none;
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+  
+  }
+  
+  .icon-nav__icon svg {
+    background-color: transparent;
+    fill: #e95d4f;
+    stroke: white;
+    stroke-width: 0.5px;
+    width: 24px;
+    height: 24px;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .icon-nav__title {
+    height: 10px;
+    color: #e95d4f;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.33;
+    letter-spacing: 1.25px;
+  }
+  
+  .icon-nav__text {
+    display: none;
+  }
+  
+  #hero-scroll-arrow {
+    width: 24px;
+    align-self: flex-end;
+    justify-self: center;
+    grid-column: 4 / 6;
+    grid-row: 6 / 7;
+  }
+  
+  .scroll-arrow svg {
+    width: 18px;
+    background-color: transparent;
+    fill: black;
+    opacity: 0.6;
+    transform: rotate(-90deg);
+  }
+
+
+}
+
 @media only screen and (min-width : 768px) and (orientation: portrait) {
   #hero {
     min-height: 1024px;
@@ -654,7 +873,7 @@ html {
     display: flex;
     width: 165px;
     height: 40px;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.6);
     font-size: 14px;
     font-weight: 300;
     line-height: 1.43;
@@ -670,6 +889,7 @@ html {
     width: 32px;
   }
 }
+
 
 @media only screen and (min-width : 768px) and (orientation: landscape) {
   #hero {
