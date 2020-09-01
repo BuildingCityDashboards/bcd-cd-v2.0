@@ -746,7 +746,7 @@ html {
 
   #hero-time-weather {
     justify-content: flex-end;
-    transform: translate(32px,48px);
+    transform: translate(32px, 48px);
   }
 
   #hero__icon-navs {
@@ -766,7 +766,7 @@ html {
     grid-row: 7 / 8;
   }
 
-  .home__about{
+  .home__about {
     height: calc(100vh - 32px);
     max-height: none;
   }
@@ -1489,11 +1489,244 @@ html {
     transform: translate(24px, -24px);
   }
 
-  
+
   #hero-carousel {
     grid-column: span 8;
     grid-row: 3 / 7;
-    transform: translate(0, 48px) ;
+    transform: translate(0, 48px);
+  }
+
+  .carousel {
+    height: 256px;
+    margin: 0 20px;
+    background: transparent;
+    /* space for prev/next buttons */
+  }
+
+  .carousel-cell {
+    width: 50%;
+    height: 256px;
+  }
+
+  .carousel-cell:before {}
+
+  .flickity-button {
+    background: transparent;
+  }
+
+  .flickity-button:hover {
+    background: transparent;
+  }
+
+  .flickity-prev-next-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+  }
+
+  .flickity-button-icon {
+    fill: grey;
+  }
+
+  /* position outside */
+
+  .flickity-prev-next-button.previous {
+    left: -32px;
+  }
+
+  .flickity-prev-next-button.next {
+    right: -32px;
+  }
+
+  .flickity-button:focus {}
+
+  .flickity-page-dots {
+    position: absolute;
+    top: -25px;
+    bottom: 100%;
+    width: 100%;
+  }
+
+
+  #hero__icon-navs {
+    /* display: flex; */
+    border: none;
+    align-self: flex-start;
+    flex-direction: row;
+    justify-content: space-around;
+    grid-column: span 8;
+    grid-row: 8 / 9;
+  }
+
+  .icon-nav a {
+    text-decoration: none;
+  }
+
+  .icon-nav a:hover {
+    text-decoration: none;
+  }
+
+  .icon-nav__box {
+    display: flex;
+    width: 165px;
+    /* height: 72px; */
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(142, 191, 214, 0.12);
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #e95d4f;
+  }
+
+  .icon-nav__icon {
+    width: 48px;
+    height: 48px;
+    border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+  }
+
+  .icon-nav__icon svg {
+    background-color: transparent;
+    stroke: #e95d4f;
+    fill: white;
+    stroke-width: 0.5px;
+    width: 48px;
+    height: 48px;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .icon-nav__title {
+    width: auto;
+    height: auto;
+    border: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: 1.25px;
+    color: white;
+    text-align: center;
+    padding-left: 8px;
+
+  }
+
+  .icon-nav__text {
+    display: flex;
+    width: 165px;
+    height: 40px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.43;
+    letter-spacing: 0.25px;
+  }
+
+  #hero-scroll-arrow {
+    grid-column: span 8;
+    grid-row: 9 / 10;
+    justify-content: flex-start;
+  }
+
+  .scroll-arrow svg {
+    width: 32px;
+  }
+
+  #regions-info__map {
+    grid-column: 7 / 13;
+    grid-row: 1/7;
+  }
+
+  #regions-info__cta {
+    display: flex;
+    margin: 0;
+    color: #6fd1f6;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    grid-column: 2/6;
+    grid-row: 3/5;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+  }
+
+  #regions-info__card {
+    padding: 32px;
+    grid-column: 2/7;
+    grid-row: 1 / 6;
+  }
+
+  #regions-info__card__header {
+    padding-bottom: 16px;
+    text-align: left;
+  }
+
+  #regions-info__card__header>h1 {
+    margin: 0;
+    color: #6fd1f6;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 24px;
+    letter-spacing: 0.18px;
+  }
+
+  #regions-info__card__body {
+    overflow-y: auto;
+  }
+
+  #regions-info__card__body>p {
+    margin: 0;
+    padding-bottom: 8px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.25;
+    letter-spacing: 0.5px;
+  }
+
+}
+
+/* iPad Pro horizontal */
+
+@media only screen and (min-width : 1024px) and (orientation: landscape) {
+  #hero {
+    min-height: 1024px;
+    background-image: url('../../images/home/cork-hero-desktop.png');
+  }
+
+  #hero-grid {
+    padding-right: 24px;
+    padding-left: 24px;
+    grid-gap: 24px;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+  }
+
+  #hero-title {
+    align-self: center;
+    font-size: 76px;
+    transform: translate(48px, -50%);
+  }
+
+
+  #hero-time-weather {
+    justify-content: flex-start;
+    grid-column: 6 / 9;
+    grid-row: 2 / 3;
+    transform: translate(24px, -36px);
+  }
+
+
+  #hero-carousel {
+    grid-column: span 8;
+    grid-row: 3 / 7;
+    transform: translate(0, 0);
   }
 
   .carousel {
@@ -1693,4 +1926,24 @@ html {
 }
 
 
+/* ----------- Non-Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1280px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
 
+  #hero{
+    background-image: none;
+  }
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+
+
+  #hero{
+    background-image: none;
+  }
+}
