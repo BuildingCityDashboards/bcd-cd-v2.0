@@ -54,7 +54,7 @@ html {
   grid-row: 2 / 3;
   line-height: 20px;
   letter-spacing: -0.5px;
-  transform: translate(0, -50%);
+  transform: translate(0, -60%);
 }
 
 #hero-title__text--top {
@@ -217,12 +217,6 @@ html {
   font-size: 16px;
 }
 
-/**
- * .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%;
- * margin-left: -5px; border-width: 5px; border-style: solid; border-color:
- * black transparent transparent transparent; }
- */
-
 #hero-weather__center:hover .tooltiptext {
   visibility: visible;
 }
@@ -343,9 +337,9 @@ html {
 }
 
 .icon-nav__title {
-  height: 12px;
+  height: 10px;
   color: #e95d4f;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   line-height: 1.33;
   letter-spacing: 1.25px;
@@ -370,6 +364,148 @@ html {
   opacity: 0.6;
   transform: rotate(-90deg);
 }
+
+.home__about {
+  display: grid;
+  /* subtract l and r padding from grid width */
+  width: calc(100vw - 32px);
+  /* min width of parent - 36px */
+  min-width: 288px;
+  height: auto;
+  padding: 16px;
+  justify-content: center;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  overflow-x: hidden;
+  background-color: #eeecec;
+}
+
+.home__about__header {
+  align-self: flex-end;
+  grid-column: span 4;
+  grid-row: 1/2;
+}
+
+.home__about__header h1 {
+  /* width: 136px; */
+  margin: 0;
+  color: #e95d4f;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 0.75;
+  letter-spacing: -0.5px;
+}
+
+.home__about__card {
+  padding: 16px;
+  margin: 0;
+  overflow-y: auto;
+  background-color: white;
+  grid-column: span 4;
+  grid-row: 2/9;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+}
+
+
+.home__about__card p {
+  padding-top: 0;
+  margin: 0;
+  margin-bottom: 14px;
+  color: black;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.71;
+  letter-spacing: 0.5px;
+  word-wrap: break-word;
+}
+
+#regions-info {
+  display: grid;
+  width: 100vw;
+  min-width: 360px;
+  height: 100vh;
+  padding: 16px;
+  justify-content: center;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
+#regions-info__map {
+  display: flex;
+  justify-content: center;
+  grid-column: span 4;
+  grid-row: 1/6;
+}
+
+#regions-info__map svg {
+  width: 100%;
+  height: auto;
+}
+
+#regions-info__cta {
+  display: flex;
+  margin: 0;
+  color: #6fd1f6;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-stretch: normal;
+  grid-column: span 4;
+  grid-row: 7/9;
+  line-height: 1.5;
+  letter-spacing: 1.5px;
+}
+
+#regions-info__cta-arrow {
+  display: none;
+}
+
+#regions-info__card {
+  display: none;
+  visibility: hidden;
+  padding: 16px;
+  opacity: 0;
+  overflow-y: scroll;
+  background-color: rgba(142, 191, 214, 0.15);
+  flex-direction: column;
+  grid-column: span 4;
+  grid-row: 6/9;
+  transition: all 1s linear;
+}
+
+#regions-info__card__header {
+  padding-bottom: 8px;
+}
+
+#regions-info__card__header h1 {
+  margin: 0;
+  color: #6fd1f6;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+}
+
+#regions-info__card__body {}
+
+#regions-info__card__body>p {
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+#about-cork-dashboard__twitter {
+  display: none;
+}
+
 
 /* iPhone 5 horizontal */
 @media only screen and (orientation: landscape) {
@@ -583,9 +719,60 @@ html {
     opacity: 0.6;
     transform: rotate(-90deg);
   }
+}
 
+/* iPhone 6/7/8 vertical */
+@media only screen and (min-width : 375px) and (orientation: portrait) {
+
+  #hero-title {
+    font-size: 32px;
+  }
+
+  #hero-time-weather {
+    justify-content: flex-start;
+    /* translate by padding */
+    transform: translate(32px, 0);
+  }
 
 }
+
+/* iPhone 6/7/8 horizontal */
+@media only screen and (min-width : 375px) and (orientation: landscape) {
+
+  #hero-title {
+    font-size: 36px;
+    line-height: 0.73;
+  }
+
+  #hero-time-weather {
+    justify-content: flex-end;
+    transform: translate(32px,48px);
+  }
+
+  #hero__icon-navs {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: row;
+    justify-content: space-around;
+    grid-column: 2/8;
+    grid-row: 6 / 7;
+  }
+
+  #hero-scroll-arrow {
+    width: 24px;
+    align-self: center;
+    justify-self: center;
+    grid-column: 4 / 6;
+    grid-row: 7 / 8;
+  }
+
+  .home__about{
+    height: calc(100vh - 32px);
+    max-height: none;
+  }
+}
+
+/* iPad vertical */
 
 @media only screen and (min-width : 768px) and (orientation: portrait) {
   #hero {
@@ -878,13 +1065,86 @@ html {
   }
 
   #hero-scroll-arrow {
-    grid-column: 6/8;
+    grid-column: 6 / 8;
     grid-row: 12 / 13;
-    align-items: center;
+    justify-content: flex-start;
   }
 
   .scroll-arrow svg {
     width: 32px;
+  }
+
+  #regions-info__map {
+    grid-column: 7 / 13;
+    grid-row: 1/7;
+  }
+
+  #regions-info__cta {
+    display: flex;
+    margin: 0;
+    color: #6fd1f6;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    grid-column: 2/6;
+    grid-row: 3/5;
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+  }
+
+  #regions-info__card {
+    padding: 32px;
+    grid-column: 2/7;
+    grid-row: 1 / 6;
+  }
+
+  #regions-info__card__header {
+    padding-bottom: 16px;
+    text-align: left;
+  }
+
+  #regions-info__card__header>h1 {
+    margin: 0;
+    color: #6fd1f6;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 24px;
+    letter-spacing: 0.18px;
+  }
+
+  #regions-info__card__body {
+    overflow-y: auto;
+  }
+
+  #regions-info__card__body>p {
+    margin: 0;
+    padding-bottom: 8px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.25;
+    letter-spacing: 0.5px;
+  }
+
+
+  .home__about-dashboard__twitter {
+    display: inline;
+    text-align: center;
+    align-self: flex-end;
+    grid-column: 7 / 12;
+    grid-row: 2/3;
+  }
+
+  .home__about-dashboard__twitter>p {
+    /* width: 303px; height: 24px; */
+    color: #6fd1f6;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: 0.18px;
   }
 }
 
@@ -1188,6 +1448,7 @@ html {
   #hero-scroll-arrow {
     grid-column: 2 / 4;
     grid-row: 8 / 9;
+
   }
 
   .scroll-arrow svg {
