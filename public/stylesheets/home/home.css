@@ -2,6 +2,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 #hero {
@@ -18,6 +19,7 @@ html {
   background-size: cover;
   text-align: center;
   align-self: center;
+  overflow-x: hidden;
 
 }
 
