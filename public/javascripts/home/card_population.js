@@ -5,6 +5,8 @@
 // ***/
 
 async function createChart (options) {
+  console.log('options')
+  console.log((options))
   function create () {
     let populationCard
 
@@ -46,7 +48,7 @@ async function createChart (options) {
       })
       return coercedData
     }
-    console.log('hello')
+    console.log('complteted create chart')
   }
   return create
 }

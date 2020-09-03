@@ -1,5 +1,4 @@
 mixin home__card-chart({id='', title='card title', subtitle='',icon='', info='Information will appear here when available',links=[], src='', plotoptions={}})
-    - var plotDetails=plotoptions
     div(class='home__card-chart')
         .card
             .card__header
@@ -16,9 +15,9 @@ mixin home__card-chart({id='', title='card title', subtitle='',icon='', info='In
                         a(href=l.href class="card__link").button #{l.name}
     script(src=src type="text/javascript" ) 
     script(type='text/javascript').
-         console.log(`#{info}`);
-        //- async function exec(){
-        //-    var plot = await createChart(info);
-        //-    plot()
-        //-  }
-        //-  exec()
+        let sendOptions =  !{JSON.stringify(plotoptions)}
+        async function exec(){
+           var plot = await createChart(!{JSON.stringify(plotoptions)});
+           plot()
+         }
+         exec()
