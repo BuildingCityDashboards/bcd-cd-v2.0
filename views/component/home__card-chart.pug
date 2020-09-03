@@ -1,4 +1,4 @@
-mixin home__card-chart({id='',title='card title', subtitle='',icon='', info='Information will appear here when available',links=[]})
+mixin home__card-chart({id='',title='card title', subtitle='',icon='', info='Information will appear here when available',links=[], src=''})
     div(class='home__card-chart')
         .card
             .card__header
@@ -6,20 +6,14 @@ mixin home__card-chart({id='',title='card title', subtitle='',icon='', info='Inf
                 h1.card__title=title
                 h2.card__sub-title=subtitle
             .card__body
-                div(id=chartid class="card__line-chart")
+                div(id=id+'__chart' class="card__line-chart")
             .card__info
                 .card__info-border 
-                .card-info-text.p Information will appear here when available
+                .card-info-text.p=info
                 .card__info__buttons
                     each l in links
                         a(href=l.href class="card__link").button #{l.name}
-
-
-
-                        
-                //- each l in links
-                //-     p
-                //-     <a href= #{l.href}>#{l.name} </a>
+    script(src=src type="text/javascript" defer)
             
         
       
