@@ -4,12 +4,11 @@
 
 // ***/
 
-async function createChart (options) {
-  console.log('options')
-  console.log((options))
-  function create () {
-    let populationCard
+import { coerceWideTable } from '../modules/bcd-data.js'
 
+async function createChart (options) {
+  console.log('createChart')
+  function create () {
     d3.csv(options.href)
       .then(populationData => {
         const populationColumnNames = populationData.columns.slice(2)
@@ -30,9 +29,9 @@ async function createChart (options) {
 
         // const info = getInfoText('#population-card a', 'The population of Dublin in ', ' on 2011', populationDataSet, populationColumnName, 'date', d3.format('.2s'))
 
-        d3.select('#population-card__chart')
-          .select('#card-info-text')
-          .html('<p>' + info + '</p>')
+        // d3.select('#population-card__chart')
+        //   .select('#card-info-text')
+        //   .html('<p>' + info + '</p>')
       })
       .catch(e => {
         console.log('Error in population fetch')
@@ -52,3 +51,5 @@ async function createChart (options) {
   }
   return create
 }
+
+export { createChart }

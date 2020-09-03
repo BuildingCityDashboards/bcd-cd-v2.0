@@ -25,7 +25,6 @@ export { hasCleanValue }
 function coerceWideTable (data, columnNames) {
   const coercedData = data.map(d => {
     for (var i = 0, n = columnNames.length; i < n; i++) {
-      // d[columns[i]] !== "null" ? d[columns[i]] = +d[columns[i]] : d[columns[i]] = "unavailable";
       d[columnNames[i]] = +d[columnNames[i]]
     }
     return d

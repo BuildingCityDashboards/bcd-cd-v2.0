@@ -1,5 +1,5 @@
 mixin home__card-chart({id='', title='card title', subtitle='',icon='', info='Information will appear here when available',links=[], src='', plotoptions={}})
-    div(class='home__card-chart')
+    div(id=id class='home__card-chart')
         .card
             .card__header
                 //- img(src= icon).card__icon
@@ -13,9 +13,8 @@ mixin home__card-chart({id='', title='card title', subtitle='',icon='', info='In
                 .card__info__buttons
                     each l in links
                         a(href=l.href class="card__link").button #{l.name}
-    script(src=src type="text/javascript" ) 
-    script(type='text/javascript').
-        let sendOptions =  !{JSON.stringify(plotoptions)}
+    script(type="module").
+        import { createChart } from !{JSON.stringify(src)}
         async function exec(){
            var plot = await createChart(!{JSON.stringify(plotoptions)});
            plot()
