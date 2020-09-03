@@ -1,11 +1,13 @@
 extends layout
 //- include component/card-rt
-//- include component/card-chart 
+include component/home__card-chart
 
 block append head
   //- link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
   //- link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
   link(rel="stylesheet", href="/stylesheets/home/home.css")
+  link(rel="stylesheet", href="/stylesheets/home/home-carousel.css")
+  link(rel="stylesheet", href="/stylesheets/home/card.css")
   //- link(rel="stylesheet", href="/stylesheets/home/home-about.css")
   //- link(rel="stylesheet", href="/stylesheets/card.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
@@ -13,8 +15,11 @@ block append head
   script(src='/lib/d3v5/d3.min.js' type="text/javascript" defer)
   //- script(src='/lib/set-interval-async.iife.js' type="text/javascript" defer)
   script(src="https://unpkg.com/set-interval-async" type="text/javascript" defer)
+   
+  script(src='javascripts/modules/CardChartLine.js' type="text/javascript" defer)
   script(src='javascripts/home/card_time.js' type="text/javascript" defer)
   script(src='javascripts/home/card_weather_current.js' type="text/javascript" defer)
+  //- script(src='javascripts/home/card_population.js' type="text/javascript" defer)
 
 //- block navigation
 
@@ -33,6 +38,33 @@ block content
                 include home/hero__card-weather
       
         #hero-carousel
+          //- +card-chart({
+            id='TestID',
+            title='Test Title', 
+            subtitle = 'Test Subtitle',
+            subtitle = 'Test Subtitle', 
+            info='Test Information',
+            links=[{href:'', name:'link1'}, 
+            {href:'', name:'link2'}]
+            })
+
+          +home__card-chart({
+              title: 'population',
+              subtitle:  'CSO',
+              id: 'population-card',
+              info: null, 
+              links: [{
+                href :'/some/link',
+                name:'See chart'
+                },
+                {href :'some/link',
+                name:'Featured query'
+                },
+                {href :'some/link',
+                name:'Explore data'
+                }],
+                src: '../../javascripts/home/card_population.js'
+            })
           //- <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
               .carousel-cell
                 #bikes-card.card-wrapper
@@ -74,7 +106,7 @@ block content
                 <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
           
             //- include component/toggle-button.pug
-  #about-cork.home__about 
+  //- #about-cork.home__about 
     #about-cork__header.home__about__header  
       h1 ABOUT CORK
     #about-cork__card.home__about__card
@@ -148,7 +180,7 @@ block content
           span#local__populationChange x.xx% decrease/increase
           |.
     
-  #about-cork-dashboard.home__about
+  //- #about-cork-dashboard.home__about
     #about-cork-dashboard__header.home__about__header 
       h1 ABOUT THE DASHBOARD
     #about-cork-dashboard__twitter
