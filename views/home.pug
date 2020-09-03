@@ -1,12 +1,13 @@
 extends layout
 //- include component/card-rt
-//- include component/card-chart 
+include component/home__card-chart
 
 block append head
   //- link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
   //- link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
   link(rel="stylesheet", href="/stylesheets/home/home.css")
   link(rel="stylesheet", href="/stylesheets/home/home-carousel.css")
+  link(rel="stylesheet", href="/stylesheets/home/card.css")
   //- link(rel="stylesheet", href="/stylesheets/home/home-about.css")
   //- link(rel="stylesheet", href="/stylesheets/card.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
@@ -34,6 +35,28 @@ block content
                 include home/hero__card-weather
       
         #hero-carousel
+          //- +card-chart({
+            id='TestID',
+            title='Test Title', 
+            subtitle = 'Test Subtitle', 
+            info='Test Information',
+            links=[{href:'', name:'link1'}, 
+            {href:'', name:'link2'}]
+            })
+
+          +home__card-chart({
+              title: 'Population', 
+              links: [{
+                href :'/some/link',
+                name:'See chart'
+                },
+                {href :'some/link',
+                name:'Featured query'
+                },
+                {href :'some/link',
+                name:'Explore data'
+                }]
+            })
           //- <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
               .carousel-cell
                 #bikes-card.card-wrapper

@@ -1,0 +1,19 @@
+mixin card-queries({id='',title='Query title', icon='', description='Description of Query',links=[]})
+    div(class='queries-home__card')
+      .card__header
+        //- img(src= icon).card__icon
+        h1.card__title=title
+      .card__body
+        div
+          p!=description
+                      
+          each l in links
+            p
+              <a href= #{l.href}>#{l.name} </a>
+          
+        
+      
+
+        
+                        
+                    
