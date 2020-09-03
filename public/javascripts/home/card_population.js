@@ -4,8 +4,6 @@
 
 // ***/
 
-// // - TODO: pass in args to remove hard-coded values in script, generalise script (issue #27)
-
 async function createChart () {
   function create () {
     let populationCard
