@@ -1,4 +1,5 @@
-mixin home__card-chart({id='',title='card title', subtitle='',icon='', info='Information will appear here when available',links=[], src=''})
+mixin home__card-chart({id='', title='card title', subtitle='',icon='', info='Information will appear here when available',links=[], src='', plotoptions={}})
+    - var plotDetails=plotoptions
     div(class='home__card-chart')
         .card
             .card__header
@@ -13,21 +14,11 @@ mixin home__card-chart({id='',title='card title', subtitle='',icon='', info='Inf
                 .card__info__buttons
                     each l in links
                         a(href=l.href class="card__link").button #{l.name}
-    //- TODO: pass in args to remove hard-coded values in script, generalise script (issue #27)
-    script(src=src type="text/javascript" )
-    script
-        | async function exec(){
-        |   var plot = await createChart();
-        |   plot()
-        | }
-        | exec()
-    
-
-        
-            
-        
-      
-
-        
-                        
-                    
+    script(src=src type="text/javascript" ) 
+    script(type='text/javascript').
+         console.log(`#{info}`);
+        //- async function exec(){
+        //-    var plot = await createChart(info);
+        //-    plot()
+        //-  }
+        //-  exec()

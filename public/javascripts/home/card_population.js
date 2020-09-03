@@ -4,11 +4,11 @@
 
 // ***/
 
-async function createChart () {
+async function createChart (options) {
   function create () {
     let populationCard
 
-    d3.csv('/data/population.csv')
+    d3.csv(options.href)
       .then(populationData => {
         const populationColumnNames = populationData.columns.slice(2)
         const populationColumnName = populationColumnNames[0]
