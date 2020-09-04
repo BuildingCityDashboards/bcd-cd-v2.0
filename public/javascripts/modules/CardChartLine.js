@@ -141,3 +141,5 @@ class CardChartLine {
       .style('stroke-width', '2px') // move to css
   }
 }
+
+export { CardChartLine }
