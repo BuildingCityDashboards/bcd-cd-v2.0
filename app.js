@@ -17,9 +17,30 @@ app.use(express.urlencoded({
   extended: false
 }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
 
-// console.log(__dirname);
+/*
+client caching of data files is tiered based on whether the data is staic or dynamic (changing often)
+*/
+
+// this will set cache for any files in public
+// if frequently-chaqnged files are placed here, stale versions maybe loaded from cache
+// const staticOptions = {
+//   // dotfiles: 'ignore',
+//   // etag: false,
+//   // extensions: ['htm', 'html'],
+//   // index: false,
+//   maxAge: '1d'
+//   // redirect: false,
+//   // setHeaders: function (res, path, stat) {
+//   // res.set('x-timestamp', Date.now())
+//   // }
+// }
+
+// use cached version of files if age < 1 day when placed in public/data/static dir
+app.use('/data/static/', express.static(path.join(__dirname, 'public', 'data', 'static'), { maxage: '1d' }))
+// always refresh files at the public root dir
+app.use('/', express.static(path.join(__dirname, 'public'), { maxage: 0 }))
+
 // logger.debug("Overriding 'Express' logger");
 
 // output http logs on the sevrer
@@ -39,12 +60,12 @@ const api = require('./routes/api')
 
 // view engine setup
 app.set('views', [path.join(__dirname, 'views'),
-  path.join(__dirname, 'views/themes'),
-  path.join(__dirname, 'views/stories'),
-  path.join(__dirname, 'views/queries'),
-  path.join(__dirname, 'views/tools'),
-  path.join(__dirname, 'views/portal'),
-  path.join(__dirname, 'views/api')])
+path.join(__dirname, 'views/themes'),
+path.join(__dirname, 'views/stories'),
+path.join(__dirname, 'views/queries'),
+path.join(__dirname, 'views/tools'),
+path.join(__dirname, 'views/portal'),
+path.join(__dirname, 'views/api')])
 
 app.set('view engine', 'pug')
 
