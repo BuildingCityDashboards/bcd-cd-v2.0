@@ -1,18 +1,18 @@
 extends ../layout
 //- include component/card-stories
+include ../component/home__card-chart
+block append head
 
-//- block append head
-
-  link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
-  link(rel="stylesheet", href="/stylesheets/stories.css")
+  //- link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
+  //- link(rel="stylesheet", href="/stylesheets/stories.css")
+  script(src='/lib/d3v5/d3.min.js' type="text/javascript" )
   //- link(rel="stylesheet", href="/stylesheets/card.css")
 
 //- block navigation
-  +bcd-navbar("bcd-navbar","/","Dublin Dashboard", "Stories")
+    +bcd-navbar("bcd-navbar","/","Dublin Dashboard", "Stories")
 
-//- block content
-  #stories-home 
-    #stories-home__grid
+    //- #stories-home 
+      #stories-home__grid
       #stories-home__icon
         img(src='/images/icons/icons-48px/Stories_Icon_48px.svg')
       #stories-home__title
