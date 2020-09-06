@@ -35,7 +35,7 @@ async function createChart (options) {
         //   .html('<p>' + info + '</p>')
       })
       .catch(e => {
-        console.log('Error in population fetch')
+        console.log(`Error creating ${elementid}`)
         console.log(e)
       })
 
