@@ -17,7 +17,19 @@ app.use(express.urlencoded({
   extended: false
 }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+
+const staticOptions = {
+  // dotfiles: 'ignore',
+  // etag: false,
+  // extensions: ['htm', 'html'],
+  // index: false,
+  maxAge: '1d'
+  // redirect: false,
+  // setHeaders: function (res, path, stat) {
+  // res.set('x-timestamp', Date.now())
+  // }
+}
+app.use(express.static(path.join(__dirname, 'public'), staticOptions))
 
 // console.log(__dirname);
 // logger.debug("Overriding 'Express' logger");
@@ -39,12 +51,12 @@ const api = require('./routes/api')
 
 // view engine setup
 app.set('views', [path.join(__dirname, 'views'),
-  path.join(__dirname, 'views/themes'),
-  path.join(__dirname, 'views/stories'),
-  path.join(__dirname, 'views/queries'),
-  path.join(__dirname, 'views/tools'),
-  path.join(__dirname, 'views/portal'),
-  path.join(__dirname, 'views/api')])
+path.join(__dirname, 'views/themes'),
+path.join(__dirname, 'views/stories'),
+path.join(__dirname, 'views/queries'),
+path.join(__dirname, 'views/tools'),
+path.join(__dirname, 'views/portal'),
+path.join(__dirname, 'views/api')])
 
 app.set('view engine', 'pug')
 
