@@ -6,11 +6,11 @@ import { StackedAreaChart } from '../../modules/StackedAreaChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+(async function main() {
   const parseYear = d3.timeParse('%Y')
   const chartDivIds = ['population', 'population-change', 'population-rate']
   const STATBANK_BASE_URL =
-          'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
+    'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // CNA13: Annual Rate of Population Increase by Sex, Province or County, CensusYear and Statistic
   const TABLE_CODE = 'CNA13'
   const STATS = ['Population (Number)'] // these will break out to individual charts
@@ -45,8 +45,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       { type: 'arrobj' },
       (d, i) => {
         if (d[dimensions[1]] === 'Cork' &&
-        d.value !== null &&
-        +d['Census Year'] >= 1986) {
+          d.value !== null &&
+          +d['Census Year'] >= 1986) {
           d.date = parseYear(+d['Census Year'])
           d.label = +d['Census Year']
           d.value = +d.value
@@ -191,7 +191,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
-    // console.log('retry')
+      // console.log('retry')
       removeErrorMessageButton('chart-' + chartDivIds[0])
       main()
     })
