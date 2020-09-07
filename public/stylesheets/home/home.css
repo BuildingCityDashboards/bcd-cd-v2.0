@@ -224,9 +224,10 @@ html {
 }
 
 #hero-carousel {
-  background-color: #ee8176;
+  /* background-color: #ee8176; */
   grid-column: span 4;
   grid-row: 3 / 7;
+  border: 1px solid rgba(0, 0, 0, 0.5)
 }
 
 
