@@ -14,8 +14,8 @@ mixin home__card-chart({id='', title='card title', subtitle='',icon='', info='In
                     each l in links
                         a(href=l.href class="card__link").button #{l.name}
     script(type="module").
-        import { createChart } from !{JSON.stringify(plotoptions.src)}
+        import { main } from !{JSON.stringify(plotoptions.src)}
         (async function(o){
-           createChart(o);
+           main(o);
          })(!{JSON.stringify(plotoptions)})     
         

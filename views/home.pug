@@ -3,8 +3,8 @@ extends layout
 include component/home__card-chart
 
 block append head
-  //- link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
-  //- link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
+  link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
+  link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
   link(rel="stylesheet", href="/stylesheets/home/home.css")
   link(rel="stylesheet", href="/stylesheets/home/home-carousel.css")
   link(rel="stylesheet", href="/stylesheets/home/card.css")
@@ -13,6 +13,8 @@ block append head
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
   //- link(rel='stylesheet', href='/stylesheets/icon-nav.css')
   script(src='/lib/d3v5/d3.min.js' type="text/javascript" )
+  script(src="/lib/flickity.pkgd.min.js" type="text/javascript")
+  //- script(src='javascripts/home/flickity_utils.js' type="text/javascript")
   //- script(src='/lib/set-interval-async.iife.js' type="text/javascript" defer)
   script(src="https://unpkg.com/set-interval-async" type="text/javascript" defer)
   script(src='javascripts/home/card_time.js' type="text/javascript" defer)
@@ -36,21 +38,13 @@ block content
                 include home/hero__card-weather
       
         #hero-carousel
-          //- +card-chart({
-            id='TestID',
-            title='Test Title', 
-            subtitle = 'Test Subtitle',
-            subtitle = 'Test Subtitle', 
-            info='Test Information',
-            links=[{href:'', name:'link1'}, 
-            {href:'', name:'link2'}]
-            })
-
-          +home__card-chart({
-              title: 'population',
-              subtitle:  'CSO',
-              id: 'population-card',
-              links: [{
+            <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
+                .carousel-cell
+                  +home__card-chart({
+                title: 'population',
+                subtitle:  'CSO',
+                id: 'population-card',
+                links: [{
                 href :'/some/link',
                 name:'See chart'
                 },
@@ -68,39 +62,8 @@ block content
                   format:''
                 }
             })
-          //- <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
-              .carousel-cell
-                #bikes-card.card-wrapper
-                  +card-rt("themes#cork-bikes", "card", "Cork Bikes", "Updating", "rt-bikes")
-              
-              .carousel-cell
-                #traveltimes-card.card-wrapper
-                  +card-rt("queries", "card", "Motorway Delays", "test","rt-travelTimes")
-              
-              .carousel-cell
-                #population-card.card-wrapper
-                  +card-chart("themes#chart-population", "card", "Population", "Count","population-chart")
-              
-              .carousel-cell
-                #employment-card.card-wrapper 
-                  +card-chart("themes#chart-unemployment", "card", "Unemployment", "Count", "unemployment-chart") 
-              
-              .carousel-cell
-                #property-price-card.card-wrapper
-                  +card-chart("themes#chart-house-prices", "card", "Property Price", "Index", "property-price-chart")    
-              
-              .carousel-cell
-                #house-completions-card.card-wrapper
-                  +card-chart("themes#chart-newCompByType", "card", "House Completions", "Units","house-completions-chart")
-              
-              //- .carousel-cell
-               p MORE    
-                  
-              //- </div>
             </div>
-            
-          
-          //-         //- include component/carousel-charts.pug
+        //-         //- include component/carousel-charts.pug
         #hero__icon-navs
             include home/hero__icon-nav.pug
             
