@@ -102,8 +102,29 @@ h2.card__sub-title {
 
 }
 
-.card__line-chart .label,
-.no-axis {
+.card__line-chart .label-x-data-last,
+.label-x-data-first,
+.label-y-data-last,
+.label-y-data-first {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: 0.15px;
+}
+
+.card__line-chart .label-x-data-first,
+.label-y-data-first {
+  text-anchor: start;
+}
+
+.card__line-chart .label-x-data-last,
+.label-y-data-last {
+  text-anchor: end;
+}
+
+.card__line-chart .no-axis {
   color: rgba(255, 255, 255, 0.6);
   font-size: 12px;
   font-style: normal;

@@ -90,8 +90,8 @@ class CardChartLine {
   drawLabels() {
     const c = this
     const l = c.d.length
-    const lD = c.d[l - 1]
-    const fD = c.d[0]
+    const lD = c.d[l - 1] // last data value
+    const fD = c.d[0] // firrst data value
 
     // Region/type name
     c.svg.append('text')
@@ -101,32 +101,40 @@ class CardChartLine {
       .attr('fill', '#16c1f3') // move to css
       .text(lD[c.sN]) // needs to be a d.name
 
-    // value label
+    // first y-value label
     c.svg.append('text')
-      .attr('x', c.w + 10)
-      .attr('y', c.y(lD[c.yV]) - 10)
-      .attr('text-anchor', 'end') // move to css
-      .attr('class', 'label')
-      .attr('fill', '#f8f9fabd') // move to css
-      .text(c.fV ? c.fV(lD[c.yV]) : lD[c.yV])
+      .attr('x', 0)
+      .attr('y', c.y(fD[c.yV]) - 10)
+      .attr('class', 'label-y-data-first')
+      .text(c.fV ? c.fV(fD[c.yV]) : fD[c.yV])
 
-    // last x-axis label
+    // last y-value label
     c.svg.append('text')
       .attr('x', c.w)
-      .attr('y', c.h - 5)
-      .attr('text-anchor', 'end') // move to css
-      .attr('class', 'label employment')
-      .attr('fill', '#f8f9fabd') // move to css
-      .text(lD[c.dL])
+      .attr('y', c.y(lD[c.yV]) - 10)
+      .attr('class', 'label-y-data-last')
+      .text(c.fV ? c.fV(lD[c.yV]) : lD[c.yV])
 
     // first x-axis label
     c.svg.append('text')
       .attr('x', 0)
       .attr('y', c.h - 5)
-      .attr('text-anchor', 'start') // move to css
-      .attr('class', 'label')
-      .attr('fill', '#f8f9fabd') // move to css
+      .attr('class', 'label-x-data-first')
       .text(fD[c.dL])
+
+    // last x-axis label
+    c.svg.append('text')
+      .attr('x', c.w)
+      .attr('y', c.h - 5)
+      .attr('class', 'label-x-data-last')
+      .text(lD[c.dL])
+
+    // circle on first data point
+    c.svg.append('circle')
+      .attr('cx', c.x(fD[c.xV]))
+      .attr('cy', c.y(fD[c.yV]))
+      .attr('r', 1)
+      .attr('class', 'cursor')
 
     // circle on last data point
     c.svg.append('circle')
