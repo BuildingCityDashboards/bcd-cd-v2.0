@@ -16,7 +16,7 @@
   min-height: 192px;
   height: 100%;
   padding: 0;
-  background-color: rgba(231, 77, 62, 0.68);
+  background-color: rgba(231, 77, 62, 0.8);
   flex-direction: column;
   justify-content: space-between;
   word-wrap: break-word;
@@ -69,7 +69,7 @@ h2.card__sub-title {
   height: 35%;
   align-items: center;
   /* justify-content: space-around; */
-  padding: 8px;
+  padding: 8px 16px;
 
 }
 
@@ -88,8 +88,43 @@ h2.card__sub-title {
   /* stroke: white; */
 }
 
-.card__line-chart .label,
-.no-axis {
+.card__line-chart g .activity {
+  stroke: white;
+  stroke-width: 2px;
+  fill: none;
+}
+
+.card__line-chart g circle {
+  r: 2;
+  stroke: white;
+  stroke-width: 2px;
+  fill: white;
+
+}
+
+.card__line-chart .label-x-data-last,
+.label-x-data-first,
+.label-y-data-last,
+.label-y-data-first {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  line-height: 1.2;
+  letter-spacing: 0.15px;
+}
+
+.card__line-chart .label-x-data-first,
+.label-y-data-first {
+  text-anchor: start;
+}
+
+.card__line-chart .label-x-data-last,
+.label-y-data-last {
+  text-anchor: end;
+}
+
+.card__line-chart .no-axis {
   color: rgba(255, 255, 255, 0.6);
   font-size: 12px;
   font-style: normal;
@@ -171,23 +206,23 @@ h2.card__sub-title {
   min-height: 60px;
   height: 35%;
   margin: 0;
-  padding-top: 4px;
   border: none;
   flex-direction: column;
-  /* justify-content: space-around; */
+  padding: 8px 16px 12px;
+  justify-content: space-around;
 }
 
 .card__info-border {
   height: 8px;
   border-top: 1px solid;
-  border-top-color: rgba(255, 255, 255, 0.1);
+  border-top-color: rgba(255, 255, 255, 0.2);
   /* right: -8px; */
 }
 
 p.card__info-text {
   color: white;
   padding-top: 16px;
-  font-size: 10px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 300;
   font-stretch: normal;
@@ -197,20 +232,21 @@ p.card__info-text {
 
 .card__info__buttons {
   display: flex;
-  padding-top: 8px;
+  padding: 8px;
   color: transparent;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.card__info__buttons .button {
-  color: #8ebfd6;
-  font-size: 10px;
-  font-style: normal;
+.card__info__buttons .button,
+a {
+  font-size: 12px;
+  font-style: bold;
   font-weight: 500;
   font-stretch: normal;
   line-height: 1.14;
   letter-spacing: 1.25px;
+  text-decoration: none;
 }
 
 .card__icon {
