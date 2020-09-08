@@ -1,6 +1,6 @@
 class CardChartLine {
   // constructor function
-  constructor (options) {
+  constructor(options) {
     this.d = options.data // the data
     this.e = options.elementid // selector element
     // this.k = options.tracekey // trace key
@@ -20,7 +20,7 @@ class CardChartLine {
     this.ySF = options.ySF || 'thousands' // format for y axis
   }
 
-  init () {
+  init() {
     const c = this
     d3.select(c.e).select('svg').remove()
     c.eN = d3.select(c.e).node()
@@ -39,7 +39,7 @@ class CardChartLine {
     c.drawLabels()
   }
 
-  setScales () {
+  setScales() {
     const c = this
     const maxToday = c.d.length > 0 ? d3.max(c.d, (d) => {
       return d[c.yV]
@@ -69,7 +69,7 @@ class CardChartLine {
     c.y.domain([0, Math.max(maxToday)])
   }
 
-  drawLine () {
+  drawLine() {
     const c = this
 
     // Adds the svg canvas
@@ -87,7 +87,7 @@ class CardChartLine {
       .attr('d', c.line(c.d))
   }
 
-  drawLabels () {
+  drawLabels() {
     const c = this
     const l = c.d.length
     const lD = c.d[l - 1]
@@ -110,7 +110,7 @@ class CardChartLine {
       .attr('fill', '#f8f9fabd') // move to css
       .text(c.fV ? c.fV(lD[c.yV]) : lD[c.yV])
 
-    // latest date label
+    // last x-axis label
     c.svg.append('text')
       .attr('x', c.w)
       .attr('y', c.h - 5)
@@ -119,19 +119,20 @@ class CardChartLine {
       .attr('fill', '#f8f9fabd') // move to css
       .text(lD[c.dL])
 
-    // first date label
+    // first x-axis label
     c.svg.append('text')
       .attr('x', 0)
       .attr('y', c.h - 5)
       .attr('text-anchor', 'start') // move to css
-      .attr('class', 'label employment')
+      .attr('class', 'label')
       .attr('fill', '#f8f9fabd') // move to css
       .text(fD[c.dL])
 
+    // circle on last data point
     c.svg.append('circle')
       .attr('cx', c.x(lD[c.xV]))
       .attr('cy', c.y(lD[c.yV]))
-      .attr('r', 3)
+      .attr('r', 1)
       .attr('class', 'cursor')
   }
 }
