@@ -10,7 +10,7 @@ import { CardChartLine } from '../modules/CardChartLine.js'
 import { fetchJsonFromUrlAsync } from '../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 
-async function main(options) {
+async function main (options) {
   // console.log('createChart')
   console.log(options)
 
