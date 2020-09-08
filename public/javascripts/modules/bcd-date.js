@@ -25,7 +25,7 @@ export { isToday }
  *     getDateFromToday(-1) //yesterday's date
  */
 const getDateFromToday = n => {
-  let d = new Date()
+  const d = new Date()
   d.setDate(d.getDate() + parseInt(n))
   return d
 }
@@ -43,8 +43,8 @@ export { getDateFromToday }
  *
  */
 
-function formatDateAsDDMMYY (date, delim = '-') {
-  let dateString = '' + date.getDate() + delim + (parseInt(date.getMonth()) + 1) + delim + date.getFullYear().toString().substr(-2)
+function formatDateAsDDMMYY(date, delim = '-') {
+  const dateString = '' + date.getDate() + delim + (parseInt(date.getMonth()) + 1) + delim + date.getFullYear().toString().substr(-2)
   return dateString
 }
 
@@ -61,7 +61,7 @@ export { formatDateAsDDMMYY }
  *
  */
 
-function formatDateAsQuarterString (date) {
+function formatDateAsQuarterString(date) {
   const newDate = new Date()
   newDate.setMonth(date.getMonth() + 1)
   const year = (date.getFullYear())
@@ -71,7 +71,7 @@ function formatDateAsQuarterString (date) {
 
 export { formatDateAsQuarterString }
 
-function convertQuarterToDate (q) {
+function convertQuarterToDate(q) {
   const splitted = q.split('Q')
   const year = splitted[0]
   const quarterStartMonth = splitted[1] * 3 - 2
@@ -98,10 +98,19 @@ const locale = d3.formatLocale({
 
 export { locale }
 
+function getYearQuarterFromDate(date) {
+  const newDate = new Date()
+  newDate.setMonth(date.getMonth() + 1)
+  const year = (date.getFullYear())
+  const q = Math.ceil((newDate.getMonth()) / 3)
+  return year + ' Q' + q
+}
+
+export { getQuarterFromDate }
+
 // const parseTime = d3.timeParse('%d/%m/%Y')
 // const parseYear = d3.timeParse('%Y')
 // const formatYear = d3.timeFormat('%Y')
 // const parseMonth = d3.timeParse('%Y-%b')
 // const formatMonth = d3.timeFormat('%b %Y')
 // const parseYearMonth = d3.timeParse('%Y-%b') // ie 2014-Jan = Wed Jan 01 2014 00:00:00
-

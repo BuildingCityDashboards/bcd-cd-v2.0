@@ -1,13 +1,13 @@
 import { Chart } from './Chart.js'
 
 class MultiLineChart extends Chart {
-  constructor (obj) {
+  constructor(obj) {
     super(obj)
 
     this.drawChart()
   }
 
-  drawChart () {
+  drawChart() {
     const c = this
 
     super.nestData()
@@ -21,7 +21,7 @@ class MultiLineChart extends Chart {
     c.drawLegend() // child - like createScales could be added to parent with switch.
   }
 
-  updateChart (obj) {
+  updateChart(obj) {
     const c = this
 
     if (obj) {
@@ -42,7 +42,7 @@ class MultiLineChart extends Chart {
   }
 
   // needs to be called everytime the data changes
-  createScales () {
+  createScales() {
     const c = this
     let yAxisCall
     let xAxisCall
@@ -66,7 +66,7 @@ class MultiLineChart extends Chart {
     c.yAxis.transition(c.t()).call(yAxisCall)
   }
 
-  setScales (chartType) {
+  setScales(chartType) {
     const c = this
     let x
     let x0
@@ -109,7 +109,7 @@ class MultiLineChart extends Chart {
     }
   }
 
-  setDomains (zeroYAxis = true) {
+  setDomains(zeroYAxis = true) {
     const c = this
     let minValue
 
@@ -131,15 +131,15 @@ class MultiLineChart extends Chart {
 
     // Set Y axis scales 0 if positive number else use minValue
     c.y.domain([minValue >= 0 ? 0 : minValue,
-      d3.max(c.d, d => {
-        return d3.max(d.values, d => {
-          return d[c.yV]
-        })
+    d3.max(c.d, d => {
+      return d3.max(d.values, d => {
+        return d[c.yV]
       })
+    })
     ])
   }
 
-  drawLines () {
+  drawLines() {
     const c = this
     const g = c.g
 
@@ -194,7 +194,7 @@ class MultiLineChart extends Chart {
       .transition(c.t).remove()
   }
 
-  addTooltip (title, format, dateField, prefix, postfix) {
+  addTooltip(title, format, dateField, prefix, postfix) {
     const c = this
 
     d3.select(c.e).select('.focus').remove()
@@ -213,7 +213,7 @@ class MultiLineChart extends Chart {
     c.drawFocusOverlay() // need to refactor this function
   }
 
-  drawFocusOverlay () {
+  drawFocusOverlay() {
     const c = this
     const g = c.g
     const focus = d3.select(c.e).select('.focus')
@@ -251,7 +251,7 @@ class MultiLineChart extends Chart {
         })
     }
 
-    function mousemove () {
+    function mousemove() {
       focus.style('visibility', 'visible')
       c.newToolTip.style('visibility', 'visible')
       c.newToolTip.style('display', 'block')
@@ -283,7 +283,7 @@ class MultiLineChart extends Chart {
   //         c.newToolTip.style("visibility","visible");
   // }
 
-  getPerChange (d1, d0, v) {
+  getPerChange(d1, d0, v) {
     let value
     value = !isNaN(d1[v]) ? d0 ? (d1[v] - d0[v]) / d0[v] : 'null' : null
     if (value === Infinity) {
@@ -294,7 +294,7 @@ class MultiLineChart extends Chart {
     return value
   }
 
-  updatePosition (xPosition, yPosition) {
+  updatePosition(xPosition, yPosition) {
     const c = this
     const g = c.g
     // get the x and y values - y is static
@@ -304,7 +304,7 @@ class MultiLineChart extends Chart {
     c.newToolTip.style('left', tooltipX + 'px').style('top', tooltipY + 'px')
   }
 
-  getTooltipPosition ([mouseX, mouseY]) {
+  getTooltipPosition([mouseX, mouseY]) {
     const c = this
     let ttX
     const ttY = mouseY
@@ -320,15 +320,15 @@ class MultiLineChart extends Chart {
     return [ttX, ttY]
   }
 
-  formatQuarter (date, i) {
-    const newDate = new Date()
-    newDate.setMonth(date.getMonth() + 1)
-    const year = (date.getFullYear())
-    const q = Math.ceil((newDate.getMonth()) / 3)
-    return year + ' Q' + q
-  }
+  // formatQuarter (date, i) {
+  //   const newDate = new Date()
+  //   newDate.setMonth(date.getMonth() + 1)
+  //   const year = (date.getFullYear())
+  //   const q = Math.ceil((newDate.getMonth()) / 3)
+  //   return year + ' Q' + q
+  // }
 
-  addBaseLine (value) {
+  addBaseLine(value) {
     const c = this
     const gLines = c.getElement('.grid-lines')
 
@@ -340,7 +340,7 @@ class MultiLineChart extends Chart {
       .attr('stroke', '#dc3545')
   }
 
-  pagination (data, selector, sliceBy, pageNumber, label) {
+  pagination(data, selector, sliceBy, pageNumber, label) {
     const c = this
 
     const slices = c.slicer(data, sliceBy)
@@ -395,7 +395,7 @@ class MultiLineChart extends Chart {
     }
   }
 
-  slicer (arr, sliceBy) {
+  slicer(arr, sliceBy) {
     if (sliceBy < 1 || !arr) return () => []
 
     return (p) => {
@@ -410,7 +410,7 @@ class MultiLineChart extends Chart {
     }
   }
 
-  sortData (i, x0) {
+  sortData(i, x0) {
     const c = this
     const tD = c.d.map(d => {
       let s
@@ -443,7 +443,7 @@ class MultiLineChart extends Chart {
     return tD
   }
 
-  ttContent (data) {
+  ttContent(data) {
     const c = this
     data.forEach((d, i) => {
       const id = '#bcd-tt' + i
@@ -468,7 +468,7 @@ class MultiLineChart extends Chart {
     })
   }
 
-  moveTooltip (d) {
+  moveTooltip(d) {
     const c = this
     d.forEach((d, i) => {
       const id = '.tooltip_' + i
@@ -486,7 +486,7 @@ class MultiLineChart extends Chart {
   }
 
   // replacing old legend method with new inline labels
-  drawLegend () {
+  drawLegend() {
     // chart (c) object, vlaue (v), colour (z), line height(lH)
     const c = this
     const g = c.g
@@ -582,12 +582,12 @@ class MultiLineChart extends Chart {
       .attr('fill', d => z(d.key))
 
     // check if number
-    function isNum (d) {
+    function isNum(d) {
       return !isNaN(d)
     }
 
     // filter out the NaN
-    function idFilter (d) {
+    function idFilter(d) {
       return !!(isNum(d[v]) && d[v] !== 0)
     }
   }
