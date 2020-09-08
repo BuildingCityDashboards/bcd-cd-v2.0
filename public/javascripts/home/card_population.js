@@ -10,7 +10,7 @@ import { CardChartLine } from '../modules/CardChartLine.js'
 import { fetchJsonFromUrlAsync } from '../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 
-async function main(options) {
+async function main (options) {
   // console.log('createChart')
   // console.log(options)
 
@@ -70,7 +70,6 @@ async function main(options) {
 
   window.addEventListener('resize', () => {
     populationCard.init()
-    console.log('resize')
   })
 
   //   //       // const info = getInfoText('#population-card a', 'The population of Dublin in ', ' on 2011', populationDataSet, populationColumnName, 'date', d3.format('.2s'))
