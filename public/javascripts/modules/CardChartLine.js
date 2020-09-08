@@ -85,9 +85,6 @@ class CardChartLine {
     c.svg.append('path')
       .attr('class', 'activity')
       .attr('d', c.line(c.d))
-      .attr('stroke', '#16c1f3') // move to css
-      .attr('stroke-width', 2) // move to css
-      .attr('fill', 'none') // move to css
   }
 
   drawLabels () {
@@ -135,10 +132,7 @@ class CardChartLine {
       .attr('cx', c.x(lD[c.xV]))
       .attr('cy', c.y(lD[c.yV]))
       .attr('r', 3)
-      .attr('transform', 'translate(0,0)') // move to css
       .attr('class', 'cursor')
-      .style('stroke', '#16c1f3') // move to css
-      .style('stroke-width', '2px') // move to css
   }
 }
 
