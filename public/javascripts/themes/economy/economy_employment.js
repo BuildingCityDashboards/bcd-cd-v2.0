@@ -6,11 +6,11 @@ import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErro
 
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+(async function main() {
   const chartDivIds = ['employment', 'labour', 'unemployed', 'ilo-employment', 'ilo-unemployment']
 
   const STATBANK_BASE_URL =
-        'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
+    'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // QLF08: Persons aged 15 years and over by Region, Quarter and Statistic
   const TABLE_CODE = 'QLF08'
   try {
@@ -219,7 +219,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
-    //   console.log('retry')
+      //   console.log('retry')
       removeErrorMessageButton('chart-' + chartDivIds[0])
       main()
     })

@@ -6,7 +6,7 @@ mixin home__card-chart({id='', title='card title', subtitle='',icon='', info='In
                 h1.card__title=title
                 h2.card__sub-title=subtitle
             .card__body
-                div(id=id+'__chart' class="card__line-chart")
+                div(id=plotoptions.chartid class="card__line-chart")
             .card__info
                 .card__info-border 
                 p.card__info-text=info

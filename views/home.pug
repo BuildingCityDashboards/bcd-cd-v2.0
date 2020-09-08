@@ -55,6 +55,7 @@ block content
                         name:'Explore data'
                       }],
                       plotoptions:{
+                        chartid: 'population-card__chart',
                         data:{
                         href: '../data/static/CNA13.json',
                         },
@@ -64,9 +65,9 @@ block content
                     })
                 .carousel-cell
                   +home__card-chart({
-                      title: 'employment',
-                      subtitle:  'South-east',
-                      id: 'employment-card',
+                      title: 'unemployment rate (%)',
+                      subtitle:  'Southern region',
+                      id: 'unemployment-card',
                       info: '',
                       links: [{
                         href :'/some/link',
@@ -77,6 +78,7 @@ block content
                         name:'Explore data'
                       }],
                       plotoptions:{
+                        chartid: 'unemployment-card__chart',
                         data:{
                         href: 'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/QLF08',
                         },
