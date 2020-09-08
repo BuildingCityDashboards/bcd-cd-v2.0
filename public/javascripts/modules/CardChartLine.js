@@ -1,6 +1,6 @@
 class CardChartLine {
   // constructor function
-  constructor(options) {
+  constructor (options) {
     this.d = options.data // the data
     this.e = options.elementid // selector element
     // this.k = options.tracekey // trace key
@@ -13,14 +13,15 @@ class CardChartLine {
     this.fV = options.fV
     this.dL = options.dL
     // create the chart area
-    this.init()
 
     this.tX = options.tX
     this.tY = options.tY
     this.ySF = options.ySF || 'thousands' // format for y axis
+
+    this.drawChart()
   }
 
-  init() {
+  drawChart () {
     const c = this
     d3.select(c.e).select('svg').remove()
     c.eN = d3.select(c.e).node()
@@ -39,7 +40,7 @@ class CardChartLine {
     c.drawLabels()
   }
 
-  setScales() {
+  setScales () {
     const c = this
     const maxToday = c.d.length > 0 ? d3.max(c.d, (d) => {
       return d[c.yV]
@@ -69,7 +70,7 @@ class CardChartLine {
     c.y.domain([0, Math.max(maxToday)])
   }
 
-  drawLine() {
+  drawLine () {
     const c = this
 
     // Adds the svg canvas
@@ -87,7 +88,7 @@ class CardChartLine {
       .attr('d', c.line(c.d))
   }
 
-  drawLabels() {
+  drawLabels () {
     const c = this
     const l = c.d.length
     const lD = c.d[l - 1] // last data value
