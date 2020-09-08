@@ -10,7 +10,7 @@ import { CardChartLine } from '../modules/CardChartLine.js'
 import { fetchJsonFromUrlAsync } from '../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 
-async function main (options) {
+async function main(options) {
   // console.log('createChart')
   console.log(options)
 
@@ -42,9 +42,10 @@ async function main (options) {
     { type: 'arrobj' },
     (d, i) => {
       if (d[dimensions[0]] === 'Southern' &&
-                hasCleanValue(d)) {
-        d.date = d.Quarter
+        hasCleanValue(d)) {
+        d.date = convertQuarterToDate(d.Quarter)
         d.value = +d.value * 1000
+        d.label = d.Quarter
         return d
       }
     })
@@ -60,7 +61,7 @@ async function main (options) {
     xvaluename: 'date',
     // sN: dimensions[1],
     fV: d3.format('.2s'), // format y value
-    dL: 'date'
+    dL: 'label'
   }
 
   const employmentnCard = new CardChartLine(employedCountConfig)

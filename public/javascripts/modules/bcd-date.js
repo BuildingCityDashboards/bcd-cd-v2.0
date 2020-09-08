@@ -43,7 +43,7 @@ export { getDateFromToday }
  *
  */
 
-function formatDateAsDDMMYY(date, delim = '-') {
+function formatDateAsDDMMYY (date, delim = '-') {
   const dateString = '' + date.getDate() + delim + (parseInt(date.getMonth()) + 1) + delim + date.getFullYear().toString().substr(-2)
   return dateString
 }
@@ -61,7 +61,7 @@ export { formatDateAsDDMMYY }
  *
  */
 
-function formatDateAsQuarterString(date) {
+function formatDateAsQuarterString (date) {
   const newDate = new Date()
   newDate.setMonth(date.getMonth() + 1)
   const year = (date.getFullYear())
@@ -71,7 +71,7 @@ function formatDateAsQuarterString(date) {
 
 export { formatDateAsQuarterString }
 
-function convertQuarterToDate(q) {
+function convertQuarterToDate (q) {
   const splitted = q.split('Q')
   const year = splitted[0]
   const quarterStartMonth = splitted[1] * 3 - 2
@@ -98,7 +98,7 @@ const locale = d3.formatLocale({
 
 export { locale }
 
-function getYearQuarterFromDate(date) {
+function getYearQuarterFromDate (date) {
   const newDate = new Date()
   newDate.setMonth(date.getMonth() + 1)
   const year = (date.getFullYear())
@@ -106,7 +106,7 @@ function getYearQuarterFromDate(date) {
   return year + ' Q' + q
 }
 
-export { getQuarterFromDate }
+export { getYearQuarterFromDate }
 
 // const parseTime = d3.timeParse('%d/%m/%Y')
 // const parseYear = d3.timeParse('%Y')
