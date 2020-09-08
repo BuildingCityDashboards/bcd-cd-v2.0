@@ -11,8 +11,8 @@ import { fetchJsonFromUrlAsync } from '../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 
 async function main (options) {
-  console.log('createChart')
-  console.log(options)
+  // console.log('createChart')
+  // console.log(options)
 
   const STATBANK_BASE_URL =
     '../data/static/'
@@ -22,8 +22,8 @@ async function main (options) {
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
 
   const json = await fetchJsonFromUrlAsync(STATBANK_BASE_URL + TABLE_CODE)
-  console.log('json')
-  console.log(json)
+  // console.log('json')
+  // console.log(json)
 
   // if (json) {
   // removeSpinner('chart-' + chartDivIds[0])
@@ -67,6 +67,10 @@ async function main (options) {
   }
 
   const populationCard = new CardChartLine(populationConfig)
+
+  window.addEventListener('resize', () => {
+    populationCard.init()
+  })
 
   //   //       // const info = getInfoText('#population-card a', 'The population of Dublin in ', ' on 2011', populationDataSet, populationColumnName, 'date', d3.format('.2s'))
 
