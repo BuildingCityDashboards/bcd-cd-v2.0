@@ -1,6 +1,7 @@
 extends layout
 //- include component/card-rt
 include component/home__card-chart
+include component/home__card-indicator
 
 block append head
   link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
@@ -40,6 +41,29 @@ block content
       
         #hero-carousel
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false}'>
+                .carousel-cell
+                  +home__card-indicator({
+                      title: 'Air quality',
+                      subtitle:  'Cork city',
+                      id: 'air-quality-card',
+                      info: '',
+                      buttons: [{
+                        href :'/some/link',
+                        name:'More'
+                      },
+                      {
+                        href :'some/link',
+                        name:'Explore data'
+                      }],
+                      displayoptions:{
+                        displayid: 'air-quality-card__display',
+                        data:{
+                        href: '/api/air-quality/latest',
+                        },
+                        src: '/javascripts/home/card_air_quality.js',
+                        format:''
+                      }
+                    })
                 .carousel-cell
                   +home__card-chart({
                       title: 'population',
