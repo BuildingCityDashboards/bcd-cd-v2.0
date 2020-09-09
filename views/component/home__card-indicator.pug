@@ -17,6 +17,7 @@ mixin home__card-indicator({id='', title='card title', subtitle='',icon='', info
                     each b in buttons
                         a(href=b.href class="card__link" target=b.target).button #{b.name}
     script(type="module").
+        'use strict'
         import { main } from !{JSON.stringify(displayoptions.src)}
         (async function(o){
            main(o);

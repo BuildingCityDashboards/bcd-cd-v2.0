@@ -3,9 +3,8 @@
 //   Air quality card
 
 // ***/
-'use strict';
+'use strict'
 
-import { hasCleanValue } from '../modules/bcd-data.js'
 import { fetchJsonFromUrlAsync } from '../modules/bcd-async.js'
 
 async function main (options) {
@@ -30,7 +29,7 @@ async function main (options) {
   async function fetchData () {
     // console.log('fetch data')
     try {
-      const json = await fetchJsonFromUrlAsync(options.data.href + 'g')
+      const json = await fetchJsonFromUrlAsync(options.data.href + 's')
       if (json) {
         // console.log('json')
         // console.log(json)
@@ -44,7 +43,7 @@ async function main (options) {
 
         clearInterval(refreshTimer)
       }
-    } catch (error) {
+    } catch {
       //   console.error('Data fetch error: ' + JSON.stringify(error))
       //     // // initialiseDisplay()
       //     // // updateInfo('#bikes-card a', 'Source did not respond with data- we will try again soon')
