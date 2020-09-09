@@ -43,17 +43,15 @@ block content
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false}'>
                 .carousel-cell
                   +home__card-indicator({
-                      title: 'Air quality',
-                      subtitle:  'Cork city',
+                      title: 'Air quality - city',
+                      subtitle:  '',
                       id: 'air-quality-card',
                       info: '',
-                      buttons: [{
-                        href :'/some/link',
-                        name:'More'
-                      },
+                      buttons: [
                       {
-                        href :'some/link',
-                        name:'Explore data'
+                        href :'http://erc.epa.ie/real-time-air/www/aqindex/aqih_json.php',
+                        name:'EPA data',
+                        target: '_blank'
                       }],
                       displayoptions:{
                         displayid: 'air-quality-card__display',

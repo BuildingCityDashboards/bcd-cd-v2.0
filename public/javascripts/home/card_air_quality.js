@@ -1,6 +1,6 @@
 // /***
 
-//   Population card
+//   Air quality card
 
 // ***/
 
@@ -16,6 +16,12 @@ async function main (options) {
   const json = await fetchJsonFromUrlAsync(options.data.href)
   console.log('json')
   console.log(json)
+
+  console.log(json.aqihsummary.filter((d) => {
+    if (d['aqih-region'] === 'Cork_City') {
+      return d
+    }
+  }))
 
   // if (json) {
   // removeSpinner('chart-' + chartDivIds[0])
