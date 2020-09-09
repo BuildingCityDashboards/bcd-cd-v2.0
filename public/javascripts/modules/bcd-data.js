@@ -7,6 +7,8 @@
  *
  */
 
+'use strict'
+
 const hasCleanValue = d => {
   return d.value != null && !isNaN(+d.value)
 }
@@ -57,7 +59,7 @@ function extractObjectArrayWithKey (dataArray, key) {
  */
 
 const formatWideToLong = csv => {
-// TODO:
+  // TODO:
   return csv
 }
 
@@ -91,7 +93,7 @@ export { stackNest }
  */
 
 const longToWide = (csv) => {
-// TODO:
+  // TODO:
   return csv
 }
 
