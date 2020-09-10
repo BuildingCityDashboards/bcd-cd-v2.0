@@ -25,14 +25,16 @@ async function main (options) {
   //   }
 
   //   let refreshTimer = setInterval(updateCountdown, refreshInterval)
-  let timeout
+  const RETRY_INTERVAL = 3000
+  const REFRESH_INTERVAL = 60000 * 10
+  let refreshTimeout
+
   async function fetchData () {
     // console.log('fetch data')
     let json
-    clearTimeout(timeout)
-
+    clearTimeout(refreshTimeout)
     try {
-      json = await fetchJsonFromUrlAsyncTimeout(options.data.href + 's', 500)
+      json = await fetchJsonFromUrlAsyncTimeout(options.data.href, 500)
       if (json) {
         console.log('json')
         // console.log(json)
@@ -43,13 +45,12 @@ async function main (options) {
             return d
           }
         }))
-        clearTimeout(timeout)
-        // clearInterval(refreshTimer)
+        clearTimeout(refreshTimeout)
+        refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
       } else json = null
     } catch (e) {
-      json = null
-
-      timeout = setTimeout(fetchData, 100)
+      json = null // nullify for GC (necessary?)
+      refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
 
       //   console.error('Data fetch error: ' + JSON.stringify(error))
       //     // // initialiseDisplay()
@@ -67,14 +68,7 @@ async function main (options) {
     //     //   //     })
     // }
   }
-
   fetchData()
-  //   const cardTimer = setIntervalAsync(
-  //     () => {
-  //       return fetchData()
-  //     },
-  //     refreshInterval * 2.5 // after a successful refresh wait a longer period than a retry
-  //   )
 }
 
 export { main }
