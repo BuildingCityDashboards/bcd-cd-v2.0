@@ -70,7 +70,7 @@ async function main (options) {
                     '<h2>Index</h2>'
 
         const infoElement = cardElement.querySelector('.card__info-text')
-        infoElement.innerHTML = 'The latest air quality reading in Cork city was taken at <b>' + lastReadTime + '</b>  and indicated a quality index of <b>' + corkData[0].aqih.split(',')[0] + '</b> in the <b>' + corkData[0].aqih.split(',')[1] + '</b> quality band'
+        infoElement.innerHTML = 'The latest air quality reading in Cork city was taken at <b>' + lastReadTime + '</b>  and indicated a <b>QUALITY INDEX of ' + corkData[0].aqih.split(',')[0] + '</b> in the <b>' + corkData[0].aqih.split(',')[1].toUpperCase() + '</b> quality band'
 
         clearTimeout(refreshTimeout)
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)

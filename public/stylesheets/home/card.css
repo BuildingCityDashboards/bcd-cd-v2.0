@@ -3,7 +3,8 @@
   justify-content: center;
 }
 
-.home__card-chart {
+.home__card-chart,
+.home__card-indicator {
   height: 100%;
 }
 
