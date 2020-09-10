@@ -61,10 +61,16 @@ async function main (options) {
         subtitleElement.innerHTML = 'Latest reading ' + lastReadTime
 
         const leftElement = cardElement.querySelector('#card-left')
-        leftElement.innerHTML = corkData[0].aqih.split(',')[1]
+        leftElement.innerHTML = '<h1>' + corkData[0].aqih.split(',')[1] + '</h1>' +
+                    '<h2>Quality</h2>'
 
         const rightElement = cardElement.querySelector('#card-right')
-        rightElement.innerHTML = corkData[0].aqih.split(',')[0]
+        rightElement.innerHTML =
+                    '<h1>' + corkData[0].aqih.split(',')[0] + '</h1>' +
+                    '<h2>Index</h2>'
+
+        const infoElement = cardElement.querySelector('.card__info-text')
+        infoElement.innerHTML = 'The latest air quality reading in Cork city was taken at <b>' + lastReadTime + '</b>  and indicated a quality index of <b>' + corkData[0].aqih.split(',')[0] + '</b> in the <b>' + corkData[0].aqih.split(',')[1] + '</b> quality band'
 
         clearTimeout(refreshTimeout)
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
