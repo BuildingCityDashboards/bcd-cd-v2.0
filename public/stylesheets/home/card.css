@@ -173,7 +173,6 @@ h2.card__sub-title {
   margin: 0;
   text-align: top;
   text-transform: capitalize;
-  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   font-stretch: normal;
@@ -183,12 +182,12 @@ h2.card__sub-title {
 
 .card__left h1,
 .card__right h1 {
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .card__left h2,
 .card__right h2 {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .card__left p,
