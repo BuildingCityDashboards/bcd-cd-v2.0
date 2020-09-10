@@ -16,13 +16,12 @@ async function main (options) {
   //   const refreshInterval = 100
   //   let refreshCountdown = refreshInterval
 
-  //   const updateCountdown = function () {
-  //     // const cd = refreshCountdown / 1000
-  //     // d3.select('#bikes-bikesCountdown').text('Update in ' + cd)
-  //     // console.log('Countdown: ' + cd)
-  //     if (refreshCountdown > 0) refreshCountdown -= refreshInterval / 2
-  //     else fetchData()
-  //   }
+  const updateCountdown = function () {
+    // const cd = refreshCountdown / 1000
+    // d3.select('#bikes-bikesCountdown').text('Update in ' + cd)
+    // console.log('Countdown: ' + cd)
+    // if (refreshCountdown > 0) refreshCountdown -= refreshInterval / 2
+  }
 
   //   let refreshTimer = setInterval(updateCountdown, refreshInterval)
   const RETRY_INTERVAL = 30000
@@ -34,22 +33,45 @@ async function main (options) {
     let json
     clearTimeout(refreshTimeout)
     try {
-      json = await fetchJsonFromUrlAsyncTimeout(options.data.href, 500)
+      console.log('fetching data')
+      json = await fetchJsonFromUrlAsyncTimeout(options.displayoptions.data.href, 500)
       if (json) {
+        console.log('data updated')
         console.log('json')
         // console.log(json)
         //   updateDisplay(json)
 
-        console.log(json.aqihsummary.filter((d) => {
+        const corkData = json.aqihsummary.filter((d) => {
           if (d['aqih-region'] === 'Cork_City') {
             return d
           }
-        }))
+        })
+        console.log('corkData')
+        console.log(corkData)
+
+        const lastReadTime = json.generatedAt.split(' ')[1] ? json.generatedAt.split(' ')[1] : ''
+        // console.log(lastReadTime)
+
+        // const cardElement = document.getElementById('air-quality-card')
+        // console.log('cardElement')
+        // console.log(cardElement)
+
+        const cardElement = document.getElementById('air-quality-card')
+        const subtitleElement = cardElement.querySelector('#subtitle')
+        subtitleElement.innerHTML = 'Latest reading ' + lastReadTime
+
+        const leftElement = cardElement.querySelector('#card-left')
+        leftElement.innerHTML = corkData[0].aqih.split(',')[1]
+
+        const rightElement = cardElement.querySelector('#card-right')
+        rightElement.innerHTML = corkData[0].aqih.split(',')[0]
+
         clearTimeout(refreshTimeout)
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
-      } else json = null
+      } else json = null // nullify for GC (necessary?)
     } catch (e) {
       json = null // nullify for GC (necessary?)
+      console.log('data fetch error' + e)
       refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
 
       //   console.error('Data fetch error: ' + JSON.stringify(error))
