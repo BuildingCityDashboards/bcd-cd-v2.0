@@ -25,7 +25,7 @@ async function main (options) {
   //   }
 
   //   let refreshTimer = setInterval(updateCountdown, refreshInterval)
-  const RETRY_INTERVAL = 3000
+  const RETRY_INTERVAL = 30000
   const REFRESH_INTERVAL = 60000 * 10
   let refreshTimeout
 
