@@ -1,6 +1,7 @@
 extends layout
 //- include component/card-rt
 include component/home__card-chart
+include component/home__card-indicator
 
 block append head
   link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
@@ -20,7 +21,7 @@ block append head
   script(src="https://unpkg.com/set-interval-async" type="text/javascript" defer)
   script(src='javascripts/home/card_time.js' type="text/javascript" defer)
   script(src='javascripts/home/card_weather_current.js' type="text/javascript" defer)
-  //- script(src='javascripts/home/card_population.js' type="text/javascript" defer)
+
 
 //- block navigation
 
@@ -40,6 +41,28 @@ block content
       
         #hero-carousel
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false}'>
+                .carousel-cell
+                  +home__card-indicator({
+                      title: 'Air quality - city',
+                      subtitle:  'Fetching data...',
+                      id: 'air-quality-card',
+                      icon: '/images/icons/home/air-pollution.svg#Layer_1',
+                      info: '',
+                      buttons: [
+                      {
+                        href :'https://erc.epa.ie/real-time-air/www/aqindex/aqih_json.php',
+                        name:'EPA data',
+                        target: '_blank'
+                      }],
+                      displayoptions:{
+                        displayid: 'air-quality-card__display',
+                        data:{
+                        href: '/api/air-quality/latest',
+                        },
+                        src: '/javascripts/home/card_air_quality.js',
+                        format:''
+                      }
+                    })
                 .carousel-cell
                   +home__card-chart({
                       title: 'population',
