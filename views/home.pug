@@ -11,7 +11,6 @@ block append head
   link(rel="stylesheet", href="/stylesheets/home/home-carousel.css")
   link(rel="stylesheet", href="/stylesheets/home/card.css")
   //- link(rel="stylesheet", href="/stylesheets/home/home-about.css")
-  //- link(rel="stylesheet", href="/stylesheets/card.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
   //- link(rel='stylesheet', href='/stylesheets/icon-nav.css')
   script(src='/lib/d3v5/d3.min.js' type="text/javascript" )
@@ -41,6 +40,29 @@ block content
       
         #hero-carousel
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false}'>
+                //- .carousel-cell
+                  +home__card-chart({
+                      title: 'house prices',
+                      subtitle:  '',
+                      id: 'housing-card',
+                      info: 'Information will appear here when available',
+                      links: [{
+                        href :'/some/link',
+                        name:'More'
+                      },
+                      {
+                        href :'some/link',
+                        name:'Explore data'
+                      }],
+                      plotoptions:{
+                        chartid: 'housing-card__chart',
+                        data:{
+                        href: '../data/static/CNA13.json',
+                        },
+                        src: '/javascripts/home/card_population.js',
+                        format:''
+                      }
+                    })
                 .carousel-cell
                   +home__card-indicator({
                       title: 'Air quality - city',
@@ -69,7 +91,7 @@ block content
                       subtitle:  'City & County',
                       id: 'population-card',
                       info: 'The population of Cork fell dramatically after the census of 1841, but has recovered steadily in more recent years',
-                      links: [{
+                      buttons: [{
                         href :'/some/link',
                         name:'More'
                       },
@@ -92,7 +114,7 @@ block content
                       subtitle:  'Southern region',
                       id: 'unemployment-card',
                       info: '',
-                      links: [{
+                      buttons: [{
                         href :'/some/link',
                         name:'More'
                       },
@@ -103,7 +125,7 @@ block content
                       plotoptions:{
                         chartid: 'unemployment-card__chart',
                         data:{
-                        href: 'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/QLF08',
+                        href: '../data/static/QLF08.json',
                         },
                         src: '/javascripts/home/card_employment.js',
                         format:''

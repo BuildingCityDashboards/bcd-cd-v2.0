@@ -13,14 +13,11 @@ async function main (options) {
   // console.log('createChart')
   // console.log(options)
 
-  const STATBANK_BASE_URL =
-    '../data/static/'
   // CNA13: Annual Rate of Population Increase by Sex, Province or County, CensusYear and Statistic
-  const TABLE_CODE = 'CNA13.json'
 
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
 
-  const json = await fetchJsonFromUrlAsync(STATBANK_BASE_URL + TABLE_CODE)
+  const json = await fetchJsonFromUrlAsync(options.plotoptions.data.href)
   // console.log('json')
   // console.log(json)
 
@@ -57,7 +54,7 @@ async function main (options) {
 
   const populationConfig = {
     data: populationFiltered,
-    elementid: '#population-card__chart',
+    elementid: '#' + options.plotoptions.chartid,
     yvaluename: 'value',
     xvaluename: 'date',
     // sN: dimensions[1],

@@ -5,7 +5,7 @@
 // ***/
 
 import { hasCleanValue } from '../modules/bcd-data.js'
-import { convertQuarterToDate, getYearQuarterFromDate } from '../modules/bcd-date.js'
+import { convertQuarterToDate } from '../modules/bcd-date.js'
 import { CardChartLine } from '../modules/CardChartLine.js'
 import { fetchJsonFromUrlAsync } from '../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
@@ -16,7 +16,7 @@ async function main (options) {
 
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
 
-  const json = await fetchJsonFromUrlAsync(options.data.href)
+  const json = await fetchJsonFromUrlAsync(options.plotoptions.data.href)
   // console.log('json')
   // console.log(json)
 
@@ -30,9 +30,9 @@ async function main (options) {
   const dimensions = dataset.Dimension().map(dim => {
     return dim.label
   })
-  const categoriesRegion = dataset.Dimension(dimensions[0]).Category().map(c => {
-    return c.label
-  })
+  // const categoriesRegion = dataset.Dimension(dimensions[0]).Category().map(c => {
+  //   return c.label
+  // })
 
   const categoriesStat = dataset.Dimension(dimensions[2]).Category().map(c => {
     return c.label
@@ -56,7 +56,7 @@ async function main (options) {
     data: employmentTable.filter(d => {
       return d[dimensions[2]] === categoriesStat[3]
     }),
-    elementid: '#' + options.chartid,
+    elementid: '#' + options.plotoptions.chartid,
     yvaluename: 'value',
     xvaluename: 'date',
     // sN: dimensions[1],

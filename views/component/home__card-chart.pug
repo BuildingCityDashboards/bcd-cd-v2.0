@@ -1,21 +1,21 @@
-mixin home__card-chart({id='', title='card title', subtitle='', info='Information will appear here when available',links=[], data={}, plotoptions={}})
-    div(id=id class='home__card-chart')
+mixin home__card-chart(options = {id:'', title:'card title', subtitle:'', info:'Information will appear here when available',buttons:[], data:{}, plotoptions:{}})
+    div(id= options.id class='home__card-chart')
         .card
             .card__header
                 //- img(src= icon).card__icon
-                h1.card__title=title
-                h2.card__sub-title=subtitle
+                h1.card__title=options.title
+                h2.card__sub-title=options.subtitle
             .card__body
-                div(id=plotoptions.chartid class="card__line-chart")
+                div(id=options.plotoptions.chartid class="card__line-chart")
             .card__info
                 .card__info-border 
-                p.card__info-text=info
+                p.card__info-text=options.info
                 .card__info__buttons
-                    each l in links
-                        a(href=l.href class="card__link").button #{l.name}
+                    each b in options.buttons
+                        a(href=b.href class="card__link").button #{b.name}
     script(type="module").
-        import { main } from !{JSON.stringify(plotoptions.src)}
+        import { main } from !{JSON.stringify(options.plotoptions.src)}
         (async function(o){
            main(o);
-         })(!{JSON.stringify(plotoptions)})     
+         })(!{JSON.stringify(options)})     
         
