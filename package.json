@@ -18,7 +18,7 @@
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "popper.js": "^1.14.6",
     "pug": "^2.0.3",
     "set-interval-async": "^1.0.33",
