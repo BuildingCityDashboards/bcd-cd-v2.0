@@ -109,7 +109,7 @@ block content
                         format:''
                       }
                     })
-                //- .carousel-cell
+                .carousel-cell
                   +home__card-chart({
                       title: 'unemployment rate (%)',
                       subtitle:  'Southern region',
@@ -126,7 +126,7 @@ block content
                       plotoptions:{
                         chartid: 'unemployment-card__chart',
                         data:{
-                        href: 'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/QLF08',
+                        href: '../data/static/QLF08.json',
                         },
                         src: '/javascripts/home/card_employment.js',
                         format:''
