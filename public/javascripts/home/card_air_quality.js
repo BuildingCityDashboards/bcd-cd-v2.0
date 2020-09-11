@@ -9,7 +9,7 @@ import { fetchJsonFromUrlAsyncTimeout } from '../modules/bcd-async.js'
 
 async function main (options) {
   // console.log('createChart')
-  console.log(options)
+  // console.log(options)
 
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
 
@@ -33,11 +33,11 @@ async function main (options) {
     let json
     clearTimeout(refreshTimeout)
     try {
-      console.log('fetching data')
+      // console.log('fetching data')
       json = await fetchJsonFromUrlAsyncTimeout(options.displayoptions.data.href, 500)
       if (json) {
-        console.log('data updated')
-        console.log('json')
+        // console.log('data updated')
+        // console.log('json')
         // console.log(json)
         //   updateDisplay(json)
 
@@ -46,8 +46,8 @@ async function main (options) {
             return d
           }
         })
-        console.log('corkData')
-        console.log(corkData)
+        // console.log('corkData')
+        // console.log(corkData)
 
         const lastReadTime = json.generatedAt.split(' ')[1] ? json.generatedAt.split(' ')[1] : ''
         // console.log(lastReadTime)
@@ -62,12 +62,12 @@ async function main (options) {
 
         const leftElement = cardElement.querySelector('#card-left')
         leftElement.innerHTML = '<h1>' + corkData[0].aqih.split(',')[1] + '</h1>' +
-                    '<h2>Quality</h2>'
+          '<h2>Quality</h2>'
 
         const rightElement = cardElement.querySelector('#card-right')
         rightElement.innerHTML =
-                    '<h1>' + corkData[0].aqih.split(',')[0] + '</h1>' +
-                    '<h2>Index</h2>'
+          '<h1>' + corkData[0].aqih.split(',')[0] + '</h1>' +
+          '<h2>Index</h2>'
 
         const infoElement = cardElement.querySelector('.card__info-text')
         infoElement.innerHTML = 'The latest air quality reading in Cork city was taken at <b>' + lastReadTime + '</b>  and indicated a <b>QUALITY INDEX of ' + corkData[0].aqih.split(',')[0] + '</b> in the <b>' + corkData[0].aqih.split(',')[1].toUpperCase() + '</b> quality band'
