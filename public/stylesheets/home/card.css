@@ -3,12 +3,9 @@
   justify-content: center;
 }
 
-.home__card-chart {
-  /* height: 100%; */
-}
-
+.home__card-chart,
 .home__card-indicator {
-  /* height: 100%; */
+  height: 100%;
 }
 
 .card {

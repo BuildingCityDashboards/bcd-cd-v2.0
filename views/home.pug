@@ -37,9 +37,9 @@ block content
                 include home/hero__card-weather
       
         #hero-carousel
-            <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false}'>
-                .carousel-cell
-                  //- +home__card-chart({
+            <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false, "setGallerySize": false}'>
+                //- .carousel-cell
+                  +home__card-chart({
                       title: 'house prices',
                       subtitle:  '',
                       id: 'housing-card',
@@ -61,7 +61,7 @@ block content
                         format:''
                       }
                     })
-                //- .carousel-cell
+                .carousel-cell
                   +home__card-indicator({
                       title: 'Air quality - city',
                       subtitle:  'Fetching data...',
@@ -83,7 +83,7 @@ block content
                         format:''
                       }
                     })
-                //- .carousel-cell
+                .carousel-cell
                   +home__card-chart({
                       title: 'population',
                       subtitle:  'City & County',
@@ -106,7 +106,7 @@ block content
                         format:''
                       }
                     })
-                //- .carousel-cell
+                .carousel-cell
                   +home__card-chart({
                       title: 'unemployment rate (%)',
                       subtitle:  'Southern region',
