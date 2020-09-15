@@ -15,8 +15,6 @@ async function main (options) {
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
 
   const json = await fetchJsonFromUrlAsync(options.plotoptions.data.href)
-  console.log('json')
-  console.log(json)
 
   // if (json) {
   // removeSpinner('chart-' + chartDivIds[0])
@@ -56,9 +54,8 @@ async function main (options) {
       if (d[dimensions[0]] === categoriesType[0] &&
                 d[dimensions[1]] === categoriesStatus[0] &&
                 d[dimensions[2]] === categoriesStamp[0] &&
-                (d[dimensions[3]] === 'Cork City'
-      // ||
-      // d[dimensions[3]] === 'Cork County'
+                (d[dimensions[3]] === 'Cork City' ||
+                    d[dimensions[3]] === 'Cork County'
                 ) &&
                 d[dimensions[5]] === categoriesStat[2] &&
                 hasCleanValue(d)) {
@@ -70,15 +67,28 @@ async function main (options) {
 
   console.log(housePricesTable)
 
+  const housePricesNested = d3.nest()
+    .key(function (d) { return d.Month })
+    .entries(housePricesTable)
+
+  const housePricesAverage = housePricesNested.map(function (d) {
+    const obj = {
+      date: d.values[0].date,
+      label: d.values[0].label.split('M')[0]
+
+    }
+    let sum = 0
+    d.values.forEach(function (v) {
+      sum += +v.value
+    })
+    obj.value = sum / 2
+
+    return obj
+  })
+
   const housePricesConfig = {
     elementid: '#' + options.plotoptions.chartid,
-    data: housePricesTable,
-    // .filter(d => {
-    // return d[dimensions[0]] === categoriesType[0]
-    //   && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0] // exclude state figures
-    // }),
-    // tracenames: categoriesRegion,
-    // tracekey: dimensions[3],
+    data: housePricesAverage,
     yvaluename: 'value',
     xvaluename: 'date',
     fV: d3.format('.3s'), // format y value
@@ -87,36 +97,11 @@ async function main (options) {
     // tX: 'Year',
     // tY: categoriesStat[0]
   }
-  console.log(housePricesConfig)
+  //   console.log(housePricesConfig)
   const housePricesCardChart = new CardChartLine(housePricesConfig)
 
-  //   const populationFiltered = dataset.toTable(
-  //     { type: 'arrobj' },
-  //     (d, i) => {
-  //       if (d[dimensions[3]] === 'Cork' &&
-  //                 d.Statistic === categoriesStat[0] &&
-  //                 d.Sex === categoriesSex[0] &&
-  //                 hasCleanValue(d)) {
-  //         d.date = +d['Census Year']
-  //         d.value = +d.value
-  //         return d
-  //       }
-  //     })
-
-  //   const populationConfig = {
-  //     data: populationFiltered,
-  //     elementid: '#' + options.plotoptions.chartid,
-  //     yvaluename: 'value',
-  //     xvaluename: 'date',
-  //     // sN: dimensions[1],
-  //     fV: d3.format('.2s'), // format y value
-  //     dL: 'date'
-  //   }
-
-  //   const populationCard = new CardChartLine(populationConfig)
-
   window.addEventListener('resize', () => {
-    // populationCard.drawChart()
+    housePricesCardChart.drawChart()
   })
 
   //   //       // const info = getInfoText('#population-card a', 'The population of Dublin in ', ' on 2011', populationDataSet, populationColumnName, 'date', d3.format('.2s'))
