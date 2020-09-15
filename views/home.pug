@@ -38,13 +38,13 @@ block content
       
         #hero-carousel
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false, "setGallerySize": false}'>
-                //- .carousel-cell
+                .carousel-cell
                   +home__card-chart({
                       title: 'house prices',
                       subtitle:  '',
-                      id: 'housing-card',
-                      info: 'Information will appear here when available',
-                      links: [{
+                      id: 'house-price-card',
+                      info: 'The population of Cork fell dramatically after the census of 1841, but has recovered steadily in more recent years',
+                      buttons: [{
                         href :'/some/link',
                         name:'More'
                       },
@@ -53,11 +53,11 @@ block content
                         name:'Explore data'
                       }],
                       plotoptions:{
-                        chartid: 'housing-card__chart',
+                        chartid: 'house-price-card__chart',
                         data:{
-                        href: '../data/static/CNA13.json',
+                        href: '../data/static/HPM05.json',
                         },
-                        src: '/javascripts/home/card_population.js',
+                        src: '/javascripts/home/card_house_prices.js',
                         format:''
                       }
                     })
