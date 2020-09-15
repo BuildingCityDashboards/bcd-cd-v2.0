@@ -6,11 +6,11 @@ import { GroupedBarChart } from '../../modules/GroupedBarChart.js'
 import { addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+(async function main() {
   const parseYear = d3.timeParse('%Y')
   const chartDivIds = ['education-primary-nationality']
   const STATBANK_BASE_URL =
-          'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
+    'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // ED123: Nationality of Pupils attending Primary School by County, Nationality of Pupil and Year
   const TABLE_CODE = 'ED123'
 
@@ -33,11 +33,11 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       { type: 'arrobj' },
       (d, i) => {
         if ((d[TRACES] === corkLAs[0] ||
-       d[TRACES] === corkLAs[1]) &&
-       d['Number of Persons'] !== 'Total number' &&
-        //  d.Statistic === STATS[0] &&
-       d.value !== null &&
-       +d['Census Year'] === 2016) {
+          d[TRACES] === corkLAs[1]) &&
+          d['Number of Persons'] !== 'Total number' &&
+          //  d.Statistic === STATS[0] &&
+          d.value !== null &&
+          +d['Census Year'] === 2016) {
           d.date = parseYear(+d['Census Year'])
           // d.label = +d['Census Year']
           d.value = +d.value
@@ -45,7 +45,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         }
       })
     console.log(nationalityFiltered)
-    // convert long table to wide
+
     const nationalityNested = d3.nest()
       .key(function (d) { return d[Year] })
       .entries(nationalityFiltered)
@@ -105,7 +105,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
-    // console.log('retry')
+      // console.log('retry')
       removeErrorMessageButton('chart-' + chartDivIds[0])
       main()
     })
