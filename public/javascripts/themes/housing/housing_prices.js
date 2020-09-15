@@ -5,18 +5,19 @@ import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErro
 import { TimeoutError } from '../../modules/TimeoutError.js'
 import { hasCleanValue } from '../../modules/bcd-data.js'
 
-(async function main () {
+(async function main() {
   const chartDivIdsPrices = ['housing-price-all', 'housing-price-house', 'housing-price-apartment']
   const chartDivIdsSales = ['housing-sales-all', 'housing-sales-house', 'housing-sales-apartment']
   const parseYearMonth = d3.timeParse('%YM%m')
   const STATBANK_BASE_URL =
-          'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
+    'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // HPM05: Market-based Household Purchases of Residential Dwellings by Type of Dwelling, Dwelling Status, Stamp Duty Event, RPPI Region, Month and Statistic
   const TABLE_CODE = 'HPM05' // gives no of outsideState and ave household size
+  const STATIC_DATA_URL = '../data/static/HPM05.json'
   try {
     addSpinner('chart-' + chartDivIdsPrices[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Market-based Household Purchases of Residential Dwellings</i>`)
     addSpinner('chart-' + chartDivIdsSales[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Market-based Household Purchases of Residential Dwellings</i>`)
-    const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
+    const json = await fetchJsonFromUrlAsyncTimeout(STATIC_DATA_URL)
     if (json) {
       removeSpinner('chart-' + chartDivIdsPrices[0])
       removeSpinner('chart-' + chartDivIdsSales[0])
@@ -59,12 +60,12 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       { type: 'arrobj' },
       (d, i) => {
         if (d[dimensions[1]] === categoriesStatus[0] &&
-         d[dimensions[2]] === categoriesStamp[0] &&
-         (d[dimensions[3]] === 'Cork City' ||
-           d[dimensions[3]] === 'Cork County' ||
-           d[dimensions[3]] === categoriesRegion[0]) &&
-         (d[dimensions[5]] === categoriesStat[0] ||
-          d[dimensions[5]] === categoriesStat[2]) &&
+          d[dimensions[2]] === categoriesStamp[0] &&
+          (d[dimensions[3]] === 'Cork City' ||
+            d[dimensions[3]] === 'Cork County' ||
+            d[dimensions[3]] === categoriesRegion[0]) &&
+          (d[dimensions[5]] === categoriesStat[0] ||
+            d[dimensions[5]] === categoriesStat[2]) &&
           hasCleanValue(d)) {
           d.date = parseYearMonth(d.Month)
           d.label = d.Month

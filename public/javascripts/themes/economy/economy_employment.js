@@ -13,11 +13,13 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // QLF08: Persons aged 15 years and over by Region, Quarter and Statistic
   const TABLE_CODE = 'QLF08'
+  const STATIC_DATA_URL = '../data/static/QLF08.json'
+
   try {
     addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Labour Force</i>`)
     addSpinner('chart-' + chartDivIds[3], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Labour Force</i>`)
 
-    const json = await fetchJsonFromUrlAsyncTimeout(STATBANK_BASE_URL + TABLE_CODE)
+    const json = await fetchJsonFromUrlAsyncTimeout(STATIC_DATA_URL)
 
     if (json) {
       removeSpinner('chart-' + chartDivIds[0])

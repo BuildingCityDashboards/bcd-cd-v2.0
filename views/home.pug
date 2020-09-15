@@ -49,7 +49,7 @@ block content
                       buttons: [
                       {
                         href :'https://erc.epa.ie/real-time-air/www/aqindex/aqih_json.php',
-                        name:'EPA data',
+                        name:'EPA source data',
                         target: '_blank'
                       }],
                       displayoptions:{
@@ -64,16 +64,12 @@ block content
                 .carousel-cell
                   +home__card-chart({
                       title: 'house prices',
-                      subtitle:  'city-county average',
+                      subtitle:  'city & county average',
                       id: 'house-prices-card',
                       info: 'The average house price for Cork city and county fell significantly following the financial crisis of 2008 and has only recently recovered to 2010 levels',
                       buttons: [{
-                        href :'/some/link',
-                        name:'More'
-                      },
-                      {
-                        href :'some/link',
-                        name:'Explore data'
+                        href :'/themes/#average-house-prices',
+                        name:'More in THEMES'
                       }],
                       plotoptions:{
                         chartid: 'house-prices-card__chart',
@@ -91,12 +87,8 @@ block content
                       id: 'population-card',
                       info: 'The population of Cork fell dramatically after the census of 1841, but has recovered steadily in more recent years',
                       buttons: [{
-                        href :'/some/link',
-                        name:'More'
-                      },
-                      {
-                        href :'some/link',
-                        name:'Explore data'
+                        href :'/themes#population',
+                        name:'More in THEMES'
                       }],
                       plotoptions:{
                         chartid: 'population-card__chart',
@@ -114,12 +106,8 @@ block content
                       id: 'unemployment-card',
                       info: 'The unemployment rate for the Southern region declined from the highs experienced following the financial crisis of 2008. Since 2012 it has decreased by about 12%',
                       buttons: [{
-                        href :'/some/link',
-                        name:'More'
-                      },
-                      {
-                        href :'some/link',
-                        name:'Explore data'
+                        href :'/themes#employment',
+                        name:'More in THEMES'
                       }],
                       plotoptions:{
                         chartid: 'unemployment-card__chart',

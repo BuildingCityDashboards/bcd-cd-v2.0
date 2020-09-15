@@ -111,7 +111,7 @@ class MultiLineChart extends Chart {
 
   setDomains (zeroYAxis = true) {
     const c = this
-    minValue
+    let minValue
 
     // switch (d){
     // }
