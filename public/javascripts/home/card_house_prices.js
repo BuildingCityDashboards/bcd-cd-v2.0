@@ -64,7 +64,6 @@ async function main (options) {
                 hasCleanValue(d)) {
         d.date = parseYearMonth(d.Month)
         d.label = d.Month
-        d.value = +d.value
         return d
       }
     })
@@ -80,8 +79,9 @@ async function main (options) {
     // }),
     // tracenames: categoriesRegion,
     // tracekey: dimensions[3],
-    yvaluename: 'date',
-    xvaluename: 'value',
+    yvaluename: 'value',
+    xvaluename: 'date',
+    fV: d3.format('.3s'), // format y value
     dL: 'label'
     // ,
     // tX: 'Year',
