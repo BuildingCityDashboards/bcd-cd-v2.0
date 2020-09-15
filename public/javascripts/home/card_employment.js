@@ -1,7 +1,5 @@
 // /***
-
 //   Population card
-
 // ***/
 
 import { hasCleanValue } from '../modules/bcd-data.js'
@@ -11,14 +9,9 @@ import { fetchJsonFromUrlAsync } from '../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 
 async function main (options) {
-  // console.log('createChart')
-  // console.log(options)
-
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
 
   const json = await fetchJsonFromUrlAsync(options.plotoptions.data.href)
-  // console.log('json')
-  // console.log(json)
 
   // if (json) {
   // removeSpinner('chart-' + chartDivIds[0])

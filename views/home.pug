@@ -4,23 +4,21 @@ include component/home__card-chart
 include component/home__card-indicator
 
 block append head
-  link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css")
+  //- link(rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" )
   link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
   //- link(rel="stylesheet", href="/stylesheets/lib/flickity.css")  
   link(rel="stylesheet", href="/stylesheets/home/home.css")
   link(rel="stylesheet", href="/stylesheets/home/home-carousel.css")
-  link(rel="stylesheet", href="/stylesheets/home/card.css")
+  link(rel="stylesheet", href="/stylesheets/home/card.css" )
   //- link(rel="stylesheet", href="/stylesheets/home/home-about.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
   //- link(rel='stylesheet', href='/stylesheets/icon-nav.css')
-  script(src='/lib/d3v5/d3.min.js' type="text/javascript" )
-  script(src="/lib/flickity.pkgd.min.js" type="text/javascript")
+  script(src='/lib/d3v5/d3.min.js' type="text/javascript" defer)
+  script(src="/lib/flickity.pkgd.min.js" type="text/javascript" defer)
   //- script(src='javascripts/home/flickity_utils.js' type="text/javascript")
-  //- script(src='/lib/set-interval-async.iife.js' type="text/javascript" defer)
   script(src="https://unpkg.com/set-interval-async" type="text/javascript" defer)
   script(src='javascripts/home/card_time.js' type="text/javascript" defer)
   script(src='javascripts/home/card_weather_current.js' type="text/javascript" defer)
-
 
 //- block navigation
 
@@ -39,7 +37,7 @@ block content
                 include home/hero__card-weather
       
         #hero-carousel
-            <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false}'>
+            <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false, "setGallerySize": false}'>
                 //- .carousel-cell
                   +home__card-chart({
                       title: 'house prices',

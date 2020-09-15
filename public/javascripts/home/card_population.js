@@ -10,9 +10,6 @@ import { fetchJsonFromUrlAsync } from '../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 
 async function main (options) {
-  // console.log('createChart')
-  // console.log(options)
-
   // CNA13: Annual Rate of Population Increase by Sex, Province or County, CensusYear and Statistic
 
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
