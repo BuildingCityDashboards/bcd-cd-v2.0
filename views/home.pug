@@ -38,6 +38,29 @@ block content
       
         #hero-carousel
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false, "setGallerySize": false}'>
+                
+                .carousel-cell
+                  +home__card-indicator({
+                      title: 'Air quality - city',
+                      subtitle:  'Fetching data...',
+                      id: 'air-quality-card',
+                      icon: '/images/icons/home/air-pollution.svg#Layer_1',
+                      info: '',
+                      buttons: [
+                      {
+                        href :'https://erc.epa.ie/real-time-air/www/aqindex/aqih_json.php',
+                        name:'EPA data',
+                        target: '_blank'
+                      }],
+                      displayoptions:{
+                        displayid: 'air-quality-card__display',
+                        data:{
+                        href: '/api/air-quality/latest',
+                        },
+                        src: '/javascripts/home/card_air_quality.js',
+                        format:''
+                      }
+                    })
                 .carousel-cell
                   +home__card-chart({
                       title: 'house prices',
@@ -58,28 +81,6 @@ block content
                         href: '../data/static/HPM05.json',
                         },
                         src: '/javascripts/home/card_house_prices.js',
-                        format:''
-                      }
-                    })
-                .carousel-cell
-                  +home__card-indicator({
-                      title: 'Air quality - city',
-                      subtitle:  'Fetching data...',
-                      id: 'air-quality-card',
-                      icon: '/images/icons/home/air-pollution.svg#Layer_1',
-                      info: '',
-                      buttons: [
-                      {
-                        href :'https://erc.epa.ie/real-time-air/www/aqindex/aqih_json.php',
-                        name:'EPA data',
-                        target: '_blank'
-                      }],
-                      displayoptions:{
-                        displayid: 'air-quality-card__display',
-                        data:{
-                        href: '/api/air-quality/latest',
-                        },
-                        src: '/javascripts/home/card_air_quality.js',
                         format:''
                       }
                     })
@@ -111,7 +112,7 @@ block content
                       title: 'unemployment rate (%)',
                       subtitle:  'Southern region',
                       id: 'unemployment-card',
-                      info: '',
+                      info: 'The unemployment rate for the Southern region declined from the highs experienced following the financial crisis of 2008. Since 2012 it has decreased by about 12%',
                       buttons: [{
                         href :'/some/link',
                         name:'More'
