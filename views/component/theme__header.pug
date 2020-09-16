@@ -1,8 +1,11 @@
-mixin theme__header(id, title, description, moreInfo)
-  div(id=id 
+mixin theme__header(options={id:'', title:'', description:'', moreinfo:'', scrollref:''})
+  div(id=options.id 
     class="theme__header" 
     )
     .theme__header__content
-      .theme__header__title!=title
-      .theme__header__description!=description
-      .theme__header__info!=moreInfo
+      .theme__header__title!=options.title
+      .theme__header__description!=options.description
+      .theme__header__info!=options.moreinfo
+    .theme__header__scroll-arrow
+      button(type='button', onclick='document.getElementById("'+options.scrollref+'").scrollIntoView({alignTo: true, behavior: "smooth"})') 
+        <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>

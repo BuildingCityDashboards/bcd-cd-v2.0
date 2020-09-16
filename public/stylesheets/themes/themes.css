@@ -14,6 +14,7 @@
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
 
+  color: #e95d4f
 }
 
 /* unvisited link */
@@ -171,9 +172,8 @@ a:active {
   display: grid;
   position: relative;
   height: 100vh;
-  margin-bottom: 16px;
-  padding: 16px;
-  color: #6fd1f6;
+  /* margin-bottom: 16px; */
+  padding: 0 16px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -246,7 +246,6 @@ a:active {
 
 .theme__header__description {
   padding-bottom: 24px;
-  color: #6fd1f6;
   font-size: 24px;
   line-height: 1.06;
   letter-spacing: -0.5px;
