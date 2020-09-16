@@ -16,46 +16,27 @@ block append head
     script(src="/lib/proj4.js" type="text/javascript" defer)
   
 
-//- block navigation
-    //- +bcd-navbar("bcd-navbar","/","Cork Dashboard", "Themes")
+block navigation
+    +bcd-navbar("bcd-navbar","/","Cork Dashboard", "Themes")
     //- include component/side_nav
 
 block content
     +subnav("themes__subnav")
-        //- .row
-          .col-md-12
-            h1= title
-            p.header__lead <b>Themes</b> contain singular pieces of information for learning about 
-              |Dublin, explained simply. 
-            p This page contains Dublin Dashboard data arranged 
-              |thematically as: 
-              |<b>Transport</b>, <b>Environment</b>, <b>Economy</b>, 
-              |<b>Housing</b>, <b>Education</b>, <b>Health</b>, and <b>Demographics</b>.
-              |The information presented 
-              |here may be sourced from dynamic and/or real-time data 
-              |<img height='15px' width='15px' src='/images/clock-circular-outline-w.svg'>
-              |or from more static, historical sources 
-              |<img height='15px' width='15px' src='/images/calendar-w.svg'> .
-              |For deeper data exploration, see our 
-              |<a href="../queries"> Queries</a> and <a href="../tools"> Tools</a>.
-
     
-
-    
-    //- #transport
+    #transport
       include theme_transport
-    //- #environment
-    //-   include theme_environment
-    //- #housing
-    //-   include theme_housing
-    //- #economy
-    //-   include theme_economy
-    //- #education
-    //-   include theme_education
-    //- #health
-    //-   include theme_health
-    //- #demographics
-    //-   include theme_demographics
+    #environment
+      include theme_environment
+    #housing
+      include theme_housing
+    #economy
+      include theme_economy
+    #education
+      include theme_education
+    #health
+      include theme_health
+    #demographics
+      include theme_demographics
 
 append scripts
 

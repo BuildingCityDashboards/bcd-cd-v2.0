@@ -1,0 +1,31 @@
+.bcd-navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+    display: flex;
+    width: 100%;
+    height: 56px;
+    margin: 0;
+    padding: 0;
+    padding-left: 60px;
+    background-color:
+        #e95d4f;
+    opacity: 1;
+    align-items: center;
+    align-self: center;
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 200;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.bcd-navbar a {
+    font-weight: 500;
+    color: white;
+}
