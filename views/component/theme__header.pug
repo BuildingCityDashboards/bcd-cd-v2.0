@@ -7,5 +7,5 @@ mixin theme__header(options={id:'', title:'', description:'', moreinfo:'', scrol
       .theme__header__description!=options.description
       .theme__header__info!=options.moreinfo
     .theme__header__scroll-arrow
-      button(type='button', onclick='document.getElementById("'+options.scrollref+'").scrollIntoView({alignTo: true, behavior: "smooth"})') 
+      button(type='button', onclick='document.getElementById("'+options.scrollref+'").scrollIntoView({alignTo: true, behavior: "smooth", block: "start"})') 
         <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>

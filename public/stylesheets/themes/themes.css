@@ -45,7 +45,7 @@ a:active {
   z-index: 10000;
   display: flex;
   position: fixed;
-  top: 56px;
+  top: calc(100% - 56px);
   left: 0;
   width: 100%;
   height: 56px;
@@ -171,9 +171,9 @@ a:active {
   /* h should be 100vh - nav hs */
   display: grid;
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 112px);
   /* margin-bottom: 16px; */
-  padding: 0 16px;
+  padding: 56px 16px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -258,9 +258,15 @@ a:active {
   letter-spacing: -0.5px;
 }
 
-.theme__text-chart {
-  display: grid;
+.theme__text-chart__wrapper {
   position: relative;
+}
+
+.theme__text-chart {
+  position: absolute;
+  top: 112px;
+  left: 0;
+  display: grid;
   width: 100vw;
   min-width: 360px;
   height: auto;
