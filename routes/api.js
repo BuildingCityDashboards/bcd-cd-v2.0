@@ -9,8 +9,6 @@ router.get('/', function (req, res, next) {
 })
 
 const airQualityController = require('../controllers/air_quality_controller')
-// router.get('/wlstations/stations/list', waterLevelController.getStationsList)
-// router.get('/wlstations/stations/:ts', waterLevelController.getStationsData)
 router.get('/air-quality/latest', airQualityController.getLatest)
 
 // router.get('/data/search/statbank', (req, res, next) => {

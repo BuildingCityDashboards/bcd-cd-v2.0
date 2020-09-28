@@ -9,13 +9,13 @@
 }
 
 .card {
+  height: 100%;
   display: flex;
   position: relative;
   min-width: 288px;
   width: 100%;
   max-width: 384px;
   min-height: 192px;
-  height: 100%;
   padding: 0;
   background-color: rgba(231, 77, 62, 0.8);
   flex-direction: column;
@@ -146,7 +146,7 @@ h2.card__sub-title {
 }
 
 .card__center {
-  width: 30%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
