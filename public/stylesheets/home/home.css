@@ -295,6 +295,7 @@ html {
 
 .icon-nav__text {
   display: none;
+  color: #e95d4f;
 }
 
 #hero-scroll-arrow {
@@ -795,10 +796,13 @@ html {
 
   }
 
+  #hero-icon-navs {
+    grid-column: 2 / 12;
+  }
+
   .icon-nav__box {
     display: flex;
     width: 100%;
-    /* height: 72px; */
     margin: 0;
     padding: 0;
     border: none;
@@ -806,7 +810,7 @@ html {
     align-items: center;
     flex-direction: row;
     justify-content: center;
-    background-color: var(--bg-color-1);
+
   }
 
   .icon-nav__icon {
@@ -819,9 +823,9 @@ html {
   }
 
   .icon-nav__icon svg {
-    background-color: transparent;
+    /* background-color: transparent;
     stroke: #e95d4f;
-    fill: white;
+    fill: white; */
     stroke-width: 0.5px;
     width: 48px;
     height: 48px;
@@ -838,7 +842,6 @@ html {
     font-weight: 500;
     line-height: 1.14;
     letter-spacing: 1.25px;
-    color: white;
     text-align: center;
     padding-left: 8px;
 
@@ -847,15 +850,11 @@ html {
   .icon-nav__text {
     display: flex;
     width: 165px;
-    height: 40px;
-    color: rgba(0, 0, 0, 0.6);
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
     letter-spacing: 0.25px;
   }
-
-
 
   #hero-scroll-arrow {
     grid-column: 6/8;
@@ -1330,3 +1329,68 @@ html {
     grid-row: 8 / 9;
   }
 }
+
+
+/*
+
+.icon-nav__box {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--bg-color-1);
+  }
+
+  .icon-nav__icon {
+    width: 48px;
+    height: auto;
+    border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    align-self: center;
+  }
+
+  .icon-nav__icon svg {
+    background-color: transparent;
+    stroke: #e95d4f;
+    fill: white;
+    stroke-width: 0.5px;
+    width: 48px;
+    height: 48px;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .icon-nav__title {
+    width: auto;
+    height: auto;
+    border: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: 1.25px;
+    color: white;
+    text-align: center;
+    padding-left: 8px;
+
+  }
+
+  .icon-nav__text {
+    display: flex;
+    width: 165px;
+    height: 40px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.25px;
+  }
+
+
+*/
