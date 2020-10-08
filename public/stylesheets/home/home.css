@@ -917,7 +917,6 @@ html {
 
   #hero-weather__left-bottom__icon {
     padding-right: 4px;
-    /* height: 16px */
   }
 
   #hero-weather__symbol {
@@ -1016,14 +1015,14 @@ html {
   }
 
   #hero-time__clock {
+    height: auto;
     width: 80px;
-    height: 22px;
     font-size: 20px;
   }
 
   #hero-time__date {
     width: 109px;
-    height: 22px;
+    height: auto;
     color: var(--text-color-2);
     font-size: 20px;
     font-weight: 300;
