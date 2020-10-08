@@ -304,7 +304,7 @@ html {
   grid-row: 8 / 9;
 }
 
-.home-scroll-arrow svg {
+#hero-scroll-arrow svg {
   width: 24px;
   height: auto;
   background-color: transparent;
