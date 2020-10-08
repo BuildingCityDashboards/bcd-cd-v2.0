@@ -36,13 +36,14 @@
 
 
   /* Reduced set of colours for V2 dashboard design */
-  --bg-color-1: rgba(39, 52, 57, 0.56);
+  --bg-color-1: #ee8176;
   --bg-color-2: rgba(39, 52, 57, 0.82);
   --bg-color-3: rgba(142, 191, 214, 0.15);
   --color-1: rgba(255, 255, 255, 0.87);
   --color-2: #8ebfd6;
   --text-color-1: #6fd1f6;
   --text-color-2: rgba(255, 255, 255, 0.6);
+  /*good*/
   --text-color-3: rgba(255, 255, 255, 0.87);
 
 

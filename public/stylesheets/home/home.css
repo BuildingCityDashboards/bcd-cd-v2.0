@@ -1,7 +1,5 @@
 /* xs: 360px x 540px <MOCKUP> */
 
-
-
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -71,11 +69,11 @@ html {
 }
 
 #hero-title__text--top {
-  /* color: rgba(111, 209, 246, 0.5); */
+  color: rgba(233, 93, 79, 0.56);
 }
 
 #hero-title__text--bottom {
-  /* color: rgba(35, 145, 216, 0.39); */
+  color: rgba(184, 60, 48, 0.39)
 }
 
 #hero-time-weather {
@@ -108,8 +106,7 @@ html {
 #hero-time__clock {
   width: 49px;
   height: 12px;
-  color: var(--text-color-1);
-  ;
+  color: var(--bg-color-1);
   font-size: 12px;
   font-weight: 500;
   line-height: 1;
@@ -151,8 +148,7 @@ html {
 }
 
 #hero-weather__left-top {
-  color: var(--text-color-1);
-  ;
+  color: var(--bg-color-1);
   font-size: 12px;
   line-height: 1;
   letter-spacing: 0.15px;
@@ -207,7 +203,7 @@ html {
 
 #hero-weather__right-top {
   display: flex;
-  color: var(--text-color-1);
+  color: var(--bg-color-1);
   ;
   align-items: center;
   font-size: 12px;
@@ -361,6 +357,7 @@ html {
   }
 }
 
+/* Surface Duo */
 @media only screen and (min-width : 540px) and (orientation: portrait) {
 
   #hero-title {
@@ -383,7 +380,7 @@ html {
     width: auto;
     height: 14px;
     font-size: 14px;
-
+    color: var(--bg-color-1);
   }
 
   #hero-time__date {
@@ -400,19 +397,18 @@ html {
   }
 
   #hero-weather__left-top {
-    height: 14px;
     font-size: 14px;
   }
 
 
   #hero-weather__symbol {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 
   #hero-weather__right-top {
     font-size: 14px;
-    height: 14px;
+
   }
 
 }
@@ -473,8 +469,6 @@ html {
   #hero-time__clock {
     width: 80px;
     height: 22px;
-    color: var(--text-color-1);
-    ;
     font-size: 20px;
   }
 
@@ -502,10 +496,15 @@ html {
     word-wrap: break-word;
   }
 
+
+  #hero-weather__left {
+    /* color: var(--bg-color-1);
+ font-size: 12px;
+ line-height: 1;
+ letter-spacing: 0.15px; */
+  }
+
   #hero-weather__left-top {
-    height: 20px;
-    color: var(--text-color-1);
-    ;
     font-size: 20px;
     font-weight: 500;
     line-height: 1.2;
@@ -522,13 +521,14 @@ html {
   }
 
   #hero-weather__left-bottom__icon {
+    /* display: none; */
     padding-right: 4px;
     /* height: 16px */
   }
 
   #hero-weather__left-bottom__icon svg {
     width: 13px;
-    height: 22px;
+    height: 16px;
     stroke: var(--text-color-2);
     stroke-width: 48;
     /* padding-right: 16px; */
@@ -541,15 +541,32 @@ html {
     height: 48px;
   }
 
+  #hero-weather__right {
+    /* color: var(--bg-color-1);
+ font-size: 12px;
+ line-height: 1;
+ letter-spacing: 0.15px; */
+  }
+
   #hero-weather__right-top {
-    height: 20px;
     font-size: 20px;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0.15px;
   }
 
+  /* #hero-weather__right-top__icon {
+    padding-right: 4px;
+  } */
+
+  #hero-weather__right-top__icon svg {
+    width: auto;
+    height: 20px;
+    fill: var(--text-color-2);
+  }
+
   #hero-weather__right-bottom {
+    font-size: 16px;
     display: flex;
     color: var(--text-color-2);
     align-items: center;
@@ -560,6 +577,7 @@ html {
   }
 
   #hero-carousel {
+    background-color: var(--bg-color-1);
     grid-column: span 8;
     grid-row: 3 / 7;
   }
