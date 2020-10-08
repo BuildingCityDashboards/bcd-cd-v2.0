@@ -25,6 +25,7 @@
   word-wrap: break-word;
   color: var(--color-1);
   border-radius: 4px;
+  border: solid 1px transparent;
 }
 
 .card__header {
@@ -53,7 +54,7 @@ h1.card__title {
   margin: 0;
   padding: 0;
   padding-top: 12px;
-  color: var(--text-color-1);
+  color: var(--text-color-3);
   ;
   text-transform: uppercase;
   font-size: 14px;
@@ -121,7 +122,7 @@ h2.card__sub-title {
 
 .card__line-chart .label,
 .no-axis {
-  color: var(--text-color-2);
+  color: var(--text-color-3);
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -137,7 +138,7 @@ h2.card__sub-title {
 }
 
 .card__line-chart g .activity {
-  stroke: var(--text-color-1);
+  stroke: var(--color-1);
   ;
   stroke-width: 2px;
   fill: none;
@@ -145,10 +146,10 @@ h2.card__sub-title {
 
 .card__line-chart g circle {
   r: 2;
-  stroke: var(--text-color-1);
+  stroke: var(--color-1);
   ;
   stroke-width: 2px;
-  fill: var(--text-color-1);
+  fill: var(--color-1);
   ;
 
 }
@@ -157,7 +158,7 @@ h2.card__sub-title {
 .label-x-data-first,
 .label-y-data-last,
 .label-y-data-first {
-  fill: var(--text-color-1);
+  fill: var(--color-1);
   ;
   opacity: 0.74;
   font-size: 12px;
@@ -170,8 +171,7 @@ h2.card__sub-title {
 
 .card__line-chart .label-x-data-first,
 .card__line-chart .label-x-data-last {
-  fill: white;
-  opacity: 0.5;
+  fill: var(--color-1);
 }
 
 
@@ -186,7 +186,7 @@ h2.card__sub-title {
 }
 
 .card__line-chart .no-axis {
-  color: var(--text-color-2);
+  color: var(--color-1);
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -207,8 +207,8 @@ h2.card__sub-title {
 .card__center svg {
   width: 36px;
   height: 36px;
-  fill: rgba(255, 255, 255, 0.7);
-  stroke: rgba(255, 255, 255, 0.7);
+  fill: var(--text-color-2);
+  stroke: var(--text-color-2);
 }
 
 .card__center img {
@@ -233,7 +233,7 @@ h2.card__sub-title {
 .card__right h2 {
   /* align-self: center; */
   /* -ms-flex: 0 1 33%; flex: 0 1 33%; */
-  color: var(--text-color-1);
+  color: var(--text-color-3);
   ;
   opacity: 0.9;
   padding: 4px 0;
@@ -301,6 +301,7 @@ h2.card__sub-title {
   border: none;
   flex-direction: column;
   justify-content: space-around;
+
 }
 
 .card__info-border {
@@ -350,7 +351,7 @@ p.card__info-text b {
 }
 
 .card__info__buttons .button {
-  color: var(--color-2);
+  color: var(--color-1);
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
@@ -447,9 +448,9 @@ p.card__info-text b {
   }
 
   .card:hover {
-    border: solid 1pxvar(--text-color-1);
+    border: solid 1px var(--text-color-1);
     ;
-    background-color: var(--bg-color-2);
+    background-color: var(--bg-color-1);
     ;
   }
 
@@ -613,7 +614,7 @@ p.card__info-text b {
 
   .card:hover {
     border: none;
-    background-color: var(--bg-color-2);
+    background-color: var(--bg-color-1);
     ;
   }
 
@@ -716,21 +717,21 @@ p.card__info-text b {
     margin: auto 0;
     padding: 0 16px;
     overflow: hidden;
-    /* border-top: none; */
+    border-top: none;
     /* border-top: rgba(255, 255, 255, 0.5); */
-    background-color: var(--bg-color-2);
-    ;
+    background-color: var(--bg-color-1);
     flex-direction: column;
     justify-content: space-evenly;
     transition: all 0.3s ease-out;
   }
 
   .card:hover .card__info {
+    border-top: none;
     /* display: block; */
     height: 65%;
     min-height: 0;
     /* bottom: 0%;*/
-    /* top: 0; */
+    /* top: 5px; */
     /* padding-bottom: 8px; */
     /* background-color: var(--bg-color-2);; */
   }
@@ -756,7 +757,6 @@ p.card__info-text b {
 
   .card__info__buttons .button {
     padding: 0;
-    color: var(--color-2);
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
