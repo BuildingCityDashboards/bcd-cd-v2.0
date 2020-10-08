@@ -1,22 +1,31 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 html {
-    background-color: white;
-    padding: 0;
-    margin: 0;
+  background-color: white;
+  padding: 0;
+  margin: 0;
 }
 
 
 body {
-    padding: 0;
-    margin: 0;
-    font-family         : 'Roboto',
-                        sans-serif;
-                    
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto',
+    sans-serif;
+
 }
 
 a {
   color: #e95d4f;
 }
 
-p, h1, h2, h3 {
+p,
+h1,
+h2,
+h3 {
   color: #e95d4f;
 }

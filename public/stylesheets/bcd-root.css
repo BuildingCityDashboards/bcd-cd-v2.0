@@ -1,0 +1,49 @@
+/* Root Variables */
+:root {
+
+  /* --la-colour-dcc: #5680b4;
+  --la-colour-dlr: #52be7f;
+  --la-colour-f: #af7ac4;
+  --la-colour-sdc: #fa9b57;
+  --cbs-blue-1: #f6eff7;
+  --cbs-blue-2: #d0d1e6;
+  --cbs-blue-3: #a6bddb;
+  --cbs-blue-4: #67a9cf;
+  --cbs-blue-5: #1c9099;
+  --cbs-blue-6: #016c59;
+  --dark-grey: #313131;
+  --white: #ffffff;
+  --light-blue: #aae0fa;
+  --teal: #00929e;
+  --yellow: #ffc20e;
+  --vivid-cyan: #16c1f3;
+  --vivid-red: #da1e4d;
+  --strong-blue: #086fb8;
+  --stronger-blue: #012e5f;
+  --dark-blue: #012644;
+  --very-dark-blue: #001f35;
+  --black-blue: #021420;
+  --brown: #8c3529;
+  --soft-blue: #6f9ceb;
+  --grayish-blue: #6d7c8f;
+  --very-light-grey: #f8f8f8;
+  --breakpoint-xs: 0px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px; */
+  --font-family-sans-serif: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+
+  /* Reduced set of colours for V2 dashboard design */
+  --bg-color-1: rgba(39, 52, 57, 0.56);
+  --bg-color-2: rgba(39, 52, 57, 0.82);
+  --bg-color-3: rgba(142, 191, 214, 0.15);
+  --color-1: rgba(255, 255, 255, 0.87);
+  --color-2: #8ebfd6;
+  --text-color-1: #6fd1f6;
+  --text-color-2: rgba(255, 255, 255, 0.6);
+  --text-color-3: rgba(255, 255, 255, 0.87);
+
+
+}

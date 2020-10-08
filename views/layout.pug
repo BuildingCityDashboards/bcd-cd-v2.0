@@ -54,17 +54,17 @@ html(lang='en')
 
   body
     //- include component/icons.pug
-    //- .page__root
-    include component/bcd-navbar.pug
+    .page__root
+      include component/bcd-navbar.pug
 
       
-    block navigation
+      block navigation
 
       //- include component/side-menu.pug
         //- .bcd-container
       //- main
       //-add subnav.pug here if its the themes page
-    block content
+      block content
 
     //- include component/footer.pug
 

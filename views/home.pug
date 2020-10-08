@@ -10,7 +10,7 @@ block append head
   link(rel="stylesheet", href="/stylesheets/home/home.css")
   link(rel="stylesheet", href="/stylesheets/home/home-carousel.css")
   link(rel="stylesheet", href="/stylesheets/home/card.css" )
-  //- link(rel="stylesheet", href="/stylesheets/home/home-about.css")
+  link(rel="stylesheet", href="/stylesheets/home/home-about.css")
   //- link(rel="stylesheet", href="/stylesheets/tabs.css")
   //- link(rel='stylesheet', href='/stylesheets/icon-nav.css')
   script(src='/lib/d3v5/d3.min.js' type="text/javascript" defer)
@@ -36,7 +36,7 @@ block content
             #hero-weather
                 include home/hero__card-weather
       
-        #hero-carousel
+        //- #hero-carousel
             <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": false, "setGallerySize": false}'>
                 
                 .carousel-cell
@@ -120,15 +120,15 @@ block content
                     })
             </div>
         //-         //- include component/carousel-charts.pug
-        #hero__icon-navs
+        //- #hero__icon-navs
             include home/hero__icon-nav.pug
             
-        #hero-scroll-arrow.scroll-arrow
+        //- #hero-scroll-arrow.scroll-arrow
             a(href='#about-cork')
                 <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
           
             //- include component/toggle-button.pug
-  #about-cork.home__about 
+  //- #about-cork.home__about 
     #about-cork__header.home__about__header  
       h1 ABOUT CORK
     #about-cork__card.home__about__card
@@ -202,7 +202,7 @@ block content
           span#local__populationChange x.xx% decrease/increase
           |.
     
-  #about-cork-dashboard.home__about
+  //- #about-cork-dashboard.home__about
     #about-cork-dashboard__header.home__about__header 
       h1 ABOUT THE DASHBOARD
     #about-cork-dashboard__twitter
