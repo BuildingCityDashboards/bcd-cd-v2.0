@@ -25,11 +25,11 @@ Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg')])
     const paths = [cityPath, countyPath]
     paths.forEach(p => {
       p.on('mouseover', function () {
-        d3.select(this).style('fill', '')
+        d3.select(this).style('fill', 'white')
       })
 
       p.on('mouseout', function () {
-        d3.select(this).style('fill', d3.select(this).style('var(--text-color-1)'))
+        d3.select(this).style('fill', d3.select(this).style('black'))
       })
 
       p.on('click', function () {
@@ -37,6 +37,7 @@ Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg')])
         // console.log(d3.select(this.parentNode).attr('data-name'))
         // let e = document.getElementById('about-cork__card')
         // e.scrollIntoView()
+        console.log(d3.select(this.parentNode).attr('data-name'))
 
         const ref = d3.select(this.parentNode).attr('data-name')
         // alert(ref)
