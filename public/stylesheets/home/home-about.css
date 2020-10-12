@@ -22,7 +22,6 @@
 #about-cork__header>h1 {
   /* width: 136px; */
   margin: 0;
-  color: var(--text-color-1);
   font-size: 20px;
   font-weight: normal;
   line-height: 0.73;
@@ -32,7 +31,7 @@
 #about-cork__card {
   padding: 16px 16px 0 16px;
   overflow-y: auto;
-  background-color: var(--bg-color-3);
+  background-color: white;
   grid-column: span 4;
   grid-row: 2/9;
 }
@@ -46,8 +45,6 @@
 }
 
 #about-cork__card>p {
-  /* width: 296px; height: 371px; */
-  color: var(--text-color-1);
   font-size: 14px;
   font-weight: normal;
   line-height: 1.71;
@@ -76,12 +73,15 @@
 #regions-info__map svg {
   width: 100%;
   height: auto;
+  fill: rgba(233, 93, 79, 0.7);
+  stroke-width: 8;
+  stroke: none;
 }
 
 #regions-info__cta {
   display: flex;
   margin: 0;
-  color: var(--text-color-1);
+  color: #e95d4f;
   text-align: center;
   font-size: 16px;
   font-style: normal;
@@ -102,8 +102,8 @@
   visibility: hidden;
   padding: 16px;
   opacity: 0;
-  overflow-y: scroll;
-  background-color: var(--bg-color-3);
+  overflow-y: auto;
+  background-color: white;
   flex-direction: column;
   grid-column: span 4;
   grid-row: 6/9;
@@ -116,7 +116,7 @@
 
 #regions-info__card__header h1 {
   margin: 0;
-  color: var(--text-color-1);
+  color: var(--color-1);
   font-size: 20px;
   font-weight: normal;
   line-height: 20px;
@@ -126,8 +126,8 @@
 #regions-info__card__body {}
 
 #regions-info__card__body>p {
+  color: black;
   margin: 0 0 8px 0;
-  color: var(--text-color-3);
   font-size: 14px;
   font-weight: normal;
   line-height: 24px;
@@ -171,7 +171,7 @@
 #about-cork-dashboard__card {
   padding: 16px 16px 0 16px;
   overflow-y: auto;
-  background-color: var(--bg-color-3);
+  background-color: white;
   grid-column: span 4;
   grid-row: 2/9;
 }
@@ -247,7 +247,6 @@
   #regions-info__card__body>p {
     margin: 0;
     padding-bottom: 8px;
-    color: var(--text-color-3);
     font-size: 14px;
     font-weight: normal;
     line-height: 1.7;
@@ -293,7 +292,7 @@
     height: auto;
     padding: 16px 16px 0 16px;
     overflow-y: auto;
-    background-color: var(--bg-color-3);
+    background-color: white;
     grid-column: span 4;
     grid-row: 2/9;
   }
@@ -315,7 +314,6 @@
   #about-cork {
     height: 40vh;
     padding: 0 24px;
-    background-color: #1c2022;
     justify-content: center;
     grid-gap: 24px;
     grid-template-columns: repeat(12, 1fr);
@@ -341,10 +339,11 @@
   }
 
   #about-cork__card {
+
     padding: 32px;
-    overflow-y: scroll;
+    overflow-y: auto;
     border-radius: 4px;
-    background-color: #21272a;
+    background-color: white;
     grid-column: 2/12;
     grid-row: 3/7;
   }
@@ -355,6 +354,7 @@
     font-weight: normal;
     line-height: 1.25;
     letter-spacing: 0.5px;
+    color: black;
   }
 
   #regions-info {
@@ -363,7 +363,6 @@
     height: 60vh;
     min-height: 512px;
     padding: 24px;
-    background-color: #1c2022;
     justify-content: center;
     grid-gap: 24px;
     grid-template-columns: repeat(12, 1fr);
@@ -378,7 +377,6 @@
   #regions-info__cta {
     display: flex;
     margin: 0;
-    color: var(--text-color-1);
     text-align: center;
     font-size: 16px;
     font-style: normal;
@@ -402,7 +400,7 @@
 
   #regions-info__card__header>h1 {
     margin: 0;
-    color: var(--text-color-1);
+    color: #e95d4f;
     font-size: 24px;
     font-weight: normal;
     line-height: 24px;
@@ -416,7 +414,6 @@
   #regions-info__card__body>p {
     margin: 0;
     padding-bottom: 8px;
-    color: var(--text-color-3);
     font-size: 14px;
     font-weight: normal;
     line-height: 1.25;
@@ -427,7 +424,7 @@
     height: 50vh;
     min-height: 700px;
     padding: 24px;
-    background-color: #1c2022;
+    background-color: white;
     grid-gap: 24px;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -471,7 +468,7 @@
   #about-cork-dashboard__card {
     padding: 24px;
     overflow-y: auto;
-    background-color: #21272a;
+    background-color: white;
     grid-column: 2 / 12;
     grid-row: 3/6;
   }
@@ -532,7 +529,6 @@
   #regions-info__cta {
     display: flex;
     margin: 0;
-    color: var(--text-color-1);
     text-align: center;
     font-size: 24px;
     font-style: normal;
@@ -669,7 +665,6 @@
     display: flex;
     margin: 0;
     padding-left: 24px;
-    color: var(--text-color-1);
     text-align: left;
     align-self: center;
     font-size: 16px;
@@ -693,7 +688,7 @@
     background-color: transparent;
     width: 24px;
     transform: rotate(180deg);
-    fill: grey;
+    fill: var(--color-1);
   }
 
 

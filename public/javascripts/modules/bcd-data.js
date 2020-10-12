@@ -25,7 +25,7 @@ export { hasCleanValue }
  *
  */
 
-function getPercentageChange (curr, prev) {
+function getPercentageChange(curr, prev) {
   const percent = (curr - prev) * 100 / prev
   if (percent === Infinity) {
     return curr
@@ -37,6 +37,8 @@ function getPercentageChange (curr, prev) {
 
 export { getPercentageChange }
 
+
+
 /**
  * Format a number with a commma for thousands
  *
@@ -47,7 +49,7 @@ export { getPercentageChange }
  */
 
 // TODO: remove dependency on d3
-function formatThousands (num) {
+function formatThousands(num) {
   return d3.format(',.2r')(num)
 }
 
@@ -63,7 +65,7 @@ export { formatThousands }
  */
 
 // TODO: remove dependency on d3
-function formatHundredThousands (num) {
+function formatHundredThousands(num) {
   return d3.format(',.3r')(num)
 }
 
@@ -78,11 +80,43 @@ export { formatHundredThousands }
 *
 */
 // TODO: remove dependency on d3
-function formatPercentFixed (dec) {
+function formatPercentFixed(dec) {
   return d3.format('.0%')(dec)
 }
 
 export { formatPercentFixed }
+
+/**
+ * Format an amount in euros to the neartest euro
+ *
+ * @param { number } num
+ * @return { number }
+ *
+ *
+ */
+
+// TODO: remove dependency on d3
+function formatEuros(num) {
+  return d3.format('($')(num) // localized fixed-point currency, "(£3.50)"(num)
+}
+
+export { formatEuros }
+
+/**
+ * Format an amount in euros to the neartest euro
+ *
+ * @param { number } num
+ * @return { number }
+ *
+ *
+ */
+
+// TODO: remove dependency on d3
+function formatEurosCents(num) {
+  return d3.format('($.2f')(num) // localized fixed-point currency, "(£3.50)"(num)
+}
+
+export { formatEurosCents }
 
 /*
 d3.format(".0%")(0.123);  // rounded percentage, "12%"
@@ -102,7 +136,7 @@ d3.format("#x")(48879);   // prefixed lowercase hexadecimal, "0xbeef"
  *
  *
  */
-function coerceWideTable (data, columnNames) {
+function coerceWideTable(data, columnNames) {
   const coercedData = data.map(d => {
     for (var i = 0, n = columnNames.length; i < n; i++) {
       d[columnNames[i]] = +d[columnNames[i]]
@@ -114,7 +148,7 @@ function coerceWideTable (data, columnNames) {
 
 export { coerceWideTable }
 
-function extractObjectArrayWithKey (dataArray, key) {
+function extractObjectArrayWithKey(dataArray, key) {
   const outArray = dataArray.map(d => {
     const obj = {
       label: d.Quarter,

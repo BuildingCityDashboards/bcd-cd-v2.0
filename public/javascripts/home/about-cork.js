@@ -1,4 +1,3 @@
-import { formatThousands } from '../modules/bcd-data.js'
 
 // const dData = dublincoco.features[0].properties
 

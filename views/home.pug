@@ -130,39 +130,36 @@ block content
     #about-cork__header.home__about__header  
       h1 ABOUT CORK
     #about-cork__card.home__about__card
-      p#region__open Cork is the second largest city in Ireland. 
-        |It is located in the province of Munster and covers a total area of 
-        span#region__area xxx.xx
-        |. 
+      p Cork is the largest county in Ireland. 
+        |It is located in the South of the country in the province of Munster, and covers a total area of 
+        span#cork__area xxx.xx
+        |.  At the time of the census in 
+        span#cork__population_year xxxx
+        |, Cork had a total population of 
+        span#cork__population-count x,xxx,xxx  
+        |  people. This was a change of 
+        span#cork__population-change  
+        |  on the previous census of 2011, or 
+        //- e.g. 'an increase of'
+        span#cork__population-trend-text  
 
-        |Cork has a total population of 
-        span#region__population x,xxx,xxx 
-        |  people, with a median age of 
-        span#region__age xx.x 
-        |  years. The median household income is 
-        span#region__income €xx.xx
-        |.
-      p Between 2011 and 2016, the population of Cork 
-        span#region__populationIndicator declined/increased 
-        |from 
-        span#region__prePopulation xxxxxx 
-        |  to 
-        span#region__population xxxxxx 
-        |, a 
-        span#region__populationChange x.xx% decrease/increase 
-        |. 
-        |  The median household income for the region 
-        span#region__incomeIndicator grew/shrunk 
-        |from 
-        span#region__income__prev €xx.xx 
-        |  to 
-        span#region__income €xx.xx
-        |, a 
-        span#region__income__change x.xx% decrease/increase
-        |.
+        //- , with a median age of 
+        //- span#region__age xx.x 
+        //- |  years. The median household income is 
+        //- span#region__income €xx.xx
+        //- |.
+        //- |  The median household income for the region 
+        //- span#region__incomeIndicator grew/shrunk 
+        //- |from 
+        //- span#region__income__prev €xx.xx 
+        //- |  to 
+        //- span#region__income €xx.xx
+        //- |, a 
+        //- span#region__income__change x.xx% decrease/increase
+        //- |.
       p There are 2 local authorities whose remit encompasses the geographic area of the county and city of Cork. 
         | Select a council on the map in the next section to see specific information. 
-        //- #regions-map
+
       
   #regions-info
     #regions-info__map
@@ -173,9 +170,9 @@ block content
       <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
     #regions-info__card
       #regions-info__card__header
-        h1#local__title Cork City
+        h1#local__title 
       #regions-info__card__body
-        p 
+        //- p 
           span#local__open 
           | It covers an area of 
           span#local__area
@@ -188,7 +185,7 @@ block content
           |  years.
           //- |and a median household income of 
           //- span#local__income €xx.xx.
-        p Between 2011 and 2016 the population of  
+        //- p Between 2011 and 2016 the population of  
           span#local__title__small Cork
           |  
           span#local__populationIndicator  

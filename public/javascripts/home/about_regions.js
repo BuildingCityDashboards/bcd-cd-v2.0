@@ -1,20 +1,34 @@
-import { getPercentageChange, formatHundredThousands } from '../modules/bcd-data.js'
+import { getPercentageChange, formatHundredThousands, formatEuros } from '../modules/bcd-data.js'
 
 Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg'),
-  d3.json('/data/cork-region-data.json'),
-  d3.json('../data/static/CNA13.json')])
+d3.json('/data/cork-region-data.json'),
+d3.json('../data/static/CNA13.json')])
   .then(files => {
     const xml = files[0]
     const corkRegionsJson = files[1]
     const corkPopulationJson = files[2]
 
+    const indicatorUpSymbol = '&#x25B2;'
+    const indicatorDownSymbol = '&#x25BC;'
+    const indicatorNoChangeSymbol = '<span></span>'
+
     // about cork card
     const corkCard = d3.select('#about-cork__card')
+    corkCard.select('#cork__area').text(corkRegionsJson.Cork.AREA)
 
-    corkCard.selectAll('#region__population').text(formatHundredThousands(corkRegionsJson.Cork.POPULATION[2016]) + '')
-    corkCard.select('#region__area').text(corkRegionsJson.Cork.AREA)
+    const populationYear = 2016
+    corkCard.select('#cork__population_year')
+      .text(populationYear + '')
+    corkCard.select('#cork__population-count').text(formatHundredThousands(corkRegionsJson.Cork.POPULATION[populationYear]) + '')
+    corkCard.select('#cork__population-change').text(formatHundredThousands(corkRegionsJson.Cork.POPULATION.change) + '')
+    corkCard.select('#cork__population-change').text(formatHundredThousands(corkRegionsJson.Cork.POPULATION.change) + '')
+
+    const percentPopChange = getPercentageChange(corkRegionsJson.Cork.POPULATION[populationYear], corkRegionsJson.Cork.POPULATION['2011'])
+    const trendText = percentPopChange > 0 ? 'an <span class=\'trend-up\'>increase</span> of <span class=\'trend-up\'>' + indicatorUpSymbol + percentPopChange + '%</span>' : 'a <span class=\'trend-down\'>decrease</span> of <span class=\'trend-down\'>' + indicatorDownSymbol + Math.abs(percentPopChange) + '%</span>'
+    corkCard.select('#cork__population-trend-text').html(trendText + '.  ')
+
     // cork.select('#region__age').text(dData.AGE + '')
-    // cork.selectAll('#region__income').text(euro(dData.INCOME) + '')
+    // corkCard.selectAll('#region__income').text(formatEuros(corkRegionsJson[].INCOME) + '')
     // cork.select('#region__prePopulation').text(thousands(dData.PREVPOPULATION) + '')
     // cork.select('#region__populationIndicator').text(indicatorText(diff, '#region__populationIndicator', 'increased', false))
     // cork.select('#region__populationChange').text(percentage(diff) + indicator_f(diff, '#region__populationChange', false))
@@ -45,21 +59,20 @@ Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg'),
     const paths = [cityPath, countyPath]
     paths.forEach(p => {
       p.on('mouseover', function () {
-        d3.select(this).style('fill', 'white')
+        d3.select(this).style('stroke', 'rgba(233, 93, 79, 1.0)')
       })
 
       p.on('mouseout', function () {
-        d3.select(this).style('fill', d3.select(this).style('black'))
+        d3.select(this).style('stroke', 'none')
       })
 
       p.on('click', function () {
-        d3.select(this).style('fill', '#6fc6f6')
+        // d3.select(this).style('stroke', 'white')
         // console.log(d3.select(this.parentNode).attr('data-name'))
         // let e = document.getElementById('about-cork__card')
         // e.scrollIntoView()
 
         const ref = d3.select(this.parentNode).attr('data-name')
-        // alert(ref)
         updateInfoText(corkRegionsJson[ref])
         // on click, remove the call to action
         d3.select('#regions-info__cta-arrow').style('display', 'none')
@@ -76,19 +89,19 @@ Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg'),
     console.log('error' + e)
   })
 
-function updateInfoText (d) {
+function updateInfoText(d) {
   d3.select('#local__title').html(d.ENGLISH + '')
-  d3.select('#local__open').html(d.ABOUT)
-  d3.selectAll('#local__title__small').html(d.ENGLISH + '')
-  d3.select('#local__total-popualtion').html(popFormat(d.POPULATION) + '')
-  d3.select('#local__area').html(d.AREA + '')
-  d3.select('#local__age').html(d.AGE + '')
-  d3.selectAll('#local__income').html(d.INCOME + '')
-  d3.select('#local__prePopulation').html(popFormat(d.PREVPOPULATION) + '')
-  d3.select('#local__curPopulation').html(popFormat(d.POPULATION) + '')
+  // d3.select('#local__open').html(d.ABOUT)
+  // d3.selectAll('#local__title__small').html(d.ENGLISH + '')
+  // d3.select('#local__total-popualtion').html(popFormat(d.POPULATION) + '')
+  // d3.select('#local__area').html(d.AREA + '')
+  // d3.select('#local__age').html(d.AGE + '')
+  // d3.selectAll('#local__income').html(d.INCOME + '')
+  // d3.select('#local__prePopulation').html(popFormat(d.PREVPOPULATION) + '')
+  // d3.select('#local__curPopulation').html(popFormat(d.POPULATION) + '')
 
-  const change = getPercentageChange(d.POPULATION, d.PREVPOPULATION)
-  console.log(change)
+  // const change = getPercentageChange(d.POPULATION, d.PREVPOPULATION)
+  // console.log(change)
   // d3.select('#local__populationIndicator').html(indicatorText(change, '#local__populationIndicator', 'increased', false))
 
   // d3.select('#local__populationChange').html(change + indicator_f(change, '#local__populationChange', false))
@@ -99,12 +112,12 @@ function updateInfoText (d) {
   // d3.select('#local__income__change').html(percentage(localdiffIncome) + indicator_f(localdiffIncome, '#local__income__change', false))
 }
 
-function getInfoText (region) {
+function getInfoText(region) {
   let text
 
-  return text || 'test'
+  return text
 }
 
-function popFormat (pop) {
+function popFormat(pop) {
   return pop
 }

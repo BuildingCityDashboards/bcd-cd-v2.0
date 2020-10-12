@@ -5,7 +5,6 @@
 }
 
 html {
-  background-color: white;
   padding: 0;
   margin: 0;
 }
@@ -29,4 +28,13 @@ h1,
 h2,
 h3 {
   color: #e95d4f;
+}
+
+/* used to colour text and arrows indicating trends */
+.trend-up {
+  color: green;
+}
+
+.trend-down {
+  color: red;
 }

@@ -35,6 +35,9 @@
         "source": "https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=E3003&PLanguage=0"
       }
     },
+    "INCOME": {
+      "median": 38008
+    },
     "ABOUT": "Cork City Council is the authority responsible for local government in the city of Cork. ",
     "GAEILGE": " ",
     "PROVINCE": "Munster",
@@ -72,6 +75,9 @@
       "data": {
         "source": "https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=E3003&PLanguage=0"
       }
+    },
+    "INCOME": {
+      "median": 49489
     },
     "ABOUT": "Cork County Council is the authority responsible for local government in the county of Cork but outside of the Cork city council bounds. ",
     "GAEILGE": " ",
