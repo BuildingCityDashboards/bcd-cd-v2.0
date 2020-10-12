@@ -1,6 +1,6 @@
-/* About Dublin * */
+/* About cork * */
 
-#about-dublin {
+#about-cork {
   display: grid;
   width: 100vw;
   min-width: 320px;
@@ -13,13 +13,13 @@
   overflow-x: hidden;
 }
 
-#about-dublin__header {
+#about-cork__header {
   align-self: flex-end;
   grid-column: span 4;
   grid-row: 1/2;
 }
 
-#about-dublin__header>h1 {
+#about-cork__header>h1 {
   /* width: 136px; */
   margin: 0;
   color: var(--text-color-1);
@@ -29,7 +29,7 @@
   letter-spacing: -0.5px;
 }
 
-#about-dublin__card {
+#about-cork__card {
   padding: 16px 16px 0 16px;
   overflow-y: auto;
   background-color: var(--bg-color-3);
@@ -45,9 +45,9 @@
   grid-row: 8/9;
 }
 
-#about-dublin__card>p {
+#about-cork__card>p {
   /* width: 296px; height: 371px; */
-  color: var(--text-color-3);
+  color: var(--text-color-1);
   font-size: 14px;
   font-weight: normal;
   line-height: 1.71;
@@ -134,7 +134,7 @@
   letter-spacing: 0.5px;
 }
 
-#about-dublin-dashboard {
+#about-cork-dashboard {
   display: grid;
   width: 100vw;
   min-width: 320px;
@@ -146,13 +146,13 @@
   grid-template-rows: repeat(8, 1fr);
 }
 
-#about-dublin-dashboard__header {
+#about-cork-dashboard__header {
   align-self: flex-end;
   grid-column: span 4;
   grid-row: 1/2;
 }
 
-#about-dublin-dashboard__header>h1 {
+#about-cork-dashboard__header>h1 {
   /* width: 271px; height: 18px; */
   margin: 0;
   color: var(--text-color-1);
@@ -164,11 +164,11 @@
   letter-spacing: -0.5px;
 }
 
-#about-dublin-dashboard__twitter {
+#about-cork-dashboard__twitter {
   display: none;
 }
 
-#about-dublin-dashboard__card {
+#about-cork-dashboard__card {
   padding: 16px 16px 0 16px;
   overflow-y: auto;
   background-color: var(--bg-color-3);
@@ -176,7 +176,7 @@
   grid-row: 2/9;
 }
 
-#about-dublin-dashboard__card>p {
+#about-cork-dashboard__card>p {
   /* width: 296px; height: 371px; */
   color: var(--text-color-3);
   font-size: 14px;
@@ -186,20 +186,20 @@
 }
 
 @media only screen and (orientation: landscape) {
-  #about-dublin {
+  #about-cork {
     padding-top: 48px;
   }
 
-  #about-dublin__header {
+  #about-cork__header {
     justify-content: center;
   }
 
-  #about-dublin__header>h1 {}
+  #about-cork__header>h1 {}
 
-  #about-dublin__card {}
+  #about-cork__card {}
 
 
-  #about-dublin__card>p {}
+  #about-cork__card>p {}
 
   #regions-info {
     width: 100vw;
@@ -255,7 +255,7 @@
   }
 
 
-  #about-dublin-dashboard {
+  #about-cork-dashboard {
     display: grid;
     width: 100vw;
     min-width: 320px;
@@ -267,13 +267,13 @@
     grid-template-rows: repeat(8, 1fr);
   }
 
-  #about-dublin-dashboard__header {
+  #about-cork-dashboard__header {
     align-self: flex-end;
     grid-column: span 4;
     grid-row: 1/2;
   }
 
-  #about-dublin-dashboard__header>h1 {
+  #about-cork-dashboard__header>h1 {
     /* width: 271px; height: 18px; */
     margin: 0;
     color: var(--text-color-1);
@@ -285,11 +285,11 @@
     letter-spacing: -0.5px;
   }
 
-  #about-dublin-dashboard__twitter {
+  #about-cork-dashboard__twitter {
     display: none;
   }
 
-  #about-dublin-dashboard__card {
+  #about-cork-dashboard__card {
     height: auto;
     padding: 16px 16px 0 16px;
     overflow-y: auto;
@@ -298,7 +298,7 @@
     grid-row: 2/9;
   }
 
-  #about-dublin-dashboard__card>p {
+  #about-cork-dashboard__card>p {
     /* width: 296px; height: 371px; */
     color: var(--text-color-3);
     font-size: 14px;
@@ -310,9 +310,9 @@
 }
 
 @media only screen and (min-width : 768px) {
-  /* About Dublin * */
+  /* About cork * */
 
-  #about-dublin {
+  #about-cork {
     height: 40vh;
     padding: 0 24px;
     background-color: #1c2022;
@@ -322,14 +322,14 @@
     grid-template-rows: repeat(6, 1fr);
   }
 
-  #about-dublin__header {
+  #about-cork__header {
     text-align: left;
     grid-column: 2/7;
     grid-row: 2/3;
     transform: translateY(-50%);
   }
 
-  #about-dublin__header>h1 {
+  #about-cork__header>h1 {
     margin: 0;
     font-size: 24px;
     font-style: normal;
@@ -340,7 +340,7 @@
     /* width: 333px; height: 34px; */
   }
 
-  #about-dublin__card {
+  #about-cork__card {
     padding: 32px;
     overflow-y: scroll;
     border-radius: 4px;
@@ -349,7 +349,7 @@
     grid-row: 3/7;
   }
 
-  #about-dublin__card>p {
+  #about-cork__card>p {
     /* width: 746px; height: 246px; */
     font-size: 14px;
     font-weight: normal;
@@ -423,7 +423,7 @@
     letter-spacing: 0.5px;
   }
 
-  #about-dublin-dashboard {
+  #about-cork-dashboard {
     height: 50vh;
     min-height: 700px;
     padding: 24px;
@@ -433,14 +433,14 @@
     grid-template-rows: repeat(6, 1fr);
   }
 
-  #about-dublin-dashboard__header {
+  #about-cork-dashboard__header {
     text-align: left;
     align-self: center;
     grid-column: 2 / 8;
     grid-row: 2/3;
   }
 
-  #about-dublin-dashboard__header>h1 {
+  #about-cork-dashboard__header>h1 {
     /* width: 388px; height: 34px; */
     margin: 0;
     font-size: 24px;
@@ -449,7 +449,7 @@
     letter-spacing: 0.5px;
   }
 
-  #about-dublin-dashboard__twitter {
+  #about-cork-dashboard__twitter {
     display: inline;
     text-align: center;
     align-self: flex-end;
@@ -457,7 +457,7 @@
     grid-row: 2/3;
   }
 
-  #about-dublin-dashboard__twitter>p {
+  #about-cork-dashboard__twitter>p {
     /* width: 303px; height: 24px; */
     color: var(--text-color-1);
     font-size: 14px;
@@ -468,7 +468,7 @@
     letter-spacing: 0.18px;
   }
 
-  #about-dublin-dashboard__card {
+  #about-cork-dashboard__card {
     padding: 24px;
     overflow-y: auto;
     background-color: #21272a;
@@ -476,7 +476,7 @@
     grid-row: 3/6;
   }
 
-  #about-dublin-dashboard__card>p {
+  #about-cork-dashboard__card>p {
     /* width: 746px; height: 256px; */
     font-size: 14px;
     line-height: 1.25;
@@ -489,19 +489,19 @@
 /* iPad Pro */
 
 @media only screen and (min-width : 1024px) and (orientation : portrait) {
-  #about-dublin {}
+  #about-cork {}
 
-  #about-dublin__header {}
+  #about-cork__header {}
 
-  #about-dublin__header>h1 {
+  #about-cork__header>h1 {
     font-size: 34px;
     line-height: 1.06;
     letter-spacing: 0.5px;
   }
 
-  #about-dublin__card {}
+  #about-cork__card {}
 
-  #about-dublin__card>p {
+  #about-cork__card>p {
     /* width: 702px; height: 245px; */
     font-size: 16px;
     line-height: 1.5;
@@ -568,7 +568,7 @@
     letter-spacing: 0.5px;
   }
 
-  #about-dublin-dashboard {
+  #about-cork-dashboard {
     height: auto;
     min-height: 700px;
     padding: 32px;
@@ -582,9 +582,9 @@
     */
   }
 
-  #about-dublin-dashboard__header {}
+  #about-cork-dashboard__header {}
 
-  #about-dublin-dashboard__header>h1 {
+  #about-cork-dashboard__header>h1 {
     margin: 0;
     font-size: 32px;
     font-weight: normal;
@@ -592,13 +592,13 @@
     letter-spacing: -0.5px;
   }
 
-  #about-dublin-dashboard__twitter {
+  #about-cork-dashboard__twitter {
     display: inline;
     text-align: right;
     align-self: flex-end;
   }
 
-  #about-dublin-dashboard__twitter>p {
+  #about-cork-dashboard__twitter>p {
     color: var(--text-color-1);
     font-size: 18px;
     font-style: normal;
@@ -608,13 +608,13 @@
     letter-spacing: 0.18px;
   }
 
-  #about-dublin-dashboard__card {
+  #about-cork-dashboard__card {
     height: auto;
     padding: 32px;
     overflow-y: auto;
   }
 
-  #about-dublin-dashboard__card>p {
+  #about-cork-dashboard__card>p {
     /* width: 746px; height: 256px; */
     font-size: 16px;
     line-height: 1.5;
@@ -625,7 +625,7 @@
 /* Laptop with MDPI height = 800px */
 
 @media only screen and (min-width : 1280px) {
-  #about-dublin {
+  #about-cork {
     height: 45vh;
     padding: 0 24px;
     justify-content: center;
@@ -634,20 +634,20 @@
     margin: 0 auto;
   }
 
-  #about-dublin__header {
+  #about-cork__header {
     text-align: left;
     align-self: flex-end;
     transform: translateY(0);
   }
 
-  #about-dublin__header>h1 {
+  #about-cork__header>h1 {
     font-size: 34px;
     line-height: 1.06;
     letter-spacing: 0.5px;
     /* width: 333px; height: 34px; */
   }
 
-  #about-dublin__card {
+  #about-cork__card {
     height: auto;
     padding: 24px;
     overflow-y: auto;
@@ -657,7 +657,7 @@
     column-gap: 24px;
   }
 
-  #about-dublin__card>p {
+  #about-cork__card>p {
     /* width: 702px; height: 245px; */
     font-size: 16px;
     line-height: 1.5;
@@ -693,7 +693,7 @@
     background-color: transparent;
     width: 24px;
     transform: rotate(180deg);
-    fill: var(--text-color-1);
+    fill: grey;
   }
 
 
@@ -754,7 +754,7 @@
     letter-spacing: 0.5px;
   }
 
-  #about-dublin-dashboard {
+  #about-cork-dashboard {
     height: auto;
     padding: 24px;
     overflow-y: auto;
@@ -763,11 +763,11 @@
     margin: 0 auto;
   }
 
-  #about-dublin-dashboard__header {
+  #about-cork-dashboard__header {
     text-align: center;
   }
 
-  #about-dublin-dashboard__header>h1 {
+  #about-cork-dashboard__header>h1 {
     margin: 0;
     text-align: left;
     font-size: 34px;
@@ -776,13 +776,13 @@
     letter-spacing: -0.5px;
   }
 
-  #about-dublin-dashboard__twitter {
+  #about-cork-dashboard__twitter {
     display: inline;
     text-align: right;
     align-self: flex-end;
   }
 
-  #about-dublin-dashboard__twitter>p {
+  #about-cork-dashboard__twitter>p {
     /* width: 303px; height: 24px; */
     color: var(--text-color-1);
     font-size: 18px;
@@ -793,7 +793,7 @@
     letter-spacing: 0.18px;
   }
 
-  #about-dublin-dashboard__card {
+  #about-cork-dashboard__card {
     padding: 24px;
     overflow-y: auto;
 
@@ -803,11 +803,11 @@
   }
 
   /**
-  * #about-dublin-dashboard__card .box{ page-break-inside: avoid;
+  * #about-cork-dashboard__card .box{ page-break-inside: avoid;
   * -webkit-column-break-inside: avoid; break-inside: avoid; }
   */
 
-  #about-dublin-dashboard__card>p {
+  #about-cork-dashboard__card>p {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.5px;
@@ -817,7 +817,7 @@
 /* xl */
 
 @media only screen and (min-width : 1920px) {
-  #about-dublin {
+  #about-cork {
     height: 45vh;
     min-height: 45vh;
     padding: 24px;
@@ -825,21 +825,21 @@
     grid-gap: 24px;
   }
 
-  #about-dublin__header>h1 {
+  #about-cork__header>h1 {
     font-size: 34px;
     font-weight: normal;
     line-height: 1.06;
     letter-spacing: 0.5px;
   }
 
-  #about-dublin__card {
+  #about-cork__card {
     height: auto;
     padding: 24px;
     overflow-y: auto;
     /* grid-row: 3/; */
   }
 
-  #about-dublin__card>p {
+  #about-cork__card>p {
     /* width: 702px; height: 245px; */
     font-size: 16px;
     font-weight: normal;
@@ -900,18 +900,18 @@
     letter-spacing: 0.5px;
   }
 
-  #about-dublin-dashboard {
+  #about-cork-dashboard {
     height: 60vh;
     min-height: 500px;
     padding: 24px;
     grid-gap: 24px;
   }
 
-  #about-dublin-dashboard__header {
+  #about-cork-dashboard__header {
     text-align: center;
   }
 
-  #about-dublin-dashboard__header>h1 {
+  #about-cork-dashboard__header>h1 {
     /* width: 388px; height: 34px; */
     margin: 0;
     font-size: 34px;
@@ -920,13 +920,13 @@
     letter-spacing: -0.5px;
   }
 
-  #about-dublin-dashboard__twitter {
+  #about-cork-dashboard__twitter {
     display: flex;
     text-align: right;
     justify-content: flex-end;
   }
 
-  #about-dublin-dashboard__twitter>p {
+  #about-cork-dashboard__twitter>p {
     /* width: 303px; height: 24px; */
     font-size: 24px;
     font-weight: normal;
@@ -934,7 +934,7 @@
     letter-spacing: 0.18px;
   }
 
-  #about-dublin-dashboard__card {
+  #about-cork-dashboard__card {
     padding: 24px;
     -moz-column-count: 2;
     column-count: 2;
@@ -942,7 +942,7 @@
     column-gap: 24px;
   }
 
-  #about-dublin-dashboard__card>p {
+  #about-cork-dashboard__card>p {
     font-size: 16px;
     font-weight: normal;
     line-height: 1.5;
