@@ -1,9 +1,29 @@
-Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg')])
-  // ,
-  // d3.json('/data/home/cork-region-data.json')])
+import { getPercentageChange, formatHundredThousands } from '../modules/bcd-data.js'
+
+Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg'),
+  d3.json('/data/cork-region-data.json'),
+  d3.json('../data/static/CNA13.json')])
   .then(files => {
     const xml = files[0]
-    // let corkRegionsJson = files[1]
+    const corkRegionsJson = files[1]
+    const corkPopulationJson = files[2]
+
+    // about cork card
+    const corkCard = d3.select('#about-cork__card')
+
+    corkCard.selectAll('#region__population').text(formatHundredThousands(corkRegionsJson.Cork.POPULATION[2016]) + '')
+    corkCard.select('#region__area').text(corkRegionsJson.Cork.AREA)
+    // cork.select('#region__age').text(dData.AGE + '')
+    // cork.selectAll('#region__income').text(euro(dData.INCOME) + '')
+    // cork.select('#region__prePopulation').text(thousands(dData.PREVPOPULATION) + '')
+    // cork.select('#region__populationIndicator').text(indicatorText(diff, '#region__populationIndicator', 'increased', false))
+    // cork.select('#region__populationChange').text(percentage(diff) + indicator_f(diff, '#region__populationChange', false))
+    // cork.select('#region__incomeIndicator').text(indicatorText(diff, '#region__incomeIndicator', 'grew', false))
+    // cork.select('#region__income__prev').text(euro(dData.PREVINCOME) + '')
+    // cork.select('#region__income__change').text(percentage(diffIncome) + indicator_f(diffIncome, '#region__income__change', false))
+
+    // const bigMapDiv = d3.select('#la-map__map')
+
     // "xml" is the XML DOM tree
     const htmlSVG = document.getElementById('map') // the svg-element in our HTML file
     // append the "maproot" group to the svg-element in our HTML file
@@ -37,28 +57,20 @@ Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg')])
         // console.log(d3.select(this.parentNode).attr('data-name'))
         // let e = document.getElementById('about-cork__card')
         // e.scrollIntoView()
-        console.log(d3.select(this.parentNode).attr('data-name'))
 
         const ref = d3.select(this.parentNode).attr('data-name')
         // alert(ref)
-        // updateInfoText(corkRegionsJson[ref])
+        updateInfoText(corkRegionsJson[ref])
         // on click, remove the call to action
-        d3.select('#regions-info__cta').style('display', 'none')
         d3.select('#regions-info__cta-arrow').style('display', 'none')
-
-        // This animated transition doesn't work
-
+        d3.select('#regions-info__cta').style('display', 'none')
+        // show the card
         d3.select('#regions-info__card').style('display', 'flex')
-
-        // document.getElementById('regions-info').scrollTop = 0
-        // //
         d3.select('#regions-info__card').style('visibility', 'visible')
         d3.select('#regions-info__card').style('opacity', 1)
         document.getElementById('regions-info__card').scrollTop = 0
       })
     })
-
-    //
   })
   .catch(e => {
     console.log('error' + e)
@@ -75,12 +87,13 @@ function updateInfoText (d) {
   d3.select('#local__prePopulation').html(popFormat(d.PREVPOPULATION) + '')
   d3.select('#local__curPopulation').html(popFormat(d.POPULATION) + '')
 
-  const change = getPerChange(d.POPULATION, d.PREVPOPULATION)
+  const change = getPercentageChange(d.POPULATION, d.PREVPOPULATION)
+  console.log(change)
+  // d3.select('#local__populationIndicator').html(indicatorText(change, '#local__populationIndicator', 'increased', false))
 
-  d3.select('#local__populationIndicator').html(indicatorText(change, '#local__populationIndicator', 'increased', false))
-  d3.select('#local__populationChange').html(percentage(change) + indicator_f(change, '#local__populationChange', false))
+  // d3.select('#local__populationChange').html(change + indicator_f(change, '#local__populationChange', false))
 
-  // change = getPerChange(d.INCOME, d.PREVPINCOME)
+  // change = getPercentageChange(d.INCOME, d.PREVPINCOME)
   // d3.select('#local__incomeIndicator').html(indicatorText(localdiff, '#local__incomeIndicator', 'grew', false))
   // d3.select('#local__income__prev').html(d.PREVINCOME + '')
   // d3.select('#local__income__change').html(percentage(localdiffIncome) + indicator_f(localdiffIncome, '#local__income__change', false))
@@ -90,4 +103,8 @@ function getInfoText (region) {
   let text
 
   return text || 'test'
+}
+
+function popFormat (pop) {
+  return pop
 }

@@ -1,0 +1,89 @@
+{
+  "Cork": {
+    "AREA": "7500 km²",
+    "POPULATION": {
+      "2016": 542868,
+      "2011": 519032,
+      "change": 23836,
+      "data": {
+        "source": "https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?Maintable=CNA13&Planguage=0"
+      }
+    }
+  },
+  "Cork City": {
+    "OBJECTID": 0,
+    "COUNTY": "CORK",
+    "ENGLISH": "Cork City",
+    "CONTAE": "Corcaigh",
+    "POPULATION": {
+      "2016": 119230,
+      "2011": 125657,
+      "change": null,
+      "data": {
+        "source": "https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?Maintable=CNA13&Planguage=0"
+      }
+    },
+    "MALES": "0",
+    "FEMALES": "0",
+    "HOUSESTOCK": "0",
+    "VACANT": "0",
+    "AREA": "187 km²",
+    "AGE": {
+      "2016": 39.1,
+      "2011": 38.7,
+      "data": {
+        "source": "https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=E3003&PLanguage=0"
+      }
+    },
+    "ABOUT": "Cork City Council is the authority responsible for local government in the city of Cork. ",
+    "GAEILGE": " ",
+    "PROVINCE": "Munster",
+    "ID": "",
+    "CENTROID_X": "",
+    "CENTROID_Y": "",
+    "Longitude": 51.897222,
+    "Latitude": -8.47,
+    "GlobalID": "",
+    "GUID": "",
+    "Shape__Area": 0,
+    "Shape__Length": 0
+  },
+  "Cork County": {
+    "OBJECTID": 0,
+    "COUNTY": "CORK",
+    "ENGLISH": "Cork County",
+    "CONTAE": "Corcaigh",
+    "POPULATION": {
+      "2016": 417211,
+      "2011": 399802,
+      "change": null,
+      "data": {
+        "source": "https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=E3003&PLanguage=0"
+      }
+    },
+    "MALES": "0",
+    "FEMALES": "0",
+    "HOUSESTOCK": "0",
+    "VACANT": "0",
+    "AREA": "7,500 km²",
+    "AGE": {
+      "2016": 37.1,
+      "2011": 35.8,
+      "data": {
+        "source": "https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=E3003&PLanguage=0"
+      }
+    },
+    "ABOUT": "Cork County Council is the authority responsible for local government in the county of Cork but outside of the Cork city council bounds. ",
+    "GAEILGE": " ",
+    "PROVINCE": "Munster",
+    "ID": "",
+    "CENTROID_X": "",
+    "CENTROID_Y": "",
+    "Longitude": 51.9666628,
+    "Latitude": -8.583331,
+    "GlobalID": "",
+    "GUID": "",
+    "Shape__Area": 0,
+    "Shape__Length": 0
+  }
+}

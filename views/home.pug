@@ -17,7 +17,7 @@ block append head
   script(src="https://unpkg.com/set-interval-async" type="text/javascript" defer)
   script(src='javascripts/home/card_time.js' type="text/javascript" defer)
   script(src='javascripts/home/card_weather_current.js' type="text/javascript" defer)
-  script(src='javascripts/home/about_regions.js' type="text/javascript" defer)
+  script(src='javascripts/home/about_regions.js' type="module")
 
 //- block navigation
 
@@ -168,7 +168,7 @@ block content
     #regions-info__map
       svg#map
     //- #regions-info_flex
-    #regions-info__cta SELECT A COUNTY COUNCIL ON THE MAP TO LEARN MORE 
+    #regions-info__cta SELECT A COUNCIL ON THE MAP TO LEARN MORE 
     #regions-info__cta-arrow 
       <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
     #regions-info__card
