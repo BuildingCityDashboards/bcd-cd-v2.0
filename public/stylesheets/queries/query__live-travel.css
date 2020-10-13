@@ -1,324 +1,105 @@
-.theme-btn {
-  margin-right: 8px;
-  padding: 8px 12px;
-  color: #6fd1f6;
-  border: solid 1px rgba(255, 255, 255, 0.12);
-  border-radius: 4px;
-  background: transparent;
-  outline: none;
-  box-shadow: none;
-  font-family: 'Roboto';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 200;
-  font-stretch: normal;
-  line-height: 1.14;
-  letter-spacing: 1.25px;
-}
-.GeoDemographic_Tool {
-    width: 1920px;
-    height: 1080px;
-    background-color: #1c2022;
-  }
+.query {
+  background-color: grey;
+  min-width: 320px;
+  width: 100vw;
+  height: 100vh;
 
-.GeoDemographics_Header {
-    width: 1808px;
-    height: 189px;
-  }
-
-  .Dublin-Hero-Landing-Full-Page---Body {
-    width: 1920px;
-    height: 1080px;
-  }  
-
-.Group_Description {
-    width: 1130px;
-    height: 146.6px;
-    max-height: 99%;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-    color: #ffffff;
-    
-    
-  }
-  .Group_Description.text-style-1 {
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: 0.15px;
-    color: #6fd1f6;
-    
-  }
-  .Group-Header_item {
-    width: 146px;
-    height: 48px;
-    background-color: #1c2022;
-  } 
-  .Map_Component {
-    width: 935px;
-    height: 555px;
-    border-radius: 4px;
-  }
-
-  .Text {
-    width: 143px;
-    height: 583px;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.14;
-    letter-spacing: 0.5px;
-    color: #ffffff;
-  }
-  .Text .text-style-1 {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: 0.15px;
-    color: #6fd1f6;
-  }
-  .Text .text-style-2 {
-    font-size: 12px;
-    line-height: 1.17;
-    color: #afd683;
-  }
-  .Background {
-    width: 540px;
-    height: 647px;
-    border-radius: 4px;
-    background-color: #293135;
-  }
-
-  .GeoDemographic-Query_Landing-Page {
-    width: 1920px;
-    height: 1080px;
-    background-color: #1c2022;
-  }
-  .-States {
-    width: 1808px;
-    height: 898px;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    background-color: #21272a;
-  }
-  .Icon {
-    width: 24px;
-    height: 24px;
-  } 
-  .-Elevation {
-    width: 183px;
-    height: 56px;
-    background-color: #293135;
-  }
-  .Color {
-    width: 22px;
-    height: 15px;
-    background-color: #6fd1f6;
-  }
-
-.cent{
-  text-align: center;
-  align-items: center;
-  justify-content: center 
-}  
-
-.Group_Title {
-  width: 169px;
-  height: 26px;
-  font-family: Roboto;
-  text-align: center;
-  font-size: 27px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1;
-  letter-spacing: 0.18px;
-  color: #afd683;
 }
 
-.-Subtitle-1 {
-    width: 90.5px;
-    height: 24px;
-    font-family: Roboto;
-    font-size: 15px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: 0.1px;
-    color: #6fd1f6;
-  }
+.query__grid {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  justify-content: center;
+  grid-gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+
+}
+
+/* landscape */
+@media only screen (orientation: landscape) {}
+
+/* iPad */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1279px) and (orientation: portrait) {}
 
 
-  .tool-container {
-    width       : 90%;
-    height      : 100vh;
-    min-height  : 800px;
-    margin      : auto;
-    background-color: #1c2022;
-    font-family : 'Roboto',
-                  sans-serif;
-    font-weight : 300;
+@media only screen and (min-device-width : 768px) and (max-device-width : 1279px) and (orientation: landscape) {}
+
+
+/* laptop with MDPI devtools */
+@media only screen and (min-device-width : 1280px) {
+  .query {
+    min-width: 1280px;
+    width: 100vw;
+    max-width: 1920px;
+
   }
-  
-  .info-div {
-    display: block;
-    
-    position: relative;
+
+  .query__grid {
     width: 100%;
-    margin      : auto;
-    z-index: 1;
-    height: 115px;
-    max-height: 99%; 
-    font-family : 'Roboto',
-                  sans-serif;
-    font-weight : 300;
-    overflow    :auto ;
-                                     
-    
-  }
-  
-  
-  .group-text{
-    display:block;
-    width:100%;
-    height:70px;
-    background-color:#475;
-    overflow:scroll;
-    text-indent: 50px;
-    }
-  
-  
-  
-  #map-geodemos {
-    display: block;
-    width  : 100%;
-    height : 500px;
-    background-color: #293135;
-    
-    
-  }
-  
-  #chart-geodemos {
-    width  : 100%;
-    height : 500px;
-    background-color: #293135;
-  }
-  
-#map-geodemosTem {
-    display: block;
-    width  : 100%;
-    height : 500px;
-    background-color: #293135;
-    
-    
-  }
-  
-  #chart-geodemosTem {
-    width  : 100%;
-    height : 500px;
-    background-color: #293135;
+    padding: calc(56px + 64px) 24px 24px;
+    grid-gap: 24px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 64px repeat(8, 1fr);
+    justify-content: center;
   }
 
-  /* #planning_map { height: inherit; width: 100%; } */
-  
-  input:checked {
-    background-color : #086fb8;
-  }
-  
-  select:hover:not([disabled]) {
-    /* border-color: transparent; */
-    /**
-    * box-shadow: inset 0 0 0 0.1rem #5c6ac4, inset 0 0.1rem 0.1rem 0
-    * rgba(99,115,129,.2);
-    */
-  }
-  
-  .btn-bcd-toggle {
-    color        : #000;
-    border-color : transparent;
-    /* background-color : transparent; */
-  }
-  
-  .btn-bcd-toggle:hover {
-    color        : #000;
-    border-color : transparent;
-    border-color : #fff;
-  }
-  
-  .btn-bcd-toggle.active {
-    color        : #000;
-    border-color : #fff 
+  .query__tab-bar {
+    grid-column: span 4;
+    grid-row: 1/2;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
-  .regular-checkbox {
-    -webkit-appearance: none;  
-     background-color: #8ebfd6; 
-     border: 4px solid   #8ebfd6;
-     
-     height: 16px; 
-     width: 16px; 
-    /* box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(255,255,255,0.6); */
-   
-    /* content: '✔'; */
-  /* border-radius: 3px; */
-  /* cursor: pointer; */
-    /* display: flex; */
-    /* padding: 9px; */
-    /* border-radius: 7px; */
-    /* display: inline-block; */
-    /* position: relative; */
-    /* cursor: pointer; */
-    /* display: inline-block; */
-    
+  .query__tab-button {
+    background-color: green;
+    padding: 4px;
   }
-/* Checkbox element, when checked */
-input[type="checkbox"]:checked {
-  box-shadow: 0 0 0 3px rgb(195, 228, 7);
+
+  .query__source {
+    background-color: white;
+    grid-column: 10/13;
+    grid-row: 1/2;
+
+  }
+
+  .query__header {
+    background-color: white;
+    grid-column: span 12;
+    grid-row: 2/4;
+
+  }
+
+  .query__list {
+    background-color: white;
+    grid-column: span 2;
+    grid-row: 4/9;
+  }
+
+  .query__list-item {}
+
+  .query__chart-primary {
+    background-color: white;
+    grid-column: 3/9;
+    grid-row: 4/10;
+
+  }
+
+  .query__chart-secondary {
+    background-color: white;
+    grid-column: 9/13;
+    grid-row: 4/10;
+
+  }
+
+
+
 }
 
-input[type="checkbox"]:not(:checked) {
-  /* Explicit Unchecked Styles */
-  /* border: 1px solid #FF0000;  */
-  box-shadow: 0 0 0 3px rgb(228, 7, 37);
-}
+@media only screen and (min-device-width : 1280px) and (max-width : 768px) {}
 
-  .TextStys
-  {
-    width: 116;
-    height: 48;
-    font-family :  'Roboto';
-    font-size   : 16px;
-    font-style: normal;
-    color: #6fd1f6;
-    line-height:16px;
-    letter-spacing:1.5px;
-         
-  }
-  .btn-page.active {
-    font-weight : 600;
-  }
-  
-.popupCustom .leaflet-popup-tip,
-.popupCustom .leaflet-popup-content-wrapper {
-    background:rgba(41, 49, 53, 0.68);
-
-    font-size   : 12px;
-    font-style: normal;
-    color: rgba(255, 255, 255, 0.87);
-    line-height:16px;
-    letter-spacing:1.5px;
-}
-  /**
-   * .dc-chart g.row text { fill: white; } .dc-chart g.axis label { font-size:
-   * 100px; color: white; fill: white; stroke: white; }
-   */
-   #HM-text {
-    text-align:start;
-    text-indent: -2em;
-   }
+@media only screen and (min-width : 1920px) {}
