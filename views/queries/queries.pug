@@ -8,7 +8,7 @@ block append head
   //- link(rel="stylesheet", href="/stylesheets/card.css")
 
 block navigation
-  +bcd-navbar("bcd-navbar","/","Dublin Dashboard", "sub-home")
+  +bcd-navbar("bcd-navbar","/","Cork Dashboard", "Queries")
 
 block content
   #sub-home 
@@ -18,16 +18,16 @@ block content
       #sub-home__title
         h1 Queries
       #sub-home__description
-        p Interact with maps and charts to find answers to common questions about Dublin. 
+        p Interact with maps and charts to find answers to common questions about Cork. 
       #sub-home__carousel
         <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
           .carousel-cell
               +card-sub-home({
                 title: 'Geodemographics', 
-                description: 'Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Dublin.  Small Areas (SAs) are selected as spatial units and 2016 Census of Population results are used for socio-economic components.', 
+                description: 'Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Small Areas (SAs) are selected as spatial units and 2016 Census of Population results are used for socio-economic components.', 
                 
                 links: [{
-                  href :"/sub-home/geodemos",
+                  href :"queries/geodemos",
                   name:'Go to Geodemographics query'
                   }]
               })
