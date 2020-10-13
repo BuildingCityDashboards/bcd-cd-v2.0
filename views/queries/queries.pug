@@ -1,40 +1,40 @@
 extends ../layout
-include ../component/card-queries
+include ../component/card-sub-home
 
 block append head
 
   link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
-  link(rel="stylesheet", href="/stylesheets/queries/queries.css")
+  link(rel="stylesheet", href="/stylesheets/components/bcd-sub-home.css")
   //- link(rel="stylesheet", href="/stylesheets/card.css")
 
 block navigation
-  +bcd-navbar("bcd-navbar","/","Dublin Dashboard", "Queries")
+  +bcd-navbar("bcd-navbar","/","Dublin Dashboard", "sub-home")
 
 block content
-  #queries-home 
-    #queries-home__grid
-      #queries-home__icon
-        img(src='/images/icons/icons-48px/queries_Icon_48px.svg')
-      #queries-home__title
+  #sub-home 
+    #sub-home__grid
+      #sub-home__icon
+        img(src='/images/icons/icons-48px/Queries_Icon_48px.svg')
+      #sub-home__title
         h1 Queries
-      #queries-home__description
+      #sub-home__description
         p Interact with maps and charts to find answers to common questions about Dublin. 
-      #queries-home__carousel
+      #sub-home__carousel
         <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
           .carousel-cell
-              +card-queries({
+              +card-sub-home({
                 title: 'Geodemographics', 
                 description: 'Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Dublin.  Small Areas (SAs) are selected as spatial units and 2016 Census of Population results are used for socio-economic components.', 
                 
                 links: [{
-                  href :"/queries/geodemos",
+                  href :"/sub-home/geodemos",
                   name:'Go to Geodemographics query'
                   }]
               })
           .carousel-cell
-              +card-queries({title: 'Live Travel Map', description: '<i>The Live Travel Map is under construction, please check back soon.</i>'})
+              +card-sub-home({title: 'Live Travel Map', description: '<i>The Live Travel Map is under construction, please check back soon.</i>'})
           .carousel-cell
-              +card-queries({title: 'Economy at a Glance', description: '<i>Economy at a Glance is under construction, please check back soon.</i>'})    
+              +card-sub-home({title: 'Economy at a Glance', description: '<i>Economy at a Glance is under construction, please check back soon.</i>'})    
         </div>
 
 block append scripts
