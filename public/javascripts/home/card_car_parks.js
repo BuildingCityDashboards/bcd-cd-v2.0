@@ -40,30 +40,32 @@ async function main (options) {
         console.log('data updated')
         console.log('json')
         console.log(json)
+        // TODO: getlatest fo all readings, not just json[0]
         const date = new Date(json[0].date)
         const lastReadTime = date.getHours() + ':' + date.getMinutes()
         // .getHour() + ':' + json[0].date.getHours() + getMinutes()
         console.log(lastReadTime)
 
-        // // const cardElement = document.getElementById('car-parks-card')
-        // // console.log('cardElement')
-        // // console.log(cardElement)
+        const cardElement = document.getElementById('car-parks-card')
+        const subtitleElement = cardElement.querySelector('#subtitle')
+        subtitleElement.innerHTML = 'Latest reading ' + lastReadTime
+        let spacesTotalFree = 0
+        json.forEach((d) => {
+          spacesTotalFree += +d.free_spaces
+        })
+        console.log(spacesTotalFree)
 
-        // const cardElement = document.getElementById('car-parks-card')
-        // const subtitleElement = cardElement.querySelector('#subtitle')
-        // subtitleElement.innerHTML = 'Latest reading ' + lastReadTime
+        const leftElement = cardElement.querySelector('#card-left')
+        leftElement.innerHTML = '<h1>' + json.length + '</h1>' +
+                    '<h2>Car Parks</h2>'
 
-        // const leftElement = cardElement.querySelector('#card-left')
-        // leftElement.innerHTML = '<h1>' + corkData[0].aqih.split(',')[1] + '</h1>' +
-        //             '<h2>Quality</h2>'
+        const rightElement = cardElement.querySelector('#card-right')
+        rightElement.innerHTML =
+                    '<h1>' + spacesTotalFree + '</h1>' +
+                    '<h2>Free Spaces</h2>'
 
-        // const rightElement = cardElement.querySelector('#card-right')
-        // rightElement.innerHTML =
-        //             '<h1>' + corkData[0].aqih.split(',')[0] + '</h1>' +
-        //             '<h2>Index</h2>'
-
-        // const infoElement = cardElement.querySelector('.card__info-text')
-        // infoElement.innerHTML = 'The latest air quality reading in Cork city was taken at <b>' + lastReadTime + '</b>  and indicated a <b>QUALITY INDEX of ' + corkData[0].aqih.split(',')[0] + '</b> in the <b>' + corkData[0].aqih.split(',')[1].toUpperCase() + '</b> quality band'
+        const infoElement = cardElement.querySelector('.card__info-text')
+        infoElement.innerHTML = `As of <b>${lastReadTime}</b>, across the ${json.length} Cork city car parks there were a total of <b> ${spacesTotalFree} FREE SPACES</b>`
 
         clearTimeout(refreshTimeout)
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
