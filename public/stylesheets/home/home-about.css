@@ -1,19 +1,22 @@
 /* About cork * */
 
 .home__about {
-
   background-color: #eeecec;
+  height: auto;
 
 }
 
 .home__about__card {
   box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.25);
   background-color: white;
+  height: auto;
 
 }
 
 .home__about__card p {
   color: black;
+  display: inline-block;
+  vertical-align: top;
 }
 
 #about-cork {
@@ -646,6 +649,7 @@
     -moz-column-gap: 24px;
     column-gap: 24px;
     column-fill: auto;
+
   }
 
   #about-cork__card>p {
@@ -714,6 +718,7 @@
     padding-bottom: 0;
     grid-column: 7/12;
     justify-content: center;
+
   }
 
   #regions-info__card {
@@ -922,10 +927,11 @@
     column-gap: 24px;
   }
 
-  #about-cork-dashboard__card>p {
+  #about-cork-dashboard__card p {
     font-size: 16px;
     font-weight: normal;
     line-height: 1.5;
     letter-spacing: 0.5px;
+
   }
 }

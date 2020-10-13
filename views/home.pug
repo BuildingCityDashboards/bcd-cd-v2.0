@@ -40,6 +40,28 @@ block content
                 
                 .carousel-cell
                   +home__card-indicator({
+                      title: 'Car parks - city',
+                      subtitle:  'Fetching data...',
+                      id: 'car-parks-card',
+                      icon: '/images/icons/home/icons-48px/Car_Icon_48px.svg#Layer_1',
+                      info: '',
+                      buttons: [
+                      {
+                        href :'https://data.corkcity.ie/dataset/parking/resource/6cc1028e-7388-4bc5-95b7-667a59aa76dc',
+                        name:'Cork Smart Gateway',
+                        target: '_blank'
+                      }],
+                      displayoptions:{
+                        displayid: 'car-parks-card__display',
+                        data:{
+                        href: '/api/car-parks/latest',
+                        },
+                        src: '/javascripts/home/card_car_parks.js',
+                        format:''
+                      }
+                    })
+                .carousel-cell
+                  +home__card-indicator({
                       title: 'Air quality - city',
                       subtitle:  'Fetching data...',
                       id: 'air-quality-card',
