@@ -35,20 +35,21 @@ async function main (options) {
     try {
       // console.log('fetching data')
       csv = await fetchCsvFromUrlAsyncTimeout(options.displayoptions.data.href, 500)
-      if (csv) {
+      const json = d3.csvParse(csv)
+      if (json) {
         console.log('data updated')
-        console.log('csv')
-        console.log(csv)
-        //   updateDisplay(csv)
+        console.log('json')
+        console.log(json)
+        const date = new Date(json[0].date)
+        const lastReadTime = date.getHours() + ':' + date.getMinutes()
+        // .getHour() + ':' + json[0].date.getHours() + getMinutes()
+        console.log(lastReadTime)
 
-        // const lastReadTime = csv.generatedAt.split(' ')[1] ? csv.generatedAt.split(' ')[1] : ''
-        // // console.log(lastReadTime)
-
-        // // const cardElement = document.getElementById('air-quality-card')
+        // // const cardElement = document.getElementById('car-parks-card')
         // // console.log('cardElement')
         // // console.log(cardElement)
 
-        // const cardElement = document.getElementById('air-quality-card')
+        // const cardElement = document.getElementById('car-parks-card')
         // const subtitleElement = cardElement.querySelector('#subtitle')
         // subtitleElement.innerHTML = 'Latest reading ' + lastReadTime
 
