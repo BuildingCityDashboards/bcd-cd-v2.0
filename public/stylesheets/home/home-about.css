@@ -1,5 +1,21 @@
 /* About cork * */
 
+.home__about {
+
+  background-color: #eeecec;
+
+}
+
+.home__about__card {
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.25);
+  background-color: white;
+
+}
+
+.home__about__card p {
+  color: black;
+}
+
 #about-cork {
   display: grid;
   width: 100vw;
@@ -31,10 +47,10 @@
 #about-cork__card {
   padding: 16px 16px 0 16px;
   overflow-y: auto;
-  background-color: white;
   grid-column: span 4;
   grid-row: 2/9;
 }
+
 
 #about-scroll-arrow {
   display: flex;
@@ -116,7 +132,6 @@
 
 #regions-info__card__header h1 {
   margin: 0;
-  color: var(--color-1);
   font-size: 20px;
   font-weight: normal;
   line-height: 20px;
@@ -125,8 +140,7 @@
 
 #regions-info__card__body {}
 
-#regions-info__card__body>p {
-  color: black;
+#regions-info__card__body p {
   margin: 0 0 8px 0;
   font-size: 14px;
   font-weight: normal;
@@ -155,7 +169,7 @@
 #about-cork-dashboard__header>h1 {
   /* width: 271px; height: 18px; */
   margin: 0;
-  color: var(--text-color-1);
+  color: #e95d4f;
   font-size: 20px;
   font-style: normal;
   font-weight: normal;
@@ -171,14 +185,12 @@
 #about-cork-dashboard__card {
   padding: 16px 16px 0 16px;
   overflow-y: auto;
-  background-color: white;
+  color: #e95d4f;
   grid-column: span 4;
   grid-row: 2/9;
 }
 
 #about-cork-dashboard__card>p {
-  /* width: 296px; height: 371px; */
-  color: var(--text-color-3);
   font-size: 14px;
   font-weight: normal;
   line-height: 1.71;
@@ -275,7 +287,6 @@
   #about-cork-dashboard__header>h1 {
     /* width: 271px; height: 18px; */
     margin: 0;
-    color: var(--text-color-1);
     font-size: 20px;
     font-style: normal;
     font-weight: normal;
@@ -292,14 +303,12 @@
     height: auto;
     padding: 16px 16px 0 16px;
     overflow-y: auto;
-    background-color: white;
     grid-column: span 4;
     grid-row: 2/9;
   }
 
   #about-cork-dashboard__card>p {
     /* width: 296px; height: 371px; */
-    color: var(--text-color-3);
     font-size: 14px;
     font-weight: normal;
     line-height: 1.71;
@@ -312,8 +321,8 @@
   /* About cork * */
 
   #about-cork {
-    height: 40vh;
-    padding: 0 24px;
+    height: calc(40vh - 48px);
+    padding: 24px;
     justify-content: center;
     grid-gap: 24px;
     grid-template-columns: repeat(12, 1fr);
@@ -327,11 +336,11 @@
     transform: translateY(-50%);
   }
 
-  #about-cork__header>h1 {
+  #about-cork__header h1 {
     margin: 0;
     font-size: 24px;
     font-style: normal;
-    font-weight: normal;
+    font-weight: bold;
     font-stretch: normal;
     line-height: 1.06;
     letter-spacing: 0.5px;
@@ -343,7 +352,6 @@
     padding: 32px;
     overflow-y: auto;
     border-radius: 4px;
-    background-color: white;
     grid-column: 2/12;
     grid-row: 3/7;
   }
@@ -354,7 +362,6 @@
     font-weight: normal;
     line-height: 1.25;
     letter-spacing: 0.5px;
-    color: black;
   }
 
   #regions-info {
@@ -400,7 +407,6 @@
 
   #regions-info__card__header>h1 {
     margin: 0;
-    color: #e95d4f;
     font-size: 24px;
     font-weight: normal;
     line-height: 24px;
@@ -424,7 +430,6 @@
     height: 50vh;
     min-height: 700px;
     padding: 24px;
-    background-color: white;
     grid-gap: 24px;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -437,11 +442,11 @@
     grid-row: 2/3;
   }
 
-  #about-cork-dashboard__header>h1 {
-    /* width: 388px; height: 34px; */
+  #about-cork-dashboard__header h1 {
+
     margin: 0;
     font-size: 24px;
-    font-weight: normal;
+    font-weight: bold;
     line-height: 1.06;
     letter-spacing: 0.5px;
   }
@@ -456,7 +461,6 @@
 
   #about-cork-dashboard__twitter>p {
     /* width: 303px; height: 24px; */
-    color: var(--text-color-1);
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
@@ -468,7 +472,6 @@
   #about-cork-dashboard__card {
     padding: 24px;
     overflow-y: auto;
-    background-color: white;
     grid-column: 2 / 12;
     grid-row: 3/6;
   }
@@ -513,7 +516,6 @@
     /* width: 326px; */
     /* min-height: 50px; */
     margin: 0;
-    color: var(--text-color-1);
     font-size: 16px;
     font-style: normal;
     font-weight: normal;
@@ -569,13 +571,7 @@
     min-height: 700px;
     padding: 32px;
     grid-gap: 32px;
-    /**
-    * grid-template-columns : repeat(12, 1fr); grid-template-rows
-    *
-    *
-    *
-    * : repeat(6, 1fr);
-    */
+
   }
 
   #about-cork-dashboard__header {}
@@ -595,7 +591,6 @@
   }
 
   #about-cork-dashboard__twitter>p {
-    color: var(--text-color-1);
     font-size: 18px;
     font-style: normal;
     font-weight: normal;
@@ -622,8 +617,7 @@
 
 @media only screen and (min-width : 1280px) {
   #about-cork {
-    height: 45vh;
-    padding: 0 24px;
+    height: calc(45vh - 48px);
     justify-content: center;
     grid-gap: 24px;
     max-width: 1440px;
@@ -651,10 +645,11 @@
     column-count: 2;
     -moz-column-gap: 24px;
     column-gap: 24px;
+    column-fill: auto;
   }
 
   #about-cork__card>p {
-    /* width: 702px; height: 245px; */
+
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.5px;
@@ -697,10 +692,8 @@
   }
 
   #regions-map__header>h1 {
-    /* width: 326px; */
-    /* min-height: 50px; */
+
     margin: 0;
-    color: var(--text-color-1);
     font-size: 16px;
     font-weight: normal;
     line-height: 1.5;
@@ -766,7 +759,6 @@
     margin: 0;
     text-align: left;
     font-size: 34px;
-    font-weight: normal;
     line-height: 1.06;
     letter-spacing: -0.5px;
   }
@@ -778,8 +770,7 @@
   }
 
   #about-cork-dashboard__twitter>p {
-    /* width: 303px; height: 24px; */
-    color: var(--text-color-1);
+
     font-size: 18px;
     font-style: normal;
     font-weight: normal;
@@ -791,16 +782,11 @@
   #about-cork-dashboard__card {
     padding: 24px;
     overflow-y: auto;
-
     column-count: 2;
     column-gap: 24px;
 
   }
 
-  /**
-  * #about-cork-dashboard__card .box{ page-break-inside: avoid;
-  * -webkit-column-break-inside: avoid; break-inside: avoid; }
-  */
 
   #about-cork-dashboard__card>p {
     font-size: 16px;
@@ -907,7 +893,6 @@
   }
 
   #about-cork-dashboard__header>h1 {
-    /* width: 388px; height: 34px; */
     margin: 0;
     font-size: 34px;
     font-weight: normal;

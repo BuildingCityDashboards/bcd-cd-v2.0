@@ -163,14 +163,14 @@ block content
         //- , with a corresponding increase in population by 85,000 to 210,000. 
 
       
-  #regions-info
+  #regions-info.home__about
     #regions-info__map
       svg#map
     //- #regions-info_flex
     #regions-info__cta SELECT A COUNCIL ON THE MAP TO LEARN MORE 
     #regions-info__cta-arrow 
       <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
-    #regions-info__card
+    #regions-info__card.home__about__card
       #regions-info__card__header
         h1#local__title 
       #regions-info__card__body
@@ -207,7 +207,7 @@ block content
           span#local__populationChange x.xx% decrease/increase
           |.
     
-  //- #about-cork-dashboard.home__about
+  #about-cork-dashboard.home__about
     #about-cork-dashboard__header.home__about__header 
       h1 ABOUT THE DASHBOARD
     #about-cork-dashboard__twitter
@@ -217,11 +217,7 @@ block content
       p Data is pulled together from major sources -- including Cork City Council, Central Statistics Office, Eurostat, government departments and others, and includes links to a variety of existing external applications -- to provide interactive data visualisations. The underlying data is freely available, so others can undertake their own analysis and build their own applications and visualisations.
         
     //- #about-cork-dashboard.position-anchor
-  //- section.map
-    .content-wrapper.content-wrapper--very-dark-blue
-      .container
-      //- .position-anchor#about-cork-dashboard
-        include component/about-dd.pug
+
 
   //- include component/scroll-to-top
 
