@@ -1,5 +1,9 @@
 import { getPercentageChange, formatHundredThousands, formatEuros } from '../modules/bcd-data.js'
 
+const indicatorUpSymbol = '&#x25B2;'
+const indicatorDownSymbol = '&#x25BC;'
+const indicatorNoChangeSymbol = '<span></span>'
+
 Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg'),
 d3.json('/data/cork-region-data.json'),
 d3.json('../data/static/CNA13.json')])
@@ -7,10 +11,6 @@ d3.json('../data/static/CNA13.json')])
     const xml = files[0]
     const corkRegionsJson = files[1]
     const corkPopulationJson = files[2]
-
-    const indicatorUpSymbol = '&#x25B2;'
-    const indicatorDownSymbol = '&#x25BC;'
-    const indicatorNoChangeSymbol = '<span></span>'
 
     // about cork card
     const corkCard = d3.select('#about-cork__card')
@@ -23,8 +23,9 @@ d3.json('../data/static/CNA13.json')])
     corkCard.select('#cork__population-change').text(formatHundredThousands(corkRegionsJson.Cork.POPULATION.change) + '')
     corkCard.select('#cork__population-change').text(formatHundredThousands(corkRegionsJson.Cork.POPULATION.change) + '')
 
-    const percentPopChange = getPercentageChange(corkRegionsJson.Cork.POPULATION[populationYear], corkRegionsJson.Cork.POPULATION['2011'])
-    const trendText = percentPopChange > 0 ? 'an <span class=\'trend-up\'>increase</span> of <span class=\'trend-up\'>' + indicatorUpSymbol + percentPopChange + '%</span>' : 'a <span class=\'trend-down\'>decrease</span> of <span class=\'trend-down\'>' + indicatorDownSymbol + Math.abs(percentPopChange) + '%</span>'
+    const percentPopChangeCork = getPercentageChange(corkRegionsJson.Cork.POPULATION[populationYear], corkRegionsJson.Cork.POPULATION['2011'])
+
+    const trendText = percentPopChangeCork > 0 ? 'an <span class=\'trend-up\'>increase</span> of <span class=\'trend-up\'>' + indicatorUpSymbol + percentPopChangeCork + '%</span>' : 'a <span class=\'trend-down\'>decrease</span> of <span class=\'trend-down\'>' + indicatorDownSymbol + Math.abs(percentPopChangeCork) + '%</span>'
     corkCard.select('#cork__population-trend-text').html(trendText + '.  ')
 
     // cork.select('#region__age').text(dData.AGE + '')
@@ -90,34 +91,24 @@ d3.json('../data/static/CNA13.json')])
   })
 
 function updateInfoText(d) {
-  d3.select('#local__title').html(d.ENGLISH + '')
-  // d3.select('#local__open').html(d.ABOUT)
+  console.log(d.GAEILGE);
+  const percentPopChange = getPercentageChange(d.POPULATION[2016], d.POPULATION['2011'])
+
+  const trendTextPop = percentPopChange > 0 ? 'an <span class=\'trend-up\'>increase</span> of <span class=\'trend-up\'>' + indicatorUpSymbol + percentPopChange + '%</span>' : 'a <span class=\'trend-down\'>decrease</span> of <span class=\'trend-down\'>' + indicatorDownSymbol + Math.abs(percentPopChange) + '%</span>'
+
+  d3.select('#local__title').html(d.ENGLISH + ' (' + d.GAEILGE + ')')
+  d3.select('#local__text-1').html(d.TEXT_1)
+  d3.select('#local__area').html(d.AREA + '. ')
   // d3.selectAll('#local__title__small').html(d.ENGLISH + '')
-  // d3.select('#local__total-popualtion').html(popFormat(d.POPULATION) + '')
-  // d3.select('#local__area').html(d.AREA + '')
+  d3.select('#local__curPopulation').html(formatHundredThousands(d.POPULATION['2016']) + '')
+  d3.select('#local__prePopulation').html(formatHundredThousands(d.POPULATION['2011']) + '')
+  d3.select('#local__PopChange').html(trendTextPop + '')
+
+  d3.select('#local__text-2').html(d.TEXT_2 + '')
+
   // d3.select('#local__age').html(d.AGE + '')
   // d3.selectAll('#local__income').html(d.INCOME + '')
-  // d3.select('#local__prePopulation').html(popFormat(d.PREVPOPULATION) + '')
-  // d3.select('#local__curPopulation').html(popFormat(d.POPULATION) + '')
-
-  // const change = getPercentageChange(d.POPULATION, d.PREVPOPULATION)
-  // console.log(change)
-  // d3.select('#local__populationIndicator').html(indicatorText(change, '#local__populationIndicator', 'increased', false))
-
-  // d3.select('#local__populationChange').html(change + indicator_f(change, '#local__populationChange', false))
-
-  // change = getPercentageChange(d.INCOME, d.PREVPINCOME)
   // d3.select('#local__incomeIndicator').html(indicatorText(localdiff, '#local__incomeIndicator', 'grew', false))
   // d3.select('#local__income__prev').html(d.PREVINCOME + '')
   // d3.select('#local__income__change').html(percentage(localdiffIncome) + indicator_f(localdiffIncome, '#local__income__change', false))
-}
-
-function getInfoText(region) {
-  let text
-
-  return text
-}
-
-function popFormat(pop) {
-  return pop
 }

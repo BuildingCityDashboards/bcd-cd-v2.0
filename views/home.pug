@@ -131,7 +131,7 @@ block content
       h1 ABOUT CORK
     #about-cork__card.home__about__card
       p Cork is the largest county in Ireland. 
-        |It is located in the South of the country, in the province of Munster, and covers a total area of 
+        |It is located in the south-west of the country, in the province of Munster, and covers a total area of 
         span#cork__area xxx.xx
         |.  At the time of the census in 
         span#cork__population_year xxxx
@@ -174,18 +174,26 @@ block content
       #regions-info__card__header
         h1#local__title 
       #regions-info__card__body
-        //- p 
-          span#local__open 
-          | It covers an area of 
+        p 
+          span#local__text-1 
+          |  covering an area of 
           span#local__area
-          |.  
-          span#local__title__small  
-          |  has a total population of 
-          span#local__total-popualtion 
-          |  people, with a median age of 
-          span#local__age xx.x 
-          |  years.
-          //- |and a median household income of 
+  
+        p The population determined by the census of 2016 was  
+          span#local__curPopulation 
+          | , compared to 
+          span#local__prePopulation
+          |  in 2011. This was 
+          span#local__PopChange 
+          | . 
+          span#local__text-2
+
+        p See more in our <a href='/themes#demographics'>Demographics Theme</a> 
+          
+          //- | with a median age of 
+          //- span#local__age xx.x 
+          //- |  years.
+          //- //- |and a median household income of 
           //- span#local__income €xx.xx.
         //- p Between 2011 and 2016 the population of  
           span#local__title__small Cork

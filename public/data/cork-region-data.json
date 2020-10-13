@@ -14,7 +14,9 @@
     "OBJECTID": 0,
     "COUNTY": "CORK",
     "ENGLISH": "Cork City",
+    "GAEILGE": "Cathar Chorcaí",
     "CONTAE": "Corcaigh",
+    "URL": "https://www.corkcity.ie/en/",
     "POPULATION": {
       "2016": 119230,
       "2011": 125657,
@@ -38,8 +40,6 @@
     "INCOME": {
       "median": 38008
     },
-    "ABOUT": "Cork City Council is the authority responsible for local government in the city of Cork. ",
-    "GAEILGE": " ",
     "PROVINCE": "Munster",
     "ID": "",
     "CENTROID_X": "",
@@ -49,12 +49,16 @@
     "GlobalID": "",
     "GUID": "",
     "Shape__Area": 0,
-    "Shape__Length": 0
+    "Shape__Length": 0,
+    "TEXT_1": "<a href='https://www.corkcity.ie/en/' target='_blank'>Cork City Council</a> is the authority responsible for local government in the city of Cork, ",
+    "TEXT_2": "Following the 2019 boundary extension, the populaiton of the city grew by about 85,000, to approximately 210,000. "
   },
   "Cork County": {
     "OBJECTID": 0,
     "COUNTY": "CORK",
     "ENGLISH": "Cork County",
+    "GAEILGE": "Contae Chorcaí",
+    "PROVINCE": "Munster",
     "CONTAE": "Corcaigh",
     "POPULATION": {
       "2016": 417211,
@@ -79,9 +83,6 @@
     "INCOME": {
       "median": 49489
     },
-    "ABOUT": "Cork County Council is the authority responsible for local government in the county of Cork but outside of the Cork city council bounds. ",
-    "GAEILGE": " ",
-    "PROVINCE": "Munster",
     "ID": "",
     "CENTROID_X": "",
     "CENTROID_Y": "",
@@ -90,6 +91,8 @@
     "GlobalID": "",
     "GUID": "",
     "Shape__Area": 0,
-    "Shape__Length": 0
+    "Shape__Length": 0,
+    "TEXT_1": "<a href='https://www.corkcoco.ie/en' target='_blank'>Cork County Council</a> is the authority responsible for local government in the county of Cork but outside of the Cork city council bounds. ",
+    "TEXT_2": "However, the boundary extension of Cork city in 2019 reduced the population of the county by about 85,000."
   }
 }
