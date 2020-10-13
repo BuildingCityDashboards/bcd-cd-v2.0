@@ -1,8 +1,11 @@
-// /***
+/***
 
-//   Air quality card
+ Car Parks card
 
-// ***/
+ TODO:
+ - getlatest fo all readings, not just json[0]
+ - add animated update trend
+***/
 'use strict'
 
 import { fetchCsvFromUrlAsyncTimeout } from '../modules/bcd-async.js'
@@ -40,7 +43,7 @@ async function main (options) {
         console.log('data updated')
         console.log('json')
         console.log(json)
-        // TODO: getlatest fo all readings, not just json[0]
+
         const date = new Date(json[0].date)
         const lastReadTime = date.getHours() + ':' + date.getMinutes()
         // .getHour() + ':' + json[0].date.getHours() + getMinutes()
