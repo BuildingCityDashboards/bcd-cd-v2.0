@@ -2,11 +2,10 @@ import { getPercentageChange, formatHundredThousands, formatEuros } from '../mod
 
 const indicatorUpSymbol = '&#x25B2;'
 const indicatorDownSymbol = '&#x25BC;'
-const indicatorNoChangeSymbol = '<span></span>'
 
 Promise.all([d3.xml('/images/home/CorkMap_Unselected.svg'),
-d3.json('/data/cork-region-data.json'),
-d3.json('../data/static/CNA13.json')])
+  d3.json('/data/cork-region-data.json'),
+  d3.json('../data/static/CNA13.json')])
   .then(files => {
     const xml = files[0]
     const corkRegionsJson = files[1]
@@ -25,6 +24,7 @@ d3.json('../data/static/CNA13.json')])
 
     const percentPopChangeCork = getPercentageChange(corkRegionsJson.Cork.POPULATION[populationYear], corkRegionsJson.Cork.POPULATION['2011'])
 
+    // TODO: abstract to a module, add nochange option
     const trendText = percentPopChangeCork > 0 ? 'an <span class=\'trend-up\'>increase</span> of <span class=\'trend-up\'>' + indicatorUpSymbol + percentPopChangeCork + '%</span>' : 'a <span class=\'trend-down\'>decrease</span> of <span class=\'trend-down\'>' + indicatorDownSymbol + Math.abs(percentPopChangeCork) + '%</span>'
     corkCard.select('#cork__population-trend-text').html(trendText + '.  ')
 
@@ -90,8 +90,7 @@ d3.json('../data/static/CNA13.json')])
     console.log('error' + e)
   })
 
-function updateInfoText(d) {
-  console.log(d.GAEILGE);
+function updateInfoText (d) {
   const percentPopChange = getPercentageChange(d.POPULATION[2016], d.POPULATION['2011'])
 
   const trendTextPop = percentPopChange > 0 ? 'an <span class=\'trend-up\'>increase</span> of <span class=\'trend-up\'>' + indicatorUpSymbol + percentPopChange + '%</span>' : 'a <span class=\'trend-down\'>decrease</span> of <span class=\'trend-down\'>' + indicatorDownSymbol + Math.abs(percentPopChange) + '%</span>'
