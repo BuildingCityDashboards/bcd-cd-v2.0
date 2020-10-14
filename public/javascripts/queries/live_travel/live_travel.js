@@ -104,7 +104,9 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
   // let prevStandsTrendString = '' // '(no change)'
 
   async function fetchData () {
-    // console.log('fetch data')
+    //   These locations incorrectly report time (IST indicated but GMT provided)
+    const OFFSET_BY_HOUR = ['City Hall - Eglington Street', 'Carrolls Quay', 'Grand Parade', "Saint Finbarr's"]
+    console.log('fetch data')
     let csv
     clearTimeout(refreshTimeout)
     try {
@@ -122,10 +124,43 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
         // console.log(lastReadTime)
 
         let spacesTotalFree = 0
+        let latestDate
+        let latestDateMillis = 0
+        const AGE_THRESHOLD_MILLIS = 1000 * 60 * 30 // invalidate data older than n mins
+        console.log('age limit ' + AGE_THRESHOLD_MILLIS)
         json.forEach((d) => {
+          let readingTimeMillis = new Date(d.date).getTime()
+          if (OFFSET_BY_HOUR.includes(d.name)) readingTimeMillis += 1000 * 60 * 60
+          const nowMillis = new Date().getTime()
+
+          // add fields to indicate validity of data based on time
+          const dataAgeMillis = nowMillis - readingTimeMillis
+          d.agemillis = dataAgeMillis
+          d.ageminutes = dataAgeMillis / (1000 * 60)
+          // check reading isn't from the future (!) and is does not exceed age threshold
+          if (!(readingTimeMillis > (nowMillis - 100)) && (dataAgeMillis < AGE_THRESHOLD_MILLIS)) {
+            d.valid = true
+          } else {
+            d.valid = false
+          }
+          /// find the max/latest
+          if (readingTimeMillis > latestDateMillis) {
+            latestDateMillis = readingTimeMillis
+            latestDate = date
+          }
           spacesTotalFree += +d.free_spaces
+          console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
         })
-        // console.log(spacesTotalFree)
+        console.log('latest date')
+        console.log(latestDate)
+
+        console.log(json)
+
+        const nowMillis = new Date().getTime()
+        const dataAgeMinutes = (nowMillis - latestDateMillis) / 1000
+        console.log(nowMillis)
+        console.log(latestDateMillis)
+        console.log(dataAgeMinutes)
 
         // update the DOM
         // const cardElement = document.getElementById('car-parks-card')
