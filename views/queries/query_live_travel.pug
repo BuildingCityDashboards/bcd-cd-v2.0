@@ -22,6 +22,9 @@ block append head
         //- link(rel='stylesheet', href='/stylesheets/tools/slider-switch.css')
         //- link(rel='stylesheet', href='/stylesheets/nouislider.css')
         //- link(rel='stylesheet', href='/stylesheets/spin.css')
+        script(type='text/javascript', src='/lib/d3v5/d3.min.js' defer)
+        script(type='module', src='/javascripts/queries/live_travel/live_travel.js')
+
 
 block navigation
     //-+navbar("navbar navbar-expand-lg navbar-dark bg-dark fixed-top","/","Dublin Dashboard","Queries")
@@ -40,7 +43,7 @@ block content
                 .query__list-item 1
                 .query__list-item 2
                 .query__list-item 3
-            .query__chart-primary
+            #live-travel-map.query__chart-primary
             .query__chart-secondary
 
         //- .tool-container
