@@ -97,9 +97,9 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
   })
 
   /************************************
-                                         * Carparks
-                                         ************************************/
-  const carparkMapIcon = L.Icon.extend({
+                                                           * Carparks
+                                                           ************************************/
+  const carParkMapIcon = L.Icon.extend({
     options: {
       iconSize: [24, 24] // orig size
       //   iconAnchor: [iconAX, iconAY] //,
@@ -120,9 +120,9 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
 
   const carParkLayerGroup = L.layerGroup()
 
-  const carparkPopupOptions = {
+  const carParkPopupOptions = {
     // 'maxWidth': '500',
-    className: 'carparkPopup'
+    className: 'carParkPopup'
   }
 
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
@@ -163,6 +163,8 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
       csv = await fetchCsvFromUrlAsyncTimeout(options.displayoptions.data.href, 500)
       const json = d3.csvParse(csv)
       if (json) {
+        liveTravelMap.removeLayer(carParkLayerGroup)
+        carParkLayerGroup.clearLayers()
         console.log('data updated')
         console.log('json')
         console.log(json)
@@ -202,7 +204,7 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
 
           // add a marker to the map
           const m = new customCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
-            icon: new carparkMapIcon({
+            icon: new carParkMapIcon({
               iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
               className: d.valid ? 'online' : 'offline'
             }),
@@ -213,7 +215,7 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
 
           carParkLayerGroup.addLayer(m)
 
-          m.bindPopup(carParkPopupInit(d), carparkPopupOptions)
+          m.bindPopup(carParkPopupInit(d), carParkPopupOptions)
         })
 
         // update the map
@@ -250,9 +252,13 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
 
         clearTimeout(refreshTimeout)
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
-      } else csv = null
+      } else {
+        csv = null // for GC
+        // TODO: if no valid json returned, grey out all markers
+      }
     } catch (e) {
       csv = null
+      // TODO: if no valid json returned, grey out all markers
       console.log('data fetch error' + e)
       refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
     }
@@ -276,26 +282,26 @@ function carParkPopupInit (d_) {
   let str = '<div class="map-popup-container">'
   if (d_.name) {
     str += '<div class="row ">'
-    str += '<span id="carpark-name-' + d_.id + '" class="col-12">' // id for name div
+    str += '<span id="carPark-name-' + d_.id + '" class="col-12">' // id for name div
     str += '<strong>' + d_.name + '</strong>'
     str += '</span>' // close bike name div
     str += '</div>' // close row
   }
   str += '<div class="row ">'
-  str += '<span id="carpark-spacescount-' + d_.id + '" class="col-9" >' +
+  str += '<span id="carPark-spacescount-' + d_.id + '" class="col-9" >' +
         d_.free_spaces +
         ' free spaces</span>'
   str += '</div>' // close row
 
   // set up a div to display availability
   str += '<div class="row ">'
-  str += '<span id="carpark-available-' + d_.id + '" class="col-9" ></span>'
+  str += '<span id="carPark-available-' + d_.id + '" class="col-9" ></span>'
   str += '</div>' // close row
 
   // initialise div to hold chart with id linked to station id
   if (d_.id) {
     str += '<div class=\"row \">'
-    str += '<span id="carpark-spark-' + d_.id + '"></span>'
+    str += '<span id="carPark-spark-' + d_.id + '"></span>'
     str += '</div>'
   }
   str += '</div>' // closes container
@@ -376,7 +382,7 @@ function carParkPopupInit (d_) {
 // const busClusterToggle = true
 // const trainClusterToggle = true
 // const luasClusterToggle = false
-// const carparkClusterToggle = true
+// const carParkClusterToggle = true
 
 // zoom = 11 // zoom on page load
 // maxZoom = 26
@@ -525,19 +531,19 @@ function carParkPopupInit (d_) {
 // }
 // )
 
-// d3.select('#carparks-checkbox').on('click', function () {
+// d3.select('#carParks-checkbox').on('click', function () {
 //     const cb = d3.select(this)
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (liveTravelMap.hasLayer(carparkCluster)) {
-//                 liveTravelMap.removeLayer(carparkCluster)
+//             if (liveTravelMap.hasLayer(carParkCluster)) {
+//                 liveTravelMap.removeLayer(carParkCluster)
 //                 liveTravelMap.fitBounds(luasCluster.getBounds())
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!liveTravelMap.hasLayer(carparkCluster)) {
-//                 liveTravelMap.addLayer(carparkCluster)
+//             if (!liveTravelMap.hasLayer(carParkCluster)) {
+//                 liveTravelMap.addLayer(carParkCluster)
 //             }
 //         }
 //     }
@@ -656,7 +662,7 @@ function carParkPopupInit (d_) {
 //                 .text('Unavailable')
 //         }
 
-//         if (data.carparks.status === 200 && !(d3.select('#carparks-checkbox').classed('disabled'))) {
+//         if (data.carParks.status === 200 && !(d3.select('#carParks-checkbox').classed('disabled'))) {
 //             d3.select('#parking-activity-icon').attr('src', '/images/icons/activity.svg')
 //             d3.select('#parking-age')
 //                 .text('Awaitng data...') // TODO: call to getAge function from here
