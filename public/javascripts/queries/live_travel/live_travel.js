@@ -96,10 +96,7 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
     // console.log("ref: "+JSON.stringify(e))
   })
 
-  /************************************
-                                                           * Carparks
-                                                           ************************************/
-  const carParkMapIcon = L.Icon.extend({
+  const CarParkMapIcon = L.Icon.extend({
     options: {
       iconSize: [24, 24] // orig size
       //   iconAnchor: [iconAX, iconAY] //,
@@ -108,7 +105,7 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
   })
 
   // Add an id field to the markers
-  const customCarparkMarker = L.Marker.extend({
+  const CustomCarparkMarker = L.Marker.extend({
     options: {
       id: 0
     }
@@ -160,8 +157,9 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
     clearTimeout(refreshTimeout)
     try {
       // console.log('fetching data')
-      csv = await fetchCsvFromUrlAsyncTimeout(options.displayoptions.data.href, 500)
+      csv = await fetchCsvFromUrlAsyncTimeout(option.displayoptions.data.href, 500)
       const json = d3.csvParse(csv)
+      console.log()
       if (json) {
         liveTravelMap.removeLayer(carParkLayerGroup)
         carParkLayerGroup.clearLayers()
@@ -203,12 +201,11 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
           console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
 
           // add a marker to the map
-          const m = new customCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
-            icon: new carParkMapIcon({
+          const m = new CustomCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
+            icon: new CarParkMapIcon({
               iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
               className: d.valid ? 'online' : 'offline'
             }),
-            opacity: 0.9, // (Math.random() * (1.0 - 0.5) + 0.5),
             title: 'Car Park:' + '\t' + d.name,
             alt: 'Car Park icon'
           })
@@ -254,11 +251,31 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
       } else {
         csv = null // for GC
-        // TODO: if no valid json returned, grey out all markers
+        // TODO: if no valid json returned,use static data and grey out all markers
       }
     } catch (e) {
-      csv = null
-      // TODO: if no valid json returned, grey out all markers
+      // TODO: if no valid json returned,use static data and grey out all markers
+      csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
+      const jsonStatic = d3.csvParse(csv)
+      console.log(jsonStatic)
+      liveTravelMap.removeLayer(carParkLayerGroup)
+      carParkLayerGroup.clearLayers()
+      jsonStatic.forEach((d) => {
+        // add a marker to the map
+        const m = new CustomCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
+          icon: new CarParkMapIcon({
+            iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
+            className: 'offline'
+          }),
+          title: 'Car Park:' + '\t' + d.name,
+          alt: 'Car Park icon'
+        })
+
+        carParkLayerGroup.addLayer(m)
+        m.bindPopup(carParkPopupInit(d), carParkPopupOptions)
+      })
+
+      liveTravelMap.addLayer(carParkLayerGroup)
       console.log('data fetch error' + e)
       refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
     }
@@ -267,13 +284,11 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
 })()
 
 function carParkPopupInit (d_) {
-  // const str = 'test'
-  // console.log("\n\nPopup Initi data: \n" + JSON.stringify(d_)  + "\n\n\n");
-  // if no station id none of the mappings witll work so escape
+  // if no station id none of the mappings will work so escape
   if (!d_.name || !d_.valid) {
     const str = '<div class="popup-error">' +
             '<div class="row ">' +
-            "We can't get the Car Park data right now, please try again later" +
+            "We can't get the live Car Park data right now, please try again later" +
             '</div>' +
             '</div>'
     return str

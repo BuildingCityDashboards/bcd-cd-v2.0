@@ -1,0 +1,9 @@
+_id,identifier,name,spaces,free_spaces,opening_times,notes,latitude,longitude,date,price,height_restrictions
+1,1,Paul Street,749,457,"Monday - Saturday 07.30 -00.00, Sunday 11.30 - 00.00","",51.900542,-8.475415,2020-10-13T15:52:09,€2.30 per hour; Flat rate €3.50 from 18.30-24.00,2m
+2,2,North Main Street,330,180,"Monday - Saturday 07.30 - 21.30, Sunday 11.30 - 21.30","",51.901008,-8.477804,2020-10-13T15:52:09,€1.70 per hour; Flat rate €2.00 from 18.30-21.30,2m
+3,9,Black Ash Park & Ride,935,797,Monday - Saturday 06:45 - 20:00,"",51.878279,-8.466956,2020-10-13T15:50:09,€5 per day,2.1m
+4,103,City Hall - Eglington Street,436,234,24/7,"",51.896579,-8.464302,2020-10-13T14:53:02,"€2.90 per hour, max. €13 per day",2m
+5,102,Carrolls Quay,376,195,24/7,"",51.901788,-8.472013,2020-10-13T14:53:02,€2.80 per hour,2m
+6,101,Grand Parade,352,219,24/7,"",51.896562,-8.474557,2020-10-13T14:53:02,€3 per hour,1.85m
+7,108,Merchants Quay,710,671,"Monday - Thursday and Saturday 08.00 - 19.00, Friday 08.00 - 21.00, Sunday 12.00 - 18.30","",51.8995765,-8.4686481,2020-06-02T13:30:15,€3 per hour,1.98m
+8,104,Saint Finbarr's,350,117,24/7,"",51.896723,-8.482056,2020-10-13T14:53:02,€2.80 per hour,2m
