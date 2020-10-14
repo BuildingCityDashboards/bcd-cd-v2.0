@@ -48,6 +48,7 @@ API activity checks that the buttons are not disabled
 'use strict'
 
 import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
+import { getCityLatLng } from '../../modules/bcd-maps.js'
 
 (async function main (options) {
   console.log('load live travel map')
@@ -75,6 +76,43 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
     }
 
   console.log(options)
+
+  const STAMEN_TONER_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
+  const STAMEN_TONER_LITE_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
+  const OSM_ATTRIBUTION = 'Map data © <a href="http://openstreetprivateMap.org">OpenStreetMap</a> contributors'
+
+  const liveTravelOSM = new L.TileLayer(STAMEN_TONER_LITE_URL, {
+    minZoom: 2,
+    maxZoom: 14, // 11 seems to fix 503 tileserver errors
+    attribution: OSM_ATTRIBUTION
+  })
+
+  const liveTravelMap = new L.Map('live-travel-map')
+  liveTravelMap.setView(getCityLatLng(), 11)
+  liveTravelMap.addLayer(liveTravelOSM)
+
+  liveTravelMap.on('popupopen', function (e) {
+    // markerRefPublic = e.popup._source
+    // console.log("ref: "+JSON.stringify(e))
+  })
+
+  // Add an id field to the markers to match with bike station id
+  const customCarparkMarker = L.Marker.extend({
+    options: {
+      id: 0
+    }
+  })
+
+  const customCarparkLayer = L.Layer.extend({
+
+  })
+
+  const carParkLayerGroup = L.layerGroup()
+
+  const carparkPopupOptions = {
+    // 'maxWidth': '500',
+    className: 'carparkPopup'
+  }
 
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
 
@@ -150,7 +188,23 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
           }
           spacesTotalFree += +d.free_spaces
           console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
+
+          // add a marker to the map
+          const m = new customCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
+            // icon: new carparkMapIcon({
+            //   //   iconUrl: '/images/transport/parking-garage-w-cd-green-1-15.svg' // loads a default grey icon
+            // }),
+            opacity: 0.9, // (Math.random() * (1.0 - 0.5) + 0.5),
+            title: 'Car Park:' + '\t' + d.name,
+            alt: 'Car Park icon'
+          })
+          carParkLayerGroup.addLayer(m)
+          //   m.bindPopup(carparkPopupInit(d), carparkPopupOptions)
         })
+
+        // update the map
+        liveTravelMap.addLayer(carParkLayerGroup)
+
         console.log('latest date')
         console.log(latestDate)
 
@@ -163,6 +217,7 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
         console.log(dataAgeMinutes)
 
         // update the DOM
+
         // const cardElement = document.getElementById('car-parks-card')
         // const subtitleElement = cardElement.querySelector('#subtitle')
         // subtitleElement.innerHTML = 'Latest reading ' + lastReadTime
@@ -270,7 +325,7 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 // zoom = 11 // zoom on page load
 // maxZoom = 26
 // // the default tile layer
-// const gettingAroundOSM = new L.TileLayer(cartoDb, {
+// const liveTravelOSM = new L.TileLayer(cartoDb, {
 //     minZoom: 2,
 //     maxZoom: maxZoom, // seems to fix 503 tileserver errors
 //     attribution: stamenTonerAttrib
@@ -282,7 +337,7 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 // //   thunderAttr
 // // )
 
-// /* let gettingAroundtransport = L.tileLayer(
+// /* let liveTraveltransport = L.tileLayer(
 //             '//{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png',
 //             thunderAttr
 //         ); */
@@ -300,17 +355,17 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 // // attribution: false
 // // })
 
-// const gettingAroundMap = new L.Map('live-travel-map')
-// gettingAroundMap.setView(new L.LatLng(dubLat, dubLng), zoom)
-// // gettingAroundMap.addLayer(gettingAroundOSM)
-// gettingAroundMap.addLayer(gettingAroundOSM)
+// const liveTravelMap = new L.Map('live-travel-map')
+// liveTravelMap.setView(new L.LatLng(dubLat, dubLng), zoom)
+// // liveTravelMap.addLayer(liveTravelOSM)
+// liveTravelMap.addLayer(liveTravelOSM)
 
-// gettingAroundMap.on('popupopen', function (e) {
+// liveTravelMap.on('popupopen', function (e) {
 //     markerRefPublic = e.popup._source
 //     // console.log("ref: "+JSON.stringify(e))
 // })
 
-// /* gettingAroundMap.on('click', function(e) {
+// /* liveTravelMap.on('click', function(e) {
 //     alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
 // }); */
 // // add location control to global name space for testing only
@@ -319,13 +374,13 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //     strings: {
 //         title: 'Zoom to your location'
 //     }
-// }).addTo(gettingAroundMap)
+// }).addTo(liveTravelMap)
 
 // var osmGeocoder = new L.Control.OSMGeocoder({
 //     placeholder: 'Enter street name, area etc.',
 //     bounds: dublinBounds
 // })
-// gettingAroundMap.addControl(osmGeocoder)
+// liveTravelMap.addControl(osmGeocoder)
 
 // var trafficinfo = L.control()
 // trafficinfo.onAdd = function (map) {
@@ -344,7 +399,7 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //       : 'Hover over a state')
 // }; */
 
-// trafficinfo.addTo(gettingAroundMap)
+// trafficinfo.addTo(liveTravelMap)
 // function processTravelTimes(data_) {
 //     d3.keys(data_).forEach(
 
@@ -392,7 +447,7 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //             //   trainLayerGroup.addLayer(Smarker)
 //         }
 
-//         //   trainLayerGroup.addTo(gettingAroundMap)
+//         //   trainLayerGroup.addTo(liveTravelMap)
 //     }
 // }
 
@@ -401,13 +456,13 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (gettingAroundMap.hasLayer(bikesCluster)) {
-//                 gettingAroundMap.removeLayer(bikesCluster)
+//             if (liveTravelMap.hasLayer(bikesCluster)) {
+//                 liveTravelMap.removeLayer(bikesCluster)
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!gettingAroundMap.hasLayer(bikesCluster)) {
-//                 gettingAroundMap.addLayer(bikesCluster)
+//             if (!liveTravelMap.hasLayer(bikesCluster)) {
+//                 liveTravelMap.addLayer(bikesCluster)
 //             }
 //         }
 //     }
@@ -419,14 +474,14 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (gettingAroundMap.hasLayer(carparkCluster)) {
-//                 gettingAroundMap.removeLayer(carparkCluster)
-//                 gettingAroundMap.fitBounds(luasCluster.getBounds())
+//             if (liveTravelMap.hasLayer(carparkCluster)) {
+//                 liveTravelMap.removeLayer(carparkCluster)
+//                 liveTravelMap.fitBounds(luasCluster.getBounds())
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!gettingAroundMap.hasLayer(carparkCluster)) {
-//                 gettingAroundMap.addLayer(carparkCluster)
+//             if (!liveTravelMap.hasLayer(carparkCluster)) {
+//                 liveTravelMap.addLayer(carparkCluster)
 //             }
 //         }
 //     }
@@ -438,17 +493,17 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (gettingAroundMap.hasLayer(luasLineRed)) {
-//                 gettingAroundMap.removeLayer(luasLineRed)
-//                 gettingAroundMap.removeLayer(luasLineGreen)
-//                 gettingAroundMap.removeLayer(luasIcons)
-//                 gettingAroundMap.removeLayer(luasLayer)
+//             if (liveTravelMap.hasLayer(luasLineRed)) {
+//                 liveTravelMap.removeLayer(luasLineRed)
+//                 liveTravelMap.removeLayer(luasLineGreen)
+//                 liveTravelMap.removeLayer(luasIcons)
+//                 liveTravelMap.removeLayer(luasLayer)
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!gettingAroundMap.hasLayer(luasLineRed)) {
-//                 gettingAroundMap.addLayer(luasLineRed)
-//                 gettingAroundMap.addLayer(luasLineGreen)
+//             if (!liveTravelMap.hasLayer(luasLineRed)) {
+//                 liveTravelMap.addLayer(luasLineRed)
+//                 liveTravelMap.addLayer(luasLineGreen)
 //                 chooseLookByZoom()
 //             }
 //         }
@@ -460,13 +515,13 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (gettingAroundMap.hasLayer(MWayLayerGroup)) {
-//                 gettingAroundMap.removeLayer(MWayLayerGroup)
+//             if (liveTravelMap.hasLayer(MWayLayerGroup)) {
+//                 liveTravelMap.removeLayer(MWayLayerGroup)
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!gettingAroundMap.hasLayer(MWayLayerGroup)) {
-//                 gettingAroundMap.addLayer(MWayLayerGroup)
+//             if (!liveTravelMap.hasLayer(MWayLayerGroup)) {
+//                 liveTravelMap.addLayer(MWayLayerGroup)
 //             }
 //         }
 //     }
@@ -477,13 +532,13 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (gettingAroundMap.hasLayer(trainLayerGroup)) {
-//                 gettingAroundMap.removeLayer(trainLayerGroup)
+//             if (liveTravelMap.hasLayer(trainLayerGroup)) {
+//                 liveTravelMap.removeLayer(trainLayerGroup)
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!gettingAroundMap.hasLayer(trainLayerGroup)) {
-//                 gettingAroundMap.addLayer(trainLayerGroup)
+//             if (!liveTravelMap.hasLayer(trainLayerGroup)) {
+//                 liveTravelMap.addLayer(trainLayerGroup)
 //             }
 //         }
 //     }
@@ -494,17 +549,17 @@ import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (gettingAroundMap.hasLayer(busCluster)) {
+//             if (liveTravelMap.hasLayer(busCluster)) {
 //                 // console.log('Remove train Layrers')
-//                 gettingAroundMap.removeLayer(busCluster)
-//                 // gettingAroundMap.removeLayer(layerGroup)
+//                 liveTravelMap.removeLayer(busCluster)
+//                 // liveTravelMap.removeLayer(layerGroup)
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!gettingAroundMap.hasLayer(busCluster)) {
+//             if (!liveTravelMap.hasLayer(busCluster)) {
 //                 // console.log('Add train Layrers')
-//                 gettingAroundMap.addLayer(busCluster)
-//                 // gettingAroundMap.addLayer(layerGroup)
+//                 liveTravelMap.addLayer(busCluster)
+//                 // liveTravelMap.addLayer(layerGroup)
 //             }
 //         }
 //     }

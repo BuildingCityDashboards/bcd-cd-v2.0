@@ -20,7 +20,7 @@ const FASTNET_ROCK = {
   long: -9.602967
 }
 
-export function getCorkBoundsLatLng () {
+export function getCorkBoundsLatLng() {
   // const DUBLIN_BOUNDS = await d3.json('/data/common/dublin-bounds.json')
   // return  L.latLngBounds(L.latLng(DUBLIN_BOUNDS.southwest.lat,DUBLIN_BOUNDS.southwest.long), L.latLng(DUBLIN_BOUNDS.northeast.lat, DUBLIN_BOUNDS.northeast.long))//greater Cork & surrounds
 
@@ -29,12 +29,12 @@ export function getCorkBoundsLatLng () {
   return L.latLngBounds(southWest, northEast)
 }
 
-export function isWithinCork (lat, lng) {
+export function isWithinCork(lat, lng) {
   return (DUBLIN_BOUNDS.southwest.lat < lat && lat < DUBLIN_BOUNDS.northeast.lat && DUBLIN_BOUNDS.southwest.lng < lng && lng < DUBLIN_BOUNDS.northeast.lng)
 }
 
-export function getLatLng () {
-  return L.latLng(51.903614, -8.468399)
+export function getCityLatLng() {
+  return L.latLng(51.8985, -8.4756)
 }
 
 /**
