@@ -97,8 +97,8 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
   })
 
   /************************************
-       * Carparks
-       ************************************/
+                                         * Carparks
+                                         ************************************/
   const carparkMapIcon = L.Icon.extend({
     options: {
       iconSize: [24, 24] // orig size
@@ -203,14 +203,17 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
           // add a marker to the map
           const m = new customCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
             icon: new carparkMapIcon({
-              iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg'
+              iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
+              className: d.valid ? 'online' : 'offline'
             }),
             opacity: 0.9, // (Math.random() * (1.0 - 0.5) + 0.5),
             title: 'Car Park:' + '\t' + d.name,
             alt: 'Car Park icon'
           })
+
           carParkLayerGroup.addLayer(m)
-          //   m.bindPopup(carparkPopupInit(d), carparkPopupOptions)
+
+          m.bindPopup(carParkPopupInit(d), carparkPopupOptions)
         })
 
         // update the map
@@ -256,6 +259,48 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
   }
   fetchData()
 })()
+
+function carParkPopupInit (d_) {
+  // const str = 'test'
+  // console.log("\n\nPopup Initi data: \n" + JSON.stringify(d_)  + "\n\n\n");
+  // if no station id none of the mappings witll work so escape
+  if (!d_.name || !d_.valid) {
+    const str = '<div class="popup-error">' +
+            '<div class="row ">' +
+            "We can't get the Car Park data right now, please try again later" +
+            '</div>' +
+            '</div>'
+    return str
+  }
+
+  let str = '<div class="map-popup-container">'
+  if (d_.name) {
+    str += '<div class="row ">'
+    str += '<span id="carpark-name-' + d_.id + '" class="col-12">' // id for name div
+    str += '<strong>' + d_.name + '</strong>'
+    str += '</span>' // close bike name div
+    str += '</div>' // close row
+  }
+  str += '<div class="row ">'
+  str += '<span id="carpark-spacescount-' + d_.id + '" class="col-9" >' +
+        d_.free_spaces +
+        ' free spaces</span>'
+  str += '</div>' // close row
+
+  // set up a div to display availability
+  str += '<div class="row ">'
+  str += '<span id="carpark-available-' + d_.id + '" class="col-9" ></span>'
+  str += '</div>' // close row
+
+  // initialise div to hold chart with id linked to station id
+  if (d_.id) {
+    str += '<div class=\"row \">'
+    str += '<span id="carpark-spark-' + d_.id + '"></span>'
+    str += '</div>'
+  }
+  str += '</div>' // closes container
+  return str
+}
 
 // Manage periodic async data fetching
 
