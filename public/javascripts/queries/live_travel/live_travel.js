@@ -88,7 +88,7 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
   })
 
   const liveTravelMap = new L.Map('live-travel-map')
-  liveTravelMap.setView(getCityLatLng(), 11)
+  liveTravelMap.setView(getCityLatLng(), 12)
   liveTravelMap.addLayer(liveTravelOSM)
 
   liveTravelMap.on('popupopen', function (e) {
@@ -96,7 +96,18 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
     // console.log("ref: "+JSON.stringify(e))
   })
 
-  // Add an id field to the markers to match with bike station id
+  /************************************
+       * Carparks
+       ************************************/
+  const carparkMapIcon = L.Icon.extend({
+    options: {
+      iconSize: [24, 24] // orig size
+      //   iconAnchor: [iconAX, iconAY] //,
+      // popupAnchor: [-3, -76]
+    }
+  })
+
+  // Add an id field to the markers
   const customCarparkMarker = L.Marker.extend({
     options: {
       id: 0
@@ -191,9 +202,9 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
 
           // add a marker to the map
           const m = new customCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
-            // icon: new carparkMapIcon({
-            //   //   iconUrl: '/images/transport/parking-garage-w-cd-green-1-15.svg' // loads a default grey icon
-            // }),
+            icon: new carparkMapIcon({
+              iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg'
+            }),
             opacity: 0.9, // (Math.random() * (1.0 - 0.5) + 0.5),
             title: 'Car Park:' + '\t' + d.name,
             alt: 'Car Park icon'
