@@ -48,7 +48,7 @@ API activity checks that the buttons are not disabled
 'use strict'
 
 import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
-import { getCityLatLng } from '../../modules/bcd-maps.js'
+import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
 (async function main (options) {
   console.log('load live travel map')
@@ -96,26 +96,16 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
     // console.log("ref: "+JSON.stringify(e))
   })
 
-  const CarParkMapIcon = L.Icon.extend({
-    options: {
-      iconSize: [24, 24] // orig size
-      //   iconAnchor: [iconAX, iconAY] //,
-      // popupAnchor: [-3, -76]
-    }
-  })
+  const CustomMapIcon = getCustomMapIcon()
 
-  // Add an id field to the markers
-  const CustomCarparkMarker = L.Marker.extend({
-    options: {
-      id: 0
-    }
-  })
+  // Adds an id field to the markers
+  const CustomMapMarker = getCustomMapMarker()
 
   const customCarparkLayer = L.Layer.extend({
 
   })
 
-  const carParkLayerGroup = L.layerGroup()
+  let carParkLayerGroup = L.layerGroup()
 
   const carParkPopupOptions = {
     // 'maxWidth': '500',
@@ -157,7 +147,7 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
     clearTimeout(refreshTimeout)
     try {
       // console.log('fetching data')
-      csv = await fetchCsvFromUrlAsyncTimeout(option.displayoptions.data.href, 500)
+      csv = await fetchCsvFromUrlAsyncTimeout(options.displayoptions.data.href, 500)
       const json = d3.csvParse(csv)
       console.log()
       if (json) {
@@ -201,8 +191,8 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
           console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
 
           // add a marker to the map
-          const m = new CustomCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
-            icon: new CarParkMapIcon({
+          const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
+            icon: new CustomMapIcon({
               iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
               className: d.valid ? 'online' : 'offline'
             }),
@@ -228,53 +218,23 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
         console.log(nowMillis)
         console.log(latestDateMillis)
         console.log(dataAgeMinutes)
-
-        // update the DOM
-
-        // const cardElement = document.getElementById('car-parks-card')
-        // const subtitleElement = cardElement.querySelector('#subtitle')
-        // subtitleElement.innerHTML = 'Latest reading ' + lastReadTime
-
-        // const leftElement = cardElement.querySelector('#card-left')
-        // leftElement.innerHTML = '<h1>' + json.length + '</h1>' +
-        //             '<h2>Car Parks</h2>'
-
-        // const rightElement = cardElement.querySelector('#card-right')
-        // rightElement.innerHTML =
-        //             '<h1>' + spacesTotalFree + '</h1>' +
-        //             '<h2>Free Spaces</h2>'
-
-        // const infoElement = cardElement.querySelector('.card__info-text')
-        // infoElement.innerHTML = `As of <b>${lastReadTime}</b>, across the ${json.length} Cork city car parks there were a total of <b> ${spacesTotalFree} FREE SPACES</b>`
-
         clearTimeout(refreshTimeout)
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
       } else {
+        csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
+        const jsonStatic = d3.csvParse(csv)
+        liveTravelMap.removeLayer(carParkLayerGroup)
+        carParkLayerGroup.clearLayers()
+        carParkLayerGroup = getMapLayerStatic(jsonStatic)
+        liveTravelMap.addLayer(carParkLayerGroup)
         csv = null // for GC
-        // TODO: if no valid json returned,use static data and grey out all markers
       }
     } catch (e) {
-      // TODO: if no valid json returned,use static data and grey out all markers
       csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
       const jsonStatic = d3.csvParse(csv)
-      console.log(jsonStatic)
       liveTravelMap.removeLayer(carParkLayerGroup)
       carParkLayerGroup.clearLayers()
-      jsonStatic.forEach((d) => {
-        // add a marker to the map
-        const m = new CustomCarparkMarker(new L.LatLng(d.latitude, d.longitude), {
-          icon: new CarParkMapIcon({
-            iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
-            className: 'offline'
-          }),
-          title: 'Car Park:' + '\t' + d.name,
-          alt: 'Car Park icon'
-        })
-
-        carParkLayerGroup.addLayer(m)
-        m.bindPopup(carParkPopupInit(d), carParkPopupOptions)
-      })
-
+      carParkLayerGroup = getMapLayerStatic(jsonStatic)
       liveTravelMap.addLayer(carParkLayerGroup)
       console.log('data fetch error' + e)
       refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
@@ -282,6 +242,27 @@ import { getCityLatLng } from '../../modules/bcd-maps.js'
   }
   fetchData()
 })()
+
+/* can return a generic layer with static data when request for data has faile */
+function getMapLayerStatic (json) {
+  // add a marker to the map
+  const CustomMapMarker = getCustomMapMarker()
+  const CustomMapIcon = getCustomMapIcon()
+  const layerGroup = new LayerGroup()
+  json.forEach((d) => {
+    const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
+      icon: new CustomMapIcon({
+        iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
+        className: 'offline'
+      }),
+      title: 'Car Park: ' + d.name,
+      alt: 'Car Park icon'
+    })
+    layerGroup.addLayer(m)
+    // m.bindPopup(carParkPopupInit(d), carParkPopupOptions)
+  })
+  return layerGroup
+}
 
 function carParkPopupInit (d_) {
   // if no station id none of the mappings will work so escape

@@ -20,7 +20,7 @@ const FASTNET_ROCK = {
   long: -9.602967
 }
 
-export function getCorkBoundsLatLng() {
+export function getCorkBoundsLatLng () {
   // const DUBLIN_BOUNDS = await d3.json('/data/common/dublin-bounds.json')
   // return  L.latLngBounds(L.latLng(DUBLIN_BOUNDS.southwest.lat,DUBLIN_BOUNDS.southwest.long), L.latLng(DUBLIN_BOUNDS.northeast.lat, DUBLIN_BOUNDS.northeast.long))//greater Cork & surrounds
 
@@ -29,11 +29,11 @@ export function getCorkBoundsLatLng() {
   return L.latLngBounds(southWest, northEast)
 }
 
-export function isWithinCork(lat, lng) {
+export function isWithinCork (lat, lng) {
   return (DUBLIN_BOUNDS.southwest.lat < lat && lat < DUBLIN_BOUNDS.northeast.lat && DUBLIN_BOUNDS.southwest.lng < lng && lng < DUBLIN_BOUNDS.northeast.lng)
 }
 
-export function getCityLatLng() {
+export function getCityLatLng () {
   return L.latLng(51.8985, -8.4756)
 }
 
@@ -85,3 +85,27 @@ const getDefaultMapOptions = function () {
   return defaults
 }
 export { getDefaultMapOptions }
+
+function getCustomMapMarker () {
+  const cmm = L.Marker.extend({
+    options: {
+      id: 0
+    }
+  })
+  return cmm
+}
+
+export { getCustomMapMarker }
+
+function getCustomMapIcon () {
+  const cmi = L.Icon.extend({
+    options: {
+      iconSize: [24, 24] // orig size
+      //   iconAnchor: [iconAX, iconAY] //,
+      // popupAnchor: [-3, -76]
+    }
+  })
+  return cmi
+}
+
+export { getCustomMapIcon }
