@@ -96,6 +96,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
     // console.log("ref: "+JSON.stringify(e))
   })
 
+  const carParkIconUrl = '../images/icons/icons-24px/Car_Icon_24px.svg'
   const CustomMapIcon = getCustomMapIcon()
 
   // Adds an id field to the markers
@@ -167,7 +168,10 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
         let latestDateMillis = 0
         const AGE_THRESHOLD_MILLIS = 1000 * 60 * 30 // invalidate data older than n mins
         console.log('age limit ' + AGE_THRESHOLD_MILLIS)
+
+        /* process data, adding necessary fields and create markers for map */
         json.forEach((d) => {
+          d.type = 'Car Park'
           let readingTimeMillis = new Date(d.date).getTime()
           if (OFFSET_BY_HOUR.includes(d.name)) readingTimeMillis += 1000 * 60 * 60
           const nowMillis = new Date().getTime()
@@ -193,15 +197,14 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
           // add a marker to the map
           const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
             icon: new CustomMapIcon({
-              iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
+              iconUrl: carParkIconUrl,
               className: d.valid ? 'online' : 'offline'
             }),
-            title: 'Car Park:' + '\t' + d.name,
-            alt: 'Car Park icon'
+            title: d.type + ': ' + d.name,
+            alt: d.type + ' icon'
           })
 
           carParkLayerGroup.addLayer(m)
-
           m.bindPopup(carParkPopupInit(d), carParkPopupOptions)
         })
 
@@ -225,7 +228,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
         const jsonStatic = d3.csvParse(csv)
         liveTravelMap.removeLayer(carParkLayerGroup)
         carParkLayerGroup.clearLayers()
-        carParkLayerGroup = getMapLayerStatic(jsonStatic)
+        carParkLayerGroup = getMapLayerStatic(jsonStatic, carParkIconUrl)
         liveTravelMap.addLayer(carParkLayerGroup)
         csv = null // for GC
       }
@@ -234,7 +237,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
       const jsonStatic = d3.csvParse(csv)
       liveTravelMap.removeLayer(carParkLayerGroup)
       carParkLayerGroup.clearLayers()
-      carParkLayerGroup = getMapLayerStatic(jsonStatic)
+      carParkLayerGroup = getMapLayerStatic(jsonStatic, carParkIconUrl)
       liveTravelMap.addLayer(carParkLayerGroup)
       console.log('data fetch error' + e)
       refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
@@ -244,19 +247,19 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
 })()
 
 /* can return a generic layer with static data when request for data has faile */
-function getMapLayerStatic (json) {
+function getMapLayerStatic (json, iconUrl = '') {
   // add a marker to the map
   const CustomMapMarker = getCustomMapMarker()
   const CustomMapIcon = getCustomMapIcon()
-  const layerGroup = new LayerGroup()
+  const layerGroup = new L.LayerGroup()
   json.forEach((d) => {
     const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
       icon: new CustomMapIcon({
-        iconUrl: '../images/icons/icons-24px/Car_Icon_24px.svg',
+        iconUrl: iconUrl,
         className: 'offline'
       }),
-      title: 'Car Park: ' + d.name,
-      alt: 'Car Park icon'
+      title: d.type + ': ' + d.name,
+      alt: d.type + ' icon'
     })
     layerGroup.addLayer(m)
     // m.bindPopup(carParkPopupInit(d), carParkPopupOptions)
