@@ -47,6 +47,12 @@ a:active {
   text-decoration: none;
 }
 
+/* used with e.g. external-link icon */
+a img {
+  height: 8px;
+  padding-left: 2px;
+}
+
 p,
 h1,
 h2,
