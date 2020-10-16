@@ -124,7 +124,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       tY: getShortLabel(categoriesStat[4])
     }
 
-    const participationRateChart = new MultiLineChart(participationRate)
+    // const participationRateChart = new MultiLineChart(participationRate)
 
     const unemployedRate = {
       elementId: 'chart-' + chartDivIds[4],
@@ -139,7 +139,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       tY: getShortLabel(categoriesStat[3])
     }
 
-    const unemployedRateChart = new MultiLineChart(unemployedRate)
+    // const unemployedRateChart = new MultiLineChart(unemployedRate)
 
     d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
     d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
@@ -160,14 +160,14 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         unemployedCountChart.drawChart()
         unemployedCountChart.addTooltip(', ', '', 'label')
       }
-      if (document.querySelector('#chart-' + chartDivIds[3]).style.display !== 'none') {
-        participationRateChart.drawChart()
-        participationRateChart.addTooltip(', ', '', 'label')
-      }
-      if (document.querySelector('#chart-' + chartDivIds[4]).style.display !== 'none') {
-        unemployedRateChart.drawChart()
-        unemployedRateChart.addTooltip(', ', '', 'label')
-      }
+      // if (document.querySelector('#chart-' + chartDivIds[3]).style.display !== 'none') {
+      //   participationRateChart.drawChart()
+      //   participationRateChart.addTooltip(', ', '', 'label')
+      // }
+      // if (document.querySelector('#chart-' + chartDivIds[4]).style.display !== 'none') {
+      //   unemployedRateChart.drawChart()
+      //   unemployedRateChart.addTooltip(', ', '', 'label')
+      // }
     }
     redraw()
 

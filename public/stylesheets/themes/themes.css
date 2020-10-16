@@ -125,7 +125,7 @@
   text-align: left;
   grid-gap: 8px;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 24px 32px auto auto;
+  grid-template-rows: 24px minmax(32px, auto) auto auto;
   scroll-margin-top: 116px;
   justify-content: flex-start;
 
@@ -288,7 +288,7 @@
 .theme__text-chart__plot {
   display: block;
   width: 100%;
-  min-height: 172px;
+  min-height: 288px;
   height: auto;
 }
 

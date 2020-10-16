@@ -1,9 +1,11 @@
 .theme
-    +theme__header('environment-header',
-    'Environment',
-    'Explore the sensors placed throughout Cork to monitor environmental conditions, and charts presenting historical statistics collected on various environmental factors.',
-    '',
-    'environment_background.png')
+    +theme__header({
+      id: 'environment-header',
+      title: 'Environment',
+      description:'Explore the sensors placed throughout Cork to monitor environmental conditions, and charts presenting historical statistics collected on various environmental factors.',
+      moreinfo:'',
+      scrollref:'water-level-monitors'}
+    )
     
     //- +theme__text-chart(
     //- 'noise-monitoring',
@@ -48,14 +50,6 @@
       chartids: ['map-water-level-monitors', 'chart-water-level-monitors'],
       buttons: []}
     )
-      //- [{
-      //- id: '',
-      //- name: 'OPW'
-      //- },{
-      //- id: '',
-      //- name: 'Hydronet'
-      //- }]
-      //- )
 
         
 block append scripts
