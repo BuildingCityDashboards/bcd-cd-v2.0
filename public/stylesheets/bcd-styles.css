@@ -70,10 +70,3 @@ h3 {
 .trend-down {
   color: red;
 }
-
-
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
