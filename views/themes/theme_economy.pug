@@ -8,41 +8,41 @@
     )
     
     +theme__text-chart({
-    id:'employment',
-    sources: [{ link:'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=QLF08&PLanguage=0',
-    name: 'CSO'}],
-    title: 'Persons aged 15 and over in the labour force',
-    description: '<p>Employment grew steadily throughout the Celtic Tiger period up until 2007, then fell in the wake of the financial crash, recovering after 2012 as the economy started to grow again. The pattern in Dublin mirrored that of the rest of the country. </p>',
-    chartinfo:'',
-    chartids:['chart-employment', 'chart-labour', 'chart-unemployed'],
-    buttons:[{
-    id: 'btn-employment',
-    name: 'Employed'
-    },{
-    id: 'btn-labour',
-    name: 'Labour force'
-    },{
-    id: 'btn-unemployed',
-    name: 'Unemployed'
-    }]
+      id:'employment',
+      sources: [{ link:'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=QLF08&PLanguage=0',
+      name: 'CSO'}],
+      title: 'Persons aged 15 and over in the labour force',
+      description: '<p>Employment grew steadily throughout the Celtic Tiger period up until 2007, then fell in the wake of the financial crash, recovering after 2012 as the economy started to grow again. The pattern in Dublin mirrored that of the rest of the country. </p>',
+      chartinfo:'',
+      chartids:['chart-employment', 'chart-labour', 'chart-unemployed'],
+      buttons:[{
+      id: 'btn-employment',
+      name: 'Employed'
+      },{
+      id: 'btn-labour',
+      name: 'Labour force'
+      },{
+      id: 'btn-unemployed',
+      name: 'Unemployed'
+      }]
     })
     
-    //- +theme__text-chart(
-      'ilo-employment',
-      [{ link:'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=QLF08&PLanguage=0',
+    +theme__text-chart({
+      id: 'ilo-employment',
+      sources: [{ link:'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=QLF08&PLanguage=0',
       name: 'CSO'}],
-      'Rates of participation & unemployment',
-      '<p>***Explain ILO rates here and describe observations*** </p>',
-      '',
-      ['chart-ilo-employment', 'chart-ilo-unemployment'],
-      [{
+      title: 'Rates of participation & unemployment',
+      description: '<p>This chart gives the rate of participation in labour (a measure of the employment rate) and the unemployment rate as measured by the International Labour Organisation (ILO). </p>',
+      chartinfo:'',
+      chartids:['chart-ilo-employment', 'chart-ilo-unemployment'],
+      buttons:[{
       id: 'btn-ilo-employment',
       name: 'Participates'
       },{
       id: 'btn-ilo-unemployment',
       name: 'Unemployed'
       }]
-      )
+    })
     
     //- //- +theme__text-chart(
     //-   'indicator-employment-sector',
