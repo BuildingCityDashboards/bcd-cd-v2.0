@@ -111,10 +111,6 @@ class MultiLineChart extends Chart {
 
   setDomains (zeroYAxis = true) {
     const c = this
-    let minValue
-
-    // switch (d){
-    // }
 
     // set domain range
     c.x.domain(d3.extent(c.d[0].values, d => {
@@ -123,7 +119,7 @@ class MultiLineChart extends Chart {
 
     // for the y domain to track negative numbers
 
-    minValue = d3.min(c.d, d => {
+    const minValue = d3.min(c.d, d => {
       return d3.min(d.values, d => {
         return d[c.yV]
       })
@@ -318,6 +314,30 @@ class MultiLineChart extends Chart {
       ttX = (mouseX + 60) - c.ttWidth
     }
     return [ttX, ttY]
+  }
+
+  formatQuarter (date, i) {
+    const newDate = new Date()
+    newDate.setMonth(date.getMonth() + 1)
+    const year = (date.getFullYear())
+    const q = Math.ceil((newDate.getMonth()) / 3)
+    return year + ' Q' + q
+  }
+
+  // hides the rate column in the tooltip e.g. when showing % change
+  hideRate (value) {
+    const c = this
+    const i = c.getElement('.bcd-text-indicator')
+    const r = c.getElement('.bcd-text-rate')
+
+    if (value) {
+      i.style('display', 'none')
+      r.style('display', 'none')
+    } else {
+      i.style('display', 'block')
+      r.style('display', 'block')
+    }
+    // value ? g.selectAll(".tp-text-indicator").style("display", "none") : g.selectAll(".tp-text-indicator").style("display", "block")
   }
 
   addBaseLine (value) {
@@ -582,6 +602,20 @@ class MultiLineChart extends Chart {
     function idFilter (d) {
       return !!(isNum(d[v]) && d[v] !== 0)
     }
+  }
+
+  showSelectedLabels (array) {
+    const c = this
+    const e = c.xAxis
+    c.axisArray = array || c.axisArray
+
+    e.selectAll('.x-axis .tick')
+      .style('display', 'none')
+
+    c.axisArray.forEach(n => {
+      d3.select(e._groups[0][0].childNodes[n])
+        .style('display', 'block')
+    })
   }
 }
 export { MultiLineChart }

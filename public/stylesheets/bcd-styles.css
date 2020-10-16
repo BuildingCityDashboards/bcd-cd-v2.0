@@ -68,3 +68,14 @@ h3 {
 .trend-down {
   color: red;
 }
+
+.page__root {
+  background-color: #eeecec;
+}
+
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}

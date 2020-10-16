@@ -3,7 +3,6 @@
 .theme {
   width: 100vw;
   max-width: 100%;
-  background-color: #1c2022;
   font-family: 'Roboto',
     sans-serif;
   font-weight: 200;
@@ -12,24 +11,24 @@
   grid-gap: 8px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
+  background-color: #eeecec;
 
 }
 
 .theme__header {
-  /* h should be 100vh - nav hs */
-
   display: grid;
   position: relative;
   height: 100vh;
   margin-bottom: 16px;
   padding: 16px;
-  color: #6fd1f6;
+  color: #e95d4f;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   grid-gap: 8px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 30% auto 1fr;
+  background-color: #eeecec;
 }
 
 
@@ -64,23 +63,25 @@
   transform: rotate(-90deg);
 }
 
+
+
 .theme__header__title {
   padding-bottom: 48px;
   font-size: 40px;
-  font-weight: 200;
-  line-height: 1.2;
 }
 
 .theme__header__description {
   padding-bottom: 20px;
-  color: #6fd1f6;
+  color: #ee8176;
   font-size: 20px;
   line-height: 1.06;
   letter-spacing: -0.5px;
+  font-weight: 200;
+  line-height: 1.2;
 }
 
 .theme__header__info {
-  color: #6fd1f6;
+  color: #ee8176;
   font-size: 24px;
   line-height: 1.06;
   letter-spacing: -0.5px;
@@ -88,34 +89,35 @@
 
 
 #demographics-header {
-  background-image: url('/images/themes/backgrounds/demographics_background_mobile.png');
+  /* background-image: url('/images/themes/backgrounds/demographics_background_mobile.png'); */
 }
 
 #economy-header {
-  background-image: url('/images/themes/backgrounds/economy_background_mobile.png');
+  /* background-image: url('/images/themes/backgrounds/economy_background_mobile.png'); */
 }
 
 #education-header {
-  background-image: url('/images/themes/backgrounds/education_background_mobile.png');
+  /* background-image: url('/images/themes/backgrounds/education_background_mobile.png'); */
 }
 
 #housing-header {
-  background-image: url('/images/themes/backgrounds/housing_background_mobile.png');
+  /* background-image: url('/images/themes/backgrounds/housing_background_mobile.png'); */
 }
 
 #environment-header {
-  background-image: url('/images/themes/backgrounds/environment_background_mobile.png');
+  /* background-image: url('/images/themes/backgrounds/environment_background_mobile.png'); */
 }
 
 #transport-header {
-  background-image: url('/images/themes/backgrounds/transport_background_mobile.png');
+  /* background-image: url('/images/themes/backgrounds/transport_background_mobile.png'); */
 }
 
 .theme__text-chart {
   display: grid;
   position: relative;
-  width: 100vw;
-  min-width: 320px;
+  width: 100%;
+  /* subtract LHS padding from min width*/
+  min-width: calc(320px - 8px);
   height: auto;
   min-height: 100vh;
   padding: 16px 8px;
@@ -130,14 +132,12 @@
 
 .theme__text-chart__sources {
   display: flex;
-  font-size: 8px;
-  font-weight: 300;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-end;
   grid-column: 1/5;
   grid-row: 1/2;
-  line-height: 2;
-  letter-spacing: 1.5px;
+
 }
 
 .theme__text-chart__sources p {
@@ -146,24 +146,23 @@
   font-weight: 300;
   line-height: 2;
   letter-spacing: 1.5px;
+  color: black;
+  text-transform: uppercase;
 }
 
 .theme__text-chart__sources a {
-  color: #8ebfd6;
+  line-height: 2;
+  margin: 0;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  color: #ee8176;
+  padding-left: 4px;
 }
 
-.theme__text-chart .theme__text-chart__sources img {
-  width: 10px;
-  height: 10px;
-  padding-left: 2px;
-}
-
-.theme__text-chart__data-source {
-  padding-right: 8px;
-}
 
 .theme__text-chart__title {
-  color: #6fd1f6;
+  color: #e95d4f;
   grid-column: 1/5;
   grid-row: 2/3;
 }
@@ -446,7 +445,7 @@
 
   .theme__text-chart__title {
     display: flex;
-    color: #6fd1f6;
+    color: #e95d4f;
     align-items: center;
     grid-column: 1/5;
     grid-row: 2/3;
@@ -583,7 +582,7 @@
     display: grid;
     position: relative;
     height: 100vh;
-    color: #6fd1f6;
+    color: #e95d4f;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -642,7 +641,7 @@
 
   .theme__header__description {
     padding-bottom: 34px;
-    color: #6fd1f6;
+    color: #e95d4f;
     font-size: 28px;
     font-style: normal;
     font-weight: 200;
@@ -651,7 +650,7 @@
   }
 
   .theme__header__info {
-    color: #6fd1f6;
+    color: #e95d4f;
     font-size: 24px;
     font-style: normal;
     font-weight: 200;
@@ -912,7 +911,7 @@
     display: grid;
     position: relative;
     height: 100vh;
-    color: #6fd1f6;
+    color: #e95d4f;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -988,7 +987,7 @@
 
   .theme__header__description {
     padding-bottom: 34px;
-    color: #6fd1f6;
+    color: #e95d4f;
     font-size: 28px;
     font-style: normal;
     font-weight: 200;
@@ -997,7 +996,7 @@
   }
 
   .theme__header__info {
-    color: #6fd1f6;
+    color: #e95d4f;
     font-size: 24px;
     font-style: normal;
     font-weight: 200;

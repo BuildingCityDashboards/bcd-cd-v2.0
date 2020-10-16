@@ -1,13 +1,13 @@
 mixin theme__text-chart(id='', sources='', title='', description='', chartInfo='', chartIds = [], buttons = [])
-  div(class="theme__text-chart__wrapper")
+  div(class="theme__text-chart")
     div(id=id class="theme__text-chart")
     <div id="anchor-name" ></div>
       .theme__text-chart__sources
-        p Sources:
+        p Source:
         each val in sources
-          div(id=val class= 'theme__text-chart__data-source')  
-            a(href=val.link target='_blank')= val.name
-              img( src='../images/icons/external-link.svg')
+          //- div(class= 'theme__text-chart__data-source')  
+          a(href=val.link target='_blank')= val.name
+              //- img( src='../images/icons/external-link.svg')
       .theme__text-chart__title
         h1= title
       .theme__text-chart__text

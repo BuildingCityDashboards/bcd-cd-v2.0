@@ -1,6 +1,6 @@
-import { BCDChart } from './BCDChart.js'
+import { Chart } from './Chart.js'
 
-class BCDMultiLineChart extends BCDChart {
+class MultiLineChart extends Chart {
   constructor (obj) {
     super(obj)
 
@@ -163,7 +163,7 @@ class BCDMultiLineChart extends BCDChart {
     // update the paths
     c.regions.select('.line')
       .transition(c.t)
-    // .attr("d", d => {return c.line(d.values); });
+      // .attr("d", d => {return c.line(d.values); });
       .attr('d', d => {
         return d.disabled ? null : c.line(d.values)
       })
@@ -177,13 +177,13 @@ class BCDMultiLineChart extends BCDChart {
       })
       .attr('class', 'line')
       .attr('id', d => d.key)
-    // .attr("d", d => {return c.line(d.values); })
+      // .attr("d", d => {return c.line(d.values); })
       .attr('d', d => {
         return d.disabled ? null : c.line(d.values)
       })
-    // .style("stroke", d => ( c.d.map(function(v,i) {
-    //     return c.colour || c.color[i % 10];
-    //   }).filter(function(d,i) { return !c.d[i].disabled })))
+      // .style("stroke", d => ( c.d.map(function(v,i) {
+      //     return c.colour || c.color[i % 10];
+      //   }).filter(function(d,i) { return !c.d[i].disabled })))
       .style('stroke-width', '3px')
       .style('fill', 'none')
 
@@ -373,7 +373,7 @@ class BCDMultiLineChart extends BCDChart {
         .attr('type', 'button')
         .attr('class', i === times - 1 ? 'btn btn-page mx-1 active' : 'btn btn-page')
         .style('border-right', i === times - 1 ? 'none' : '1px Solid #838586')
-      // .text(label + " " + (1+(i*sliceBy)) +" - "+ ((i+1)*sliceBy)) // pass this to the function
+        // .text(label + " " + (1+(i*sliceBy)) +" - "+ ((i+1)*sliceBy)) // pass this to the function
         .text(textString)
         .on('click', function () {
           if (!$(this).hasClass('active')) {
@@ -528,7 +528,7 @@ class BCDMultiLineChart extends BCDChart {
     const force = d3.forceSimulation()
       .nodes(lines)
       .force('collide', d3.forceCollide(lH / 2))
-    // .force("y", d3.forceY(d => d.y).strength(4))
+      // .force("y", d3.forceY(d => d.y).strength(4))
       .force('x', d3.forceX(d => d.x).strength(2))
       .force('clamp', forceClamp(0, c.h))
       .stop()
@@ -556,7 +556,7 @@ class BCDMultiLineChart extends BCDChart {
       .attr('id', d => d.key)
       .attr('dy', '.01em')
       .text(d => d.key)
-    // .call(c.textWrap, 110, 6)
+      // .call(c.textWrap, 110, 6)
       .attr('fill', d => z(d.key))
       .attr('alignment-baseline', 'middle')
       .attr('dx', '.5em')
@@ -584,4 +584,4 @@ class BCDMultiLineChart extends BCDChart {
     }
   }
 }
-export { BCDMultiLineChart }
+export { MultiLineChart }
