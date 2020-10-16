@@ -172,9 +172,10 @@
 }
 
 .focus_line {
-  stroke: black;
-  stroke-width: 1px;
-  /* stroke-dasharray: 5,5; */
+  stroke: #e95d4f;
+  stroke-width: 2px;
+
+  stroke-dasharray: 5, 5;
 }
 
 .tool-tip {
