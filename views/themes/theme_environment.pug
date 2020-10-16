@@ -32,21 +32,21 @@
     
       //- <p>Over the past 24 hours, 9 of the citys 14 monitors have recorded sound levels higher that the EPA/WHO-designated undesirably high levels of 70 db during the daytime and 55 db at night.</p>
     
-    +theme__text-chart(
-      'water-level-monitors',
-      [{
+    +theme__text-chart({
+      id: 'water-level-monitors',
+      sources: [{
       link :'http://waterlevel.ie',
-      name: 'OPW Water Level'
+      name: 'OPW'
       },
       {
       link: 'http://www.epa.ie/hydronet/#Water%20Levels',
-      name: 'EPA Hydronet'
+      name: 'EPA'
       }],
-      'Water Monitoring Sites',
-      '<p>Two sources, the Office of Public Works (OPW) and the Environmental Protection Agency (EPA), monitor water levels and flows along Cork’s rivers, canals, and coastline. Use the buttons to switch between the OPW water level monitoring sites and the EPA Hydronet system sites. Click a map icon to get information for that location<p>',
-      '',
-      ['map-water-level-monitors', 'chart-water-level-monitors'],
-      []
+      title: 'Water Monitoring Sites',
+      description:'<p>Two sources, the Office of Public Works (OPW) and the Environmental Protection Agency (EPA), monitor water levels and flows along Cork’s rivers, canals, and coastline. Use the buttons to switch between the OPW water level monitoring sites and the EPA Hydronet system sites. Click a map icon to get information for that location<p>',
+      chartinfo:'',
+      chartids: ['map-water-level-monitors', 'chart-water-level-monitors'],
+      buttons: []}
     )
       //- [{
       //- id: '',
@@ -59,5 +59,5 @@
 
         
 block append scripts
-  //- script(src="/javascripts/themes/environment/environment_water_levels.js" type="module")
+  script(src="/javascripts/themes/environment/environment_water_levels.js" type="module")
   
