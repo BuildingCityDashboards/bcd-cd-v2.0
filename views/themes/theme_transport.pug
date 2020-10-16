@@ -25,16 +25,17 @@
       ['chart-public-transport-trips']
       )
 
-    +theme__text-chart(
-      'airport-passengers',
-      [{ 
+    +theme__text-chart({
+      id:'airport-passengers',
+      sources:[{ 
       link:'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=TAQ01&PLanguage=0',
       name: 'CSO'}],
-      'Cork Airport Passengers',
-      '<p> ***tbc*** </p>',
-      '',
-      ['chart-airport-passengers']
-      )
+      title: 'Cork Airport Passengers',
+      description:'<p> ***tbc*** </p>',
+      chartinfo:'',
+      chartids:['chart-airport-passengers'],
+      buttons:[]
+    })
     
     //- +theme__text-chart(
       'Cork-bikes',

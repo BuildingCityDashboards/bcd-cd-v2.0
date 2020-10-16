@@ -58,6 +58,8 @@ h1,
 h2,
 h3 {
   color: #e95d4f;
+  margin: 0;
+  padding: 0;
 }
 
 /* used to colour text and arrows indicating trends */
@@ -67,10 +69,6 @@ h3 {
 
 .trend-down {
   color: red;
-}
-
-.page__root {
-  background-color: #eeecec;
 }
 
 

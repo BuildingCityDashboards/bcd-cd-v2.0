@@ -125,8 +125,8 @@
   align-self: center;
   grid-gap: 8px;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, auto);
-  scroll-margin-top: 100px;
+  grid-template-rows: 1fr 1fr auto auto;
+  scroll-margin-top: 72px;
   /* grid-auto-rows: auto; */
 }
 
@@ -168,7 +168,6 @@
 }
 
 .theme__text-chart__title h1 {
-  padding-bottom: 0px;
   font-size: 16px;
   font-weight: 200;
   line-height: 24px;
