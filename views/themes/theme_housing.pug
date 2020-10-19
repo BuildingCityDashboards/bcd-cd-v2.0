@@ -41,24 +41,23 @@
     })
     
     
-    //- +theme__text-chart(
-      'monthly-rent-prices-private',
-      [{
+    +theme__text-chart({
+      id: 'monthly-rent-prices-private',
+      sources: [{
       link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=RIQ02&ProductID=DB_RI&PLanguage=0',
       name: 'RTB/CSO'
       }],
-      'Monthly Rent Prices for Private Dwellings',
-      '<p> The \'Rent price\' tab shows the average monthly rent being paid in Cork since 2008. This price fell in the wake of the financial crash, before rising steadily, so that it is now back above the peak of a decade ago. The \'By no. of bedrooms\' tab shows standardised rent broken down by the number of bedrooms for the data available.  A decline in some categories of accomodation is visible towards the end of 2019. </p>',
-      '',
-      ['chart-rent-prices', 'chart-rent-by-beds'],
-      [{
+      title: 'Monthly Rent Prices for Private Dwellings',
+      description: '<p> The \'Rent price\' tab shows the average monthly rent being paid in Cork since 2008. This price fell in the wake of the financial crash, before rising steadily, so that it is now back above the peak of a decade ago. The \'By no. of bedrooms\' tab shows standardised rent broken down by the number of bedrooms for the data available.  A decline in some categories of accomodation is visible towards the end of 2019. </p>',
+      chartids: ['chart-rent-prices', 'chart-rent-by-beds'],
+      buttons: [{
       id: 'btn-rent-prices',
       name: 'Rent price'
       },{
       id: 'btn-rent-by-beds',
       name: 'By no. of bedrooms'
       }]
-      )
+    })
 
     +theme__text-chart({
       id : 'house-sales',
@@ -82,37 +81,37 @@
     })
     
     //- +theme__text-chart(
-      'quarterly-new-dwelling-completions',
-      [{
-      link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=NDQ06&PLanguage=0',
-      name: 'CSO'}],
-      'Quarterly New Dwelling Completions by Type',
-      '<p>The chart shows the house unit completion data for each of the Cork local authorities, categorised by type of dwelling as <ul><li>\'House\': a single house build</li><li> \'Scheme\': house build as part of a scheme</li><li>\'Apartment\': an apartment completion.</li></ul></p>',
-      '',
-      ['chart-completions-house', 'chart-completions-scheme', 'chart-completions-apartment'],
-      [{
-      id: 'btn-completions-house',
-      name: 'House'
-      },{
-      id: 'btn-completions-scheme',
-      name: 'Scheme'
-      },{
-      id: 'btn-completions-apartment',
-      name: 'Apartment'
-      }]
-      )
+      //- 'quarterly-new-dwelling-completions',
+      //- [{
+      //- link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=NDQ06&PLanguage=0',
+      //- name: 'CSO'}],
+      //- 'Quarterly New Dwelling Completions by Type',
+      //- '<p>The chart shows the house unit completion data for each of the Cork local authorities, categorised by type of dwelling as <ul><li>\'House\': a single house build</li><li> \'Scheme\': house build as part of a scheme</li><li>\'Apartment\': an apartment completion.</li></ul></p>',
+      //- '',
+      //- ['chart-completions-house', 'chart-completions-scheme', 'chart-completions-apartment'],
+      //- [{
+      //- id: 'btn-completions-house',
+      //- name: 'House'
+      //- },{
+      //- id: 'btn-completions-scheme',
+      //- name: 'Scheme'
+      //- },{
+      //- id: 'btn-completions-apartment',
+      //- name: 'Apartment'
+      //- }]
+      //- )
     
     //- +theme__text-chart(
-      'available-housing-land',
-      [{
-      link :'https://www.housing.gov.ie/search/archived/current?query=residential%20land%20survey',
-      name: 'DHPCLG'
-      }],
-      'Available Supply of Housing Land (2014)',
-      '<p>The <b>2014 Residential Land Availability Survey</b> measured the total amount of lands that had at that time been development plans and that were the highest priority for development. In effect, these lands were the areas within which much, if not all, new urban housing in the state was expected to be provided in the five or six years following the survey completion</p> <p>The area of such lands amounted to <b>17,434 hectares</b>, which gave a range of densities appropriate to whether the areas were in small villages or larger towns and cities and, as determined by the relevant local authorities, could theoretically enable the construction of over <b>414,000 dwellings</b></p>',
-      '',
-      'chart-houseSupply'
-      )
+      //- 'available-housing-land',
+      //- [{
+      //- link :'https://www.housing.gov.ie/search/archived/current?query=residential%20land%20survey',
+      //- name: 'DHPCLG'
+      //- }],
+      //- 'Available Supply of Housing Land (2014)',
+      //- '<p>The <b>2014 Residential Land Availability Survey</b> measured the total amount of lands that had at that time been development plans and that were the highest priority for development. In effect, these lands were the areas within which much, if not all, new urban housing in the state was expected to be provided in the five or six years following the survey completion</p> <p>The area of such lands amounted to <b>17,434 hectares</b>, which gave a range of densities appropriate to whether the areas were in small villages or larger towns and cities and, as determined by the relevant local authorities, could theoretically enable the construction of over <b>414,000 dwellings</b></p>',
+      //- '',
+      //- 'chart-houseSupply'
+      //- )
     
 
 
@@ -120,5 +119,5 @@
 block append scripts
   script(src="/javascripts/themes/housing/housing_prices.js" type="module")
   script(src="/javascripts/themes/housing/housing_rppi.js" type="module")
-  //- script(src="/javascripts/themes/housing/housing_rent.js" type="module")
+  script(src="/javascripts/themes/housing/housing_rent.js" type="module")
   //- script(src="/javascripts/themes/housing/housing_completions.js" type="module")
