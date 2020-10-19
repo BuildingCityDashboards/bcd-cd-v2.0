@@ -1,107 +1,106 @@
 .theme
-    +theme__header('housing-header',
-    'Housing',
-    'Housing trends for Cork, highlighting affordability and housing supply',
-    '',
-    'housing_background.png')
+    +theme__header({
+      id:'housing-header',
+      title: 'Housing',
+      description: 'Housing trends for Cork, highlighting affordability and housing supply',
+      moreinfo: '',
+      scrollref: 'average-house-prices'
+      })
     
-    +theme__text-chart(
-    'average-house-prices',
-    [{
-    link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM05&PLanguage=0',
-    name: 'CSO'
-    }],
-    'Mean Sale Prices for Housing',
-    '<p>Over the past decade property prices initally fell following the financial crash of 2008, then exhibitied a period of recovery. This chart shows mean and median house prices nationally ("All") and across the Cork local authorities for each month since the beginning of 2010. </p>',
-    '',
-    ['chart-housing-price-all', 'chart-housing-price-house', 'chart-housing-price-apartment'],
-    [{
-    id: 'btn-housing-price-all',
-    name: 'All housing'
-    },{
-    id: 'btn-housing-price-house',
-    name: 'House'
-    },{
-    id: 'btn-housing-price-apartment',
-    name: 'Apartment'
-    }]
-    )
+    +theme__text-chart({
+      id:'average-house-prices',
+      sources: [{
+      link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM05&PLanguage=0',
+      name: 'CSO'
+      }],
+      title: 'Mean Sale Prices for Housing',
+      description: '<p>Over the past decade property prices initally fell following the financial crash of 2008, then exhibitied a period of recovery. This chart shows mean and median house prices nationally ("All") and across the Cork local authorities for each month since the beginning of 2010. </p>',
+      chartids: ['chart-housing-price-all', 'chart-housing-price-house', 'chart-housing-price-apartment'],
+      buttons: [{
+      id: 'btn-housing-price-all',
+      name: 'All housing'
+      },{
+      id: 'btn-housing-price-house',
+      name: 'House'
+      },{
+      id: 'btn-housing-price-apartment',
+      name: 'Apartment'
+      }]
+    })
     
-    +theme__text-chart(
-    'house-rppi',
-    [
-    {
-    link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM09&PLanguage=0',
-    name: 'CSO'
-    }],
-    'Property Price Index',
-    '<p>When comparing house price figures from one period to another, it should be noted that changes in the mix of dwellings for sale (houses vs apartments, number of bedrooms) has an effect. The CSO monthly residential property price index (RPPI) shown here gives the average property price change specific to houses, from a baseline of 100 established in 2015.</p>',
-    '',
-    ['chart-house-rppi']
-    )
+    +theme__text-chart({
+      id:'house-rppi',
+      sources:[{
+      link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM09&PLanguage=0',
+      name: 'CSO'
+      }],
+      title: 'Property Price Index',
+      description: '<p>When comparing house price figures from one period to another, it should be noted that changes in the mix of dwellings for sale (houses vs apartments, number of bedrooms) has an effect. The CSO monthly Residential Property Price Index (RPPI) shown here gives the average property price change specific to houses, from a baseline of 100 established in 2015.</p>',
+      chartinfo:'',
+      chartids: ['chart-house-rppi']
+    })
     
     
-    +theme__text-chart(
-    'monthly-rent-prices-private',
-    [{
-    link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=RIQ02&ProductID=DB_RI&PLanguage=0',
-    name: 'RTB/CSO'
-    }],
-    'Monthly Rent Prices for Private Dwellings',
-    '<p> The \'Rent price\' tab shows the average monthly rent being paid in Cork since 2008. This price fell in the wake of the financial crash, before rising steadily, so that it is now back above the peak of a decade ago. The \'By no. of bedrooms\' tab shows standardised rent broken down by the number of bedrooms for the data available.  A decline in some categories of accomodation is visible towards the end of 2019. </p>',
-    '',
-    ['chart-rent-prices', 'chart-rent-by-beds'],
-    [{
-    id: 'btn-rent-prices',
-    name: 'Rent price'
-    },{
-    id: 'btn-rent-by-beds',
-    name: 'By no. of bedrooms'
-    }]
-    )
+    //- +theme__text-chart(
+      'monthly-rent-prices-private',
+      [{
+      link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=RIQ02&ProductID=DB_RI&PLanguage=0',
+      name: 'RTB/CSO'
+      }],
+      'Monthly Rent Prices for Private Dwellings',
+      '<p> The \'Rent price\' tab shows the average monthly rent being paid in Cork since 2008. This price fell in the wake of the financial crash, before rising steadily, so that it is now back above the peak of a decade ago. The \'By no. of bedrooms\' tab shows standardised rent broken down by the number of bedrooms for the data available.  A decline in some categories of accomodation is visible towards the end of 2019. </p>',
+      '',
+      ['chart-rent-prices', 'chart-rent-by-beds'],
+      [{
+      id: 'btn-rent-prices',
+      name: 'Rent price'
+      },{
+      id: 'btn-rent-by-beds',
+      name: 'By no. of bedrooms'
+      }]
+      )
 
-    +theme__text-chart(
-    'house-sales',
-    [{
-    link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM05&PLanguage=0',
-    name: 'CSO'
-    }],
-    'Volume of House Sales',
-    '<p> *** tbc*** </p><p> ??? Should we use Stamp Duty \'Filed\' or \'Executed\'? ??? </p>',
-    '',
-    ['chart-housing-sales-all', 'chart-housing-sales-house', 'chart-housing-sales-apartment'],
-    [{
-    id: 'btn-housing-sales-all',
-    name: 'All housing'
-    },{
-    id: 'btn-housing-sales-house',
-    name: 'House'
-    },{
-    id: 'btn-housing-sales-apartment',
-    name: 'Apartment'
-    }]
-    )
+    +theme__text-chart({
+      id : 'house-sales',
+      sources: [{
+      link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM05&PLanguage=0',
+      name: 'CSO'
+      }],
+      title: 'Volume of House Sales',
+      description: '<p> *** tbc*** </p><p> ??? Should we use Stamp Duty \'Filed\' or \'Executed\'? ??? </p>',
+      chartids: ['chart-housing-sales-all', 'chart-housing-sales-house', 'chart-housing-sales-apartment'],
+      buttons: [{
+      id: 'btn-housing-sales-all',
+      name: 'All housing'
+      },{
+      id: 'btn-housing-sales-house',
+      name: 'House'
+      },{
+      id: 'btn-housing-sales-apartment',
+      name: 'Apartment'
+      }]
+    })
     
-    +theme__text-chart(
-    'quarterly-new-dwelling-completions',
-    [{
-    link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=NDQ06&PLanguage=0',
-    name: 'CSO'}],
-    'Quarterly New Dwelling Completions by Type',
-    '<p>The chart shows the house unit completion data for each of the Cork local authorities, categorised by type of dwelling as <ul><li>\'House\': a single house build</li><li> \'Scheme\': house build as part of a scheme</li><li>\'Apartment\': an apartment completion.</li></ul></p>',
-    '',
-    ['chart-completions-house', 'chart-completions-scheme', 'chart-completions-apartment'],
-    [{
-    id: 'btn-completions-house',
-    name: 'House'
-    },{
-    id: 'btn-completions-scheme',
-    name: 'Scheme'
-    },{
-    id: 'btn-completions-apartment',
-    name: 'Apartment'
-    }]
-    )
+    //- +theme__text-chart(
+      'quarterly-new-dwelling-completions',
+      [{
+      link :'https://www.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=NDQ06&PLanguage=0',
+      name: 'CSO'}],
+      'Quarterly New Dwelling Completions by Type',
+      '<p>The chart shows the house unit completion data for each of the Cork local authorities, categorised by type of dwelling as <ul><li>\'House\': a single house build</li><li> \'Scheme\': house build as part of a scheme</li><li>\'Apartment\': an apartment completion.</li></ul></p>',
+      '',
+      ['chart-completions-house', 'chart-completions-scheme', 'chart-completions-apartment'],
+      [{
+      id: 'btn-completions-house',
+      name: 'House'
+      },{
+      id: 'btn-completions-scheme',
+      name: 'Scheme'
+      },{
+      id: 'btn-completions-apartment',
+      name: 'Apartment'
+      }]
+      )
     
     //- +theme__text-chart(
       'available-housing-land',
@@ -121,5 +120,5 @@
 block append scripts
   script(src="/javascripts/themes/housing/housing_prices.js" type="module")
   script(src="/javascripts/themes/housing/housing_rppi.js" type="module")
-  script(src="/javascripts/themes/housing/housing_rent.js" type="module")
-  script(src="/javascripts/themes/housing/housing_completions.js" type="module")
+  //- script(src="/javascripts/themes/housing/housing_rent.js" type="module")
+  //- script(src="/javascripts/themes/housing/housing_completions.js" type="module")

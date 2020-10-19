@@ -1,6 +1,6 @@
 import { fetchJsonFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
-import { MultiLineChart } from '../../modules/MultiLineChart.js'
+import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 import { hasCleanValue } from '../../modules/bcd-data.js'
@@ -87,7 +87,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       tY: categoriesStat[2]
     }
     //
-    const housePriceAllChart = new MultiLineChart(housePriceAll)
+    const housePriceAllChart = new BCDMultiLineChart(housePriceAll)
 
     const housePriceHouse = {
       elementId: 'chart-' + chartDivIdsPrices[1],
@@ -101,8 +101,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       tX: 'Year',
       tY: categoriesStat[2]
     }
-    //
-    const housePriceHouseChart = new MultiLineChart(housePriceHouse)
+    console.log(housePriceHouse)
+    const housePriceHouseChart = new BCDMultiLineChart(housePriceHouse)
 
     const housePriceApartment = {
       elementId: 'chart-' + chartDivIdsPrices[2],
@@ -117,7 +117,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       tY: categoriesStat[2]
     }
     //
-    const housePriceApartmentChart = new MultiLineChart(housePriceApartment)
+    const housePriceApartmentChart = new BCDMultiLineChart(housePriceApartment)
 
     const houseSalesAll = {
       elementId: 'chart-' + chartDivIdsSales[0],
@@ -132,7 +132,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       tY: categoriesStat[0]
     }
     //
-    const houseSalesAllChart = new MultiLineChart(houseSalesAll)
+    const houseSalesAllChart = new BCDMultiLineChart(houseSalesAll)
 
     const houseSalesHouse = {
       elementId: 'chart-' + chartDivIdsSales[1],
@@ -147,7 +147,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       tY: categoriesStat[0]
     }
 
-    const houseSalesHouseChart = new MultiLineChart(houseSalesHouse)
+    const houseSalesHouseChart = new BCDMultiLineChart(houseSalesHouse)
 
     const houseSalesApartment = {
       elementId: 'chart-' + chartDivIdsSales[2],
@@ -162,7 +162,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       tY: categoriesStat[0]
     }
 
-    const houseSalesApartmentChart = new MultiLineChart(houseSalesApartment)
+    const houseSalesApartmentChart = new BCDMultiLineChart(houseSalesApartment)
 
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIdsPrices[0]).style.display !== 'none') {
@@ -174,8 +174,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       }
       if (document.querySelector('#chart-' + chartDivIdsPrices[1]).style.display !== 'none') {
         housePriceHouseChart.drawChart()
-        housePriceHouseChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12])
-        housePriceHouseChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
+        // housePriceHouseChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12])
+        // housePriceHouseChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
         housePriceHouseChart.addTooltip('House Mean Price, ', '', 'label')
       }
       if (document.querySelector('#chart-' + chartDivIdsPrices[2]).style.display !== 'none') {

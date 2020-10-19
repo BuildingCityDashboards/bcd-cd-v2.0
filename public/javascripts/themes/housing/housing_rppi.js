@@ -1,14 +1,14 @@
 import { fetchJsonFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
-import { MultiLineChart } from '../../modules/MultiLineChart.js'
+import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+(async function main() {
   const chartDivIds = ['house-rppi']
   const parseYearMonth = d3.timeParse('%YM%m') // ie 2014-Jan = Wed Jan 01 2014 00:00:00
   const STATBANK_BASE_URL =
-        'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
+    'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // HPM09: Residential Property Price Index by Type of Residential Property, Month and Statistic
   const TABLE_CODE = 'HPM09'
   try {
@@ -35,8 +35,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       { type: 'arrobj' },
       (d, i) => {
         if ((d[dimensions[0]] === categoriesRegion[1] ||
-           d[dimensions[0]] === 'South-West - houses') &&
-         d[dimensions[2]] === categoriesStat[0]) {
+          d[dimensions[0]] === 'South-West - houses') &&
+          d[dimensions[2]] === categoriesStat[0]) {
           d.date = parseYearMonth(d.Month)
           d.label = d.Month
           d.value = +d.value
@@ -57,7 +57,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       tY: ''
     }
 
-    const houseRppiChart = new MultiLineChart(houseRppi)
+    const houseRppiChart = new BCDMultiLineChart(houseRppi)
 
     const redraw = () => {
       houseRppiChart.drawChart()
@@ -73,10 +73,9 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     console.log(e)
 
     removeSpinner('chart-' + chartDivIds[0])
-    e = (e instanceof TimeoutError) ? e : 'An error occured'
-    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], e)
-    console.log('e')
-    console.log(e)
+    const eMsg = e instanceof TimeoutError ? e : 'An error occured'
+    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
+    console.log(eMsg)
     d3.select(`#${errBtnID}`).on('click', function () {
       removeErrorMessageButton('chart-' + chartDivIds[0])
       main()

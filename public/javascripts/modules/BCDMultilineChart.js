@@ -1,13 +1,13 @@
 import { BCDChart } from './BCDChart.js'
 
 class BCDMultiLineChart extends BCDChart {
-  constructor (obj) {
+  constructor(obj) {
     super(obj)
 
     this.drawChart()
   }
 
-  drawChart () {
+  drawChart() {
     const c = this
 
     super.nestData()
@@ -21,7 +21,7 @@ class BCDMultiLineChart extends BCDChart {
     c.drawLegend() // child - like createScales could be added to parent with switch.
   }
 
-  updateChart (obj) {
+  updateChart(obj) {
     const c = this
 
     if (obj) {
@@ -42,7 +42,7 @@ class BCDMultiLineChart extends BCDChart {
   }
 
   // needs to be called everytime the data changes
-  createScales () {
+  createScales() {
     const c = this
     let yAxisCall
     let xAxisCall
@@ -66,7 +66,7 @@ class BCDMultiLineChart extends BCDChart {
     c.yAxis.transition(c.t()).call(yAxisCall)
   }
 
-  setScales (chartType) {
+  setScales(chartType) {
     const c = this
     let x
     let x0
@@ -109,7 +109,7 @@ class BCDMultiLineChart extends BCDChart {
     }
   }
 
-  setDomains (zeroYAxis = true) {
+  setDomains(zeroYAxis = true) {
     const c = this
     let minValue
 
@@ -131,15 +131,15 @@ class BCDMultiLineChart extends BCDChart {
 
     // Set Y axis scales 0 if positive number else use minValue
     c.y.domain([minValue >= 0 ? 0 : minValue,
-      d3.max(c.d, d => {
-        return d3.max(d.values, d => {
-          return d[c.yV]
-        })
+    d3.max(c.d, d => {
+      return d3.max(d.values, d => {
+        return d[c.yV]
       })
+    })
     ])
   }
 
-  drawLines () {
+  drawLines() {
     const c = this
     const g = c.g
 
@@ -194,7 +194,7 @@ class BCDMultiLineChart extends BCDChart {
       .transition(c.t).remove()
   }
 
-  addTooltip (title, format, dateField, prefix, postfix) {
+  addTooltip(title, format, dateField, prefix, postfix) {
     const c = this
 
     d3.select(c.e).select('.focus').remove()
@@ -207,13 +207,13 @@ class BCDMultiLineChart extends BCDChart {
     c.prefix = prefix || ' '
     c.postfix = postfix || ' '
 
-    // console.log(c)
+    console.log(c)
 
     super.drawFocusLine()
     c.drawFocusOverlay() // need to refactor this function
   }
 
-  drawFocusOverlay () {
+  drawFocusOverlay() {
     const c = this
     const g = c.g
     const focus = d3.select(c.e).select('.focus')
@@ -251,7 +251,7 @@ class BCDMultiLineChart extends BCDChart {
         })
     }
 
-    function mousemove () {
+    function mousemove() {
       focus.style('visibility', 'visible')
       c.newToolTip.style('visibility', 'visible')
       c.newToolTip.style('display', 'block')
@@ -283,7 +283,7 @@ class BCDMultiLineChart extends BCDChart {
   //         c.newToolTip.style("visibility","visible");
   // }
 
-  getPerChange (d1, d0, v) {
+  getPerChange(d1, d0, v) {
     const value = !isNaN(d1[v]) ? d0 ? (d1[v] - d0[v]) / d0[v] : 'null' : null
     if (value === Infinity) {
       return 0
@@ -293,7 +293,7 @@ class BCDMultiLineChart extends BCDChart {
     return value
   }
 
-  updatePosition (xPosition, yPosition) {
+  updatePosition(xPosition, yPosition) {
     const c = this
     const g = c.g
     // get the x and y values - y is static
@@ -303,7 +303,7 @@ class BCDMultiLineChart extends BCDChart {
     c.newToolTip.style('left', tooltipX + 'px').style('top', tooltipY + 'px')
   }
 
-  getTooltipPosition ([mouseX, mouseY]) {
+  getTooltipPosition([mouseX, mouseY]) {
     const c = this
     let ttX
     const ttY = mouseY
@@ -319,7 +319,7 @@ class BCDMultiLineChart extends BCDChart {
     return [ttX, ttY]
   }
 
-  addBaseLine (value) {
+  addBaseLine(value) {
     const c = this
     const gLines = c.getElement('.grid-lines')
 
@@ -331,7 +331,7 @@ class BCDMultiLineChart extends BCDChart {
       .attr('stroke', '#dc3545')
   }
 
-  pagination (data, selector, sliceBy, pageNumber, label) {
+  pagination(data, selector, sliceBy, pageNumber, label) {
     const c = this
 
     const slices = c.slicer(data, sliceBy)
@@ -386,7 +386,7 @@ class BCDMultiLineChart extends BCDChart {
     }
   }
 
-  slicer (arr, sliceBy) {
+  slicer(arr, sliceBy) {
     if (sliceBy < 1 || !arr) return () => []
 
     return (p) => {
@@ -401,7 +401,7 @@ class BCDMultiLineChart extends BCDChart {
     }
   }
 
-  sortData (i, x0) {
+  sortData(i, x0) {
     const c = this
     const tD = c.d.map(d => {
       let s
@@ -434,7 +434,7 @@ class BCDMultiLineChart extends BCDChart {
     return tD
   }
 
-  ttContent (data) {
+  ttContent(data) {
     const c = this
     data.forEach((d, i) => {
       const id = '#bcd-tt' + i
@@ -459,7 +459,7 @@ class BCDMultiLineChart extends BCDChart {
     })
   }
 
-  moveTooltip (d) {
+  moveTooltip(d) {
     const c = this
     d.forEach((d, i) => {
       const id = '.tooltip_' + i
@@ -477,7 +477,7 @@ class BCDMultiLineChart extends BCDChart {
   }
 
   // replacing old legend method with new inline labels
-  drawLegend () {
+  drawLegend() {
     // chart (c) object, vlaue (v), colour (z), line height(lH)
     const c = this
     const g = c.g
@@ -573,12 +573,12 @@ class BCDMultiLineChart extends BCDChart {
       .attr('fill', d => z(d.key))
 
     // check if number
-    function isNum (d) {
+    function isNum(d) {
       return !isNaN(d)
     }
 
     // filter out the NaN
-    function idFilter (d) {
+    function idFilter(d) {
       return !!(isNum(d[v]) && d[v] !== 0)
     }
   }

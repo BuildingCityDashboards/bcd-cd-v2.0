@@ -246,6 +246,7 @@
   justify-content: center;
   grid-column: 1/5;
   grid-row: 4/5;
+  padding-top: 24px;
 }
 
 .theme__text-chart__button-row {
@@ -299,6 +300,7 @@
 .theme__text-chart__plot svg {
   /* height : inherit; */
   height: auto;
+  padding-bottom: 24px;
 }
 
 
