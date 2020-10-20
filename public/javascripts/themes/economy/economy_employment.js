@@ -1,4 +1,5 @@
 import { fetchJsonFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
+import { hasCleanValue } from '../../modules/bcd-data.js'
 import { convertQuarterToDate } from '../../modules/bcd-date.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
@@ -62,10 +63,10 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         if ((d[dimensions[0]] === 'Southern' ||
           d[dimensions[0]] === 'South-West' ||
           d[dimensions[0]] === categoriesRegion[0]) &&
-          !isNaN(+d.value)) {
+          hasCleanValue(d)) {
           d.date = convertQuarterToDate(d.Quarter)
           d.label = d.Quarter
-          d.value = +d.value * 1000
+          d.value = +d.value
           return d
         }
       })
@@ -76,6 +77,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       elementId: 'chart-' + chartDivIds[0],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[0]
+      }).forEach(d => {
+        d.value = d.value * 1000
       }),
       tracenames: categoriesRegion,
       tracekey: dimensions[0],
@@ -172,10 +175,14 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       if (document.querySelector('#chart-' + chartDivIds[3]).style.display !== 'none') {
         participationRateChart.drawChart()
         participationRateChart.addTooltip(', ', '', 'label')
+        participationRateChart.showSelectedLabelsX([0, 4, 8])
+        participationRateChart.showSelectedLabelsY([3, 6, 9, 12])
       }
       if (document.querySelector('#chart-' + chartDivIds[4]).style.display !== 'none') {
         unemployedRateChart.drawChart()
         unemployedRateChart.addTooltip(', ', '', 'label')
+        unemployedRateChart.showSelectedLabelsX([0, 4, 8])
+        unemployedRateChart.showSelectedLabelsY([3, 6, 9, 12])
       }
     }
     redraw()
@@ -222,7 +229,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       redraw()
     })
   } catch (e) {
-    console.log('Error creating housing completion charts')
+    console.log('Error creating employment charts')
     console.log(e)
 
     removeSpinner('chart-' + chartDivIds[0])
@@ -243,7 +250,7 @@ const getShortLabel = function (s) {
     'Persons aged 15 years and over in Employment (Thousand)': 'Persons in Employment',
     'Unemployed Persons aged 15 years and over (Thousand)': 'Unemployed Persons',
     'Persons aged 15 years and over in Labour Force (Thousand)': 'Persons in Labour Force',
-    'ILO Unemployment Rate (15 - 74 years) (%)': 'ILO Unemployment Rate (%)',
+    'ILO Unemployment Rate (15 - 74 years) (%)': 'ILO Unemploy. Rate (%)',
     'ILO Participation Rate (15 years and over) (%)': 'ILO Participation Rate (%)'
   }
 

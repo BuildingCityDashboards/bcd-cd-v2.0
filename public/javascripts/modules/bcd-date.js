@@ -26,9 +26,7 @@ export { isToday }
  */
 
 function isFutureDate (date) {
-  const todayMS = new Date().getTime()
-  console.log(date.getTime())
-  return date.getTime() > todayMS
+  return date.getTime() > new Date().getTime()
 }
 
 export { isFutureDate }
