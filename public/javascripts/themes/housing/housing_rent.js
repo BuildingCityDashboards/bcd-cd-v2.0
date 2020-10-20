@@ -6,7 +6,7 @@ import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main() {
+(async function main () {
   const chartDivIds = ['rent-prices', 'rent-by-beds']
   d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
   d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
@@ -69,7 +69,6 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const rent = {
       elementId: 'chart-' + chartDivIds[0],
       data: rentTable.filter(d => {
-        console.log(!isFutureDate(d.date))
         return d[dimensions[0]] === categoriesBeds[0] && !isFutureDate(d.date) // all beds
       }),
       tracenames: categoriesLocation,

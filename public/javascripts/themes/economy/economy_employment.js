@@ -1,13 +1,19 @@
 import { fetchJsonFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { convertQuarterToDate } from '../../modules/bcd-date.js'
 import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
-import { MultiLineChart } from '../../modules/MultiLineChart.js'
+import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
 (async function main() {
   const chartDivIds = ['employment', 'labour', 'unemployed', 'ilo-employment', 'ilo-unemployment']
+
+  d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
+  d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
+  d3.select('#chart-' + chartDivIds[2]).style('display', 'none')
+  d3.select('#chart-' + chartDivIds[3]).style('display', 'block')
+  d3.select('#chart-' + chartDivIds[4]).style('display', 'none')
 
   const STATBANK_BASE_URL =
     'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
@@ -76,10 +82,11 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: getShortLabel(categoriesStat[0])
+      tY: getShortLabel(categoriesStat[0]),
+      formaty: 'hundredThousandsShort'
     }
     // //
-    const employedCountChart = new MultiLineChart(employedCount)
+    const employedCountChart = new BCDMultiLineChart(employedCount)
 
     const labourCount = {
       elementId: 'chart-' + chartDivIds[1],
@@ -91,10 +98,11 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: getShortLabel(categoriesStat[2])
+      tY: getShortLabel(categoriesStat[2]),
+      formaty: 'hundredThousandsShort'
     }
 
-    const labourCountChart = new MultiLineChart(labourCount)
+    const labourCountChart = new BCDMultiLineChart(labourCount)
 
     const unemployedCount = {
       elementId: 'chart-' + chartDivIds[2],
@@ -106,10 +114,11 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: getShortLabel(categoriesStat[1])
+      tY: getShortLabel(categoriesStat[1]),
+      formaty: 'hundredThousandsShort'
     }
 
-    const unemployedCountChart = new MultiLineChart(unemployedCount)
+    const unemployedCountChart = new BCDMultiLineChart(unemployedCount)
 
     const participationRate = {
       elementId: 'chart-' + chartDivIds[3],
@@ -124,7 +133,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       tY: getShortLabel(categoriesStat[4])
     }
 
-    const participationRateChart = new MultiLineChart(participationRate)
+    const participationRateChart = new BCDMultiLineChart(participationRate)
 
     const unemployedRate = {
       elementId: 'chart-' + chartDivIds[4],
@@ -139,26 +148,26 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       tY: getShortLabel(categoriesStat[3])
     }
 
-    const unemployedRateChart = new MultiLineChart(unemployedRate)
-
-    d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
-    d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
-    d3.select('#chart-' + chartDivIds[2]).style('display', 'none')
-    d3.select('#chart-' + chartDivIds[3]).style('display', 'block')
-    d3.select('#chart-' + chartDivIds[4]).style('display', 'none')
+    const unemployedRateChart = new BCDMultiLineChart(unemployedRate)
 
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
         employedCountChart.drawChart()
         employedCountChart.addTooltip(',  ', '', 'label')
+        employedCountChart.showSelectedLabelsX([0, 4, 8])
+        employedCountChart.showSelectedLabelsY([4, 8])
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         labourCountChart.drawChart()
         labourCountChart.addTooltip(', ', '', 'label')
+        labourCountChart.showSelectedLabelsX([0, 4, 8])
+        labourCountChart.showSelectedLabelsY([4, 8])
       }
       if (document.querySelector('#chart-' + chartDivIds[2]).style.display !== 'none') {
         unemployedCountChart.drawChart()
         unemployedCountChart.addTooltip(', ', '', 'label')
+        unemployedCountChart.showSelectedLabelsX([0, 4, 8])
+        unemployedCountChart.showSelectedLabelsY([3, 6])
       }
       if (document.querySelector('#chart-' + chartDivIds[3]).style.display !== 'none') {
         participationRateChart.drawChart()
