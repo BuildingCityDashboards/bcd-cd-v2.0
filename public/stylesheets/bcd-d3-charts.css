@@ -43,7 +43,7 @@
 }
 
 .line-chart .label.today {
-  fill: #16c1f3;
+  fill: #e95d4f;
 }
 
 .line-chart path.reference {
@@ -109,8 +109,12 @@
   text-anchor: middle;
 }
 
+.titleX {
+  display: none;
+}
+
 .titleY {
-  transform: rotate(-90deg) translateY(-48px);
+  transform: rotate(-90deg);
 }
 
 
@@ -181,7 +185,6 @@
 .focus_line {
   stroke: #e95d4f;
   stroke-width: 2px;
-
   stroke-dasharray: 5, 5;
 }
 

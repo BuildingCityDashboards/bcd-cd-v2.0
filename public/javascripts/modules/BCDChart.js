@@ -20,7 +20,14 @@ class BCDChart {
      *
      */
 
-  constructor (options) {
+  constructor(options) {
+    const DEFAULT_MARGINS = {
+      top: 32,
+      right: 16,
+      bottom: 16,
+      left: 64
+    }
+
     this.d = options.data // the data
     this.e = options.elementId // selector element
     this.k = options.tracekey // trace key
@@ -33,27 +40,28 @@ class BCDChart {
     this.tX = options.tX
     this.tY = options.tY
     this.ySF = options.ySF || options.formaty || 'thousands' // format for y axis
-    console.log(options.elementId + ':' + this.ySF)
+    this.margins = Object.assign(DEFAULT_MARGINS, options.margins)
+    console.log(this.margins)
   }
 
   // initialise method to draw c area
-  init () {
+  init() {
     const c = this
     const eN = d3.select('#' + c.e).node()
     // console.log('#' + c.e)
     const eW = eN.getBoundingClientRect().width
-    const aR = eW < 800 ? eW * 0.55 : eW * 0.5
+    const aR = eW < 768 ? eW * 0.55 : eW * 0.5
     const cScheme = c.cS || ['#fc9272', '#fb6a4a', '#ef3b2c', '#cb181d', '#99000d']
     const m = c.m = {}
     const bP = 450
 
     // console.log("ew: " + eW);
     // margins
-    // TODO: move to css
-    m.t = eW < bP ? 32 : 50
-    m.b = eW < bP ? 32 : 80
-    m.r = eW < bP ? 16 : 140
-    m.l = eW < bP ? 64 : 72
+
+    m.t = eW < bP ? this.margins.top : 50
+    m.r = eW < bP ? this.margins.right : 140
+    m.b = eW < bP ? this.margins.bottom : 80
+    m.l = eW < bP ? this.margins.left : 72
 
     // console.log(eW < bP)
 
@@ -95,7 +103,7 @@ class BCDChart {
     }).left
   }
 
-  addAxis () {
+  addAxis() {
     const c = this
     const g = c.g
     let gLines
@@ -112,6 +120,9 @@ class BCDChart {
     c.yAxis = g.append('g')
       .attr('class', 'y-axis')
 
+    // const yAxisElement = d3.select('#' + this.e).select('.y-axis')
+    // console.log(yAxisElement.width)
+
     // X title
     xLabel = g.append('text')
       .attr('class', 'titleX')
@@ -123,11 +134,11 @@ class BCDChart {
     yLabel = g.append('text')
       .attr('class', 'titleY')
       .attr('x', -(c.h / 2))
-      // .attr('y', -48)
+      .attr('y', -c.m.l + 16) // auto position the yAxis label
       .text(c.tY)
   }
 
-  getKeys () {
+  getKeys() {
     const c = this
     const findKeys = (d) => d.filter((e, p, a) => a.indexOf(e) === p)
     c.colour.domain(c.d.map(d => {
@@ -137,7 +148,7 @@ class BCDChart {
     c.ks = c.ks !== undefined ? c.ks : c.d[0].key ? c.colour.domain() : findKeys(c.d.map(d => d[c.k]))
   }
 
-  drawTooltip () {
+  drawTooltip() {
     const c = this
 
     d3.select('#' + c.e).select('.tool-tip.bcd').remove()
@@ -163,7 +174,7 @@ class BCDChart {
     c.tooltipBody()
   }
 
-  tooltipHeaders () {
+  tooltipHeaders() {
     const c = this
     let div
     let p
@@ -195,7 +206,7 @@ class BCDChart {
       .attr('class', 'bcd-text-indicator')
   }
 
-  tooltipBody () {
+  tooltipBody() {
     const c = this
     const keys = c.ks
     let div
@@ -217,7 +228,7 @@ class BCDChart {
     })
   }
 
-  drawGridLines () {
+  drawGridLines() {
     const c = this
     let gLines
 
@@ -237,14 +248,14 @@ class BCDChart {
       .attr('y2', (d) => c.y(d))
   }
 
-  getElement (name) {
+  getElement(name) {
     const c = this
     const s = d3.select('#' + c.e)
     const e = s.selectAll(name)
     return e
   }
 
-  drawFocusLine () {
+  drawFocusLine() {
     // console.log('draw focus line')
     const c = this
     const g = c.g
@@ -265,7 +276,7 @@ class BCDChart {
     // })
   }
 
-  drawFocusCircles (d, i) {
+  drawFocusCircles(d, i) {
     const c = this
     const g = c.g
 
@@ -283,12 +294,12 @@ class BCDChart {
 
   // for data that needs to be nested
   // check if the data needs to be nested or not!!
-  nestData () {
+  nestData() {
     const c = this
     c.d = c.d[0].key ? c.d : c.nest(c.d, c.k)
   }
 
-  nest (data, key) {
+  nest(data, key) {
     return d3.nest().key(d => {
       return d[key]
     })
@@ -296,7 +307,7 @@ class BCDChart {
   }
 
   // hides the rate column in the tooltip e.g. when showing % change
-  hideRate (value) {
+  hideRate(value) {
     const c = this
     const i = c.getElement('.bcd-text-indicator')
     const r = c.getElement('.bcd-text-rate')
@@ -311,7 +322,7 @@ class BCDChart {
     // value ? g.selectAll(".tp-text-indicator").style("display", "none") : g.selectAll(".tp-text-indicator").style("display", "block")
   }
 
-  formatValue (format) {
+  formatValue(format) {
     // formats thousands, Millions, Euros and Percentage
     switch (format) {
       case 'millions':
@@ -343,7 +354,7 @@ class BCDChart {
     }
   }
 
-  showSelectedLabelsX (array) {
+  showSelectedLabelsX(array) {
     const c = this
     const e = c.xAxis
     c.axisArray = array || c.axisArray
@@ -357,7 +368,7 @@ class BCDChart {
     })
   }
 
-  showSelectedLabelsY (array) {
+  showSelectedLabelsY(array) {
     const c = this
     const e = c.yAxis
     c.axisArray = array || c.axisArray
