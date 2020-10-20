@@ -66,6 +66,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       houseRppiChart.drawChart()
       houseRppiChart.addTooltip('RPPI for ', '', 'label')
       houseRppiChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12])
+      houseRppiChart.showSelectedLabelsY([1, 3, 5, 7])
       houseRppiChart.addBaseLine(100)
     }
     redraw()
