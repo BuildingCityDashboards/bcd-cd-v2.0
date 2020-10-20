@@ -17,12 +17,12 @@ const isToday = date => {
 export { isToday }
 
 /**
- * @desc Is a given date valid? Checks if in future
+ * @desc Is a given date from the future?
  *
  * @param {Date} date
  * @return {boolean}
  *
- *     isToday(Wed Nov 06 2019 00:10:00 GMT+0000 (Greenwich Mean Time))
+ *
  */
 
 function isFutureDate (date) {

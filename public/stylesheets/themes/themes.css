@@ -314,11 +314,14 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  padding: 48px;
+
 }
 
 .theme__text-chart__spinner p {
   text-align: center;
   font-size: 14px;
+
 }
 
 .theme__text-chart__spinner img {
@@ -493,7 +496,7 @@
     display: flex;
     padding-bottom: 8px;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-around;
   }
 
   .theme-btn {}
