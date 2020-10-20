@@ -17,6 +17,23 @@ const isToday = date => {
 export { isToday }
 
 /**
+ * @desc Is a given date valid? Checks if in future
+ *
+ * @param {Date} date
+ * @return {boolean}
+ *
+ *     isToday(Wed Nov 06 2019 00:10:00 GMT+0000 (Greenwich Mean Time))
+ */
+
+function isFutureDate (date) {
+  const todayMS = new Date().getTime()
+  console.log(date.getTime())
+  return date.getTime() > todayMS
+}
+
+export { isFutureDate }
+
+/**
  * Get a date shifted n days from today
  *
  * @param {number} n - Number of days to shift from today's date

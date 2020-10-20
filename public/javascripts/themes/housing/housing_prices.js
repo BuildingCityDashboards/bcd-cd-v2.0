@@ -5,7 +5,7 @@ import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErro
 import { TimeoutError } from '../../modules/TimeoutError.js'
 import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } from '../../modules/bcd-data.js'
 
-(async function main () {
+(async function main() {
   const chartDivIdsPrices = ['housing-price-all', 'housing-price-house', 'housing-price-apartment']
   const chartDivIdsSales = ['housing-sales-all', 'housing-sales-house', 'housing-sales-apartment']
 
@@ -113,7 +113,7 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       tY: categoriesStat[2],
       formaty: 'hundredThousandsShort'
     }
-    console.log(housePriceHouse)
+    // console.log(housePriceHouse)
     const housePriceHouseChart = new BCDMultiLineChart(housePriceHouse)
 
     const housePriceApartment = {

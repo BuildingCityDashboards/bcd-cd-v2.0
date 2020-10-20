@@ -41,7 +41,7 @@ class BCDChart {
     this.tY = options.tY
     this.ySF = options.ySF || options.formaty || 'thousands' // format for y axis
     this.margins = Object.assign(DEFAULT_MARGINS, options.margins)
-    console.log(this.margins)
+    console.log(`${this.e} : ${JSON.stringify(this.margins)}`)
   }
 
   // initialise method to draw c area
