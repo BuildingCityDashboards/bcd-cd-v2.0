@@ -343,6 +343,7 @@
 
 .theme__text-chart__error p {
   text-align: center;
+  padding: 16px;
 }
 
 .theme__text-chart__error .retry-btn {

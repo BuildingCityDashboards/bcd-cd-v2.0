@@ -20,7 +20,7 @@ class BCDChart {
      *
      */
 
-  constructor(options) {
+  constructor (options) {
     const DEFAULT_MARGINS = {
       top: 32,
       right: 16,
@@ -41,11 +41,11 @@ class BCDChart {
     this.tY = options.tY
     this.ySF = options.ySF || options.formaty || 'thousands' // format for y axis
     this.margins = Object.assign(DEFAULT_MARGINS, options.margins)
-    console.log(`${this.e} : ${JSON.stringify(this.margins)}`)
+    // console.log(`${this.e} : ${JSON.stringify(this.margins)}`)
   }
 
   // initialise method to draw c area
-  init() {
+  init () {
     const c = this
     const eN = d3.select('#' + c.e).node()
     // console.log('#' + c.e)
@@ -103,7 +103,7 @@ class BCDChart {
     }).left
   }
 
-  addAxis() {
+  addAxis () {
     const c = this
     const g = c.g
     let gLines
@@ -138,7 +138,7 @@ class BCDChart {
       .text(c.tY)
   }
 
-  getKeys() {
+  getKeys () {
     const c = this
     const findKeys = (d) => d.filter((e, p, a) => a.indexOf(e) === p)
     c.colour.domain(c.d.map(d => {
@@ -148,7 +148,7 @@ class BCDChart {
     c.ks = c.ks !== undefined ? c.ks : c.d[0].key ? c.colour.domain() : findKeys(c.d.map(d => d[c.k]))
   }
 
-  drawTooltip() {
+  drawTooltip () {
     const c = this
 
     d3.select('#' + c.e).select('.tool-tip.bcd').remove()
@@ -174,7 +174,7 @@ class BCDChart {
     c.tooltipBody()
   }
 
-  tooltipHeaders() {
+  tooltipHeaders () {
     const c = this
     let div
     let p
@@ -206,7 +206,7 @@ class BCDChart {
       .attr('class', 'bcd-text-indicator')
   }
 
-  tooltipBody() {
+  tooltipBody () {
     const c = this
     const keys = c.ks
     let div
@@ -228,7 +228,7 @@ class BCDChart {
     })
   }
 
-  drawGridLines() {
+  drawGridLines () {
     const c = this
     let gLines
 
@@ -248,14 +248,14 @@ class BCDChart {
       .attr('y2', (d) => c.y(d))
   }
 
-  getElement(name) {
+  getElement (name) {
     const c = this
     const s = d3.select('#' + c.e)
     const e = s.selectAll(name)
     return e
   }
 
-  drawFocusLine() {
+  drawFocusLine () {
     // console.log('draw focus line')
     const c = this
     const g = c.g
@@ -276,7 +276,7 @@ class BCDChart {
     // })
   }
 
-  drawFocusCircles(d, i) {
+  drawFocusCircles (d, i) {
     const c = this
     const g = c.g
 
@@ -294,12 +294,12 @@ class BCDChart {
 
   // for data that needs to be nested
   // check if the data needs to be nested or not!!
-  nestData() {
+  nestData () {
     const c = this
     c.d = c.d[0].key ? c.d : c.nest(c.d, c.k)
   }
 
-  nest(data, key) {
+  nest (data, key) {
     return d3.nest().key(d => {
       return d[key]
     })
@@ -307,7 +307,7 @@ class BCDChart {
   }
 
   // hides the rate column in the tooltip e.g. when showing % change
-  hideRate(value) {
+  hideRate (value) {
     const c = this
     const i = c.getElement('.bcd-text-indicator')
     const r = c.getElement('.bcd-text-rate')
@@ -322,7 +322,7 @@ class BCDChart {
     // value ? g.selectAll(".tp-text-indicator").style("display", "none") : g.selectAll(".tp-text-indicator").style("display", "block")
   }
 
-  formatValue(format) {
+  formatValue (format) {
     // formats thousands, Millions, Euros and Percentage
     switch (format) {
       case 'millions':
@@ -354,7 +354,7 @@ class BCDChart {
     }
   }
 
-  showSelectedLabelsX(array) {
+  showSelectedLabelsX (array) {
     const c = this
     const e = c.xAxis
     c.axisArray = array || c.axisArray
@@ -368,7 +368,7 @@ class BCDChart {
     })
   }
 
-  showSelectedLabelsY(array) {
+  showSelectedLabelsY (array) {
     const c = this
     const e = c.yAxis
     c.axisArray = array || c.axisArray

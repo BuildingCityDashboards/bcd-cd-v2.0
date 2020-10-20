@@ -71,14 +71,14 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         }
       })
     //
-    // console.log(employmentTable)
 
     const employedCount = {
       elementId: 'chart-' + chartDivIds[0],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[0]
-      }).forEach(d => {
+      }).map(d => {
         d.value = d.value * 1000
+        return d
       }),
       tracenames: categoriesRegion,
       tracekey: dimensions[0],
@@ -95,6 +95,9 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       elementId: 'chart-' + chartDivIds[1],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[2]
+      }).map(d => {
+        d.value = d.value * 1000
+        return d
       }),
       tracenames: categoriesRegion,
       tracekey: dimensions[0],
@@ -111,6 +114,9 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       elementId: 'chart-' + chartDivIds[2],
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[1]
+      }).map(d => {
+        d.value = d.value * 1000
+        return d
       }),
       tracenames: categoriesRegion,
       tracekey: dimensions[0],
