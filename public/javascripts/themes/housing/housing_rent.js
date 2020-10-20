@@ -6,7 +6,7 @@ import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+(async function main() {
   const chartDivIds = ['rent-prices', 'rent-by-beds']
   d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
   d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
@@ -133,8 +133,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     console.log('Error creating rent charts')
     console.log(e)
     removeSpinner('chart-' + chartDivIds[0])
-    e = (e instanceof TimeoutError) ? e : 'An error occured'
-    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], e)
+    const eMsg = (e instanceof TimeoutError) ? e : 'An error occured'
+    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
       // console.log('retry')
