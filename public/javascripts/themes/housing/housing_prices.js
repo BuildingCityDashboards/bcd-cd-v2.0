@@ -142,7 +142,10 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[0]
+      tY: categoriesStat[0],
+      margins: {
+        left: 56
+      }
     }
     //
     const houseSalesAllChart = new BCDMultiLineChart(houseSalesAll)
@@ -157,7 +160,10 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[0]
+      tY: categoriesStat[0],
+      margins: {
+        left: 56
+      }
     }
 
     const houseSalesHouseChart = new BCDMultiLineChart(houseSalesHouse)
@@ -172,7 +178,10 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[0]
+      tY: categoriesStat[0],
+      margins: {
+        left: 56
+      }
 
     }
 
