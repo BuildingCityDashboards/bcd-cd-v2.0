@@ -37,8 +37,6 @@ function getPercentageChange(curr, prev) {
 
 export { getPercentageChange }
 
-
-
 /**
  * Format a number with a commma for thousands
  *
@@ -71,8 +69,25 @@ function formatHundredThousands(num) {
 
 export { formatHundredThousands }
 
+/**
+ * Format a number in the 100,000s with a 'k' for  thousands
+ *
+ * @param { number } num
+ * @return { Function } function
+ *
+ *
+ */
+
+// TODO: remove dependency on d3
+function formatHundredThousandsShort(num) {
+  // SI-prefix with two significant digits, "42M"
+  return d3.format(".3s")(42e6);
+}
+
+export { formatHundredThousandsShort }
+
 /*
-* Converts a decimal to a fixed percentage (rounded to integer)
+* @desc Converts
 *
 * @param { number } dec // a decimal
 * @return { number } percentage

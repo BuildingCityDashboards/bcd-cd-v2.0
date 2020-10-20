@@ -5,6 +5,9 @@ import { getDefaultMapOptions, getCityLatLng } from '../../modules/bcd-maps.js'
 
 (async () => {
   // console.log('load waterLevel charts')
+
+  d3.select('#map-water-level-monitors').style('display', 'block')
+  d3.select('#chart-water-level-monitors').style('display', 'none')
   const stamenTonerUrl_Lite = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
 
   try {
@@ -95,8 +98,7 @@ import { getDefaultMapOptions, getCityLatLng } from '../../modules/bcd-maps.js'
     // }
     // redraw()
 
-    // d3.select('#map-water-level-monitors').style('display', 'block')
-    // d3.select('#chart-water-level-monitors').style('display', 'none')
+
 
     // d3.select('#btn-water-level-chart').on('click', function () {
     //   activeBtn(this)

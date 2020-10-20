@@ -3,11 +3,19 @@ import JSONstat from 'https://unpkg.com/jsonstat-toolkit@1.0.8/import.mjs'
 import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
-import { hasCleanValue } from '../../modules/bcd-data.js'
+import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } from '../../modules/bcd-data.js'
 
 (async function main() {
   const chartDivIdsPrices = ['housing-price-all', 'housing-price-house', 'housing-price-apartment']
   const chartDivIdsSales = ['housing-sales-all', 'housing-sales-house', 'housing-sales-apartment']
+
+  d3.select('#chart-' + chartDivIdsPrices[0]).style('display', 'block')
+  d3.select('#chart-' + chartDivIdsPrices[1]).style('display', 'none')
+  d3.select('#chart-' + chartDivIdsPrices[2]).style('display', 'none')
+  d3.select('#chart-' + chartDivIdsSales[0]).style('display', 'block')
+  d3.select('#chart-' + chartDivIdsSales[1]).style('display', 'none')
+  d3.select('#chart-' + chartDivIdsSales[2]).style('display', 'none')
+
   const parseYearMonth = d3.timeParse('%YM%m')
   const STATBANK_BASE_URL =
     'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
@@ -70,6 +78,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
           d.date = parseYearMonth(d.Month)
           d.label = d.Month
           d.value = +d.value
+          // console.log(d.value)
+
           return d
         }
       })
@@ -84,7 +94,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[2]
+      tY: categoriesStat[2],
+      formaty: 'hundredThousandsShort'
     }
     //
     const housePriceAllChart = new BCDMultiLineChart(housePriceAll)
@@ -99,9 +110,10 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[2]
+      tY: categoriesStat[2],
+      formaty: 'hundredThousandsShort'
     }
-    console.log(housePriceHouse)
+    // console.log(housePriceHouse)
     const housePriceHouseChart = new BCDMultiLineChart(housePriceHouse)
 
     const housePriceApartment = {
@@ -114,7 +126,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[2]
+      tY: categoriesStat[2],
+      formaty: 'hundredThousandsShort'
     }
     //
     const housePriceApartmentChart = new BCDMultiLineChart(housePriceApartment)
@@ -129,7 +142,10 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[0]
+      tY: categoriesStat[0],
+      margins: {
+        left: 56
+      }
     }
     //
     const houseSalesAllChart = new BCDMultiLineChart(houseSalesAll)
@@ -144,7 +160,10 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[0]
+      tY: categoriesStat[0],
+      margins: {
+        left: 56
+      }
     }
 
     const houseSalesHouseChart = new BCDMultiLineChart(houseSalesHouse)
@@ -159,7 +178,11 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: categoriesStat[0]
+      tY: categoriesStat[0],
+      margins: {
+        left: 56
+      }
+
     }
 
     const houseSalesApartmentChart = new BCDMultiLineChart(houseSalesApartment)
@@ -174,8 +197,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       }
       if (document.querySelector('#chart-' + chartDivIdsPrices[1]).style.display !== 'none') {
         housePriceHouseChart.drawChart()
-        // housePriceHouseChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12])
-        // housePriceHouseChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
+        housePriceHouseChart.showSelectedLabelsX([0, 2, 4, 6, 8, 10, 12])
+        housePriceHouseChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10, 12])
         housePriceHouseChart.addTooltip('House Mean Price, ', '', 'label')
       }
       if (document.querySelector('#chart-' + chartDivIdsPrices[2]).style.display !== 'none') {
@@ -204,13 +227,6 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       }
     }
     redraw()
-
-    d3.select('#chart-' + chartDivIdsPrices[0]).style('display', 'block')
-    d3.select('#chart-' + chartDivIdsPrices[1]).style('display', 'none')
-    d3.select('#chart-' + chartDivIdsPrices[2]).style('display', 'none')
-    d3.select('#chart-' + chartDivIdsSales[0]).style('display', 'block')
-    d3.select('#chart-' + chartDivIdsSales[1]).style('display', 'none')
-    d3.select('#chart-' + chartDivIdsSales[2]).style('display', 'none')
 
     d3.select('#btn-' + chartDivIdsPrices[0]).on('click', function () {
       activeBtn('btn-' + chartDivIdsPrices[0], ['btn-' + chartDivIdsPrices[1], 'btn-' + chartDivIdsPrices[2]])

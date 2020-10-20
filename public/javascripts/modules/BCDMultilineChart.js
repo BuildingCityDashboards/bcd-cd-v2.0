@@ -181,11 +181,10 @@ class BCDMultiLineChart extends BCDChart {
       .attr('d', d => {
         return d.disabled ? null : c.line(d.values)
       })
-      // .style("stroke", d => ( c.d.map(function(v,i) {
-      //     return c.colour || c.color[i % 10];
-      //   }).filter(function(d,i) { return !c.d[i].disabled })))
-      .style('stroke-width', '3px')
-      .style('fill', 'none')
+    // .style("stroke", d => ( c.d.map(function(v,i) {
+    //     return c.colour || c.color[i % 10];
+    //   }).filter(function(d,i) { return !c.d[i].disabled })))
+
 
     // c.regions.transition(c.t)
     //     .attr("d", function (d) { return c.line(d.values); });
@@ -207,7 +206,7 @@ class BCDMultiLineChart extends BCDChart {
     c.prefix = prefix || ' '
     c.postfix = postfix || ' '
 
-    console.log(c)
+    // console.log(c)
 
     super.drawFocusLine()
     c.drawFocusOverlay() // need to refactor this function

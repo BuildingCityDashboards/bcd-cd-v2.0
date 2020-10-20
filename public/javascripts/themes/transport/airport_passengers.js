@@ -60,7 +60,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: 'Passengers (Number)'
+      tY: 'Passengers (Number)',
+      formaty: 'hundredThousandsShort'
     }
 
     const airportPassengersChart = new BCDMultiLineChart(airportPassengers)
@@ -68,6 +69,8 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const redraw = () => {
       airportPassengersChart.drawChart()
       airportPassengersChart.addTooltip('Aiprport passengers in ', '', 'label')
+      airportPassengersChart.showSelectedLabelsY([3, 6, 9])
+      airportPassengersChart.showSelectedLabelsX([0, 4, 8])
     }
     redraw()
 

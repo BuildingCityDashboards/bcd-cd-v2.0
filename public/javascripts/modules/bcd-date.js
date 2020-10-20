@@ -9,12 +9,27 @@
 
 const isToday = date => {
   const today = new Date()
-  return date.getDate() == today.getDate() &&
-    date.getMonth() == today.getMonth() &&
-    date.getFullYear() == today.getFullYear()
+  return date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear()
 }
 
 export { isToday }
+
+/**
+ * @desc Is a given date valid? Checks if in future
+ *
+ * @param {Date} date
+ * @return {boolean}
+ *
+ *     isToday(Wed Nov 06 2019 00:10:00 GMT+0000 (Greenwich Mean Time))
+ */
+
+function isFutureDate (date) {
+  return date.getTime() > new Date().getTime()
+}
+
+export { isFutureDate }
 
 /**
  * Get a date shifted n days from today
