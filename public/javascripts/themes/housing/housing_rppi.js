@@ -54,7 +54,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       xV: 'date',
       yV: 'value',
       tX: 'Year',
-      tY: ''
+      tY: 'RPPI'
     }
 
     const houseRppiChart = new BCDMultiLineChart(houseRppi)

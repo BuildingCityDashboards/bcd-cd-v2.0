@@ -161,6 +161,7 @@
   font: 10px sans-serif;
 }
 
+/* plot lines */
 .line {
   fill: none;
   stroke-width: 2px;
