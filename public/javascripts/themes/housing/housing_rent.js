@@ -5,11 +5,13 @@ import { MultiLineChart } from '../../modules/MultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+(async function main() {
   const chartDivIds = ['rent-prices', 'rent-by-beds']
+  d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
+  d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
 
   const STATBANK_BASE_URL =
-        'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
+    'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // RIQ02: RTB Average Monthly Rent Report by Number of Bedrooms, Property Type, Location and Quarter
   const TABLE_CODE = 'RIQ02'
   try {
@@ -93,8 +95,6 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
     const rentByBedsChart = new MultiLineChart(rentByBeds)
     //
 
-    d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
-    d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
 
     const redraw = () => {
       if (document.querySelector('#chart-' + chartDivIds[0]).style.display !== 'none') {
