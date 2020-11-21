@@ -7,7 +7,7 @@ import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErro
 
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main() {
+(async function main () {
   const chartDivIds = ['employment', 'labour', 'unemployed', 'ilo-employment', 'ilo-unemployment']
 
   d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
@@ -80,7 +80,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         d.value = d.value * 1000
         return d
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Southern', 'South-West', categoriesRegion[0]],
       tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
@@ -99,7 +99,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         d.value = d.value * 1000
         return d
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Southern', 'South-West', categoriesRegion[0]],
       tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
@@ -118,7 +118,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         d.value = d.value * 1000
         return d
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Southern', 'South-West', categoriesRegion[0]],
       tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
@@ -134,7 +134,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[4]
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Southern', 'South-West', categoriesRegion[0]],
       tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
@@ -149,7 +149,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: employmentTable.filter(d => {
         return d[dimensions[2]] === categoriesStat[3]
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Southern', 'South-West', categoriesRegion[0]],
       tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
