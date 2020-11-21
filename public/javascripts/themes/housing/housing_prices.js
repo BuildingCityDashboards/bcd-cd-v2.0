@@ -89,7 +89,7 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[0] && d[dimensions[5]] === categoriesStat[2]
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Cork City', 'Cork County', categoriesRegion[0]],
       tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
@@ -105,7 +105,7 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[1] && d[dimensions[5]] === categoriesStat[2]
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Cork City', 'Cork County', categoriesRegion[0]],
       tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
@@ -121,7 +121,7 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[2] && d[dimensions[5]] === categoriesStat[2]
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Cork City', 'Cork County', categoriesRegion[0]],
       tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
@@ -137,7 +137,7 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[0] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0] // exclude state figures
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Cork City', 'Cork County', categoriesRegion[0]],
       tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
@@ -155,7 +155,7 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[1] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0]
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Cork City', 'Cork County', categoriesRegion[0]],
       tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',
@@ -173,7 +173,7 @@ import { hasCleanValue, formatHundredThousands, formatHundredThousandsShort } fr
       data: houseSalesTable.filter(d => {
         return d[dimensions[0]] === categoriesType[2] && d[dimensions[5]] === categoriesStat[0] && d[dimensions[3]] !== categoriesRegion[0]
       }),
-      tracenames: categoriesRegion,
+      tracenames: ['Cork City', 'Cork County', categoriesRegion[0]],
       tracekey: dimensions[3],
       xV: 'date',
       yV: 'value',

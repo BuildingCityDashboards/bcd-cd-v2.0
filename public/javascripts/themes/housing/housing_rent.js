@@ -71,7 +71,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       data: rentTable.filter(d => {
         return d[dimensions[0]] === categoriesBeds[0] && !isFutureDate(d.date) // all beds
       }),
-      tracenames: categoriesLocation,
+      tracenames: ['Cork', 'Cork City'],
       tracekey: dimensions[2],
       xV: 'date',
       yV: 'value',
