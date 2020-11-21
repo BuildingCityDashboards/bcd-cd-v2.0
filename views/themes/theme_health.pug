@@ -1,21 +1,22 @@
 .theme
-    +theme__header('health-header',
-    'Health',
-    '***health description here***',
-    '',
-    'health_background.png')
+    +theme__header({
+      id:'health-header',
+    title: 'Health',
+    description: '***health description here***',
+    moreinfo: '',
+    scrollref: 'distance-health-service'
+    })
 
-    +theme__text-chart(
-    'distance-health-service',
-    [{
+    +theme__text-chart({
+    id: 'distance-health-service',
+    sources: [{
     link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=MDS01&PLanguage=0',
     name: 'CSO'
     }],
-    'Distance to Health Service Resource (2019)',
-    '<p>This chart shows the average distance of residential dwellings to selected health services or infrastructure.</p><p>As might be expected, residences in county Cork tend to be further from resources than in urban areas. Homes in Cork city also tend to be further to a HSE hospital equipped for Accident and Emergency (A&E) and Maternity care than those in Dublin city.</p>',
-    '',
-    ['chart-distance-health-service']
-    )
+    title: 'Distance to Health Service Resource (2019)',
+    description: '<p>This chart shows the average distance of residential dwellings to selected health services or infrastructure.</p><p>As might be expected, residences in county Cork tend to be further from resources than in urban areas. Homes in Cork city also tend to be further to a HSE hospital equipped for Accident and Emergency (A&E) and Maternity care than those in Dublin city.</p>',
+    chartids: ['chart-distance-health-service']
+    })
         
 block append scripts
   script(src="/javascripts/themes/health/health_distance_service.js" type="module")

@@ -1,9 +1,10 @@
 .theme
-    +theme__header('education-header',
-    'Education',
-    'Data about pupil numbers at Dublin schools',
-    '',
-    'education_background.png')
+    +theme__header({
+      id: 'education-header',
+      title: 'Education',
+      description: 'Data about pupil numbers at Cork schools',
+      scrollref: 'chart-national-schools'
+      })
     
     //- +theme__text-chart(
     //- 'pupil-numbers',
@@ -21,36 +22,28 @@
     //- name: 'Secondary level'
     //- }]
     //- )
-    +theme__text-chart(
-    'national-schools',
-    [{ link:'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=EDA56&PLanguage=0',
-    name: 'CSO'}],
-    'National Schools',
-    '<p>*** content tbc ***</p>',
-    '',
-    ['chart-national-schools']
-    )
-    //- [{
-    //- id: 'btn-pupils-primary',
-    //- name: 'Primary level'
-    //- },{
-    //- id: 'btn-pupils-secondary',
-    //- name: 'Secondary level'
-    //- }]
-    //- )
 
-    +theme__text-chart(
-    'education-primary-nationality',
-    [{ link:'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=ED123&PLanguage=0',
+    +theme__text-chart({
+    id: 'national-schools',
+    sources: [{ link:'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=EDA56&PLanguage=0',
     name: 'CSO'}],
-    'Nationalities in Primary Schools',
-    '<p>*** content tbc ***</p>',
-    '',
-    ['education-primary-nationality']
-    )
+    title: 'National Schools',
+    description: '',
+    chartids: ['chart-national-schools']
+    })
+    
+
+    +theme__text-chart({
+    id: 'education-primary-nationality',
+    sources: [{ link:'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=ED123&PLanguage=0',
+    name: 'CSO'}],
+    title: 'Nationalities in Primary Schools (2020)',
+    description: '<p>As Ireland becomes more cosmopolitan, the nationalities of children in primary education is expected to expand resulting in a more diverse demographic.</p><p>However, the number of primary pupils from Ireland in school were 13,123 and 45,426 for Cork city and county respectively in 2020, so the proportion of students of other nationalities is still relatively small.</p>',
+    chartids: ['chart-education-primary-nationality']
+    })
     
 
         
 block append scripts
   script(src="/javascripts/themes/education/education_national_schools.js" type="module")
-  //- script(src="/javascripts/themes/education/education_nationality_primary.js" type="module")
+  script(src="/javascripts/themes/education/education_nationality_primary.js" type="module")
