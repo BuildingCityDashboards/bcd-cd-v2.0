@@ -4,10 +4,10 @@ import { MultiLineChart } from '../../modules/MultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+(async function main() {
   const chartDivIds = ['national-schools']
   const STATBANK_BASE_URL =
-          'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
+    'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // EDA56: National Schools by County, Year and Statistic
   const TABLE_CODE = 'EDA56'
   try {
@@ -39,9 +39,9 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       { type: 'arrobj' },
       (d, i) => {
         if ((d[dimensions[0]] === 'Cork City' ||
-           d[dimensions[0]] === 'Cork County' ||
-           d[dimensions[0]] === categoriesCounty[0]) &&
-           d[dimensions[2]] === categoriesStat[3]) {
+          d[dimensions[0]] === 'Cork County' ||
+          d[dimensions[0]] === categoriesCounty[0]) &&
+          d[dimensions[2]] === categoriesStat[3]) {
           d.date = parseYear(+d.Year)
           d.label = d.Year
           d.value = +d.value
@@ -57,7 +57,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       // .filter(d => {
       //   return d[dimensions[5]] === categoriesStat[2]
       // }),
-      tracenames: categoriesCounty,
+      tracenames: ['Cork City', 'Cork County', categoriesCounty[0]],
       tracekey: dimensions[0],
       xV: 'date',
       yV: 'value',
