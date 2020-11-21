@@ -9,7 +9,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
 (async function main () {
   const chartDivIds = ['distance-health-service']
   const STATBANK_BASE_URL =
-          'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
+    'https://statbank.cso.ie/StatbankServices/StatbankServices.svc/jsonservice/responseinstance/'
   // MDS02: Average Distance of Residential Dwellings to Selected Services and Infrastructure by Region and County, Type of Selected Services and Infrastructure and Year
   const TABLE_CODE = 'MDS02'
 
@@ -22,27 +22,27 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     }
 
     const dataset = JSONstat(json).Dataset(0)
-    console.log(dataset)
+    // console.log(dataset)
 
     const dimensions = dataset.Dimension().map(dim => {
       return dim.label
     })
-    console.log(dimensions)
+    // console.log(dimensions)
 
     const categoriesType = dataset.Dimension(dimensions[0]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesType)
+    // console.log(categoriesType)
 
     const categoriesUrban = dataset.Dimension(dimensions[1]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesUrban)
+    // console.log(categoriesUrban)
     // //
     const categoriesStat = dataset.Dimension(dimensions[3]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesStat)
+    // console.log(categoriesStat)
 
     const XAXIS = ['Type of Selected Service and Infrastructure']
     const XAXIS_CATEGORIES = ['HSE Adult Emergency Department hospital', 'HSE Maternity hospital', 'Pharmacy', 'GP']
@@ -54,8 +54,8 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       { type: 'arrobj' },
       (d, i) => {
         if (INCLUDE_REGIONS.includes(d[TRACES]) &&
-            XAXIS_CATEGORIES.includes(d[XAXIS]) &&
-            hasCleanValue(d)) {
+          XAXIS_CATEGORIES.includes(d[XAXIS]) &&
+          hasCleanValue(d)) {
           d.value = +d.value
           return d
         }
@@ -66,7 +66,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       .key(function (d) { return d[XAXIS] })
       .entries(distanceHealthServiceFiltered)
 
-    console.log(distanceHealthServiceNested)
+    // console.log(distanceHealthServiceNested)
 
     const distanceHealthServiceWide = distanceHealthServiceNested.map(function (d) {
       const obj = {
@@ -80,7 +80,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       })
       return obj
     })
-    console.log(distanceHealthServiceWide)
+    // console.log(distanceHealthServiceWide)
 
     const distanceHealthServiceContent = {
       elementId: 'chart-' + chartDivIds[0],
@@ -117,7 +117,7 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
     const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
-    // console.log('retry')
+      // console.log('retry')
       removeErrorMessageButton('chart-' + chartDivIds[0])
       main()
     })
