@@ -1,24 +1,31 @@
 mixin theme__text-chart(options = {id:'', sources:'', title:'', description:'', chartinfo:'', chartids: [], buttons: []})
-    div(id=options.id || '' class="theme__text-chart")
-      .theme__text-chart__sources
-        p Source:
-        each source in options.sources || []
-          //- div(class= 'theme__text-chart__data-source')  
-          a(href=source.link target='_blank')= source.name
-              //- img( src='../images/icons/external-link.svg')
-      .theme__text-chart__title
-        h1= options.title || ''
-      .theme__text-chart__text
-        .theme__text-chart__description!= options.description || ''
-        .theme__text-chart__info!= options.chartInfo || ''
-        .theme__text-chart__kpi
+  div(id=options.id || '' class="theme__text-chart")
+    .theme__text-chart__sources
+      p Source:
+      each source in options.sources || []
+        //- div(class= 'theme__text-chart__data-source')  
+        a(href=source.link target='_blank')= source.name
+            //- img( src='../images/icons/external-link.svg')
+    .theme__text-chart__title
+      h1= options.title || ''
+    .theme__text-chart__text
+      .theme__text-chart__description!= options.description || ''
+      .theme__text-chart__info!= options.chartInfo || ''
+      .theme__text-chart__kpi
+    
+    .theme__text-chart__chart
+      .theme__text-chart__button-row
+          each button in options.buttons || []
+            <button id=#{button.id} type='button' class='theme-btn'>#{button.name}</button>
       
-      .theme__text-chart__chart
-        .theme__text-chart__button-row
-            each button in options.buttons || []
-              <button id=#{button.id} type='button' class='theme-btn'>#{button.name}</button>
-        
-        each chartid in options.chartids 
-              div(id=chartid class= 'theme__text-chart__plot') 
-                //- .theme__text-chart__spinner 
-                  p Data is loading from #{JSON.stringify(sources[0].name)}
+      each chartid in options.chartids 
+            div(id=chartid class= 'theme__text-chart__plot') 
+              //- .theme__text-chart__spinner 
+                p Data is loading from #{JSON.stringify(sources[0].name)}
+
+  script(type="module").
+    import { main } from !{JSON.stringify(options.plotoptions.src)}
+    (async function(o){
+           main(o);
+    })(!{JSON.stringify(options)}) 
+    
