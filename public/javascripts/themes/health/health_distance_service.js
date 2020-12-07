@@ -110,11 +110,11 @@ import { hasCleanValue } from '../../modules/bcd-data.js'
       redraw()
     })
   } catch (e) {
-    console.log('Error creating household composition chart')
+    console.log('Error creating health chart')
     console.log(e)
     removeSpinner('chart-' + chartDivIds[0])
     const eMsg = e instanceof TimeoutError ? e : 'An error occured'
-    const errBtnID = addErrorMessageButton(chartDivIds[0], eMsg)
+    const errBtnID = addErrorMessageButton('chart-' + chartDivIds[0], eMsg)
     // console.log(errBtnID)
     d3.select(`#${errBtnID}`).on('click', function () {
       // console.log('retry')

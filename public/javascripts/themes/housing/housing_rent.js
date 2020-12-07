@@ -24,27 +24,27 @@ async function main () {
       removeSpinner('chart-' + chartDivIds[0])
     }
     const dataset = JSONstat(json).Dataset(0)
-    console.log(dataset)
+    // console.log(dataset)
 
     const dimensions = dataset.Dimension().map(dim => {
       return dim.label
     })
-    console.log(dimensions)
+    // console.log(dimensions)
 
     const categoriesBeds = dataset.Dimension(dimensions[0]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesBeds)
+    // console.log(categoriesBeds)
 
     const categoriesType = dataset.Dimension(dimensions[1]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesType)
+    // console.log(categoriesType)
     //
     const categoriesLocation = dataset.Dimension(dimensions[2]).Category().map(c => {
       return c.label
     })
-    console.log(categoriesLocation)
+    // console.log(categoriesLocation)
 
     const categoriesStat = dataset.Dimension(dimensions[4]).Category().map(c => {
       return c.label
@@ -81,7 +81,7 @@ async function main () {
     }
     //
 
-    console.log(rent)
+    // console.log(rent)
     const rentChart = new BCDMultiLineChart(rent)
 
     // const rentByBeds = {
