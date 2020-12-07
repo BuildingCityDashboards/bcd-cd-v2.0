@@ -1,4 +1,4 @@
-mixin theme__text-chart(options = {id:'', sources:'', title:'', description:'', chartinfo:'', chartids: [], buttons: []})
+mixin theme__text-chart(options = {id:'', sources:'', title:'', description:'', chartinfo:'', chartids: [], buttons: [], plotoptions: {src:''}})
   div(id=options.id || '' class="theme__text-chart")
     .theme__text-chart__sources
       p Source:
@@ -22,10 +22,10 @@ mixin theme__text-chart(options = {id:'', sources:'', title:'', description:'', 
             div(id=chartid class= 'theme__text-chart__plot') 
               //- .theme__text-chart__spinner 
                 p Data is loading from #{JSON.stringify(sources[0].name)}
-
-  script(type="module").
-    import { main } from !{JSON.stringify(options.plotoptions.src)}
-    (async function(o){
+  if options.plotoptions
+    script(type="module").
+      import { main } from !{JSON.stringify(options.plotoptions.src)}
+      (async function(o){
            main(o);
-    })(!{JSON.stringify(options)}) 
+      })(!{JSON.stringify(options)}) 
     

@@ -7,7 +7,7 @@ import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-async function main () {
+async function main() {
   const chartDivIds = ['airport-passengers']
   //   const parseYearMonth = d3.timeParse('%YM%m') // ie 2014-Jan = Wed Jan 01 2014 00:00:00
   const STATBANK_BASE_URL =
@@ -22,22 +22,22 @@ async function main () {
       removeSpinner('chart-' + chartDivIds[0])
     }
     const dataset = JSONstat(json).Dataset(0)
-    console.log(dataset)
+    // console.log(dataset)
 
     const dimensions = dataset.Dimension().map(dim => {
       return dim.label
     })
-    console.log(dimensions)
+    // console.log(dimensions)
 
     const categoriesAirport = dataset.Dimension(fixLabel(dimensions[2])).Category().map(c => {
       return c.label
     })
-    console.log(categoriesAirport)
+    // console.log(categoriesAirport)
     // //
     const categoriesStat = dataset.Dimension(fixLabel(dimensions[0])).Category().map(c => {
       return c.label
     })
-    console.log(categoriesStat)
+    // console.log(categoriesStat)
 
     const airportPassengersTable = dataset.toTable(
       { type: 'arrobj' },
@@ -52,7 +52,7 @@ async function main () {
           return d
         }
       })
-    console.log(airportPassengersTable)
+    // console.log(airportPassengersTable)
 
     const airportPassengers = {
       elementId: 'chart-' + chartDivIds[0],

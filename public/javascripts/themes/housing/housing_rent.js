@@ -6,7 +6,7 @@ import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { activeBtn, addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+async function main() {
   const chartDivIds = ['rent-prices', 'rent-by-beds']
   d3.select('#chart-' + chartDivIds[0]).style('display', 'block')
   d3.select('#chart-' + chartDivIds[1]).style('display', 'none')
@@ -103,7 +103,7 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
         rentChart.drawChart()
         rentChart.addTooltip('Rent price,  ', '', 'label')
         rentChart.showSelectedLabelsX([0, 3, 6, 9, 12])
-        rentChart.showSelectedLabelsY([0, 2, 4, 6])
+        rentChart.showSelectedLabelsY([0, 2, 4, 6, 8, 10])
       }
       if (document.querySelector('#chart-' + chartDivIds[1]).style.display !== 'none') {
         rentByBedsChart.drawChart()
@@ -142,4 +142,6 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       main()
     })
   }
-})()
+}
+
+export { main }
