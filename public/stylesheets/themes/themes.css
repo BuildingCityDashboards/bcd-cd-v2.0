@@ -63,8 +63,6 @@
   transform: rotate(-90deg);
 }
 
-
-
 .theme__header__title {
   padding-bottom: 48px;
   font-size: 40px;
@@ -89,27 +87,31 @@
 
 
 #demographics-header {
-  /* background-image: url('/images/themes/backgrounds/demographics_background_mobile.png'); */
+  background-image: url('/images/themes/mobile/demographics.png');
 }
 
 #economy-header {
-  /* background-image: url('/images/themes/backgrounds/economy_background_mobile.png'); */
+  background-image: url('/images/themes/mobile/economy.png');
 }
 
 #education-header {
-  /* background-image: url('/images/themes/backgrounds/education_background_mobile.png'); */
+  background-image: url('/images/themes/mobile/education.png');
+}
+
+#health-header {
+  background-image: url('/images/themes/mobile/health.png');
 }
 
 #housing-header {
-  /* background-image: url('/images/themes/backgrounds/housing_background_mobile.png'); */
+  background-image: url('/images/themes/mobile/housing.png');
 }
 
 #environment-header {
-  /* background-image: url('/images/themes/backgrounds/environment_background_mobile.png'); */
+  background-image: url('/images/themes/mobile/environment.png');
 }
 
 #transport-header {
-  /* background-image: url('/images/themes/backgrounds/transport_background_mobile.png'); */
+  background-image: url('/images/themes/mobile/transport.png');
 }
 
 .theme__text-chart {
@@ -378,27 +380,31 @@
   }
 
   #demographics-header {
-    /* background-image: url('/images/themes/backgrounds/demographics_background_tablet.png'); */
+    background-image: url('/images/themes/tablet/demographics.png');
   }
 
   #economy-header {
-    /* background-image: url('/images/themes/backgrounds/economy_background_tablet.png'); */
+    background-image: url('/images/themes/tablet/economy.png');
   }
 
   #education-header {
-    /* background-image: url('/images/themes/backgrounds/education_background_tablet.png'); */
+    background-image: url('/images/themes/tablet/education.png');
+  }
+
+  #health-header {
+    background-image: url('/images/themes/tablet/health.png');
   }
 
   #housing-header {
-    /* background-image: url('/images/themes/backgrounds/housing_background_tablet.png'); */
+    background-image: url('/images/themes/tablet/housing.png');
   }
 
   #environment-header {
-    /* background-image: url('/images/themes/backgrounds/environment_background_tablet.png'); */
+    background-image: url('/images/themes/tablet/environment.png');
   }
 
   #transport-header {
-    /* background-image: url('/images/themes/backgrounds/transport_background_tablet.png'); */
+    background-image: url('/images/themes/tablet/transport.png');
   }
 
   .theme__header__content {
@@ -621,28 +627,33 @@
   }
 
   #demographics-header {
-    /* background-image: url('/images/themes/backgrounds/demographics_background.png'); */
+    background-image: url('/images/themes/desktop/demographics.png');
   }
 
   #economy-header {
-    /* background-image: url('/images/themes/backgrounds/economy_background.png'); */
+    background-image: url('/images/themes/desktop/economy.png');
   }
 
   #education-header {
-    /* background-image: url('/images/themes/backgrounds/education_background.png'); */
+    background-image: url('/images/themes/desktop/education.png');
+  }
+
+  #health-header {
+    background-image: url('/images/themes/desktop/health.png');
   }
 
   #housing-header {
-    /* background-image: url('/images/themes/backgrounds/housing_background.png'); */
+    background-image: url('/images/themes/desktop/housing.png');
   }
 
   #environment-header {
-    /* background-image: url('/images/themes/backgrounds/environment_background.png'); */
+    background-image: url('/images/themes/desktop/environment.png');
   }
 
   #transport-header {
-    /* background-image: url('/images/themes/backgrounds/transport_background.png'); */
+    background-image: url('/images/themes/desktop/transport.png');
   }
+
 
   .theme__header__content {
     min-height: 372px;
@@ -968,27 +979,31 @@
   }
 
   #demographics-header {
-    /* background-image: url('/images/themes/backgrounds/demographics_background.png'); */
+    background-image: url('/images/themes/desktop/demographics.png');
   }
 
   #economy-header {
-    /* background-image: url('/images/themes/backgrounds/economy_background.png'); */
+    background-image: url('/images/themes/desktop/economy.png');
   }
 
   #education-header {
-    /* background-image: url('/images/themes/backgrounds/education_background.png'); */
+    background-image: url('/images/themes/desktop/education.png');
+  }
+
+  #health-header {
+    background-image: url('/images/themes/desktop/health.png');
   }
 
   #housing-header {
-    /* background-image: url('/images/themes/backgrounds/housing_background.png'); */
+    background-image: url('/images/themes/desktop/housing.png');
   }
 
   #environment-header {
-    /* background-image: url('/images/themes/backgrounds/environment_background.png'); */
+    background-image: url('/images/themes/desktop/environment.png');
   }
 
   #transport-header {
-    /* background-image: url('/images/themes/backgrounds/transport_background.png'); */
+    background-image: url('/images/themes/desktop/transport.png');
   }
 
   .theme__header__content {
