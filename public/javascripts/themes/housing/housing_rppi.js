@@ -4,7 +4,7 @@ import { BCDMultiLineChart } from '../../modules/BCDMultiLineChart.js'
 import { addSpinner, removeSpinner, addErrorMessageButton, removeErrorMessageButton } from '../../modules/bcd-ui.js'
 import { TimeoutError } from '../../modules/TimeoutError.js'
 
-(async function main () {
+async function main() {
   const chartDivIds = ['house-rppi']
   const parseYearMonth = d3.timeParse('%YM%m') // ie 2014-Jan = Wed Jan 01 2014 00:00:00
   const STATBANK_BASE_URL =
@@ -87,4 +87,5 @@ import { TimeoutError } from '../../modules/TimeoutError.js'
       main()
     })
   }
-})()
+}
+export { main }
