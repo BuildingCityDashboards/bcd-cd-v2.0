@@ -31,20 +31,20 @@
       }
     })
     
-    +theme__text-chart({
-      id:'house-rppi',
-      sources:[{
-      link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM09&PLanguage=0',
-      name: 'CSO'
-      }],
-      title: 'Property Price Index',
-      description: '<p>When comparing house price figures from one period to another, it should be noted that changes in the mix of dwellings for sale (houses vs apartments, number of bedrooms) has an effect. The CSO monthly Residential Property Price Index (RPPI) shown here gives the average property price change specific to houses, from a baseline of 100 established in 2015.</p>',
-      chartinfo:'',
-      chartids: ['chart-house-rppi'],
-      plotoptions:{
-        src: '../../javascripts/themes/housing/housing_rppi.js'
-      }
-    })
+    //- +theme__text-chart({
+    //-   id:'house-rppi',
+    //-   sources:[{
+    //-   link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=HPM09&PLanguage=0',
+    //-   name: 'CSO'
+    //-   }],
+    //-   title: 'Property Price Index',
+    //-   description: '<p>When comparing house price figures from one period to another, it should be noted that changes in the mix of dwellings for sale (houses vs apartments, number of bedrooms) has an effect. The CSO monthly Residential Property Price Index (RPPI) shown here gives the average property price change specific to houses, from a baseline of 100 established in 2015.</p>',
+    //-   chartinfo:'',
+    //-   chartids: ['chart-house-rppi'],
+    //-   plotoptions:{
+    //-     src: '../../javascripts/themes/housing/housing_rppi.js'
+    //-   }
+    //- })
     
     
     +theme__text-chart({
@@ -53,20 +53,15 @@
       link :'https://statbank.cso.ie/px/pxeirestat/Statire/SelectVarVal/Define.asp?maintable=RIQ02&ProductID=DB_RI&PLanguage=0',
       name: 'RTB/CSO'
       }],
-      title: 'Monthly Rent Prices for Private Dwellings',
-      description: '<p> The \'Rent price\' tab shows the average monthly rent being paid in Cork since 2008. This price fell in the wake of the financial crash, before rising steadily, so that it is now back above the peak of a decade ago. The \'By no. of bedrooms\' tab shows standardised rent broken down by the number of bedrooms for the data available.  A decline in some categories of accomodation is visible towards the end of 2019. </p>',
-      chartids: ['chart-rent-prices', 'chart-rent-by-beds'],
-      buttons: [{
-      id: 'btn-rent-prices',
-      name: 'Rent price'
-      },{
-      id: 'btn-rent-by-beds',
-      name: 'By no. of bedrooms'
-      }],
+      title: 'Monthly Rent Prices for Private Apartments',
+      description: '<p> The chart shows the average monthly rent being paid for an apartment in Cork since 2008. This price fell in the wake of the financial crisis, before gradually climbing back to near pre-crash levels. The data shows a pair of adjustments in the city and county made in late 2013 and 2016 respectively. </p>',
+      chartids: ['chart-rent-prices'],
       plotoptions:{
         src: '../../javascripts/themes/housing/housing_rent.js'
       }
     })
+
+    //- The \'By no. of bedrooms\' tab shows standardised rent broken down by the number of bedrooms for the data available.  A decline in some categories of accomodation is visible towards the end of 2019. 
 
     +theme__text-chart({
       id : 'house-sales',
