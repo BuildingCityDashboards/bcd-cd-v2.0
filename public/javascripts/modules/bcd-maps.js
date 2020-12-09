@@ -4,7 +4,7 @@
 
 // TODO: import leaflet class for LatLng etc
 
-const DUBLIN_BOUNDS = {
+const CORK_BOUNDS = {
   southwest: {
     lat: 52.9754658325,
     lng: -6.8639598864
@@ -20,7 +20,7 @@ const FASTNET_ROCK = {
   long: -9.602967
 }
 
-export function getCorkBoundsLatLng () {
+export function getCorkBoundsLatLng() {
   // const DUBLIN_BOUNDS = await d3.json('/data/common/dublin-bounds.json')
   // return  L.latLngBounds(L.latLng(DUBLIN_BOUNDS.southwest.lat,DUBLIN_BOUNDS.southwest.long), L.latLng(DUBLIN_BOUNDS.northeast.lat, DUBLIN_BOUNDS.northeast.long))//greater Cork & surrounds
 
@@ -29,12 +29,44 @@ export function getCorkBoundsLatLng () {
   return L.latLngBounds(southWest, northEast)
 }
 
-export function isWithinCork (lat, lng) {
+export function isWithinCork(lat, lng) {
+  return (CORK_BOUNDS.southwest.lat < lat && lat < CORK_BOUNDS.northeast.lat && CORK_BOUNDS.southwest.lng < lng && lng < CORK_BOUNDS.northeast.lng)
+}
+
+export function getCityLatLng() {
+  return L.latLng(51.8985, -8.4756)
+}
+
+const DUBLIN_BOUNDS = {
+  southwest: {
+    lat: 52.9754658325,
+    lng: -6.8639598864
+  },
+  northeast: {
+    lat: 53.7009607624,
+    lng: -5.9835178395
+  }
+}
+
+export function getDublinBoundsLatLng() {
+  // const DUBLIN_BOUNDS = await d3.json('/data/common/dublin-bounds.json')
+  // return  L.latLngBounds(L.latLng(DUBLIN_BOUNDS.southwest.lat,DUBLIN_BOUNDS.southwest.long), L.latLng(DUBLIN_BOUNDS.northeast.lat, DUBLIN_BOUNDS.northeast.long))//greater Dublin & surrounds
+
+  const southWest = L.latLng(52.9754658325, -6.8639598864)
+  const northEast = L.latLng(53.7009607624, -5.9835178395)
+  return L.latLngBounds(southWest, northEast)
+}
+
+export function isWithinDublin(lat, lng) {
   return (DUBLIN_BOUNDS.southwest.lat < lat && lat < DUBLIN_BOUNDS.northeast.lat && DUBLIN_BOUNDS.southwest.lng < lng && lng < DUBLIN_BOUNDS.northeast.lng)
 }
 
-export function getCityLatLng () {
-  return L.latLng(51.8985, -8.4756)
+export function getDublinLatLng() {
+  // const DUBLIN_BOUNDS = await d3.json('/data/common/dublin-bounds.json')
+  // return  L.latLngBounds(L.latLng(DUBLIN_BOUNDS.southwest.lat,DUBLIN_BOUNDS.southwest.long), L.latLng(DUBLIN_BOUNDS.northeast.lat, DUBLIN_BOUNDS.northeast.long))//greater Dublin & surrounds
+  const dubLat = 53.3498
+  const dubLng = -6.2603
+  return L.latLng(dubLat, dubLng)
 }
 
 /**
@@ -86,7 +118,7 @@ const getDefaultMapOptions = function () {
 }
 export { getDefaultMapOptions }
 
-function getCustomMapMarker () {
+function getCustomMapMarker() {
   const cmm = L.Marker.extend({
     options: {
       id: 0
@@ -97,7 +129,7 @@ function getCustomMapMarker () {
 
 export { getCustomMapMarker }
 
-function getCustomMapIcon () {
+function getCustomMapIcon() {
   const cmi = L.Icon.extend({
     options: {
       iconSize: [24, 24] // orig size
