@@ -29,40 +29,25 @@ Solve with async await
   })) */
 // alert('GroupJson8888')
 
-import { getDublinBoundsLatLng } from '../modules/bcd-maps.js'
+import { getCityLatLng } from '../modules/bcd-maps.js'
 // alert('sssssssss')
-const dub_lng = -6.2603
-const dub_lat = 53.42
-let dublinX, dublinY
-const min_zoom = 10
-const max_zoom = 16
-const zoom = min_zoom
+const minZoom = 10
+const maxZoom = 16
+const zoom = minZoom
 // tile layer with correct attribution
-const osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-const osmUrl_BW = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
-const osmUrl_Hot = 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
-const stamenTonerUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
-const stamenTonerUrl_Lite = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
-const wiki = 'https://maps.wikimedia.org/osm-intl/${z}/${x}/${y}.png'
-const osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-const osmAttrib_Hot = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmapGeodemos.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
-const stamenTonerAttrib = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmapGeodemos.org/copyright">OpenStreetMap</a>'
-const cartoDb = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
-const cartoDb_Dark = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
-const cartoDb_Lite = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png'
-const CARTODB_POSITRON = 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png'
-const CARTODB_ATTRIBUTION = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, © <a href="https://carto.com/">CartoDB </a> contributors'
+const BASEMAP = 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png'
+const ATTRIBUTION = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, © <a href="https://carto.com/">CartoDB </a> contributors'
 const columnData = {}
 const punti_mappa = []
 const myTestArray = []
 const cov = 0
 const mapGeodemos = new L.Map('map-geodemos')
-const osm = new L.TileLayer(CARTODB_POSITRON, {
-  minZoom: min_zoom,
-  maxZoom: max_zoom,
-  attribution: CARTODB_ATTRIBUTION
+const osm = new L.TileLayer(BASEMAP, {
+  minZoom: minZoom,
+  maxZoom: maxZoom,
+  attribution: ATTRIBUTION
 })
-mapGeodemos.setView(new L.LatLng(dub_lat, dub_lng), zoom)
+mapGeodemos.setView(getCityLatLng(), zoom)
 mapGeodemos.addLayer(osm)
 
 L.control.locate({
@@ -73,7 +58,7 @@ L.control.locate({
 
 mapGeodemos.addControl(new L.Control.OSMGeocoder({
   placeholder: 'Enter street name, area etc.',
-  bounds: getDublinBoundsLatLng()
+  bounds: getCityLatLng()
 }))
 
 const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
@@ -95,7 +80,7 @@ const naStyle = {
   fillOpacity: 0.5
 }
 
-const mapLayers = getEmptyLayersArray(7)
+const mapLayers = getEmptyLayersArray(8)
 
 const traces = []
 const ntraces = []
@@ -106,7 +91,7 @@ const columnNames = {}
 let columnNames2 = {}
 const tarry = []
 
-d3.csv('/data/geodemos/dublin_zscores_t.csv')
+d3.csv('/data/geodemos/cork_zscores.csv')
   .then((zScores) => {
     zScores.forEach((row, i) => {
       const columnNames = Object.keys(row).sort(function (a, b) { return row[a] - row[b] })
@@ -151,7 +136,7 @@ d3.csv('/data/geodemos/dublin_zscores_t.csv')
       size: 17
 
     },
-      layout.showlegend = false
+    layout.showlegend = false
     layout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
     layout.legend.xanchor = 'right'
 
@@ -175,7 +160,7 @@ d3.csv('/data/geodemos/dublin_zscores_t.csv')
     layout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
 
     layout.plot_bgcolor = '#293135',
-      layout.paper_bgcolor = '#293135'
+    layout.paper_bgcolor = '#293135'
 
     layout.yaxis.title = ''
     layout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
@@ -187,13 +172,13 @@ d3.csv('/data/geodemos/dublin_zscores_t.csv')
       b: 0
 
     }
-    scatterHM()
+    // scatterHM()
     updateGroupTxt('all')
   }) // end then
 let lyt = {}
 
-function scatterHM() {
-  d3.csv('/data/geodemos/dublin_zscores.csv')
+function scatterHM () {
+  d3.csv('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       columnNames2 = Object.keys(zScores[0])
       columnNames2 = columnNames2.reverse()
@@ -226,7 +211,7 @@ function scatterHM() {
       lyt.height = 500
       // lyt.width = 300
       lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      lyt.paper_bgcolor = '#293135'
 
       lyt.title = Object.assign({}, ROW_CHART_LAYOUT.title)
       lyt.title.text = 'Variables Value Distribution (z-scores)'
@@ -241,7 +226,7 @@ function scatterHM() {
 
       },
 
-        lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
+      lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
       lyt.legend.xanchor = 'right'
       lyt.legend.y = 0.1
       lyt.legend.traceorder = 'reversed'
@@ -265,7 +250,7 @@ function scatterHM() {
       lyt.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
 
       lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      lyt.paper_bgcolor = '#293135'
 
       lyt.yaxis.title = ''
       lyt.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
@@ -291,78 +276,43 @@ function scatterHM() {
 }
 // let soc_eco_val=0;
 loadData()
-function loadData(file) {
-  d3.csv('/data/geodemos/dublin_clusters_sa_cluster.csv')
+function loadData (file) {
+  d3.csv('/data/geodemos/cork_clusters_sa_cluster.csv')
     .then((data) => {
       const idClusterLookup = {}
       data.forEach(function (d) {
-        idClusterLookup[d.SMALL_AREA] = d.Cluster
+        idClusterLookup[d.SMALL_AREA] = d.Clusters || 'not found'
       })
       loadSmallAreas(idClusterLookup)
     })
 }
 
-async function loadSmallAreas(lookup) {
+async function loadSmallAreas (lookup) {
+  console.log(lookup)
   const features = []
 
-  const dataBase = '/data/SAs/'
-  const dcc0 = 'DCC_SA_0.geojson'
-  const dcc1 = 'DCC_SA_1.geojson'
-  const dcc2 = 'DCC_SA_2.geojson'
-  // promises
-  const pDCC0 = d3.json(dataBase + dcc0)
-  const pDCC1 = d3.json(dataBase + dcc1)
-  const pDCC2 = d3.json(dataBase + dcc2)
-  const dccSAs = await Promise.all([pDCC0, pDCC1, pDCC2]) // yields an array of 3 feature collections
+  const dataURI = '/data/Small_Areas__Generalised_20m__OSi_National_Boundaries.geojson'
+  const corkSAs = await d3.json(dataURI)
 
-  dccSAs.forEach(sas => {
-    // updateMap(sas)
+  console.log(corkSAs.features)
 
-    sas.features.forEach(sa => {
-      try {
-        const groupNo = lookup[sa.properties.SMALL_AREA]
-        sa.properties.groupnumber = groupNo
-
-        addFeatureToLayer(sa, parseInt(groupNo) - 1) // feature, layer index
-      } catch {
-        sa.properties.groupnumber = 'NA'
-        addFeatureToLayer(sa, 'NA') // Additional layer for NA sas
-      }
-      // console.log(layerNo)
-    })
-    // alert(JSON.stringify(sas.features))
+  corkSAs.features.forEach(sa => {
+    try {
+      const groupNo = lookup[sa.properties.SMALL_AREA]
+      sa.properties.groupnumber = groupNo
+      mapLayers[parseInt(groupNo) - 1].addData(sa)
+    } catch {
+      sa.properties.groupnumber = 'NA'
+      addFeatureToLayer(sa, 'NA') // Additional layer for NA sas
+      mapLayers[7].addData(sa)
+    }
+    // console.log(layerNo)
   })
 
-  // Fingal, DL/R, SDCC
-  const fcc = 'FCC_SA_0.geojson'
-  const dlr = 'DLR_SA_0.geojson'
-  const sdcc = 'SDCC_SA_0.geojson'
-  const testd = 'Small_Areas__Generalised_20m__OSi_National_Boundaries.geojson'
-  const pfcc = d3.json(dataBase + fcc)
-  const pdlr = d3.json(dataBase + dlr)
-  const psdcc = d3.json(dataBase + sdcc)
-  const ts = d3.json(dataBase + testd)
-
-  const otherSAs = await Promise.all([pfcc, pdlr, psdcc, ts])
-  otherSAs.forEach(sas => {
-    // updateMap(sas)
-    sas.features.forEach(sa => {
-      try {
-        const groupNo = lookup[sa.properties.SMALL_AREA]
-        sa.properties.groupnumber = groupNo
-
-        addFeatureToLayer(sa, parseInt(groupNo) - 1) // feature, layer index
-      } catch {
-        // console.warn(`Error on lookup for sa. Adding to NA layer \n ${JSON.stringify(sa)} `)
-        sa.properties.groupnumber = 'NA'
-        addFeatureToLayer(sa, 'NA') // Additional layer for NA sas
-      }
-    })
-  })
   AddLayersToMap()
 }
 
-function getEmptyLayersArray(total) {
+function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -375,15 +325,15 @@ function getEmptyLayersArray(total) {
   }
   return layersArr
 }
-function addFeatureToLayer(feature, layerNo) {
+function addFeatureToLayer (feature, layerNo) {
   if (layerNo === 'NA') {
 
   } else {
-    mapLayers[layerNo].addData(feature)
+
   }
 }
 
-function getLayerStyle(index) {
+function getLayerStyle (index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -393,11 +343,11 @@ function getLayerStyle(index) {
     fillOpacity: 0.9
   }
 }
-function getLayerColor(index) {
+function getLayerColor (index) {
   return GEODEMOS_COLORWAY[index]
 }
 
-function updateGroupTxt(no) {
+function updateGroupTxt (no) {
   if (document.contains(document.getElementById('myhref'))) {
     document.getElementById('href').remove()
   }
@@ -414,7 +364,7 @@ function updateGroupTxt(no) {
     d3.select('#group-text').text(dublinRegionsJson[0][no]).style('font-size', '15px')
   })
 }
-function getFColor(d) {
+function getFColor (d) {
   return d > 2.0 ? '#FFFFFF'
     : d > 1.5 ? '#BFB6B3'
       : d > 1.0 ? '#d99a1c'
@@ -428,7 +378,7 @@ const ttt = []
 const value = 0
 const text = ''
 
-function onEachFeature(feature, layer) {
+function onEachFeature (feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -478,9 +428,8 @@ d3.select('#group-buttons').selectAll('img').on('click', function () {
   }
 })
 
-function AddLayersToMap() {
+function AddLayersToMap () {
   mapLayers.forEach((l, k) => {
-    // alert( soc_eco_val+ '---'+ traces[k].x[soc_eco_val])
     if (!mapGeodemos.hasLayer(l)) {
       const mlay = mapLayers[k]
       // let cov=traces[k-1].x[soc_eco_val];
@@ -497,7 +446,7 @@ function AddLayersToMap() {
   })
 }
 
-function ResetImages(imgid) {
+function ResetImages (imgid) {
   const imgsrcarr = ['/images/icons/Icon_eye_selected-all.svg',
     '/images/icons/Icon_eye_selected-1.svg',
     '/images/icons/Icon_eye_selected-2.svg',
@@ -532,7 +481,7 @@ function ResetImages(imgid) {
   selectedImg.src = imgsrcarr[imgid]
 }
 
-function addHorizrntalBars(value, text) {
+function addHorizrntalBars (value, text) {
   // alert(value + text)
   const GroupsArray = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
   hmlayout = Object.assign({}, ROW_CHART_LAYOUT)
