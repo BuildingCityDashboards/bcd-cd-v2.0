@@ -291,20 +291,22 @@ async function loadSmallAreas (lookup) {
   console.log(lookup)
   const features = []
 
-  const dataURI = '/data/Small_Areas__Generalised_20m__OSi_National_Boundaries.geojson'
+  const dataURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
   const corkSAs = await d3.json(dataURI)
 
   console.log(corkSAs.features)
 
   corkSAs.features.forEach(sa => {
     try {
-      const groupNo = lookup[sa.properties.SMALL_AREA]
-      sa.properties.groupnumber = groupNo
+      console.log(sa)
+      const groupNo = lookup[sa.attrributes.SMALL_AREA]
+      sa.attrributes.groupnumber = groupNo
+      console.log(sa.attrributes.SMALL_AREA)
       mapLayers[parseInt(groupNo) - 1].addData(sa)
-    } catch {
-      sa.properties.groupnumber = 'NA'
-      addFeatureToLayer(sa, 'NA') // Additional layer for NA sas
-      mapLayers[7].addData(sa)
+    } catch (err) {
+      // sa.properties.groupnumber = 'NA'
+      // mapLayers[7].addData(sa)
+      console.log(err)
     }
     // console.log(layerNo)
   })
@@ -316,7 +318,6 @@ function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
-
       style: getLayerStyle(i),
       onEachFeature: onEachFeature
 
@@ -324,13 +325,6 @@ function getEmptyLayersArray (total) {
     )
   }
   return layersArr
-}
-function addFeatureToLayer (feature, layerNo) {
-  if (layerNo === 'NA') {
-
-  } else {
-
-  }
 }
 
 function getLayerStyle (index) {
