@@ -1034,7 +1034,6 @@ html {
     grid-column: 2 / 6;
     grid-row: 2 / 4;
     line-height: 0.72;
-    letter-spacing: -0.5px;
   }
 
 
@@ -1230,7 +1229,7 @@ html {
     grid-column: 2 / 6;
     grid-row: 2 / 4;
     line-height: 0.72;
-    letter-spacing: -0.5px;
+
   }
 
   #hero-time-weather {
