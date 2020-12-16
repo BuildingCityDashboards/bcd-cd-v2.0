@@ -1,0 +1,64 @@
+include page-links.pug
+
+mixin nav-item(name, link)
+    li.side-menu__nav-item
+        a.side-menu__nav-link(href="/"+link class=(active === name ? "active" : undefined))
+            //- +svg("","icon__"+link)(class="icon icon--small side-menu__icon")
+            span= name
+
+mixin nav-dropdown(name, link)
+    li.side-menu__nav-item.dropdown(class=(active === name? "dropdown--show" : undefined))
+        a.side-menu__nav-link.dropdown__link(href="/"+link  class=(active === name ? "" : undefined))
+            //- +svg("","icon__"+link)(class="icon icon--small side-menu__icon")
+            span= name
+        a.dropdown__toggle
+            <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
+
+            //- +svg("../../../images/arrow_down.svg","icon__arrow")(class="icon icon--small side-menu__icon")
+            span.sr-only Toggle Dropdown
+        .dropdown__menu
+            each val, key in subLinks
+                +dropdown-item(key, val, link) 
+        
+
+form(class="form-inline float-right search-box")
+    //- input(class="search-box__input" type="text" id="userinput" onkeyup="searchSite()" placeholder="Search" aria-label="Search")
+    input(class="search-box__input" type="text" id="userinput" placeholder="Search" aria-label="Search")
+    #suggestions
+
+button.side-menu__toggler.side-menu__right
+    .menu-button.search__trigger
+        img(height='20px' width='20px' class="float-right" title="Click to open search box" src="../images/magnifying-glass.svg")
+    .menu-button
+        a(href="/portal")
+          img(height='20px' width='20px' class="float-right" title="Go to Portal" src="../images/icons/icons-24px/portal_icon.svg") 
+          //- <a href="../html-link.htm"><img src="flower.jpg" style="width:82px; height:86px" title="White flower" alt="Flower"></a>     
+ 
+
+
+button.side-menu__toggler.s-m__trigger.side-menu__left
+    .menu-button
+        .menu-button__bar.menu-button__bar--top 
+        .menu-button__bar.menu-button__bar--middle 
+        .menu-button__bar.menu-button__bar--bottom
+
+nav.side-menu
+        ul.side-menu__nav
+            each parent, key in sideLinks
+                if parent === 'themes'
+                  +nav-dropdown(key, parent)
+                else
+                  +nav-item(key, parent)
+        .side-menu__footer
+          a(href="https://dashboards.maynoothuniversity.ie/" target="_blank")
+            img.side-menu__img(src="../images/bcd-logo.png" alt="BCD-Logo")
+            p.side-menu__p.side-menu__p--top Building
+            p.side-menu__p City
+            p.side-menu__p Dashboards
+
+.side-menu__overlay.s-m__trigger
+  
+  
+//- append scripts
+  script(src='/lib/flexsearch.compact.js' type='text/javascript')
+  script(src='/javascripts/autocomplete.js' type='text/javascript')
