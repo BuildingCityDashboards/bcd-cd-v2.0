@@ -211,18 +211,20 @@
 }
 
 .dropdown__toggle {
-  padding: 0 1rem;
-  padding-top: 16px;
+  padding: 0;
   grid-area: arrow;
   cursor: pointer;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropdown__toggle svg {
   fill: white;
-  width: auto;
+  width: 16px;
   height: 16px;
-
+  transform: rotate(-90deg);
 }
 
 .dropdown__toggle:active,
