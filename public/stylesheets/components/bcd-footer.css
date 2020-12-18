@@ -4,21 +4,21 @@
 
 #footer h6 {
   background-color: #3a3a3a;
-  color: #f8f8f8;
+  color: #e95d4f;
+  ;
 }
 
 #footer-nav {
   height: 50vh;
   padding: 32px 8px;
   border: none;
-  /* border-bottom: 1px solid #343a40; */
 }
 
 #footer-nav .row {
   width: 100%;
   margin: 0;
   padding: 0;
-  /* background-color: #ffffff; */
+
 }
 
 #footer-address {
@@ -76,6 +76,11 @@
 #partners {
   display: flex;
   justify-content: space-evenly;
+
+}
+
+#partners-heading {
+  color: #f8f8f8;
 }
 
 .partner {
@@ -85,10 +90,12 @@
   cursor: pointer;
 }
 
-.partner img {
+.partner a img {
   width: 100%;
   opacity: .55;
   transition: all;
+  height: auto;
+  padding-left: 0;
 }
 
 .partner:hover img {
@@ -131,10 +138,15 @@
   height: auto;
 }
 
+#accreditation-heading {
+  color: #f8f8f8;
+}
+
 #accreditation p {
   padding: 0px 16px;
   font-size: 12px;
   font-weight: 300;
+  color: #f8f8f8;
 }
 
 .copyright {
