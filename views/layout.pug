@@ -18,20 +18,25 @@ html(lang='en')
 
     //- favicon
     link(rel="icon", type="image/png", sizes="32x32", href="/favicon-32x32.png")
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/bcd-root.css')
     link(rel='stylesheet', href='/stylesheets/bcd-styles.css')
+    link(rel='stylesheet', href='/stylesheets/components/bcd-navbar.css')
+    link(rel='stylesheet', href='/stylesheets/components/bcd-side-menu.css')
+    link(rel='stylesheet', href='/stylesheets/components/bcd-footer.css')
+
   
     title= title
 
 
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+    
     //- link(href="https://fonts.googleapis.com/css?family=Roboto:300,500,700&display=swap" rel="stylesheet")
 
     //- link(rel='stylesheet', href='/stylesheets/landing-page.css')
-    link(rel='stylesheet', href='/stylesheets/components/bcd-navbar.css')
+   
    
     //- link(rel='stylesheet', href='/stylesheets/type.css')
-    link(rel='stylesheet', href='/stylesheets/side-menu.css')
+  
     //- link(rel='stylesheet', href='/stylesheets/icon-nav.css')
         
     //- link(rel='stylesheet', href='/stylesheets/accordion.css')
@@ -39,7 +44,7 @@ html(lang='en')
     
     //- //- link(rel='stylesheet', href='/stylesheets/grid.css')
     //- //- link(rel='stylesheet', href='/stylesheets/card.css')
-    //- link(rel='stylesheet', href='/stylesheets/footer.css')
+  
     //- link(rel='stylesheet', href='/stylesheets/toggle-button.css')
     //- link(rel='stylesheet', href='/stylesheets/tool-tip.css')
       
@@ -64,7 +69,7 @@ html(lang='en')
       //-add subnav.pug here if its the themes page
       block content
 
-    //- include component/footer.pug
+    include component/footer.pug
 
     //- include component/scroll-to-top.pug
 
