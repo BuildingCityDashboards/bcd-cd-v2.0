@@ -29,7 +29,7 @@ Solve with async await
   })) */
 // alert('GroupJson8888')
 
-import { getCityLatLng } from '../modules/bcd-maps.js'
+import { getCityLatLng } from '../../modules/bcd-maps.js'
 // alert('sssssssss')
 const minZoom = 10
 const maxZoom = 16
@@ -136,7 +136,7 @@ d3.csv('/data/geodemos/cork_zscores.csv')
       size: 17
 
     },
-      layout.showlegend = false
+    layout.showlegend = false
     layout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
     layout.legend.xanchor = 'right'
 
@@ -160,7 +160,7 @@ d3.csv('/data/geodemos/cork_zscores.csv')
     layout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
 
     layout.plot_bgcolor = '#293135',
-      layout.paper_bgcolor = '#293135'
+    layout.paper_bgcolor = '#293135'
 
     layout.yaxis.title = ''
     layout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
@@ -177,7 +177,7 @@ d3.csv('/data/geodemos/cork_zscores.csv')
   }) // end then
 let lyt = {}
 
-function scatterHM() {
+function scatterHM () {
   d3.csv('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       columnNames2 = Object.keys(zScores[0])
@@ -211,7 +211,7 @@ function scatterHM() {
       lyt.height = 500
       // lyt.width = 300
       lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      lyt.paper_bgcolor = '#293135'
 
       lyt.title = Object.assign({}, ROW_CHART_LAYOUT.title)
       lyt.title.text = 'Variables Value Distribution (z-scores)'
@@ -226,7 +226,7 @@ function scatterHM() {
 
       },
 
-        lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
+      lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
       lyt.legend.xanchor = 'right'
       lyt.legend.y = 0.1
       lyt.legend.traceorder = 'reversed'
@@ -250,7 +250,7 @@ function scatterHM() {
       lyt.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
 
       lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      lyt.paper_bgcolor = '#293135'
 
       lyt.yaxis.title = ''
       lyt.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
@@ -277,7 +277,7 @@ function scatterHM() {
 // let soc_eco_val=0;
 loadData()
 
-function loadData(file) {
+function loadData (file) {
   d3.csv('/data/geodemos/cork_clusters_sa_cluster.csv')
     .then((data) => {
       const idClusterLookup = {}
@@ -288,7 +288,7 @@ function loadData(file) {
     })
 }
 
-async function loadSmallAreas(lookup) {
+async function loadSmallAreas (lookup) {
   console.log(lookup)
   const features = []
 
@@ -317,7 +317,7 @@ async function loadSmallAreas(lookup) {
   // AddLayersToMap()
 }
 
-function getEmptyLayersArray(total) {
+function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -330,7 +330,7 @@ function getEmptyLayersArray(total) {
   return layersArr
 }
 
-function getLayerStyle(index) {
+function getLayerStyle (index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -340,11 +340,11 @@ function getLayerStyle(index) {
     fillOpacity: 0.9
   }
 }
-function getLayerColor(index) {
+function getLayerColor (index) {
   return GEODEMOS_COLORWAY[index]
 }
 
-function updateGroupTxt(no) {
+function updateGroupTxt (no) {
   if (document.contains(document.getElementById('myhref'))) {
     document.getElementById('href').remove()
   }
@@ -361,7 +361,7 @@ function updateGroupTxt(no) {
     d3.select('#group-text').text(dublinRegionsJson[0][no]).style('font-size', '15px')
   })
 }
-function getFColor(d) {
+function getFColor (d) {
   return d > 2.0 ? '#FFFFFF'
     : d > 1.5 ? '#BFB6B3'
       : d > 1.0 ? '#d99a1c'
@@ -375,7 +375,7 @@ const ttt = []
 const value = 0
 const text = ''
 
-function onEachFeature(feature, layer) {
+function onEachFeature (feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -425,7 +425,7 @@ d3.select('#group-buttons').selectAll('img').on('click', function () {
   }
 })
 
-function AddLayersToMap() {
+function AddLayersToMap () {
   mapLayers.forEach((l, k) => {
     if (!mapGeodemos.hasLayer(l)) {
       const mlay = mapLayers[k]
@@ -443,7 +443,7 @@ function AddLayersToMap() {
   })
 }
 
-function ResetImages(imgid) {
+function ResetImages (imgid) {
   const imgsrcarr = ['/images/icons/Icon_eye_selected-all.svg',
     '/images/icons/Icon_eye_selected-1.svg',
     '/images/icons/Icon_eye_selected-2.svg',
@@ -478,7 +478,7 @@ function ResetImages(imgid) {
   selectedImg.src = imgsrcarr[imgid]
 }
 
-function addHorizrntalBars(value, text) {
+function addHorizrntalBars (value, text) {
   // alert(value + text)
   const GroupsArray = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
   hmlayout = Object.assign({}, ROW_CHART_LAYOUT)
