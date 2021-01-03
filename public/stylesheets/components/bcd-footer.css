@@ -102,36 +102,11 @@
   opacity: 1;
 }
 
-.partner.dcc {
-  max-width: 140px;
+.partner {
+  height: 48px;
 }
 
-.partner.fcc {
-  max-width: 155px;
-}
 
-.partner.mu {
-  max-width: 140px;
-}
-
-.partner.sfi {
-  max-width: 120px;
-}
-
-.partner.sdcc {
-  max-width: 130px;
-  padding-top: 8px;
-}
-
-.partner.osi {
-  max-width: 110px;
-  padding-top: 15px;
-}
-
-.partner.cso {
-  max-width: 180px;
-  padding-top: 15px;
-}
 
 #accreditation {
   width: 100%;
