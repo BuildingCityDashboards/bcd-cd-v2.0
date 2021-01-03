@@ -76,6 +76,7 @@
 #partners {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 
 }
 
@@ -84,29 +85,28 @@
 }
 
 .partner {
+  height: 48px;
   max-width: 130px;
-  float: center;
-  margin: 16px 8px;
+  display: flex;
+  align-items: center;
+  /* margin: 16px; */
+  padding: 16px;
   cursor: pointer;
+
 }
 
 .partner a img {
-  width: 100%;
   opacity: .55;
   transition: all;
-  height: auto;
-  padding-left: 0;
+  padding: 0;
+  /* height: 100%; */
+  max-width: 100%;
+  max-height: 36px;
 }
 
 .partner:hover img {
   opacity: 1;
 }
-
-.partner {
-  height: 48px;
-}
-
-
 
 #accreditation {
   width: 100%;
