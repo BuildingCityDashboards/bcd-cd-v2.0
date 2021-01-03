@@ -44,9 +44,10 @@ html {}
   grid-row: 2 / 3;
 }
 
-#sub-home__icon img {
-  width: auto;
+#sub-home__icon svg {
+  width: 100%;
   height: auto;
+  /* stroke: red; */
 }
 
 #sub-home__title {
@@ -302,11 +303,6 @@ html {}
     grid-row: 2 / 4;
   }
 
-  #sub-home__icon img {
-    width: 100px;
-    height: 100px;
-  }
-
   #sub-home__title {
     display: flex;
     display: -ms-flexbox;
@@ -486,10 +482,6 @@ html {}
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 160px repeat(4, auto);
   }
-
-  #sub-home__icon {}
-
-  #sub-home__icon img {}
 
   #sub-home__title {}
 
