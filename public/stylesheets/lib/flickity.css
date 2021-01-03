@@ -50,7 +50,9 @@ https://flickity.metafizzy.co
   background: hsla(0, 0%, 100%, 0.75);
   border: none;
   color: #333;
+
 }
+
 
 .flickity-button:hover {
   background: white;
@@ -59,7 +61,7 @@ https://flickity.metafizzy.co
 
 .flickity-button:focus {
   outline: none;
-  box-shadow: 0 0 0 5px #19F;
+  box-shadow: none;
 }
 
 .flickity-button:active {
