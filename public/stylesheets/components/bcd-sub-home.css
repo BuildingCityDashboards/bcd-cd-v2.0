@@ -59,14 +59,15 @@ html {}
   grid-row: 2 / 3;
   line-height: 0.71;
   letter-spacing: -0.5px;
+  transform: translateX(-25%);
 }
 
 #sub-home__title h1 {
   margin: 0;
   font-family: 'Roboto',
     sans-serif;
-  font-size: 24px;
-  font-weight: 200;
+  font-size: 36px;
+  font-weight: bold;
 }
 
 #sub-home__description {
@@ -138,7 +139,8 @@ html {}
 
 .sub-home__card .card__header h1 {
   margin: 0;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .sub-home__card .card__body {
