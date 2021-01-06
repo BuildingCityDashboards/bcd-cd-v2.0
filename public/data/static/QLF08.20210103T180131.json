@@ -1,0 +1,235 @@
+{
+    "class": "dataset",
+    "dimension": {
+        "STATISTIC": {
+            "category": {
+                "index": [
+                    "QLF08C01",
+                    "QLF08C02",
+                    "QLF08C03",
+                    "QLF08C04",
+                    "QLF08C05"
+                ],
+                "label": {
+                    "QLF08C01": "Persons aged 15 years and over in Employment (Thousand)",
+                    "QLF08C02": "Unemployed Persons aged 15 years and over (Thousand)",
+                    "QLF08C03": "Persons aged 15 years and over in Labour Force (Thousand)",
+                    "QLF08C04": "ILO Unemployment Rate (15 - 74 years) (%)",
+                    "QLF08C05": "ILO Participation Rate (15 years and over) (%)"
+                },
+                "unit": {
+                    "QLF08C01": {
+                        "decimals": 1,
+                        "label": "Thousand",
+                        "position": "end"
+                    },
+                    "QLF08C02": {
+                        "decimals": 1,
+                        "label": "Thousand",
+                        "position": "end"
+                    },
+                    "QLF08C03": {
+                        "decimals": 1,
+                        "label": "Thousand",
+                        "position": "end"
+                    },
+                    "QLF08C04": {
+                        "decimals": 1,
+                        "label": "%",
+                        "position": "end"
+                    },
+                    "QLF08C05": {
+                        "decimals": 1,
+                        "label": "%",
+                        "position": "end"
+                    }
+                }
+            },
+            "label": "Statistic"
+        },
+        "TLIST(Q1)": {
+            "category": {
+                "index": [
+                    "20203"
+                ],
+                "label": {
+                    "20203": "2020Q3"
+                }
+            },
+            "label": "Quarter"
+        },
+        "C02196V04140": {
+            "category": {
+                "index": [
+                    "-",
+                    "IE04",
+                    "IE041",
+                    "IE042",
+                    "IE05",
+                    "IE051",
+                    "IE052",
+                    "IE053",
+                    "IE06",
+                    "IE061",
+                    "IE062",
+                    "IE063"
+                ],
+                "label": {
+                    "-": "State",
+                    "IE04": "Northern and Western",
+                    "IE041": "Border",
+                    "IE042": "West",
+                    "IE05": "Southern",
+                    "IE051": "Mid-West",
+                    "IE052": "South-East",
+                    "IE053": "South-West",
+                    "IE06": "Eastern and Midland",
+                    "IE061": "Dublin",
+                    "IE062": "Mid-East",
+                    "IE063": "Midland"
+                }
+            },
+            "label": "Region"
+        }
+    },
+    "extension": {
+        "matrix": "QLF08",
+        "reasons": [],
+        "language": {
+            "code": "en",
+            "name": "English"
+        },
+        "contact": {
+            "name": "Jim Dalton",
+            "email": "labour@cso.ie",
+            "phone": "(+353) 21 453 5623"
+        },
+        "subject": {
+            "code": 26,
+            "value": "Labour Market"
+        },
+        "product": {
+            "code": "LFS",
+            "value": "Labour Force Survey Quarterly Series"
+        },
+        "official": true,
+        "copyright": {
+            "name": "Central Statistics Office, Ireland",
+            "code": "CSO",
+            "href": "https://www.cso.ie/"
+        },
+        "exceptional": false,
+        "reservation": false,
+        "archive": false,
+        "experimental": false,
+        "analytical": false
+    },
+    "href": "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/QLF08/JSON-stat/2.0/en",
+    "id": [
+        "STATISTIC",
+        "TLIST(Q1)",
+        "C02196V04140"
+    ],
+    "label": "Persons aged 15 years and over",
+    "link": {
+        "alternate": [
+            {
+                "type": "text/csv",
+                "href": "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/QLF08/CSV/1.0/en"
+            },
+            {
+                "type": "application/json",
+                "href": "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/QLF08/JSON-stat/1.0/en"
+            },
+            {
+                "type": "application/octet-stream",
+                "href": "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/QLF08/PX/2013/en"
+            },
+            {
+                "type": "application/base64",
+                "href": "https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/QLF08/XLSX/2007/en"
+            }
+        ]
+    },
+    "note": [
+        "Please see https://www.cso.ie/en/methods/revnuts23/index.html on the composition of NUTS2 and NUTS3 Regions ",
+        "For more information, please go to the [url=https://www.cso.ie/en/statistics/labourmarket/labourforcesurveylfs/]statistical release page[/url] on our website."
+    ],
+    "role": {
+        "metric": [
+            "STATISTIC"
+        ],
+        "time": [
+            "TLIST(Q1)"
+        ]
+    },
+    "size": [
+        5,
+        1,
+        12
+    ],
+    "updated": "2020-11-30T11:00:00.000Z",
+    "value": [
+        2295.2,
+        390,
+        169.5,
+        220.4,
+        740.1,
+        213.3,
+        192.6,
+        334.2,
+        1165.1,
+        692.1,
+        338.8,
+        134.2,
+        174.7,
+        27.4,
+        12.5,
+        14.9,
+        51.5,
+        15.4,
+        16,
+        20.1,
+        95.7,
+        61.3,
+        24.5,
+        10,
+        2469.8,
+        417.4,
+        182,
+        235.4,
+        791.6,
+        228.7,
+        208.6,
+        354.3,
+        1260.8,
+        753.4,
+        363.3,
+        144.1,
+        7.1,
+        6.6,
+        6.9,
+        6.4,
+        6.6,
+        6.8,
+        7.7,
+        5.7,
+        7.6,
+        8.2,
+        6.8,
+        6.9,
+        62,
+        59.5,
+        56.2,
+        62.3,
+        60,
+        58.2,
+        59.5,
+        61.6,
+        64.2,
+        65.1,
+        63.7,
+        61.1
+    ],
+    "version": "2.0"
+}
