@@ -5,7 +5,7 @@ html {}
 #sub-home {
   position: relative;
   width: 100vw;
-  min-width: 360px;
+  min-width: 320px;
   height: 100vh;
   min-height: 540px;
   max-height: 768px;
@@ -45,8 +45,9 @@ html {}
 
 #sub-home__icon svg {
   width: 100%;
-  height: 56px;
-  /* stroke: red; */
+  height: 48px;
+  stroke-width: 1px;
+  ;
 }
 
 #sub-home__title {
@@ -67,31 +68,34 @@ html {}
   font-family: 'Roboto',
     sans-serif;
   font-size: 36px;
-  font-weight: bold;
+  font-weight: 300;
 }
 
 #sub-home__description {
   display: flex;
-  align-items: flex-start;
+  justify-items: center;
   grid-column: 1 / 5;
   grid-row: 3 / 4;
-  padding: 0 16px 16px;
+  padding: 0 16px 8px;
 }
 
 #sub-home__description p {
   font-size: 14px;
+  text-align: center;
+  color: black;
+  font-weight: lighter;
 }
 
 #sub-home__carousel {
-
-  min-height: 256px;
+  min-height: 320px;
   height: auto;
   grid-column: span 4;
   grid-row: 4 / 5;
 }
 
 .carousel {
-  height: 320px;
+  min-height: 320px;
+  height: 100%;
   /* space for prev/next buttons */
   margin: 0 16px;
   background: transparent;
@@ -99,7 +103,7 @@ html {}
 
 .carousel-cell {
   width: 100%;
-  height: inherit;
+  height: 100%;
   margin-right: 8px;
   border-radius: 4px;
   background: transparent;
@@ -107,14 +111,12 @@ html {}
   /* gap between cards */
 }
 
-.carousel-cell:before {}
-
 .sub-home__card {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   height: inherit;
   padding: 16px;
-  /* border: 1px solid rgba(0, 0, 0, 0); */
   background-color: white;
   flex-direction: column;
 }
@@ -130,8 +132,6 @@ html {}
 
 .sub-home__card .card__header {
   display: flex;
-  padding-bottom: 8px;
-  /* border-bottom: 1px solid rgba(33, 39, 42, 0.8); */
   align-items: center;
   flex-direction: row;
   justify-content: center;
@@ -140,40 +140,55 @@ html {}
 .sub-home__card .card__header h1 {
   margin: 0;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .sub-home__card .card__body {
   display: block;
+  margin: auto;
   width: auto;
   height: auto;
   padding: 8px 0;
   overflow-y: auto;
-  text-align: left;
-  /* justify-content: space-between; */
+
 }
 
 .sub-home__card .card__body p {
   margin: 0;
   margin-bottom: 8px;
   font-size: 14px;
-  line-height: 1.7;
-  font-weight: 500;
+  line-height: 1.5;
+  font-weight: 400;
+  text-align: left;
 }
 
-.sub-home__card .card__body a {
+/* italics used for 'under construction' */
+.sub-home__card .card__body i {
+  margin: 0;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  text-align: center;
+}
+
+
+.sub-home__card .card__links {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.sub-home__card .card__links a {
   font-size: 14px;
   line-height: 1.7;
   font-weight: bold;
+  text-align: center;
 }
 
 .sub-home__card .card__icon {
   border: none;
 }
-
-.sub-home__card .card__icon img {}
-
-/* smaller, dark, rounded square */
 
 /* options for carousel dots */
 .flickity-page-dots .dot {
@@ -192,7 +207,6 @@ html {}
 }
 
 .flickity-button:hover {
-  /* background: #F90; */
   background: transparent;
 }
 
@@ -202,31 +216,27 @@ html {}
   border-radius: 4px;
 }
 
-/* icon color */
-
 .flickity-button-icon {
   /* fill : #6fd1f6; */
   fill: grey;
 }
 
 /* position outside */
-
 .flickity-prev-next-button.previous {
   left: -32px;
 }
 
 .flickity-prev-next-button.next {
   right: -32px;
-
 }
 
 .flickity-button:focus {
   /* outline: none; box-shadow: 0 0 0 5px #19F; */
 }
 
-.sub-home-carousel__card {}
+@media only screen and (orientation: landscape) {}
 
-@media only screen and (min-width : 768px) {
+@media only screen and (min-device-width : 768px) {
   #stories-home__carousel {
     height: 320px;
     min-height: 320px;
@@ -253,7 +263,7 @@ html {}
 }
 
 /* iPad Pro */
-@media only screen and (min-width : 1024px) {
+@media only screen and (min-device-width : 1024px) {
 
   #stories-home__carousel {
     height: 360px;
@@ -274,7 +284,7 @@ html {}
 }
 
 /* laptop with MDPI */
-@media only screen and (min-width : 1280px) {
+@media only screen and (min-device-width : 1280px) {
 
 
   #sub-home {
@@ -473,7 +483,7 @@ html {}
   .sub-home-carousel__card {}
 }
 
-@media only screen and (min-width : 1920px) {
+@media only screen and (min-device-width : 1920px) {
   #sub-home {
     position: relative;
     width: 100vw;

@@ -3,13 +3,10 @@ mixin card-sub-home({id='',title='Title', icon='', description='Description',lin
       .card__header
         //- img(src= icon).card__icon
         h1.card__title=title
-      .card__body
-        div
-          p!=description
-                      
+      .card__body!=description
+      .card__links                
           each l in links
-            p
-              <a href= #{l.href}>#{l.name} </a>
+            <a href= #{l.href}>#{l.name} </a>
           
         
       
