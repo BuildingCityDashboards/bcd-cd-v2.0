@@ -395,36 +395,26 @@ html {}
 /* laptop with MDPI */
 @media only screen and (min-device-width : 1280px) {
 
-
   #sub-home {
     position: relative;
     width: 100vw;
-    min-width: 1280px;
     height: 100vh;
     min-height: 700px;
-    max-height: none;
+    max-height: 100vh;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
     overflow-y: auto;
+    overflow-x: hidden;
     text-align: center;
     text-align: left;
     align-self: flex-start;
-    font-family: 'Roboto',
-      sans-serif;
-    /* max-width: 1280px; */
+
   }
 
   #sub-home__grid {
-    display: grid;
-    width: inherit;
-    min-width: inherit;
-    height: auto;
     min-height: 700px;
     max-height: none;
-    padding: 0 16px;
-
-    overflow-y: scroll;
+    padding: 0 32px;
     justify-content: center;
     grid-gap: 16px;
     grid-template-columns: repeat(12, 1fr);

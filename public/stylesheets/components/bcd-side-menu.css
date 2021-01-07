@@ -123,9 +123,11 @@
   font-weight: 500;
 }
 
+
 .side-menu__nav-link.active,
 .side-menu__nav-link:focus,
-.side-menu__nav-link:hover {
+.side-menu__nav-link:hover,
+.side-menu__nav-link:visited {
   color: rgba(255, 255, 255, 0.95);
   background-color: rgba(255, 255, 255, 0.12);
   border-left: 5px solid white;
@@ -203,7 +205,8 @@
 }
 
 .dropdown-item:focus,
-.dropdown-item:hover {
+.dropdown-item:hover,
+.dropdown-item:visited {
   color: rgba(255, 255, 255, 0.95);
   background-color: rgba(255, 255, 255, 0.12);
   border-left: 5px solid white;
