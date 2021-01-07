@@ -398,64 +398,44 @@ html {}
   #sub-home {
     position: relative;
     width: 100vw;
+    min-width: 1280px;
     height: 100vh;
     min-height: 700px;
     max-height: 100vh;
-    margin: 0;
-    padding: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    text-align: center;
-    text-align: left;
-    align-self: flex-start;
-
   }
 
   #sub-home__grid {
     min-height: 700px;
-    max-height: none;
     padding: 0 32px;
-    justify-content: center;
     grid-gap: 16px;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 120px repeat(3, auto) 60px;
+    grid-template-rows: 112px repeat(3, auto) 60px;
   }
 
   #sub-home__icon {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    grid-column: 2 / 5;
+    grid-column: 3 / 4;
     grid-row: 2 / 4;
+    transform: translate(0, 0);
   }
 
   #sub-home__title {
-    display: flex;
-    display: -ms-flexbox;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
     grid-column: 5 / 12;
     grid-row: 2 / 3;
+    transform: translateX(0);
   }
 
   #sub-home__title h1 {
-    margin: 0;
-    font-family: 'Roboto',
-      sans-serif;
     font-size: 60px;
-    font-weight: 200;
     line-height: 72px;
     letter-spacing: -0.5px;
   }
 
   #sub-home__description {
-    display: flex;
-    align-items: center;
-    grid-column: 5 / 12;
+    grid-column: 5 / 13;
     grid-row: 3 / 4;
-
+    transform: translate(0, 0);
   }
 
   #sub-home__description p {
@@ -464,122 +444,66 @@ html {}
   }
 
   #sub-home__carousel {
-    height: auto;
+    height: 400px;
     min-height: 400px;
     grid-column: 1 / 13;
     grid-row: 4 / 5;
   }
 
   .carousel {
-    height: 420px;
+    height: 400px;
     margin: 0 24px;
-    padding: 32px 0;
-    background: transparent;
-    /* space for prev/next buttons */
   }
 
   .carousel-cell {
+    height: 400px;
     width: calc(33% - 14px);
-    height: inherit;
     margin-right: 28px;
-    border-radius: 4px;
-    background: transparent;
-    /* counter-increment : gallery-cell; */
-    /* gap between cards */
   }
 
-  .carousel-cell:before {}
-
   .sub-home__card {
-    display: flex;
-    height: inherit;
-    padding: 24px;
-    flex-direction: column;
+    height: 100%;
   }
 
   .sub-home__card .card__header {
-    display: flex;
-    height: 96px;
-    padding-bottom: 16px;
-    /* border-bottom: 1px solid rgba(83, 89, 92, 0.8); */
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
+    /* height: 96px; */
   }
 
   .sub-home__card .card__header h1 {
-    font-size: 20px;
+    font-size: 28px;
+    line-height: 32px;
   }
 
-  .sub-home__card .card__body {
-    display: flex;
-    width: auto;
-    height: 304px;
-    padding-top: 24px;
-    overflow-y: auto;
-    text-align: left;
-    flex-direction: column;
-    justify-content: center;
-    /* vertical-align: middle; */
-    /* justify-content: space-between; */
-  }
+  .sub-home__card .card__body {}
 
   .sub-home__card .card__body p {
     margin: 0;
     padding: 0;
     padding-bottom: 8px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .sub-home__card .card__body a {
     margin: 0;
     padding: 0;
     padding-bottom: 8px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
-  .sub-home__card .card__icon {
-    border: none;
-  }
-
-  .sub-home__card .card__icon img {}
-
-  /* smaller, dark, rounded square */
-
-  .flickity-button {
-    background: transparent;
-  }
-
-  .flickity-button:hover {
-    /* background: #F90; */
-    background: transparent;
-  }
 
   .flickity-prev-next-button {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
+    width: 32px;
+    height: 32px;
   }
 
-  /* icon color */
-
-  .flickity-button-icon {}
-
-  /* position outside */
-
   .flickity-prev-next-button.previous {
-    left: -24px;
+    left: -32px;
   }
 
   .flickity-prev-next-button.next {
-    right: -24px;
+    right: -32px;
   }
 
-  .flickity-button:focus {
-    /* outline: none; box-shadow: 0 0 0 5px #19F; */
-  }
-
-  .sub-home-carousel__card {}
 }
 
 @media only screen and (min-device-width : 1920px) {
