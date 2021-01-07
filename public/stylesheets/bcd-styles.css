@@ -21,24 +21,30 @@ body {
 a {
   color: #e95d4f;
   text-decoration: none;
+  font-weight: 400;
 }
 
 /* unvisited link */
 
 a:link {
+  color: #e95d4f;
   text-decoration: none;
 }
 
 /* visited link */
 
 a:visited {
+  color: #e95d4f;
   text-decoration: none;
+
 }
 
 /* mouse over link */
 
 a:hover {
+  color: #e95d4f;
   text-decoration: none;
+
 }
 
 /* selected link */
@@ -48,6 +54,7 @@ a:active {
 }
 
 p,
+i,
 h1,
 h2,
 h3 {
