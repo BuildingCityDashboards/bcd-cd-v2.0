@@ -346,23 +346,50 @@ html {}
 
 /* iPad Pro */
 @media only screen and (min-device-width : 1024px) {
+  #sub-home {
+    min-width: 768px;
+    min-height: 512px;
+    max-height: 1024px;
+  }
 
   #sub-home__carousel {
-    height: 360px;
-    min-height: 320px;
-    grid-column: span 4;
-    grid-row: 4 / 8;
+    height: 420px;
+    min-height: 420px;
+    grid-column: span 8;
+    grid-row: 4 / 5;
   }
 
+  /*  */
   .carousel {
-    height: 360px;
+    min-height: 420px;
+    height: 420px;
+    /* space for prev/next buttons */
+    margin: 0 16px;
+    background: transparent;
   }
 
+  /*  */
   .carousel-cell {
     width: calc(50% - 8px);
-    height: inherit;
+    height: 420px;
     margin-right: 16px;
   }
+
+  .sub-home__card {
+    padding: 32px;
+  }
+
+  .sub-home__card .card__body p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* italics used for 'under construction' */
+  .sub-home__card .card__body i {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
 }
 
 /* laptop with MDPI */
