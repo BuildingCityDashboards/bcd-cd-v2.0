@@ -276,7 +276,7 @@ html {
 .icon-nav__icon svg {
   background-color: transparent;
   fill: #e95d4f;
-  stroke: white;
+  stroke: #e95d4f;
   stroke-width: 0.5px;
   width: 24px;
   height: 24px;
@@ -1160,7 +1160,7 @@ html {
 
   .icon-nav__icon svg {
     background-color: transparent;
-    stroke: #e95d4f;
+    stroke: white;
     fill: white;
     stroke-width: 0.5px;
     width: 48px;
