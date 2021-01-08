@@ -280,20 +280,21 @@ html {}
   }
 
   #sub-home__icon {
+    transform: translateX(48px);
     grid-column: 2 / 3;
     grid-row: 2 / 3;
   }
 
   #sub-home__icon svg {
-    width: 100%;
+    width: 96px;
     height: 96px;
   }
 
   #sub-home__title {
-    grid-column: 3 / 5;
+    grid-column: 3 / 8;
     grid-row: 2 / 3;
     line-height: 0.71;
-    transform: translateX(25%);
+    transform: translateX(48px);
   }
 
   #sub-home__title h1 {
@@ -303,12 +304,12 @@ html {}
 
   #sub-home__description {
     display: flex;
-    justify-items: center;
+    justify-content: left;
     grid-column: 3 / 8;
     grid-row: 3 / 4;
     padding: 0;
     letter-spacing: normal;
-    transform: translate(12.5%, -16px);
+    transform: translate(48px, -16px);
   }
 
   #sub-home__description p {
@@ -467,13 +468,13 @@ html {}
   #sub-home__icon {
     grid-column: 3 / 4;
     grid-row: 2 / 3;
-    transform: translate(0, 0);
+
   }
 
   #sub-home__title {
     grid-column: 4 / 12;
     grid-row: 2 / 3;
-    transform: translateX(0);
+    transform: translateX(48px);
   }
 
   #sub-home__title h1 {
@@ -483,9 +484,11 @@ html {}
   }
 
   #sub-home__description {
-    grid-column: 4 / 13;
+    grid-column: 4 / 12;
     grid-row: 3 / 4;
-    transform: translate(0, 0);
+    transform: translate(48px, -16px);
+    justify-content: left;
+
   }
 
   #sub-home__description p {
