@@ -1,43 +1,39 @@
 extends ../layout
-//- include component/card-tools
+include ../component/card-sub-home
 
-//- block append head
-
+block append head
   link(rel="stylesheet", href="/stylesheets/lib/flickity.min.css")
-  link(rel="stylesheet", href="/stylesheets/tools.css")
-  //- link(rel="stylesheet", href="/stylesheets/card.css")
+  link(rel="stylesheet", href="/stylesheets/components/bcd-sub-home.css")
 
-//- block navigation
-  +bcd-navbar("bcd-navbar","/","Dublin Dashboard", "Tools")
-//- block content
-  #tools-home 
-    #tools-home__grid
-      #tools-home__icon
-        img(src='/images/icons/icons-48px/Tools_Icon_48px.svg')
-      #tools-home__title
+block navigation
+  +bcd-navbar("bcd-navbar","/","Cork Dashboard", "Tools")
+
+block content
+  #sub-home 
+    #sub-home__grid
+      #sub-home__icon
+        svg()
+          use(href='/images/icons/icons-48px/Tools_Icon_48px.svg#Layer_1')
+      #sub-home__title
         h1 Tools
-      #tools-home__description
-        p Tools provide more functionality for exploring Dublin Dashboard data. 
-          |Please wait for the tool to load, as a large amount of data may be included.
-
-      #tools-home__carousel
+      #sub-home__description
+        p Tools provide more functionality for exploring Cork Dashboard data. 
+          |Please wait for the tool to load, as a large amount of data may be included. 
+      #sub-home__carousel
         <div class="carousel" data-flickity='{ "freeScroll": true, "wrapAround": false, "freeScrollFriction": 0.05,"selectedAttraction": 0.05, "cellSelector": ".carousel-cell", "cellAlign": "left", "percentPosition": false, "pageDots": true, "adaptiveHeight": true}'>
           .carousel-cell
-              +card-tools({
+            +card-sub-home({
               title: "Planning Applications",
-              description: "<p>Explore planning application data for Dublin. Survey applications by map location and plot historical trends with the latest data available.</p><br> <p><b>Under construction, please check back soon.</b></p>"
+              description: "<p>Explore planning application data for Cork. Survey applications by map location and plot historical trends with the latest data available.</p><br> <p><i>Under construction, please check back soon.</i></p>"
               })
-          //- links: [
-          //- {href:"/tools",
-          //- name:'Launch the Planning Applications tool'},
-          //- ]
+   
           .carousel-cell
-              +card-tools({
-              title: 'Tool coming soon', 
-              description: '<b>New data tool under construction, please check back soon.</b>'
+            +card-sub-home({
+              title: 'Coming Soon', 
+              description: '<i>New data tool under construction, please check back soon.</i>'
               })
-          
         </div>
 
-//- block append scripts
+block append scripts
+  //- script(src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js" type="text/javascript")
   script(src="./lib/flickity.pkgd.min.js" type="text/javascript")
