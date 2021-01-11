@@ -8,6 +8,17 @@ html {
 
 }
 
+/* background colour for menu and search toggles*/
+
+.colour-banner {
+  position: fixed;
+  top: 0;
+  height: 56px;
+  background-color: #e95d4f;
+  width: 100vw;
+
+}
+
 #hero {
   position: relative;
   width: 100vw;
@@ -1151,7 +1162,6 @@ html {
 
   .icon-nav__icon {
     width: 48px;
-    height: auto;
     border: none;
     padding-top: 8px;
     padding-bottom: 8px;
