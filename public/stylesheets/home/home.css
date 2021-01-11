@@ -5,12 +5,25 @@ html {
   overflow-x: hidden;
   width: 100vw;
   background-color: #eeecec;
+}
 
+#home-page {
+  width: 100vw;
+}
+
+/* use as contrast bg for menu toggles  */
+.colour-banner {
+  position: fixed;
+  top: 0;
+  height: 56px;
+  background-color: #e95d4f;
+  width: 100vw;
+  z-index: 1;
 }
 
 #hero {
   position: relative;
-  width: 100vw;
+  width: 100%;
   min-width: 320px;
   height: 100vh;
   min-height: 540px;
@@ -26,8 +39,8 @@ html {
   font-family: 'Roboto',
     sans-serif;
   overflow-x: hidden;
+  z-index: 2;
 }
-
 
 #hero-grid {
   display: grid;
@@ -62,7 +75,7 @@ html {
   grid-row: 2 / 3;
   line-height: 0.71;
   letter-spacing: -3px;
-  transform: translateX(-8px)
+  transform: translate(-8px, -8px)
 }
 
 #hero-title>div {
@@ -162,16 +175,17 @@ html {
 
 #hero-weather__symbol {
   display: flex;
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
   align-items: center;
-  /* background-color : rgba(255, 255, 255, 0.3); */
+  justify-content: center;
+
 }
 
 #hero-weather__symbol img {
-  width: inherit;
-  height: inherit;
-  /* background-color : rgba(255, 255, 255, 0.3); */
+  width: 100%;
+  height: 100%;
+
 }
 
 .tooltiptext {
@@ -276,7 +290,7 @@ html {
 .icon-nav__icon svg {
   background-color: transparent;
   fill: #e95d4f;
-  stroke: white;
+  stroke: #e95d4f;
   stroke-width: 0.5px;
   width: 24px;
   height: 24px;
@@ -360,9 +374,9 @@ html {
 @media only screen and (min-width : 375px) and (orientation: portrait) {
 
   #hero-title {
-    padding-left: 16px;
+    padding-left: 8px;
     font-size: 36px;
-    transform: translateX(-4px)
+
   }
 
   #hero-icon-navs {
@@ -1003,6 +1017,11 @@ html {
 /* laptop with MDPI devtools */
 @media screen and (min-width: 1280px) {
 
+  #home-page {
+    /* scrollbar fix */
+    padding-right: 12px;
+  }
+
   /* and (-webkit-min-device-pixel-ratio: 1) and (orientation : landscape) { */
   #hero {
     min-height: 800px;
@@ -1151,7 +1170,6 @@ html {
 
   .icon-nav__icon {
     width: 48px;
-    height: auto;
     border: none;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -1160,7 +1178,7 @@ html {
 
   .icon-nav__icon svg {
     background-color: transparent;
-    stroke: #e95d4f;
+    stroke: white;
     fill: white;
     stroke-width: 0.5px;
     width: 48px;

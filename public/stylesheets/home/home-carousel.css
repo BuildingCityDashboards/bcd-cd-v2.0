@@ -50,19 +50,14 @@
 }
 
 .flickity-prev-next-button {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: 4px;
 }
 
-/* icon color */
-
 .flickity-button-icon {
-  /* fill : #6fd1f6; */
-  fill: white;
+  fill: grey;
 }
-
-/* position outside */
 
 .flickity-prev-next-button.previous {
   left: -32px;
