@@ -174,12 +174,7 @@
   letter-spacing: -0.5px;
 }
 
-#about-cork-dashboard__twitter {
-  display: none;
-}
-
 #about-cork-dashboard__card {
-  padding: 16px 16px 0 16px;
   overflow-y: auto;
   color: #e95d4f;
   grid-column: span 4;
@@ -191,6 +186,10 @@
   font-weight: normal;
   line-height: 1.71;
   letter-spacing: 0.5px;
+}
+
+#about-cork-dashboard__twitter {
+  display: none;
 }
 
 @media only screen and (orientation: landscape) {

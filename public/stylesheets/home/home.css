@@ -9,6 +9,9 @@ html {
 }
 
 /* background colour for menu and search toggles*/
+/* #footer-nav {
+  z-index: -1;
+} */
 
 .colour-banner {
   position: fixed;
@@ -16,6 +19,7 @@ html {
   height: 56px;
   background-color: #e95d4f;
   width: 100vw;
+  z-index: 1;
 
 }
 
@@ -37,6 +41,7 @@ html {
   font-family: 'Roboto',
     sans-serif;
   overflow-x: hidden;
+  z-index: 2;
 }
 
 
