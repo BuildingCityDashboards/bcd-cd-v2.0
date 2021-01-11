@@ -130,8 +130,6 @@
 
 #regions-info__card__body {}
 
-#regions-info__card__body p {}
-
 #about-cork-dashboard {
   display: grid;
   width: 100vw;
@@ -285,6 +283,11 @@
     padding: 32px;
   }
 
+  .home__about__card p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
   .home__about__header>h1 {
     font-size: 28px;
     line-height: 1.06;
@@ -292,6 +295,7 @@
 
   /* About cork * */
   #about-cork {
+    height: 45vh;
     padding: 0 24px;
     justify-content: center;
     grid-gap: 24px;
@@ -309,12 +313,10 @@
     grid-row: 3/7;
   }
 
-  #about-cork__card>p {}
-
   #regions-info {
+    height: 55vh;
     width: 100vw;
     min-width: 360px;
-    height: 60vh;
     min-height: 512px;
     padding: 24px;
     justify-content: center;
@@ -343,7 +345,7 @@
 
   #regions-info__card {
     grid-column: 2/7;
-    grid-row: 1 / 6;
+    grid-row: 1 / 7;
   }
 
   #regions-info__card__header {
@@ -384,7 +386,6 @@
   }
 
   #about-cork-dashboard__twitter>p {
-    /* width: 303px; height: 24px; */
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
@@ -400,10 +401,7 @@
     grid-row: 3/6;
   }
 
-  #about-cork-dashboard__card>p {}
 }
-
-@media only screen and (min-width : 768px) and (orientation : landscape) {}
 
 /* iPad Pro */
 
@@ -412,23 +410,20 @@
 
   #about-cork__header {}
 
-  .home__about__header>h1 {
-    font-size: 34px;
+  .home__about__card p {
+    font-size: 20px;
+  }
+
+  .home__about__header h1 {
+    font-size: 36px;
     line-height: 1.06;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.5px;
   }
 
   #about-cork__card {}
 
-  #about-cork__card>p {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-  }
 
-  /* Regions */
 
-  #regions-map__header {}
 
   #regions-info__map {}
 
@@ -449,7 +444,7 @@
   #regions-info__card {
     display: block;
     padding: 32px;
-    overflow-y: auto;
+    height: auto;
   }
 
   #regions-info__card__header {
@@ -457,20 +452,15 @@
   }
 
   #regions-info__card__header>h1 {
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
+    font-size: 32px;
+    line-height: 32px;
+    letter-spacing: 0.18px;
+
   }
 
   #regions-info__card__body {}
 
-  #regions-info__card__body>p {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-  }
+
 
   #about-cork-dashboard {
     height: auto;
@@ -482,13 +472,7 @@
 
   #about-cork-dashboard__header {}
 
-  #about-cork-dashboard__header>h1 {
-    margin: 0;
-    font-size: 32px;
-    font-weight: normal;
-    line-height: 1.06;
-    letter-spacing: -0.5px;
-  }
+  #about-cork-dashboard__header>h1 {}
 
   #about-cork-dashboard__twitter {
     display: inline;
@@ -509,13 +493,6 @@
     height: auto;
     padding: 32px;
     overflow-y: auto;
-  }
-
-  #about-cork-dashboard__card>p {
-    /* width: 746px; height: 256px; */
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
   }
 }
 
