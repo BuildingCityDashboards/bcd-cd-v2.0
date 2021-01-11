@@ -16,6 +16,11 @@
   color: black;
   display: inline-block;
   vertical-align: top;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  padding-bottom: 16px;
 }
 
 .home__about__header {
@@ -161,17 +166,8 @@
 
 
 #about-cork-dashboard__card {
-  overflow-y: auto;
-  color: #e95d4f;
   grid-column: span 4;
   grid-row: 2/9;
-}
-
-#about-cork-dashboard__card>p {
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1.71;
-  letter-spacing: 0.5px;
 }
 
 #about-cork-dashboard__twitter {

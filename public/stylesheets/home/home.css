@@ -11,6 +11,7 @@ html {
   width: 100vw;
 }
 
+/* use as contrast bg for menu toggles  */
 .colour-banner {
   position: fixed;
   top: 0;
@@ -18,7 +19,6 @@ html {
   background-color: #e95d4f;
   width: 100vw;
   z-index: 1;
-
 }
 
 #hero {
