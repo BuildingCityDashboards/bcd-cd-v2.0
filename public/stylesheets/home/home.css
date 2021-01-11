@@ -8,10 +8,9 @@ html {
 
 }
 
-/* background colour for menu and search toggles*/
-/* #footer-nav {
-  z-index: -1;
-} */
+#home-page {
+  width: 100vw;
+}
 
 .colour-banner {
   position: fixed;
@@ -25,7 +24,7 @@ html {
 
 #hero {
   position: relative;
-  width: 100vw;
+  width: 100%;
   min-width: 320px;
   height: 100vh;
   min-height: 540px;
@@ -1018,6 +1017,11 @@ html {
 /* ----------- Non-Retina Screens ----------- */
 /* laptop with MDPI devtools */
 @media screen and (min-width: 1280px) {
+
+  #home-page {
+    /* scrollbar fix */
+    padding-right: 12px;
+  }
 
   /* and (-webkit-min-device-pixel-ratio: 1) and (orientation : landscape) { */
   #hero {
