@@ -458,7 +458,6 @@
   #regions-info__card__body {}
 
 
-
   #about-cork-dashboard {
     height: auto;
     min-height: 700px;
@@ -493,16 +492,31 @@
   }
 }
 
+@media only screen and (min-device-width : 768px) and (orientation : landscape) {
+
+  #about-cork {
+    height: 50vh;
+    min-height: 364px;
+  }
+
+  #regions-info {
+    height: 50vh;
+    min-height: 364px;
+  }
+}
+
 /* Laptop with MDPI height = 800px */
 
 @media only screen and (min-device-width: 1280px) {
   #about-cork {
-    height: calc(45vh - 48px);
+    /* height: calc(45vh - 48px); */
+    height: auto;
     justify-content: center;
     grid-gap: 24px;
     max-width: 1440px;
     margin: 0 auto;
     overflow-x: hidden;
+    padding-bottom: 24px;
   }
 
   #about-cork__header {
@@ -522,12 +536,11 @@
     height: auto;
     padding: 24px;
     overflow-y: auto;
-    -moz-column-count: 2;
-    column-count: 2;
+    /* -moz-column-count: 2;
+    column-count: 2; */
     -moz-column-gap: 24px;
     column-gap: 24px;
-    column-fill: auto;
-
+    column-fill: balance;
   }
 
   #about-cork__card>p {
@@ -602,7 +615,7 @@
   #regions-info__card {
     padding: 24px;
     overflow-y: auto;
-    grid-row: 1 / 7;
+    grid-row: 2 / 6;
   }
 
   #regions-info__card__header {
@@ -665,8 +678,9 @@
   #about-cork-dashboard__card {
     padding: 24px;
     overflow-y: auto;
-    column-count: 2;
-    column-gap: 24px;
+    /* column-count: 2; */
+    /* column-gap: 24px; */
+    height: auto;
 
   }
 
