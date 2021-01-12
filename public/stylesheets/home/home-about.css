@@ -277,7 +277,7 @@
 
 }
 
-@media only screen and (min-width : 768px) {
+@media only screen and (min-device-width : 768px) {
 
   .home__about__card {
     padding: 32px;
@@ -405,7 +405,7 @@
 
 /* iPad Pro */
 
-@media only screen and (min-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-device-width : 1024px) and (orientation : portrait) {
   #about-cork {}
 
   #about-cork__header {}
@@ -421,9 +421,6 @@
   }
 
   #about-cork__card {}
-
-
-
 
   #regions-info__map {}
 
@@ -498,7 +495,7 @@
 
 /* Laptop with MDPI height = 800px */
 
-@media only screen and (min-width : 1280px) {
+@media only screen and (min-device-width: 1280px) {
   #about-cork {
     height: calc(45vh - 48px);
     justify-content: center;

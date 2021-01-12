@@ -371,7 +371,7 @@ html {
 }
 
 /* iPhone 6/7/8 vertical */
-@media only screen and (min-width : 375px) and (orientation: portrait) {
+@media only screen and (min-device-width : 375px) and (orientation: portrait) {
 
   #hero-title {
     padding-left: 8px;
@@ -385,7 +385,7 @@ html {
 }
 
 /* Surface Duo */
-@media only screen and (min-width : 540px) and (orientation: portrait) {
+@media only screen and (min-device-width : 540px) and (orientation: portrait) {
 
   #hero-title {
     font-size: 48px;
@@ -438,7 +438,7 @@ html {
 
 }
 
-@media only screen and (min-width : 768px) and (orientation: portrait) {
+@media only screen and (min-device-width : 768px) and (orientation: portrait) {
   #hero {
     min-height: 1024px;
     background-image: url('../../images/home/cork-hero-tablet.png');
@@ -497,7 +497,7 @@ html {
   }
 
   #hero-time__date {
-    width: 109px;
+    /* width: 109px; */
     height: 22px;
     color: var(--text-color-2);
     font-size: 20px;
@@ -666,7 +666,7 @@ html {
 
 /* iPad landscape */
 
-@media only screen and (min-width : 1024px) and (orientation: landscape) {
+@media only screen and (min-device-width : 1024px) and (orientation: landscape) {
   #hero {
     min-height: 768px;
     height: 100vh;
@@ -879,7 +879,7 @@ html {
 }
 
 /* iPad Pro */
-@media only screen and (min-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-device-width : 1024px) and (orientation : portrait) {
   #hero {
     position: relative;
     width: 100vw;
@@ -912,8 +912,6 @@ html {
   }
 
   #hero-time__box {
-    /* border: solid 2px; */
-    /* max-width: 400px; */
     display: flex;
     display: -ms-flexbox;
     width: 325px;
@@ -923,21 +921,20 @@ html {
     font-weight: 500;
     font-stretch: normal;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     line-height: 1.2;
     letter-spacing: 0.15px;
   }
 
   #hero-time__clock {
-    width: 80px;
-    font-size: 20px;
+    /* width: 80px; */
+    font-size: 24px;
   }
 
   #hero-time__date {
-    width: 109px;
+    /* width: 109px; */
     color: var(--text-color-2);
-    font-size: 20px;
-    font-weight: 300;
+    font-size: 24px;
   }
 
   #hero-weather {
@@ -1015,7 +1012,7 @@ html {
 
 /* ----------- Non-Retina Screens ----------- */
 /* laptop with MDPI devtools */
-@media screen and (min-width: 1280px) {
+@media screen and (min-device-width: 1280px) {
 
   #home-page {
     /* scrollbar fix */
@@ -1220,11 +1217,11 @@ html {
 }
 
 /* iPad Pro  landscape*/
-@media only screen and (min-width : 1366px) and (orientation : landscape) {}
+@media only screen and (min-device-width : 1366px) and (orientation : landscape) {}
 
 /* xl */
 
-@media only screen and (min-width : 1920px) {
+@media only screen and (min-device-width : 1920px) {
   #hero {
     position: relative;
     width: 100vw;
@@ -1340,68 +1337,3 @@ html {
     grid-row: 8 / 9;
   }
 }
-
-
-/*
-
-.icon-nav__box {
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-radius: 4px;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    background-color: var(--bg-color-1);
-  }
-
-  .icon-nav__icon {
-    width: 48px;
-    height: auto;
-    border: none;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    align-self: center;
-  }
-
-  .icon-nav__icon svg {
-    background-color: transparent;
-    stroke: #e95d4f;
-    fill: white;
-    stroke-width: 0.5px;
-    width: 48px;
-    height: 48px;
-    outline: none;
-    box-shadow: none;
-  }
-
-  .icon-nav__title {
-    width: auto;
-    height: auto;
-    border: none;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 1.14;
-    letter-spacing: 1.25px;
-    color: white;
-    text-align: center;
-    padding-left: 8px;
-
-  }
-
-  .icon-nav__text {
-    display: flex;
-    width: 165px;
-    height: 40px;
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
-    letter-spacing: 0.25px;
-  }
-
-
-*/
