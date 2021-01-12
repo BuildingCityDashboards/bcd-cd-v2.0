@@ -1,7 +1,7 @@
 /* About cork * */
 
 .home__about {
-  background-color: #eeecec;
+  background-color: transparent;
 }
 
 .home__about__card {
@@ -244,17 +244,6 @@
     grid-row: 1/2;
   }
 
-  #about-cork-dashboard__header>h1 {
-    /* width: 271px; height: 18px; */
-    margin: 0;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: 0.73;
-    letter-spacing: -0.5px;
-  }
-
   #about-cork-dashboard__twitter {
     display: none;
   }
@@ -277,10 +266,10 @@
 
 }
 
-@media only screen and (min-width : 768px) {
+@media only screen and (min-device-width : 768px) {
 
   .home__about__card {
-    padding: 32px;
+    padding: 24px;
   }
 
   .home__about__card p {
@@ -405,7 +394,7 @@
 
 /* iPad Pro */
 
-@media only screen and (min-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-device-width : 1024px) and (orientation : portrait) {
   #about-cork {}
 
   #about-cork__header {}
@@ -421,9 +410,6 @@
   }
 
   #about-cork__card {}
-
-
-
 
   #regions-info__map {}
 
@@ -443,7 +429,7 @@
 
   #regions-info__card {
     display: block;
-    padding: 32px;
+    padding: 24px;
     height: auto;
   }
 
@@ -461,12 +447,11 @@
   #regions-info__card__body {}
 
 
-
   #about-cork-dashboard {
     height: auto;
     min-height: 700px;
-    padding: 32px;
-    grid-gap: 32px;
+    padding: 24px;
+    grid-gap: 24px;
 
   }
 
@@ -491,66 +476,73 @@
 
   #about-cork-dashboard__card {
     height: auto;
-    padding: 32px;
+    padding: 24px;
     overflow-y: auto;
   }
 }
 
-/* Laptop with MDPI height = 800px */
+@media only screen and (min-device-width : 768px) and (orientation : landscape) {
 
-@media only screen and (min-width : 1280px) {
   #about-cork {
-    height: calc(45vh - 48px);
-    justify-content: center;
-    grid-gap: 24px;
+    height: 50vh;
+    min-height: 364px;
+  }
+
+  #regions-info {
+    height: 50vh;
+    min-height: 364px;
+  }
+
+  #regions-info__card {
+    padding: 24px;
+    overflow-y: auto;
+    grid-row: 1 / 7;
+  }
+}
+
+@media only screen and (min-device-width: 1280px) {
+  #about-cork {
+    height: auto;
+    min-height: 50%;
     max-width: 1440px;
     margin: 0 auto;
     overflow-x: hidden;
+    padding-bottom: 24px;
   }
 
-  #about-cork__header {
+  .home__about__header {
     text-align: left;
     align-self: flex-end;
     transform: translateY(0);
   }
 
-  #about-cork__header>h1 {
+  .home__about__header h1 {
     font-size: 34px;
-    line-height: 1.06;
+  }
+
+  .home__about__card p {
+    font-size: 16px;
+    line-height: 1.5;
     letter-spacing: 0.5px;
-    /* width: 333px; height: 34px; */
   }
 
   #about-cork__card {
     height: auto;
     padding: 24px;
     overflow-y: auto;
-    -moz-column-count: 2;
-    column-count: 2;
+    /* -moz-column-count: 2;
+    column-count: 2; */
     -moz-column-gap: 24px;
     column-gap: 24px;
-    column-fill: auto;
-
-  }
-
-  #about-cork__card>p {
-
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
+    column-fill: balance;
   }
 
   #regions-info__cta {
     z-index: 1;
-    display: flex;
     margin: 0;
     padding-left: 24px;
     text-align: left;
     align-self: center;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: normal;
-    font-stretch: normal;
     grid-column: 2/8;
     grid-row: 3/5;
   }
@@ -560,7 +552,6 @@
     display: flex;
     grid-column: 7/8;
     grid-row: 3/5;
-    justify-content: flex-end;
 
   }
 
@@ -568,7 +559,7 @@
     background-color: transparent;
     width: 24px;
     transform: rotate(180deg);
-    fill: var(--color-1);
+    fill: #e95d4f;
   }
 
 
@@ -576,19 +567,10 @@
     display: none;
   }
 
-  #regions-map__header>h1 {
-
-    margin: 0;
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.5;
-    letter-spacing: 1.5px;
-  }
-
   #regions-info {
-    height: 55vh;
+    height: auto;
     min-height: 50vh;
-    padding: 24px;
+    padding: 0 24px 24px;
     justify-content: center;
     grid-gap: 24px;
     max-width: 1440px;
@@ -612,13 +594,6 @@
     padding-bottom: 24px;
   }
 
-  #regions-info__card__header>h1 {
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-  }
-
   #regions-info__card__body {}
 
   #regions-info__card__body>p {
@@ -637,17 +612,6 @@
     margin: 0 auto;
   }
 
-  #about-cork-dashboard__header {
-    text-align: center;
-  }
-
-  #about-cork-dashboard__header>h1 {
-    margin: 0;
-    text-align: left;
-    font-size: 34px;
-    line-height: 1.06;
-    letter-spacing: -0.5px;
-  }
 
   #about-cork-dashboard__twitter {
     display: inline;
@@ -668,11 +632,11 @@
   #about-cork-dashboard__card {
     padding: 24px;
     overflow-y: auto;
-    column-count: 2;
-    column-gap: 24px;
+    /* column-count: 2; */
+    /* column-gap: 24px; */
+    height: auto;
 
   }
-
 
   #about-cork-dashboard__card>p {
     font-size: 16px;
@@ -681,138 +645,39 @@
   }
 }
 
+@media only screen and (min-device-width : 1366px) and (orientation : landscape) {
+  #regions-info__card {
+    grid-row: 2 / 6;
+  }
+}
+
+@media only screen and (min-device-width: 1440px) {
+  #regions-info__card {
+    grid-row: 2 / 7;
+  }
+}
+
 /* xl */
 
-@media only screen and (min-width : 1920px) {
+@media only screen and (min-device-width : 1920px) {
+
   #about-cork {
-    height: 45vh;
-    min-height: 45vh;
-    padding: 24px;
-    justify-content: center;
-    grid-gap: 24px;
-  }
-
-  #about-cork__header>h1 {
-    font-size: 34px;
-    font-weight: normal;
-    line-height: 1.06;
-    letter-spacing: 0.5px;
-  }
-
-  #about-cork__card {
-    height: auto;
-    padding: 24px;
-    overflow-y: auto;
-    /* grid-row: 3/; */
-  }
-
-  #about-cork__card>p {
-    /* width: 702px; height: 245px; */
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-  }
-
-  #regions-info {
-    height: 55vh;
-    min-height: 55vh;
-    padding-top: 0;
-
-  }
-
-  #regions-info__cta {
-    font-size: 24px;
-    font-weight: normal;
-    grid-column: 2/7;
-    line-height: 1.06;
-    letter-spacing: 0.5px;
-  }
-
-  #regions-info__cta-arrow {
-
-    justify-content: flex-start;
-
-  }
-
-  #regions-info__map {
-    grid-column: 7/12;
+    grid-template-rows: 112px repeat(4, 1fr) 24px;
   }
 
   #regions-info__card {
-    display: block;
-    padding: 24px;
-    overflow-y: auto;
-    grid-column: 2/7;
-    grid-row: 1/5;
+    grid-row: 2 / 6;
   }
 
-  #regions-info__card__header {
-    padding-bottom: 32px;
+  #regions-info__cta-arrow {
+    grid-column: 6/7;
+    justify-content: center;
   }
 
-  #regions-info__card__header>h1 {
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-  }
+}
 
-  #regions-info__card__body {}
-
-  #regions-info__card__body>p {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-  }
-
-  #about-cork-dashboard {
-    height: 60vh;
-    min-height: 500px;
-    padding: 24px;
-    grid-gap: 24px;
-  }
-
-  #about-cork-dashboard__header {
-    text-align: center;
-  }
-
-  #about-cork-dashboard__header>h1 {
-    margin: 0;
-    font-size: 34px;
-    font-weight: normal;
-    line-height: 1.06;
-    letter-spacing: -0.5px;
-  }
-
-  #about-cork-dashboard__twitter {
-    display: flex;
-    text-align: right;
-    justify-content: flex-end;
-  }
-
-  #about-cork-dashboard__twitter>p {
-    /* width: 303px; height: 24px; */
-    font-size: 24px;
-    font-weight: normal;
-    line-height: 1.33;
-    letter-spacing: 0.18px;
-  }
-
-  #about-cork-dashboard__card {
-    padding: 24px;
-    -moz-column-count: 2;
-    column-count: 2;
-    -moz-column-gap: 24px;
-    column-gap: 24px;
-  }
-
-  #about-cork-dashboard__card p {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 1.5;
-    letter-spacing: 0.5px;
-
+@media only screen and (min-device-width : 2560px) {
+  #regions-info__card {
+    grid-row: 2 / 5;
   }
 }
