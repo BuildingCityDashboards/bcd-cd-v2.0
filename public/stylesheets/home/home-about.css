@@ -660,8 +660,13 @@
 /* xl */
 
 @media only screen and (min-device-width : 1920px) {
+
   #about-cork {
     grid-template-rows: 112px repeat(4, 1fr) 24px;
+  }
+
+  #regions-info__card {
+    grid-row: 2 / 6;
   }
 
   #regions-info__cta-arrow {
@@ -669,4 +674,10 @@
     justify-content: center;
   }
 
+}
+
+@media only screen and (min-device-width : 2560px) {
+  #regions-info__card {
+    grid-row: 2 / 5;
+  }
 }
