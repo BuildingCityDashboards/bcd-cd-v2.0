@@ -10,6 +10,7 @@ html {
 #home-page {
   width: 100vw;
   background-color: #eeecec;
+
 }
 
 /* use as contrast bg for menu toggles  */
@@ -372,7 +373,7 @@ html {
 }
 
 /* iPhone 6/7/8 vertical */
-@media only screen and (min-device-width : 375px) and (orientation: portrait) {
+@media only screen and (min-width : 375px) and (orientation: portrait) {
 
   #hero-title {
     padding-left: 8px;
@@ -386,7 +387,7 @@ html {
 }
 
 /* Surface Duo */
-@media only screen and (min-device-width : 540px) and (orientation: portrait) {
+@media only screen and (min-width : 540px) and (orientation: portrait) {
 
   #hero-title {
     font-size: 48px;
@@ -439,7 +440,7 @@ html {
 
 }
 
-@media only screen and (min-device-width : 768px) and (orientation: portrait) {
+@media only screen and (min-width : 768px) and (orientation: portrait) {
   #hero {
     min-height: 1024px;
     background-image: url('../../images/home/cork-hero-tablet.png');
@@ -667,7 +668,7 @@ html {
 
 /* iPad landscape */
 
-@media only screen and (min-device-width : 1024px) and (orientation: landscape) {
+@media only screen and (min-width : 1024px) and (orientation: landscape) {
   #hero {
     min-height: 768px;
     height: 100vh;
@@ -880,7 +881,7 @@ html {
 }
 
 /* iPad Pro */
-@media only screen and (min-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-width : 1024px) and (orientation : portrait) {
   #hero {
     position: relative;
     width: 100vw;
@@ -1013,11 +1014,12 @@ html {
 
 /* ----------- Non-Retina Screens ----------- */
 /* laptop with MDPI devtools */
-@media screen and (min-device-width: 1280px) {
+@media screen and (min-width: 1280px) {
 
   #home-page {
     /* scrollbar fix */
     padding-right: 12px;
+    min-width: 1280px;
   }
 
   /* and (-webkit-min-device-pixel-ratio: 1) and (orientation : landscape) { */
@@ -1218,11 +1220,11 @@ html {
 }
 
 /* iPad Pro  landscape*/
-@media only screen and (min-device-width : 1366px) and (orientation : landscape) {}
+@media only screen and (min-width : 1366px) and (orientation : landscape) {}
 
 /* xl */
 
-@media only screen and (min-device-width : 1920px) {
+@media only screen and (min-width : 1920px) {
   #hero {
     position: relative;
     width: 100vw;

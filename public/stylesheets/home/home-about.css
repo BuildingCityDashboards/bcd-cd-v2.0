@@ -266,7 +266,7 @@
 
 }
 
-@media only screen and (min-device-width : 768px) {
+@media only screen and (min-width : 768px) {
 
   .home__about__card {
     padding: 24px;
@@ -394,7 +394,7 @@
 
 /* iPad Pro */
 
-@media only screen and (min-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-width : 1024px) and (orientation : portrait) {
   #about-cork {}
 
   #about-cork__header {}
@@ -481,7 +481,7 @@
   }
 }
 
-@media only screen and (min-device-width : 768px) and (orientation : landscape) {
+@media only screen and (min-width : 768px) and (orientation : landscape) {
 
   #about-cork {
     height: 50vh;
@@ -500,7 +500,13 @@
   }
 }
 
-@media only screen and (min-device-width: 1280px) {
+@media only screen and (min-width: 1024px) {
+  #regions-info__card {
+    grid-row: 1 / 6;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
   #about-cork {
     height: auto;
     min-height: 50%;
@@ -587,7 +593,7 @@
   #regions-info__card {
     padding: 24px;
     overflow-y: auto;
-    grid-row: 1 / 7;
+    grid-row: 1 / 6;
   }
 
   #regions-info__card__header {
@@ -645,13 +651,13 @@
   }
 }
 
-@media only screen and (min-device-width : 1366px) and (orientation : landscape) {
+@media only screen and (min-width : 1366px) and (orientation : landscape) {
   #regions-info__card {
     grid-row: 2 / 6;
   }
 }
 
-@media only screen and (min-device-width: 1440px) {
+@media only screen and (min-width: 1440px) {
   #regions-info__card {
     grid-row: 2 / 7;
   }
@@ -659,7 +665,7 @@
 
 /* xl */
 
-@media only screen and (min-device-width : 1920px) {
+@media only screen and (min-width : 1920px) {
 
   #about-cork {
     grid-template-rows: 112px repeat(4, 1fr) 24px;
@@ -676,7 +682,7 @@
 
 }
 
-@media only screen and (min-device-width : 2560px) {
+@media only screen and (min-width : 2560px) {
   #regions-info__card {
     grid-row: 2 / 5;
   }
