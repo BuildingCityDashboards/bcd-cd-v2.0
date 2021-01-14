@@ -1,36 +1,8 @@
-/**  TODOs
-Load group data
-  key-value SA vs group no
-Load SAs
-  Lookup group number for each SA object
-  Add object to layer group based on group number
-Filter layers based on cluster/group number
-Add zscores data
-Display zscores widget and filter based on group selection
-Use zscores widget to filter map
-
-Issue here is having the SAs load by LA and then update map->
-if we add SA to group as it comes up we're rewriting gorup layers repeatedly
-Solve with async await
+/**
 
 **/
 
-/* d3.json('/data/home/geodem-text-data.json',
-  function(data) {
-    alert(data);
-  }) */
-
-/* Promise(
-  d3.json('/data/home/dublin-region-data.json')
-  .then(files => {
-    //let xml = files[0]
-    let dJson = files[0]
-    alert(dJson)
-  })) */
-// alert('GroupJson8888')
-
 import { getCityLatLng } from '../modules/bcd-maps.js'
-// alert('sssssssss')
 const minZoom = 10
 const maxZoom = 16
 const zoom = minZoom
@@ -275,7 +247,7 @@ function scatterHM() {
     }) // end then
 }
 // let soc_eco_val=0;
-loadData()
+// loadData()
 
 function loadData(file) {
   d3.csv('/data/geodemos/cork_clusters_sa_cluster.csv')
@@ -288,12 +260,12 @@ function loadData(file) {
     })
 }
 
-async function loadSmallAreas(lookup) {
-  console.log(lookup)
+async function loadSmallAreas() {
   const features = []
 
   const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
-  const staticURI = '/data/cork_county_SAs.json'
+
+  const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
 
   const corkSAs = await d3.json(staticURI)
 
@@ -302,9 +274,10 @@ async function loadSmallAreas(lookup) {
   corkSAs.features.forEach(sa => {
     try {
       console.log(sa)
-      const groupNo = lookup[sa.attrributes.SMALL_AREA]
-      sa.attrributes.groupnumber = groupNo
-      console.log(sa.attrributes.SMALL_AREA)
+      const groupNo = sa.properties.cork_clusters_Clusters
+      console.log(groupNo)
+      console.log(sa.properties.SMALL_AREA)
+      console.log(parseInt(groupNo) - 1)
       mapLayers[parseInt(groupNo) - 1].addData(sa)
     } catch (err) {
       // sa.properties.groupnumber = 'NA'
@@ -316,6 +289,8 @@ async function loadSmallAreas(lookup) {
 
   // AddLayersToMap()
 }
+
+loadSmallAreas()
 
 function getEmptyLayersArray(total) {
   const layersArr = []
@@ -418,7 +393,7 @@ d3.select('#group-buttons').selectAll('img').on('click', function () {
 
   layerNo = myv
 
-  if (layerNo === 'all') { // 'all' && cb.attr("src")=='/images/icons/Icon_eye_selected.svg') {
+  if (layerNo === 'all') { // 'all' && cb.attr("src")=='/images/icons/ui/Icon_eye_selected.svg') {
     scatterHM()
     updateGroupTxt('all')
     AddLayersToMap()
@@ -444,14 +419,14 @@ function AddLayersToMap() {
 }
 
 function ResetImages(imgid) {
-  const imgsrcarr = ['/images/icons/Icon_eye_selected-all.svg',
-    '/images/icons/Icon_eye_selected-1.svg',
-    '/images/icons/Icon_eye_selected-2.svg',
-    '/images/icons/Icon_eye_selected-3.svg',
-    '/images/icons/Icon_eye_selected-4.svg',
-    '/images/icons/Icon_eye_selected-5.svg',
-    '/images/icons/Icon_eye_selected-6.svg',
-    '/images/icons/Icon_eye_selected-7.svg']
+  const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
+    '/images/icons/ui/Icon_eye_selected-1.svg',
+    '/images/icons/ui/Icon_eye_selected-2.svg',
+    '/images/icons/ui/Icon_eye_selected-3.svg',
+    '/images/icons/ui/Icon_eye_selected-4.svg',
+    '/images/icons/ui/Icon_eye_selected-5.svg',
+    '/images/icons/ui/Icon_eye_selected-6.svg',
+    '/images/icons/ui/Icon_eye_selected-7.svg']
 
   const Oimgsrcarr = ['/images/icons/sdAg.svg',
     '/images/icons/sd10.svg',
