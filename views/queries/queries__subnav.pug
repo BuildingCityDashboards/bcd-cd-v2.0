@@ -3,16 +3,17 @@ mixin queries__subnav(classes)
     nav(class!=classes)
         //- #subnav 
         +subnav__icon-nav({
-            title: "Transport",
-            link: "#transport", 
-            img: "../../images/icons/themes/transport.svg#Layer_1",
-            classActive: ''
-        })
-        +subnav__icon-nav({
             title: "Geodemographics",
             link: "#geodemos", 
             img: "../../images/icons/themes/demographics.svg#Layer_1",
         })
+        +subnav__icon-nav({
+            title: "Live Travel",
+            link: "#transport", 
+            img: "../../images/icons/themes/transport.svg#Layer_1",
+            classActive: ''
+        })
+        
     //-   +subnav__icon-nav({
     //-   title: "Environment",
     //-   link: "#environment", 
