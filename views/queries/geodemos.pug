@@ -1,5 +1,6 @@
 extends ../layout
-include queries__subnav.pug
+include queries__subnav
+include ../component/accordion
 
 block append head
         link(rel='stylesheet', href='https://unpkg.com/leaflet@1.3.1/dist/leaflet.css')
@@ -15,6 +16,7 @@ block append head
         link(rel='stylesheet', href='/stylesheets/queries/bcd-query-basic.css')
         link(rel='stylesheet', href='/stylesheets/components/bcd-subnav.css')
         //- link(rel='stylesheet', href='/stylesheets/lib/marker-cluster-modified.css')
+        link(rel='stylesheet', href='/stylesheets/components/bcd-accordian.css')
         link(rel='stylesheet', href='/stylesheets/components/bcd-map.css')
         //- link(rel='stylesheet', href='/stylesheets/lib/leaflet-chart-modified.css')  
 
@@ -28,12 +30,8 @@ block append head
 
 
 block navigation
-    //-+navbar("navbar navbar-expand-lg navbar-dark bg-dark fixed-top","/","Dublin Dashboard","Queries")
     +bcd-navbar("bcd-navbar","/","Cork Dashboard", "Queries")
     +queries__subnav("subnav")
-    
-    
-    //- subnav
 
 block content
     .query
@@ -43,17 +41,28 @@ block content
                 .query__tab-button tab 2
             .query__source Source:
             .query__header
-                .query__icon
-                .query__title
-                .query__description 
-            .query__tip
-            .query__dropdown
-            .query__list
-                .query__list-item Item 1
-                .query__list-item Item 2
-                .query__list-item Item 3
-            #live-travel-map.query__chart-primary
-            .query__chart-secondary
+                .query__icon icon
+                .query__title title: Geodemographics
+                .query__description description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur iste praesentium consequuntur numquam a, vero eveniet reprehenderit quaerat voluptatum beatae iure ab fuga, ea architecto ipsum quae obcaecati, soluta molestiae!
+            .query__dropdown-bar Select a group: 
+                .query__dropdown All
+            .query__help.helptext Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            .query__list list
+                .query__list-item item 1
+                .query__list-item item 2
+                .query__list-item item 3
+            .query__viz
+                +accordion("one") 
+                    +accordion-item("Geodemographics Map",  "")
+                        //- include portal/cso.pug
+                +accordion("two") 
+                    +accordion-item("Value Distribution",  "")
+                +accordion("three") 
+                    +accordion-item("Description",  "")
+                        .query__text 
+                            .query__text__title title
+                            .query__text__text description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur iste praesentium consequuntur numquam a, vero eveniet reprehenderit quaerat voluptatum beatae iure ab fuga, ea architecto ipsum quae obcaecati, soluta molestiae!
+            
 
         //- .tool-container
             header.header.mt-5.pt-2
