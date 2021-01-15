@@ -20,12 +20,13 @@
 }
 
 .query__header {
-
+    padding: 0;
     grid-column: span 4;
     grid-row: 2/3;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    height: auto;
 }
 
 .query__tab-bar {

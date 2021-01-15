@@ -78,7 +78,6 @@
 
 .accordion__heading:focus {
     outline: none;
-    overflow: visible;
     outline-offset: -0.5px
 }
 
@@ -96,12 +95,12 @@
 
 
 .accordion__content {
-    transition: opacity 300ms, max-height 300ms;
+    transition: opacity 500ms, max-height 1000ms, padding 1500ms;
     max-height: 0;
     height: auto;
     /* visibility: hidden; */
     opacity: 0;
-    /* padding: 0 1rem 0 1rem; */
+    padding: 0;
 }
 
 .accordion__content p {
@@ -122,7 +121,7 @@
     max-height: 1000px;
     /* visibility: visible; */
     opacity: 1;
-    transition: opacity 300ms, max-height 300ms;
+    transition: opacity 1s, max-height 500ms;
 }
 
 .accordion__item--active .accordion__arrow {
