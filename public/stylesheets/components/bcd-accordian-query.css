@@ -1,0 +1,196 @@
+.accordion {
+    padding: 0;
+    list-style: none;
+    width: 100%
+}
+
+.accordion__item {
+    transition: all 250ms cubic-bezier(0.5, 0, 0.1, 1);
+    /* border: 1px solid #818182; */
+    overflow: hidden;
+    /* margin: 0.25rem 0; */
+}
+
+.accordion__item:focus {
+    outline: none;
+}
+
+.accordion__item:hover {}
+
+.accordion__item:focus .accordion__arrow {
+    outline: none;
+    overflow: visible;
+    outline-offset: -0.5px
+}
+
+.accordion__item:last-child {
+    /* border-bottom:1px solid #818182 */
+}
+
+.accordion__item--active {
+    /* overflow: visible; */
+}
+
+.accordion__heading {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.1rem;
+    /*//    display:inline-block;*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+    width: 100%;
+    color: #e95d4f;
+    display: -ms-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: baseline;
+    -ms-flex-pack: start;
+    justify-content: space-between;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    /* padding: .25rem 1.5rem .25rem 1.5rem; */
+    padding: 0 8px;
+    background-color: transparent;
+
+}
+
+.accordion__heading h1 {
+
+    letter-spacing: 0.1rem;
+    color: #e95d4f;
+    font-size: 20px;
+
+
+}
+
+.accordion__heading::-moz-focus-inner {
+    border: 0
+}
+
+.accordion__heading:focus {
+    outline: none;
+}
+
+.accordion__heading:hover {
+    outline: none;
+}
+
+.accordion__heading--active {
+    outline: none;
+}
+
+
+
+
+.accordion__arrow {
+    transition: all 150ms cubic-bezier(0.5, 0, 0.1, 1);
+    height: 1.25rem;
+    width: 1.25rem;
+    padding: .25rem .125rem .25rem .25rem;
+    margin: 0 0 0 .25rem;
+    fill: #e95d4f
+}
+
+.accordion__arrow--active {}
+
+
+.accordion__content {
+    transition: opacity 500ms, max-height 1000ms, padding 1500ms;
+    max-height: 0;
+    height: auto;
+    /* visibility: hidden; */
+    opacity: 0;
+    padding: 0;
+}
+
+.accordion__content a {
+    /* padding-left: 1rem; */
+
+}
+
+.accordion__item--active .accordion__content {
+    /* color: #f8f8f8; */
+    padding: 1rem 8px 1.5rem;
+    height: auto;
+    max-height: 1000px;
+    /* visibility: visible; */
+    opacity: 1;
+    transition: opacity 1s, max-height 500ms;
+}
+
+.accordion__item--active .accordion__arrow {
+    transform: rotate(90deg);
+
+}
+
+.accordion__item:hover .accordion__arrow {}
+
+
+
+
+
+/* bottstrap breakpoints */
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .accordian-screenshot-container {
+        padding-left: 0rem;
+        margin-top: 1rem;
+    }
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .accordian-screenshot-container {
+        padding-left: 1rem;
+
+    }
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .accordian-screenshot-container {
+        padding-left: 0;
+    }
+}
+
+/*
+@media (max-width: 576px){
+  .app-icon{
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 900px){
+  .accordian-screenshot-container{
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 1200px){
+  .app-icon{
+    margin-bottom: 18px;
+  }
+
+  .accordian-screenshot{
+    max-height: 240px;
+    max-width: 90%;
+  }
+} */
+
+/* from this https://css-tricks.com/introduction-reduced-motion-media-query/ */
+@media screen and (prefers-reduced-motion: reduce) {
+
+    .accordion__item,
+    .accordion__arrow {
+        transition: none;
+    }
+}
