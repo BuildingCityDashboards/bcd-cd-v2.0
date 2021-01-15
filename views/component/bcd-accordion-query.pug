@@ -1,11 +1,11 @@
 //- accordion
 mixin accordion(id)
-  ul.accordion(id="accordion-"+id)
+  .accordion(id="accordion-"+id)
     block
 
-mixin accordion-item({id='', title='title', content='Content will appear here when available', classes=''})
-  .accordion-item(class=classes id=id   )
-    button.accordion__heading
+mixin accordion({id='', title='title', content='Content will appear here when available', classes=''})
+  .accordion(class=classes id=id)
+    .accordion__heading
       h1
         != title
       svg(class="accordion__arrow" width="7" height="12" viewBox="0 0 7 12")
