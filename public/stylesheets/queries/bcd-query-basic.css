@@ -2,7 +2,8 @@
     background-color: grey;
     min-width: 320px;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    /* height: auto; */
     padding-top: 112px;
 }
 
@@ -15,7 +16,7 @@
     align-items: center;
     grid-gap: 4px;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(8, auto);
 
 }
 
