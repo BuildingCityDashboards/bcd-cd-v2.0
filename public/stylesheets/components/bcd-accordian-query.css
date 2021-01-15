@@ -59,6 +59,15 @@
 
 }
 
+.accordion__heading h1 {
+
+    letter-spacing: 0.1rem;
+    color: #e95d4f;
+    font-size: 20px;
+
+
+}
+
 .accordion__heading::-moz-focus-inner {
     border: 0
 }
@@ -76,10 +85,6 @@
 }
 
 
-.accordion__heading:focus {
-    outline: none;
-    outline-offset: -0.5px
-}
 
 
 .accordion__arrow {
@@ -101,12 +106,6 @@
     /* visibility: hidden; */
     opacity: 0;
     padding: 0;
-}
-
-.accordion__content p {
-    font-size: 16px;
-    color: black;
-
 }
 
 .accordion__content a {

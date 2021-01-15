@@ -37,7 +37,10 @@ block content
             //- .query__tab-bar
                 .query__tab-button tab 1
                 .query__tab-button tab 2
-            .query__source Source:
+            .query__source 
+                p Sources:
+                    a(href="https://rpubs.com/burcinwalsh/620510" target="_blank")
+                       | RPubs
             .query__header
                 +accordion("geodemos-header") 
                     +accordion-item({
@@ -46,9 +49,13 @@ block content
                         classes: "accordion__item--active"
                         })
                         
-            .query__dropdown-bar Select a group: 
+            .query__dropdown-bar 
+                h1 Select a group: 
                 .query__dropdown All
-            .query__help.helptext Choose a group to see it visualised below. The heatmap provides an overview of all groups.
+            .query__help
+                .query__help__icon
+                div 
+                    p Choose a group to see it visualised below. The heatmap provides an overview of all groups.
             .query__list list
                 .query__list-item item 1
                 .query__list-item item 2
