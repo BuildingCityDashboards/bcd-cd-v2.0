@@ -27,7 +27,7 @@
     /* border-bottom:1px solid #818182 */
 }
 
-.accordion__item--active {
+.accordion--active {
     /* overflow: visible; */
 }
 
@@ -103,7 +103,7 @@
     transition: opacity 500ms, max-height 1000ms, padding 1500ms;
     max-height: 0;
     height: auto;
-    /* visibility: hidden; */
+    visibility: hidden;
     opacity: 0;
     padding: 0;
 }
@@ -113,7 +113,7 @@
 
 }
 
-.accordion__item--active .accordion__content {
+.accordion--active .accordion__content {
     /* color: #f8f8f8; */
     padding: 1rem 8px 1.5rem;
     height: auto;
@@ -123,7 +123,7 @@
     transition: opacity 1s, max-height 500ms;
 }
 
-.accordion__item--active .accordion__arrow {
+.accordion--active .accordion__arrow {
     transform: rotate(90deg);
 
 }

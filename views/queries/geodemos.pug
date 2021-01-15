@@ -42,11 +42,12 @@ block content
                     a(href="https://rpubs.com/burcinwalsh/620510" target="_blank")
                        | RPubs
             .query__header
-                +accordion("geodemos-header") 
-                    +accordion-item({
+                //- +accordion("one") 
+                +accordion({
+                        id:"geodemos-header",
                         title: "Geodemographics", 
                         content: "<p>Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units and variables are taken from the 2016 Census of Population results.</p>",
-                        classes: "accordion__item--active"
+                        classes: ""
                         })
                         
             .query__dropdown-bar 
@@ -61,28 +62,27 @@ block content
                 .query__list-item item 2
                 .query__list-item item 3
             .query__viz
-                +accordion("geodemos-map") 
-                    +accordion-item({
-                        title: "Map", 
-                        classes: "accordion__item--active"
-                        })
-                        //- #map-geodemos.accordion__content 
-                         
-                +accordion("geodemos-chart") 
-                    +accordion-item({
-                        title: "Chart"
+                +accordion({
+                    id: "geodemos-map",
+                    title: "Map", 
+                    classes: "accordion__item--active"
                     })
-                +accordion("geodemos-description") 
-                    +accordion-item({
-                        title: "Description"
-                        })
-                        #geodemos-group-description.accordion__content 
-                            .query__text__title title
-                            p.query__text__text description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur iste praesentium consequuntur numquam a, vero eveniet reprehenderit quaerat voluptatum beatae iure ab fuga, ea architecto ipsum quae obcaecati, soluta molestiae!
-                +accordion("geodemos-heamap") 
-                    +accordion-item({
-                        title:"Heatmap"
-                        })
+                     //- #map-geodemos.accordion__content 
+                +accordion({
+                    id: "geodemos-chart",
+                    title: "Chart"
+                    })
+                +accordion({
+                    id: "geodemos-description",
+                    title: "Description"
+                    })
+                    #geodemos-group-description.accordion__content 
+                        .query__text__title title
+                        p.query__text__text description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur iste praesentium consequuntur numquam a, vero eveniet reprehenderit quaerat voluptatum beatae iure ab fuga, ea architecto ipsum quae obcaecati, soluta molestiae!
+                +accordion({
+                    id: "geodemos-heamap",
+                    title:"Heatmap"
+                    })
             
 
         //- .tool-container
