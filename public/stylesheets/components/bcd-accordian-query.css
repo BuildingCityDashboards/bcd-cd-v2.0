@@ -28,7 +28,7 @@
 }
 
 .accordion__item--active {
-    overflow: visible;
+    /* overflow: visible; */
 }
 
 .accordion__heading {
