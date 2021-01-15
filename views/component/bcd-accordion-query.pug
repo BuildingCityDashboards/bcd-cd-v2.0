@@ -3,14 +3,13 @@ mixin accordion(id)
   ul.accordion(id="accordion"+id)
     block
 
-mixin accordion-item(title, question)
+mixin accordion-item(options = {id:'', title:'title', content:'Content will appear here when available'})
   li.accordion__item
     button.accordion__heading
       span
-        = title
-      p.text-align-right 
-        = question
+        = options.title
       svg(class="accordion__arrow" width="7" height="12" viewBox="0 0 7 12")
         path(fill-rule="nonzero" d="M5.569 5.994L0 .726.687 0l6.336 5.994-6.335 6.002L0 11.27z")
     .accordion__content
-      block
+        != options.content
+    block

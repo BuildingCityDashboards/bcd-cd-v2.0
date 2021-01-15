@@ -1,9 +1,8 @@
 .query {
-    background-color: grey;
+    background-color: #eeecec;
     min-width: 320px;
     width: 100vw;
     min-height: 100vh;
-    /* height: auto; */
     padding-top: 112px;
 }
 
@@ -21,7 +20,7 @@
 }
 
 .query__header {
-    background-color: white;
+
     grid-column: span 4;
     grid-row: 2/3;
     display: flex;
@@ -30,9 +29,9 @@
 }
 
 .query__tab-bar {
+    background-color: transparent;
     grid-column: 1 / 4;
     grid-row: 1/2;
-    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -45,7 +44,7 @@
 }
 
 .query__source {
-    background-color: white;
+    background-color: transparent;
     grid-column: 3 / 4;
     grid-row: 1 / 2;
 }
@@ -85,7 +84,7 @@
 .query__list-item {}
 
 .query__viz {
-    background-color: white;
+    background-color: transparent;
     grid-column: span 4;
     grid-row: 5/6;
     display: flex;

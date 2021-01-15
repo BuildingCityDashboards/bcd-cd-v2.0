@@ -34,32 +34,45 @@ block navigation
 block content
     .query
         .query__grid
-            .query__tab-bar
+            //- .query__tab-bar
                 .query__tab-button tab 1
                 .query__tab-button tab 2
             .query__source Source:
             .query__header
-                .query__icon icon
-                .query__title title: Geodemographics
-                .query__description description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur iste praesentium consequuntur numquam a, vero eveniet reprehenderit quaerat voluptatum beatae iure ab fuga, ea architecto ipsum quae obcaecati, soluta molestiae!
+                +accordion("geodemos-header") 
+                    +accordion-item({
+                        title: "Geodemographics", 
+                        content: "<p>Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units and variables are taken from the 2016 Census of Population results.</p>"
+                        })
+                        
             .query__dropdown-bar Select a group: 
                 .query__dropdown All
-            .query__help.helptext Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            .query__help.helptext Choose a group to see it visualised below. The heatmap provides an overview of all groups.
             .query__list list
                 .query__list-item item 1
                 .query__list-item item 2
                 .query__list-item item 3
             .query__viz
-                +accordion("one") 
-                    +accordion-item("Geodemographics Map",  "")
+                +accordion("geodemos-map") 
+                    +accordion-item({
+                        title: "Map"
+                        })
                         //- include portal/cso.pug
-                +accordion("two") 
-                    +accordion-item("Chart",  "")
-                +accordion("three") 
-                    +accordion-item("Description",  "")
-                        .query__text 
+                +accordion("geodemos-chart") 
+                    +accordion-item({
+                        title: "Chart"
+                    })
+                +accordion("geodemos-description") 
+                    +accordion-item({
+                        title: "Description"
+                        })
+                        .accordion__content 
                             .query__text__title title
-                            .query__text__text description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur iste praesentium consequuntur numquam a, vero eveniet reprehenderit quaerat voluptatum beatae iure ab fuga, ea architecto ipsum quae obcaecati, soluta molestiae!
+                            p.query__text__text description: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur iste praesentium consequuntur numquam a, vero eveniet reprehenderit quaerat voluptatum beatae iure ab fuga, ea architecto ipsum quae obcaecati, soluta molestiae!
+                +accordion("geodemos-heamap") 
+                    +accordion-item({
+                        title:"Heatmap"
+                        })
             
 
         //- .tool-container

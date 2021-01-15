@@ -6,21 +6,19 @@
 
 .accordion__item {
     transition: all 250ms cubic-bezier(0.5, 0, 0.1, 1);
-    border: 1px solid #818182;
+    /* border: 1px solid #818182; */
     overflow: hidden;
-    margin: 0.25rem 0;
+    /* margin: 0.25rem 0; */
 }
 
 .accordion__item:focus {
     outline: none;
 }
 
-.accordion__item:hover {
-    border-color: var(--vivid-cyan);
-}
+.accordion__item:hover {}
 
 .accordion__item:focus .accordion__arrow {
-    outline: 1px solid #16c1f3;
+    outline: none;
     overflow: visible;
     outline-offset: -0.5px
 }
@@ -31,42 +29,20 @@
 
 .accordion__item--active {
     overflow: visible;
-    border-color: var(--vivid-cyan);
 }
-
-.accordion__item--active .accordion__content {
-    color: #f8f8f8;
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
-    height: auto;
-    visibility: visible;
-    opacity: 1;
-    transition: all 300ms cubic-bezier(0.25, 0, 1, 1)
-}
-
-.accordion__item--active .accordion__arrow {
-    transform: rotate(90deg);
-    fill: var(--very-dark-blue);
-}
-
-.accordion__item:hover .accordion__arrow {
-    fill: var(--very-dark-blue);
-}
-
 
 .accordion__heading {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: 0.1rem;
     /*//    display:inline-block;*/
-    background: var(--very-dark-blue);
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     border: 0;
     cursor: pointer;
     width: 100%;
-    color: #6fd1f6;
+    color: #e95d4f;
     display: -ms-flexbox;
     display: inline-flex;
     -ms-flex-align: center;
@@ -77,7 +53,9 @@
     flex-direction: row;
     align-items: center;
     cursor: pointer;
-    padding: .25rem 1.5rem .25rem 1.5rem;
+    /* padding: .25rem 1.5rem .25rem 1.5rem; */
+    padding: 0 8px;
+    background-color: transparent;
 
 }
 
@@ -91,19 +69,15 @@
 
 .accordion__heading:hover {
     outline: none;
-    background-color: var(--vivid-cyan);
-    color: var(--very-dark-blue);
 }
 
 .accordion__heading--active {
     outline: none;
-    background-color: var(--vivid-cyan);
-    color: var(--very-dark-blue);
 }
 
 
 .accordion__heading:focus {
-    outline: 1px solid #16c1f3;
+    outline: none;
     overflow: visible;
     outline-offset: -0.5px
 }
@@ -115,73 +89,52 @@
     width: 1.25rem;
     padding: .25rem .125rem .25rem .25rem;
     margin: 0 0 0 .25rem;
-    fill: #f8f8f8;
+    fill: #e95d4f
 }
 
-.accordion__arrow--active {
-    fill: var(--very-dark-blue);
-}
+.accordion__arrow--active {}
+
 
 .accordion__content {
-    transition: all 300ms cubic-bezier(0, 0, 0.25, 1);
-    height: 0;
-    visibility: hidden;
+    transition: opacity 300ms, max-height 300ms;
+    max-height: 0;
+    height: auto;
+    /* visibility: hidden; */
     opacity: 0;
-    padding: 0 3rem 0 3rem;
-    background: var(--very-dark-blue);
+    /* padding: 0 1rem 0 1rem; */
+}
+
+.accordion__content p {
+    font-size: 16px;
+    color: black;
 
 }
 
 .accordion__content a {
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
 
 }
 
-.app-icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
+.accordion__item--active .accordion__content {
+    /* color: #f8f8f8; */
+    padding: 1rem 8px 1.5rem;
+    height: auto;
+    max-height: 1000px;
+    /* visibility: visible; */
+    opacity: 1;
+    transition: opacity 300ms, max-height 300ms;
 }
 
-.app-store-icon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-}
-
-.app-icon-container a {
-    padding: 0;
-    margin: 0;
-}
-
-.app-icon {
-    max-height: 96px;
-    max-width: 100%;
+.accordion__item--active .accordion__arrow {
+    transform: rotate(90deg);
 
 }
 
-.app-store-icon {
-    max-height: 36px;
-    max-width: 100%;
+.accordion__item:hover .accordion__arrow {}
 
-}
 
-.accordian-screenshot-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-}
 
-.accordian-screenshot {
-    max-height: 240px;
-    max-width: 100%;
-}
+
 
 /* bottstrap breakpoints */
 /* // Small devices (landscape phones, 576px and up) */
