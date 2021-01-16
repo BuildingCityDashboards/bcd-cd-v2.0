@@ -34,8 +34,6 @@
 .accordion__heading {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.1rem;
-    /*//    display:inline-block;*/
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -53,19 +51,14 @@
     flex-direction: row;
     align-items: center;
     cursor: pointer;
-    /* padding: .25rem 1.5rem .25rem 1.5rem; */
-    padding: 0 8px;
+    padding: 16px 8px;
     background-color: transparent;
-
 }
 
 .accordion__heading h1 {
-
     letter-spacing: 0.1rem;
     color: #e95d4f;
     font-size: 20px;
-
-
 }
 
 .accordion__heading::-moz-focus-inner {
@@ -99,7 +92,8 @@
 .accordion__arrow--active {}
 
 
-.accordion__content {
+.accordion__content,
+.leaflet-container {
     transition: opacity 500ms, max-height 1000ms, padding 1500ms;
     max-height: 0;
     height: auto;
@@ -115,12 +109,20 @@
 
 .accordion--active .accordion__content {
     /* color: #f8f8f8; */
-    padding: 1rem 8px 1.5rem;
+    padding: 16px 8px;
     height: auto;
     max-height: 1000px;
-    /* visibility: visible; */
+    visibility: visible;
     opacity: 1;
     transition: opacity 1s, max-height 500ms;
+}
+
+.leaflet-container {
+    min-height: 0;
+}
+
+.accordion--active .leaflet-container {
+    min-height: 280px;
 }
 
 .accordion--active .accordion__arrow {
