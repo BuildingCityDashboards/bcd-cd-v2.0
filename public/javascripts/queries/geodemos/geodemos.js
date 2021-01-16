@@ -2,150 +2,145 @@
 
 **/
 
-import { getCityLatLng } from '../modules/bcd-maps.js'
+import { getCityLatLng } from '../../modules/bcd-maps.js'
+async function main () {
+  const minZoom = 8
+  const maxZoom = 16
+  const zoom = minZoom
+  // tile layer with correct attribution
+  const BASEMAP = 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png'
+  const ATTRIBUTION = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, © <a href="https://carto.com/">CartoDB </a> contributors'
 
-const minZoom = 8
-const maxZoom = 16
-const zoom = minZoom
-// tile layer with correct attribution
-const BASEMAP = 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png'
-const ATTRIBUTION = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, © <a href="https://carto.com/">CartoDB </a> contributors'
+  const mapGeodemos = new L.Map('map-geodemos')
+  const osmLayer = new L.TileLayer(BASEMAP, {
+    minZoom: minZoom,
+    maxZoom: maxZoom,
+    attribution: ATTRIBUTION
+  })
+  mapGeodemos.setView(getCityLatLng(), zoom)
+  mapGeodemos.addLayer(osmLayer)
 
-const mapGeodemos = new L.Map('map-geodemos')
-const osmLayer = new L.TileLayer(BASEMAP, {
-  minZoom: minZoom,
-  maxZoom: maxZoom,
-  attribution: ATTRIBUTION
-})
-mapGeodemos.setView(getCityLatLng(), zoom)
-mapGeodemos.addLayer(osmLayer)
+  L.control.locate({
+    strings: {
+      title: 'Zoom to your location'
+    }
+  }).addTo(mapGeodemos)
 
-L.control.locate({
-  strings: {
-    title: 'Zoom to your location'
+  mapGeodemos.addControl(new L.Control.OSMGeocoder({
+    placeholder: 'Enter street name, area etc.',
+    bounds: getCityLatLng()
+  }))
+
+  // Used when an SA is null or otherwise falsey
+  const naStyle = {
+    fillColor: 'grey',
+    weight: 1,
+    opacity: 2,
+    color: 'grey',
+    dashArray: '1',
+    fillOpacity: 0.5
   }
-}).addTo(mapGeodemos)
 
-mapGeodemos.addControl(new L.Control.OSMGeocoder({
-  placeholder: 'Enter street name, area etc.',
-  bounds: getCityLatLng()
-}))
+  const traces = []
+  const ntraces = []
+  let layout = {}
+  const hmlayout = {}
+  const columnNames2 = {}
 
-const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
-  '#beaed4',
-  '#fdc086',
-  '#ffff99',
-  '#386cb0',
-  '#f0027f',
-  '#bf5b17']
-const GEODEMOS_COLORWAY_CBSAFE = ['#d73027', '#f46d43', '#fdae61', '#fee090', '#abd9e9', '#74add1', '#4575b4']
-const GEODEMOS_COLORWAY = GEODEMOS_COLORWAY_CATEGORICAL
+  d3.csv('/data/geodemos/cork_zscores.csv')
+    .then((zScores) => {
+      zScores.forEach((row, i) => {
+        const columnNames = Object.keys(row).sort(function (a, b) { return row[a] - row[b] })
 
-// Used when an SA is null or otherwise falsey
-const naStyle = {
-  fillColor: 'grey',
-  weight: 1,
-  opacity: 2,
-  color: 'grey',
-  dashArray: '1',
-  fillOpacity: 0.5
-}
+        const trace = Object.assign({}, TRACES_DEFAULT)
+        // trace.type = 'bar'
+        // trace.orientation = 'h'
+        // trace.mode = ''
+        // trace.hovertemplate= 'z-score: %{x:.2f}<extra></extra>'
+        trace.mode = 'markers+text'
+        trace.type = 'scatter'
 
-const mapLayers = getEmptyLayersArray(8)
+        // trace.orientation = 'h'
+        trace.marker = Object.assign({}, TRACES_DEFAULT.marker)
+        trace.marker = {
+          color: getLayerColor(i) // lines + markers, defaults to colorway
+        }
 
-const traces = []
-const ntraces = []
-let layout = {}
-let hmlayout = {}
-let columnNames2 = {}
+        trace.x = columnNames.map(name => {
+          return row[name]
+        })
 
-d3.csv('/data/geodemos/cork_zscores.csv')
-  .then((zScores) => {
-    zScores.forEach((row, i) => {
-      const columnNames = Object.keys(row).sort(function (a, b) { return row[a] - row[b] })
+        trace.y = columnNames
 
-      const trace = Object.assign({}, TRACES_DEFAULT)
-      // trace.type = 'bar'
-      // trace.orientation = 'h'
-      // trace.mode = ''
-      // trace.hovertemplate= 'z-score: %{x:.2f}<extra></extra>'
-      trace.mode = 'markers+text'
-      trace.type = 'scatter'
-
-      // trace.orientation = 'h'
-      trace.marker = Object.assign({}, TRACES_DEFAULT.marker)
-      trace.marker = {
-        color: getLayerColor(i) // lines + markers, defaults to colorway
-      }
-
-      trace.x = columnNames.map(name => {
-        return row[name]
+        traces.push(trace)
+        trace.hovertemplate = `%{x:.2f}<extra>Group No: ${i + 1}</extra>`
       })
 
-      trace.y = columnNames
+      layout = Object.assign({}, ROW_CHART_LAYOUT)
+      // layout.mode = 'bars'
+      layout.height = 500
 
-      traces.push(trace)
-      trace.hovertemplate = `%{x:.2f}<extra>Group No: ${i + 1}</extra>`
-    })
+      layout.title = Object.assign({}, ROW_CHART_LAYOUT.title)
+      layout.title.text = 'Variables Value Distribution (z-scores)'
+      layout.title.x = 0.51
+      layout.title.y = 0.99
+      layout.title.xanchor = 'center'
+      layout.title.yanchor = 'top'
+      layout.title.font = {
+        color: '#6fd1f6',
+        family: 'Roboto',
+        size: 17
 
-    layout = Object.assign({}, ROW_CHART_LAYOUT)
-    // layout.mode = 'bars'
-    layout.height = 500
-
-    layout.title = Object.assign({}, ROW_CHART_LAYOUT.title)
-    layout.title.text = 'Variables Value Distribution (z-scores)'
-    layout.title.x = 0.51
-    layout.title.y = 0.99
-    layout.title.xanchor = 'center'
-    layout.title.yanchor = 'top'
-    layout.title.font = {
-      color: '#6fd1f6',
-      family: 'Roboto',
-      size: 17
-
-    },
+      },
       layout.showlegend = false
-    layout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
-    layout.legend.xanchor = 'right'
+      layout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
+      layout.legend.xanchor = 'right'
 
-    layout.xaxis = Object.assign({}, ROW_CHART_LAYOUT.xaxis)
-    layout.xaxis.title = 'value'
-    layout.xaxis.range = [-2, 2.9]
-    layout.yaxis = Object.assign({}, ROW_CHART_LAYOUT.yaxis)
-    layout.yaxis.tickfont = {
-      family: 'PT Sans',
-      size: 9,
-      color: '#6fd1f6'
-    }
-    layout.xaxis.tickfont = {
-      family: 'PT Sans',
-      size: 10,
-      color: '#6fd1f6'
-    }
+      layout.xaxis = Object.assign({}, ROW_CHART_LAYOUT.xaxis)
+      layout.xaxis.title = 'value'
+      layout.xaxis.range = [-2, 2.9]
+      layout.yaxis = Object.assign({}, ROW_CHART_LAYOUT.yaxis)
+      layout.yaxis.tickfont = {
+        family: 'PT Sans',
+        size: 9,
+        color: '#6fd1f6'
+      }
+      layout.xaxis.tickfont = {
+        family: 'PT Sans',
+        size: 10,
+        color: '#6fd1f6'
+      }
 
-    layout.yaxis.titlefont = Object.assign({}, ROW_CHART_LAYOUT.yaxis.titlefont)
-    layout.yaxis.titlefont.size = 16 // bug? need to call this
-    layout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
+      layout.yaxis.titlefont = Object.assign({}, ROW_CHART_LAYOUT.yaxis.titlefont)
+      layout.yaxis.titlefont.size = 16 // bug? need to call this
+      layout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
 
-    layout.plot_bgcolor = '#293135',
+      layout.plot_bgcolor = '#293135',
       layout.paper_bgcolor = '#293135'
 
-    layout.yaxis.title = ''
-    layout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
+      layout.yaxis.title = ''
+      layout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
 
-    layout.margin = {
-      l: 40,
-      r: 40, // annotations space
-      t: 40,
-      b: 0
+      layout.margin = {
+        l: 40,
+        r: 40, // annotations space
+        t: 40,
+        b: 0
 
-    }
-    // scatterHM()
-    updateGroupTxt('all')
-  }) // end then
-let lyt = {}
+      }
+      // scatterHM()
+      updateGroupTxt('all')
+    }) // end then
+  const lyt = {}
 
-async function loadSmallAreas() {
+  let mapLayers = await getEmptyLayersArray(8)
+  mapLayers = await loadSmallAreas(mapLayers)
+  addLayersToMap(mapLayers, mapGeodemos)
+}
+
+main()
+
+async function loadSmallAreas (layers) {
   // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
 
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
@@ -155,17 +150,17 @@ async function loadSmallAreas() {
   corkSAs.features.forEach(sa => {
     try {
       const groupNo = sa.properties.cork_clusters_Clusters
-      mapLayers[parseInt(groupNo) - 1].addData(sa)
+      layers[parseInt(groupNo) - 1].addData(sa)
     } catch (err) {
       // sa.properties.groupnumber = 'NA'
       // mapLayers[7].addData(sa)
       console.log(err)
     }
   })
+  return layers
 }
-loadSmallAreas()
 
-function getEmptyLayersArray(total) {
+async function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -178,7 +173,7 @@ function getEmptyLayersArray(total) {
   return layersArr
 }
 
-function getLayerStyle(index) {
+function getLayerStyle (index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -189,11 +184,20 @@ function getLayerStyle(index) {
   }
 }
 
-function getLayerColor(index) {
+function getLayerColor (index) {
+  const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
+    '#beaed4',
+    '#fdc086',
+    '#ffff99',
+    '#386cb0',
+    '#f0027f',
+    '#bf5b17']
+  const GEODEMOS_COLORWAY_CBSAFE = ['#d73027', '#f46d43', '#fdae61', '#fee090', '#abd9e9', '#74add1', '#4575b4']
+  const GEODEMOS_COLORWAY = GEODEMOS_COLORWAY_CATEGORICAL
   return GEODEMOS_COLORWAY[index]
 }
 
-function updateGroupTxt(no) {
+function updateGroupTxt (no) {
   if (document.contains(document.getElementById('myhref'))) {
     document.getElementById('href').remove()
   }
@@ -206,7 +210,7 @@ function updateGroupTxt(no) {
   })
 }
 
-function onEachFeature(feature, layer) {
+function onEachFeature (feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -256,25 +260,18 @@ d3.select('#group-buttons').selectAll('img').on('click', function () {
   }
 })
 
-function AddLayersToMap() {
-  mapLayers.forEach((l, k) => {
-    if (!mapGeodemos.hasLayer(l)) {
-      const mlay = mapLayers[k]
-      // let cov=traces[k-1].x[soc_eco_val];
-
-      mapGeodemos.addLayer(mlay)
-
-      mlay.setStyle({
-        fillColor: getLayerColor(k)// getFColor(cov)
-
-      }
-
-      )
+function addLayersToMap (layers, map) {
+  layers.forEach((l, i) => {
+    if (!map.hasLayer(l)) {
+      map.addLayer(l)
+      l.setStyle({
+        fillColor: getLayerColor(i)
+      })
     }
   })
 }
 
-function ResetImages(imgid) {
+function ResetImages (imgid) {
   const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
     '/images/icons/ui/Icon_eye_selected-1.svg',
     '/images/icons/ui/Icon_eye_selected-2.svg',
@@ -309,7 +306,7 @@ function ResetImages(imgid) {
   selectedImg.src = imgsrcarr[imgid]
 }
 
-function addHorizrntalBars(value, text) {
+function addHorizrntalBars (value, text) {
   // alert(value + text)
   const GroupsArray = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
   hmlayout = Object.assign({}, ROW_CHART_LAYOUT)
@@ -415,7 +412,7 @@ function addHorizrntalBars(value, text) {
     })
 }
 
-function scatterHM() {
+function scatterHM () {
   d3.csv('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       columnNames2 = Object.keys(zScores[0])
@@ -449,7 +446,7 @@ function scatterHM() {
       lyt.height = 500
       // lyt.width = 300
       lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      lyt.paper_bgcolor = '#293135'
 
       lyt.title = Object.assign({}, ROW_CHART_LAYOUT.title)
       lyt.title.text = 'Variables Value Distribution (z-scores)'
@@ -464,7 +461,7 @@ function scatterHM() {
 
       },
 
-        lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
+      lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
       lyt.legend.xanchor = 'right'
       lyt.legend.y = 0.1
       lyt.legend.traceorder = 'reversed'
@@ -488,7 +485,7 @@ function scatterHM() {
       lyt.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
 
       lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      lyt.paper_bgcolor = '#293135'
 
       lyt.yaxis.title = ''
       lyt.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)

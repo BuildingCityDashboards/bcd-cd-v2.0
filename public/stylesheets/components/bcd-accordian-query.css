@@ -34,8 +34,6 @@
 .accordion__heading {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.1rem;
-    /*//    display:inline-block;*/
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -53,19 +51,14 @@
     flex-direction: row;
     align-items: center;
     cursor: pointer;
-    /* padding: .25rem 1.5rem .25rem 1.5rem; */
     padding: 16px 8px;
     background-color: transparent;
-
 }
 
 .accordion__heading h1 {
-
     letter-spacing: 0.1rem;
     color: #e95d4f;
     font-size: 20px;
-
-
 }
 
 .accordion__heading::-moz-focus-inner {

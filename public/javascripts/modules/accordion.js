@@ -1,3 +1,5 @@
+// TODO: move to bcd-ui module
+
 const acc = document.getElementsByClassName('accordion')
 let i
 
