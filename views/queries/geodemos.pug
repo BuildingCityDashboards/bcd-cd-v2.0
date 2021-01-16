@@ -55,7 +55,7 @@ block content
             .query__help
                 .query__help__icon
                 div 
-                    p Choose a group to see it visualised below. The heatmap provides an overview of all groups.
+                    p Choose a group to be visualised below on the map. Open the chart to see values. The heatmap shows an overview of statistics for all groups.
             .query__list list
                 .query__list-item item 1
                 .query__list-item item 2
@@ -63,19 +63,19 @@ block content
             .query__viz
                 +accordion({
                     id: "geodemos-map",
-                    title: "Map",
+                    title: "Map of Groups",
                     content: "", 
                     classes: "accordion--active"
                     })
                         #map-geodemos.accordion__content 
                 +accordion({
                     id: "geodemos-chart",
-                    title: "Chart",
+                    title: "Values Chart",
                     content: "", 
                     })
                 +accordion({
                     id: "geodemos-description",
-                    title: "Description",
+                    title: "Group Description",
                     content: "", 
                     })
                     #geodemos-group-description.accordion__content 
