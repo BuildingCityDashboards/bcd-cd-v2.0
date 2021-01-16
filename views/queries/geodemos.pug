@@ -16,8 +16,8 @@ block append head
         link(rel='stylesheet', href='/stylesheets/queries/bcd-query-basic.css')
         link(rel='stylesheet', href='/stylesheets/components/bcd-subnav.css')
         //- link(rel='stylesheet', href='/stylesheets/lib/marker-cluster-modified.css')
-        link(rel='stylesheet', href='/stylesheets/components/bcd-accordian-query.css')
         link(rel='stylesheet', href='/stylesheets/components/bcd-map.css')
+        link(rel='stylesheet', href='/stylesheets/components/bcd-accordian-query.css')
         //- link(rel='stylesheet', href='/stylesheets/lib/leaflet-chart-modified.css')  
 
         //- link(rel='stylesheet', href='/stylesheets/spin.css')
@@ -42,12 +42,11 @@ block content
                     a(href="https://rpubs.com/burcinwalsh/620510" target="_blank")
                        | RPubs
             .query__header
-                //- +accordion("one") 
                 +accordion({
                         id:"geodemos-header",
                         title: "Geodemographics", 
                         content: "<p>Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units and variables are taken from the 2016 Census of Population results.</p>",
-                        classes: ""
+                        classes: "accordion--active"
                         })
                         
             .query__dropdown-bar 
@@ -64,17 +63,20 @@ block content
             .query__viz
                 +accordion({
                     id: "geodemos-map",
-                    title: "Map", 
-                    classes: "accordion__item--active"
+                    title: "Map",
+                    content: "", 
+                    classes: "accordion--active"
                     })
-                     //- #map-geodemos.accordion__content 
+                        #map-geodemos.accordion__content 
                 +accordion({
                     id: "geodemos-chart",
-                    title: "Chart"
+                    title: "Chart",
+                    content: "", 
                     })
                 +accordion({
                     id: "geodemos-description",
-                    title: "Description"
+                    title: "Description",
+                    content: "", 
                     })
                     #geodemos-group-description.accordion__content 
                         .query__text__title title

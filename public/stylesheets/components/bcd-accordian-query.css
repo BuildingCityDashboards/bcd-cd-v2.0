@@ -54,7 +54,7 @@
     align-items: center;
     cursor: pointer;
     /* padding: .25rem 1.5rem .25rem 1.5rem; */
-    padding: 0 8px;
+    padding: 8px;
     background-color: transparent;
 
 }
@@ -99,7 +99,8 @@
 .accordion__arrow--active {}
 
 
-.accordion__content {
+.accordion__content,
+.leaflet-container {
     transition: opacity 500ms, max-height 1000ms, padding 1500ms;
     max-height: 0;
     height: auto;
@@ -118,9 +119,17 @@
     padding: 1rem 8px 1.5rem;
     height: auto;
     max-height: 1000px;
-    /* visibility: visible; */
+    visibility: visible;
     opacity: 1;
     transition: opacity 1s, max-height 500ms;
+}
+
+.leaflet-container {
+    min-height: 0;
+}
+
+.accordion--active .leaflet-container {
+    min-height: 280px;
 }
 
 .accordion--active .accordion__arrow {
