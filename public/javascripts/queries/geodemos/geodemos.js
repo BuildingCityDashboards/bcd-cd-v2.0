@@ -3,7 +3,7 @@
 **/
 
 import { getCityLatLng } from '../../modules/bcd-maps.js'
-async function main() {
+async function main () {
   const minZoom = 8
   const maxZoom = 16
   const zoom = minZoom
@@ -60,7 +60,7 @@ main()
 
 /* Map functions */
 
-async function loadSmallAreas(layers) {
+async function loadSmallAreas (layers) {
   // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
 
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
@@ -80,7 +80,7 @@ async function loadSmallAreas(layers) {
   return layers
 }
 
-async function getEmptyLayersArray(total) {
+async function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -93,7 +93,7 @@ async function getEmptyLayersArray(total) {
   return layersArr
 }
 
-function getLayerStyle(index) {
+function getLayerStyle (index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -104,7 +104,7 @@ function getLayerStyle(index) {
   }
 }
 
-function getLayerColor(index) {
+function getLayerColor (index) {
   const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
     '#beaed4',
     '#fdc086',
@@ -123,7 +123,7 @@ function getLayerColor(index) {
   return GEODEMOS_COLORWAY_CBSAFE[index]
 }
 
-function onEachFeature(feature, layer) {
+function onEachFeature (feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -145,7 +145,7 @@ function onEachFeature(feature, layer) {
   })
 }
 
-function addLayersToMap(layers, map) {
+function addLayersToMap (layers, map) {
   layers.forEach((l, i) => {
     if (!map.hasLayer(l)) {
       map.addLayer(l)
@@ -158,7 +158,7 @@ function addLayersToMap(layers, map) {
 
 /* Chart functions */
 
-async function loadChartData(groupNames) {
+async function loadChartData (groupNames) {
   d3.text('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       const newCsv = zScores.split('\n').map(function (line) {
@@ -221,7 +221,7 @@ async function loadChartData(groupNames) {
     })
 }
 
-function ResetImages(imgid) {
+function ResetImages (imgid) {
   const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
     '/images/icons/ui/Icon_eye_selected-1.svg',
     '/images/icons/ui/Icon_eye_selected-2.svg',
@@ -258,14 +258,11 @@ function ResetImages(imgid) {
 
 /* Heatmap functions */
 
-function loadChart() {
+function loadChart () {
   d3.csv('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
-      let lyt = {}
-      const traces = []
-      const ntraces = []
-      const layout = {}
-      const hmlayout = {}
+      let chartLayout = {}
+      const chartTraces = []
       let columnNames2 = {}
       columnNames2 = Object.keys(zScores[0])
       columnNames2 = columnNames2.reverse()
@@ -280,7 +277,6 @@ function loadChart() {
         ntrace.marker = {
           color: getLayerColor(i),
           size: 11
-
         }
 
         ntrace.x = columnNames2.map(name2 => {
@@ -289,74 +285,70 @@ function loadChart() {
 
         ntrace.y = columnNames2
 
-        ntraces.push(ntrace)
+        chartTraces.push(ntrace)
         ntrace.hovertemplate = `%{x:.2f}<extra>Group No: ${i + 1}</extra>`
       })
 
-      lyt = Object.assign({}, ROW_CHART_LAYOUT)
-      lyt.mode = 'scatter'
-      lyt.height = 500
-      // lyt.width = 300
-      lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      chartLayout = Object.assign({}, ROW_CHART_LAYOUT)
+      chartLayout.mode = 'scatter'
+      chartLayout.height = 500
+      // chartLayout.width = 300
+      chartLayout.responsive = true
+      chartLayout.plot_bgcolor = '#ffffff'
+      chartLayout.paper_bgcolor = '#ffffff'
 
-      lyt.title = Object.assign({}, ROW_CHART_LAYOUT.title)
-      lyt.title.text = 'Variables Value Distribution (z-scores)'
-      lyt.title.x = 0.51
-      lyt.title.y = 0.99
-      lyt.title.xanchor = 'center'
-      lyt.title.yanchor = 'top'
-      lyt.title.font = {
-        color: '#6fd1f6',
+      chartLayout.title = Object.assign({}, ROW_CHART_LAYOUT.title)
+      chartLayout.title.text = 'Variables Value Distribution (z-scores)'
+      chartLayout.title.x = 0.51
+      chartLayout.title.y = 0.99
+      chartLayout.title.xanchor = 'center'
+      chartLayout.title.yanchor = 'top'
+      chartLayout.title.font = {
+        color: '#e95d4f',
         family: 'Roboto',
-        size: 17
-
+        size: 18
       },
 
-        lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
-      lyt.legend.xanchor = 'right'
-      lyt.legend.y = 0.1
-      lyt.legend.traceorder = 'reversed'
-      lyt.xaxis = Object.assign({}, ROW_CHART_LAYOUT.xaxis)
-      lyt.xaxis.title = ''
-      lyt.xaxis.range = [-2, 2.9]
-      lyt.yaxis = Object.assign({}, ROW_CHART_LAYOUT.yaxis)
-      lyt.yaxis.tickfont = {
-        family: 'PT Sans',
-        size: 9,
-        color: '#6fd1f6'
+      chartLayout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
+      chartLayout.legend.xanchor = 'right'
+      chartLayout.legend.y = 0.1
+      chartLayout.legend.traceorder = 'reversed'
+      chartLayout.xaxis = Object.assign({}, ROW_CHART_LAYOUT.xaxis)
+      chartLayout.xaxis.title = ''
+      chartLayout.xaxis.range = [-2, 2.9]
+      chartLayout.yaxis = Object.assign({}, ROW_CHART_LAYOUT.yaxis)
+      chartLayout.yaxis.tickfont = {
+        family: 'Roboto',
+        size: 12,
+        color: '#e95d4f'
       }
-      lyt.xaxis.tickfont = {
-        family: 'PT Sans',
-        size: 10,
-        color: '#6fd1f6'
+      chartLayout.xaxis.tickfont = {
+        family: 'Roboto',
+        size: 12,
+        color: '#e95d4f'
       }
 
-      lyt.yaxis.titlefont = Object.assign({}, ROW_CHART_LAYOUT.yaxis.titlefont)
-      lyt.yaxis.titlefont.size = 16 // bug? need to call this
-      lyt.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
+      chartLayout.yaxis.titlefont = Object.assign({}, ROW_CHART_LAYOUT.yaxis.titlefont)
+      chartLayout.yaxis.titlefont.size = 16 // bug? need to call this
+      chartLayout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
+      chartLayout.yaxis.title = ''
+      chartLayout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
 
-      lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
-
-      lyt.yaxis.title = ''
-      lyt.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
-
-      lyt.margin = {
-        l: 20,
-        r: 60, // annotations space
+      chartLayout.margin = {
+        l: 0,
+        r: 0, // annotations space
         t: 40,
         b: 0
-
       }
 
-      Plotly.newPlot('chart-geodemos', [ntraces[0], ntraces[1], ntraces[2], ntraces[3], ntraces[4], ntraces[5], ntraces[6]], lyt, {
+      Plotly.newPlot('chart-geodemos', chartTraces, chartLayout, {
         modeBar: {
           orientation: 'v',
           bgcolor: 'black',
           color: null,
           activecolor: null
-        }
+        },
+        responsive: true
 
       })
     }) // end then
@@ -364,7 +356,7 @@ function loadChart() {
 
 /* UI functions */
 
-function updateGroupTxt(no) {
+function updateGroupTxt (no) {
   if (document.contains(document.getElementById('myhref'))) {
     document.getElementById('href').remove()
   }

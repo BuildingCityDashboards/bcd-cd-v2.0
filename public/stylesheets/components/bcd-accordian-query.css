@@ -109,12 +109,16 @@
 
 .accordion--active .accordion__content {
     /* color: #f8f8f8; */
-    padding: 16px 8px;
+    padding: 16px 0;
     height: auto;
     max-height: 1000px;
     visibility: visible;
     opacity: 1;
     transition: opacity 1s, max-height 500ms;
+}
+
+.accordion--active .accordion__content__text {
+    padding: 16px 8px;
 }
 
 .leaflet-container {
