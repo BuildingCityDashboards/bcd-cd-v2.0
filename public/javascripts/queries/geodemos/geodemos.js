@@ -48,7 +48,6 @@ async function main() {
   // Need to stop clicks on map propagating to div beneath
   const mapDiv = document.getElementById('map-geodemos')
   L.DomEvent.on(mapDiv, 'click', function (ev) {
-    console.log('click on map')
     L.DomEvent.stopPropagation(ev)
   })
 }
@@ -147,6 +146,8 @@ d3.csv('/data/geodemos/cork_zscores.csv')
   const lyt = {}
   */
 
+/* Map functions */
+
 async function loadSmallAreas(layers) {
   // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
 
@@ -210,19 +211,6 @@ function getLayerColor(index) {
   return GEODEMOS_COLORWAY_CBSAFE[index]
 }
 
-function updateGroupTxt(no) {
-  if (document.contains(document.getElementById('myhref'))) {
-    document.getElementById('href').remove()
-  }
-
-  d3.json('/data/geodemos/geodem-text-data.json').then(function (dublinRegionsJson) {
-    d3.select('#group-title').text(dublinRegionsJson[1][no]).style('font-size', '27px').style('font-weight', 'bold')
-    //
-    d3.select('#group-title').text(dublinRegionsJson[1][no])// .style("color",getLayerColor(no-1));
-    d3.select('#group-text').text(dublinRegionsJson[0][no]).style('font-size', '15px')
-  })
-}
-
 function onEachFeature(feature, layer) {
   const customOptions =
   {
@@ -231,7 +219,6 @@ function onEachFeature(feature, layer) {
     className: 'popupCustom'
   }
 
-  console.log(feature.properties)
   const popTextContent =
     '<p><b>Group ' + feature.properties.cork_clusters_Clusters + '</b></p>' +
     '<p><b>' + feature.properties.EDNAME + '</b></p>' +
@@ -246,35 +233,6 @@ function onEachFeature(feature, layer) {
   })
 }
 
-d3.select('#group-buttons').selectAll('img').on('click', function () {
-  const cb = $(this)
-  const myv = $(this).attr('id')
-  ResetImages(myv)
-  let layerNo = myv === 'all' ? 'all' : parseInt(myv) - 1
-
-  if (layerNo !== 'all') {
-    mapLayers.forEach(l => {
-      mapGeodemos.removeLayer(l)
-    })
-
-    const gn = layerNo + 1
-
-    updateGroupTxt(gn)
-    mapGeodemos.addLayer(mapLayers[layerNo])
-
-    Plotly.react('chart-geodemos', [traces[layerNo]], layout)
-  }
-  // }
-
-  layerNo = myv
-
-  if (layerNo === 'all') { // 'all' && cb.attr("src")=='/images/icons/ui/Icon_eye_selected.svg') {
-    scatterHM()
-    updateGroupTxt('all')
-    AddLayersToMap()
-  }
-})
-
 function addLayersToMap(layers, map) {
   layers.forEach((l, i) => {
     if (!map.hasLayer(l)) {
@@ -284,6 +242,74 @@ function addLayersToMap(layers, map) {
       })
     }
   })
+}
+
+/* Chart functions */
+
+async function loadChart() {
+  d3.text('/data/geodemos/dublin_zscores.csv')
+    .then((zScores) => {
+      const newCsv = zScores.split('\n').map(function (line) {
+        const columns = line.split(',') // get the columns
+        columns.splice(0, 1) // remove total column
+        return columns
+      }).join('\n')
+
+      const rows = newCsv.split('\n')
+      // alert(rows)
+      // get the first row as header
+      const header = rows.shift() // .revers();
+      // alert(header)
+      // const header = columnNames;
+      const numberOfColumns = header.split(',').length
+
+      // initialize 2D-array with a fixed size
+      const columnData = [...Array(numberOfColumns)].map(item => new Array())
+
+      for (let i = 0; i < rows.length; i++) {
+        const row = rows[i]
+        const rowData = row.split(',')
+
+        for (let j = 0; j < numberOfColumns; j++) {
+          columnData[j].push((rowData[j]))
+        }
+      }
+      const zArray = []
+      for (let r = 0; r < 7; r++) {
+        // alert(columnData[value][r])
+        zArray.push((columnData[value][r]))
+      }
+
+      const farr = []
+      // let tc ={}
+      for (let f = 0; f < zArray.length; f++) {
+        const tc = Object.assign({}, TRACES_DEFAULT)
+        tc.type = 'bar'
+        tc.orientation = 'h'
+        tc.x = parseFloat(zArray[f])
+        tc.y = GroupsArray[f]
+        // alert(JSON.stringify(tc))
+        farr.push(tc)
+      }
+
+      const data = [
+        {
+          x: zArray, // columnData,
+          // color: getLayerColor(GroupsArray.indexOf("Banana");),
+          y: GroupsArray, // ['', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          hovertemplate: `${text}: %{x:.2f}<extra></extra>`,
+          type: 'bar',
+          orientation: 'h',
+          indxArr: [0, 1, 2, 3, 4, 5, 6],
+
+          marker: {
+            color: ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666']
+          }
+        }
+      ]
+      // Plotly.purge('chart-geodemos');
+      Plotly.newPlot('chart-geodemos', data, hmlayout)
+    })
 }
 
 function ResetImages(imgid) {
@@ -361,71 +387,9 @@ function addHorizrntalBars(value, text) {
     b: 0
 
   }
-
-  d3.text('/data/geodemos/dublin_zscores.csv')
-    .then((zScores) => {
-      const newCsv = zScores.split('\n').map(function (line) {
-        const columns = line.split(',') // get the columns
-        columns.splice(0, 1) // remove total column
-        return columns
-      }).join('\n')
-
-      const rows = newCsv.split('\n')
-      // alert(rows)
-      // get the first row as header
-      const header = rows.shift() // .revers();
-      // alert(header)
-      // const header = columnNames;
-      const numberOfColumns = header.split(',').length
-
-      // initialize 2D-array with a fixed size
-      const columnData = [...Array(numberOfColumns)].map(item => new Array())
-
-      for (let i = 0; i < rows.length; i++) {
-        const row = rows[i]
-        const rowData = row.split(',')
-
-        for (let j = 0; j < numberOfColumns; j++) {
-          columnData[j].push((rowData[j]))
-        }
-      }
-      const zArray = []
-      for (let r = 0; r < 7; r++) {
-        // alert(columnData[value][r])
-        zArray.push((columnData[value][r]))
-      }
-
-      const farr = []
-      // let tc ={}
-      for (let f = 0; f < zArray.length; f++) {
-        const tc = Object.assign({}, TRACES_DEFAULT)
-        tc.type = 'bar'
-        tc.orientation = 'h'
-        tc.x = parseFloat(zArray[f])
-        tc.y = GroupsArray[f]
-        // alert(JSON.stringify(tc))
-        farr.push(tc)
-      }
-
-      const data = [
-        {
-          x: zArray, // columnData,
-          // color: getLayerColor(GroupsArray.indexOf("Banana");),
-          y: GroupsArray, // ['', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          hovertemplate: `${text}: %{x:.2f}<extra></extra>`,
-          type: 'bar',
-          orientation: 'h',
-          indxArr: [0, 1, 2, 3, 4, 5, 6],
-
-          marker: {
-            color: ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666']
-          }
-        }
-      ]
-      // Plotly.purge('chart-geodemos');
-      Plotly.newPlot('chart-geodemos', data, hmlayout)
-    })
 }
+
+/* Heatmap functions */
 
 function scatterHM() {
   d3.csv('/data/geodemos/cork_zscores.csv')
@@ -524,3 +488,47 @@ function scatterHM() {
       })
     }) // end then
 }
+
+/* UI functions */
+
+function updateGroupTxt(no) {
+  if (document.contains(document.getElementById('myhref'))) {
+    document.getElementById('href').remove()
+  }
+
+  d3.json('/data/geodemos/geodem-text-data.json').then(function (dublinRegionsJson) {
+    d3.select('#group-title').text(dublinRegionsJson[1][no]).style('font-size', '27px').style('font-weight', 'bold')
+    //
+    d3.select('#group-title').text(dublinRegionsJson[1][no])// .style("color",getLayerColor(no-1));
+    d3.select('#group-text').text(dublinRegionsJson[0][no]).style('font-size', '15px')
+  })
+}
+
+d3.select('#group-buttons').selectAll('img').on('click', function () {
+  const cb = $(this)
+  const myv = $(this).attr('id')
+  ResetImages(myv)
+  let layerNo = myv === 'all' ? 'all' : parseInt(myv) - 1
+
+  if (layerNo !== 'all') {
+    mapLayers.forEach(l => {
+      mapGeodemos.removeLayer(l)
+    })
+
+    const gn = layerNo + 1
+
+    updateGroupTxt(gn)
+    mapGeodemos.addLayer(mapLayers[layerNo])
+
+    Plotly.react('chart-geodemos', [traces[layerNo]], layout)
+  }
+  // }
+
+  layerNo = myv
+
+  if (layerNo === 'all') { // 'all' && cb.attr("src")=='/images/icons/ui/Icon_eye_selected.svg') {
+    scatterHM()
+    updateGroupTxt('all')
+    AddLayersToMap()
+  }
+})
