@@ -3,7 +3,7 @@
 **/
 
 import { getCityLatLng } from '../../modules/bcd-maps.js'
-async function main() {
+async function main () {
   const minZoom = 8
   const maxZoom = 16
   const zoom = minZoom
@@ -147,7 +147,7 @@ d3.csv('/data/geodemos/cork_zscores.csv')
   const lyt = {}
   */
 
-async function loadSmallAreas(layers) {
+async function loadSmallAreas (layers) {
   // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
 
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
@@ -167,7 +167,7 @@ async function loadSmallAreas(layers) {
   return layers
 }
 
-async function getEmptyLayersArray(total) {
+async function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -180,7 +180,7 @@ async function getEmptyLayersArray(total) {
   return layersArr
 }
 
-function getLayerStyle(index) {
+function getLayerStyle (index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -191,7 +191,7 @@ function getLayerStyle(index) {
   }
 }
 
-function getLayerColor(index) {
+function getLayerColor (index) {
   const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
     '#beaed4',
     '#fdc086',
@@ -204,7 +204,7 @@ function getLayerColor(index) {
   return GEODEMOS_COLORWAY[index]
 }
 
-function updateGroupTxt(no) {
+function updateGroupTxt (no) {
   if (document.contains(document.getElementById('myhref'))) {
     document.getElementById('href').remove()
   }
@@ -217,7 +217,7 @@ function updateGroupTxt(no) {
   })
 }
 
-function onEachFeature(feature, layer) {
+function onEachFeature (feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -267,7 +267,7 @@ d3.select('#group-buttons').selectAll('img').on('click', function () {
   }
 })
 
-function addLayersToMap(layers, map) {
+function addLayersToMap (layers, map) {
   layers.forEach((l, i) => {
     if (!map.hasLayer(l)) {
       map.addLayer(l)
@@ -278,7 +278,7 @@ function addLayersToMap(layers, map) {
   })
 }
 
-function ResetImages(imgid) {
+function ResetImages (imgid) {
   const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
     '/images/icons/ui/Icon_eye_selected-1.svg',
     '/images/icons/ui/Icon_eye_selected-2.svg',
@@ -313,7 +313,7 @@ function ResetImages(imgid) {
   selectedImg.src = imgsrcarr[imgid]
 }
 
-function addHorizrntalBars(value, text) {
+function addHorizrntalBars (value, text) {
   // alert(value + text)
   const GroupsArray = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
   hmlayout = Object.assign({}, ROW_CHART_LAYOUT)
@@ -419,7 +419,7 @@ function addHorizrntalBars(value, text) {
     })
 }
 
-function scatterHM() {
+function scatterHM () {
   d3.csv('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       columnNames2 = Object.keys(zScores[0])
@@ -453,7 +453,7 @@ function scatterHM() {
       lyt.height = 500
       // lyt.width = 300
       lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      lyt.paper_bgcolor = '#293135'
 
       lyt.title = Object.assign({}, ROW_CHART_LAYOUT.title)
       lyt.title.text = 'Variables Value Distribution (z-scores)'
@@ -468,7 +468,7 @@ function scatterHM() {
 
       },
 
-        lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
+      lyt.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
       lyt.legend.xanchor = 'right'
       lyt.legend.y = 0.1
       lyt.legend.traceorder = 'reversed'
@@ -492,7 +492,7 @@ function scatterHM() {
       lyt.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
 
       lyt.plot_bgcolor = '#293135',
-        lyt.paper_bgcolor = '#293135'
+      lyt.paper_bgcolor = '#293135'
 
       lyt.yaxis.title = ''
       lyt.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
