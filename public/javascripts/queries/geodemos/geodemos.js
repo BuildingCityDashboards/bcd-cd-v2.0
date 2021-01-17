@@ -50,101 +50,13 @@ async function main() {
   L.DomEvent.on(mapDiv, 'click', function (ev) {
     L.DomEvent.stopPropagation(ev)
   })
+
+  const groupNames = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
+  await loadChart()
+  // console.log(data)
 }
 
 main()
-/*
-const traces = []
-  const ntraces = []
-  let layout = {}
-  const hmlayout = {}
-  const columnNames2 = {}
-d3.csv('/data/geodemos/cork_zscores.csv')
-    .then((zScores) => {
-      zScores.forEach((row, i) => {
-        const columnNames = Object.keys(row).sort(function (a, b) { return row[a] - row[b] })
-
-        const trace = Object.assign({}, TRACES_DEFAULT)
-        // trace.type = 'bar'
-        // trace.orientation = 'h'
-        // trace.mode = ''
-        // trace.hovertemplate= 'z-score: %{x:.2f}<extra></extra>'
-        trace.mode = 'markers+text'
-        trace.type = 'scatter'
-
-        // trace.orientation = 'h'
-        trace.marker = Object.assign({}, TRACES_DEFAULT.marker)
-        trace.marker = {
-          color: getLayerColor(i) // lines + markers, defaults to colorway
-        }
-
-        trace.x = columnNames.map(name => {
-          return row[name]
-        })
-
-        trace.y = columnNames
-
-        traces.push(trace)
-        trace.hovertemplate = `%{x:.2f}<extra>Group No: ${i + 1}</extra>`
-      })
-
-      layout = Object.assign({}, ROW_CHART_LAYOUT)
-      // layout.mode = 'bars'
-      layout.height = 500
-
-      layout.title = Object.assign({}, ROW_CHART_LAYOUT.title)
-      layout.title.text = 'Variables Value Distribution (z-scores)'
-      layout.title.x = 0.51
-      layout.title.y = 0.99
-      layout.title.xanchor = 'center'
-      layout.title.yanchor = 'top'
-      layout.title.font = {
-        color: '#6fd1f6',
-        family: 'Roboto',
-        size: 17
-
-      },
-        layout.showlegend = false
-      layout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
-      layout.legend.xanchor = 'right'
-
-      layout.xaxis = Object.assign({}, ROW_CHART_LAYOUT.xaxis)
-      layout.xaxis.title = 'value'
-      layout.xaxis.range = [-2, 2.9]
-      layout.yaxis = Object.assign({}, ROW_CHART_LAYOUT.yaxis)
-      layout.yaxis.tickfont = {
-        family: 'PT Sans',
-        size: 9,
-        color: '#6fd1f6'
-      }
-      layout.xaxis.tickfont = {
-        family: 'PT Sans',
-        size: 10,
-        color: '#6fd1f6'
-      }
-
-      layout.yaxis.titlefont = Object.assign({}, ROW_CHART_LAYOUT.yaxis.titlefont)
-      layout.yaxis.titlefont.size = 16 // bug? need to call this
-      layout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
-
-      layout.plot_bgcolor = '#293135',
-        layout.paper_bgcolor = '#293135'
-
-      layout.yaxis.title = ''
-      layout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
-
-      layout.margin = {
-        l: 40,
-        r: 40, // annotations space
-        t: 40,
-        b: 0
-
-      }
-      // scatterHM()
-      updateGroupTxt('all')
-    }) // end then
-  const lyt = {}
-  */
 
 /* Map functions */
 
@@ -246,8 +158,8 @@ function addLayersToMap(layers, map) {
 
 /* Chart functions */
 
-async function loadChart() {
-  d3.text('/data/geodemos/dublin_zscores.csv')
+async function loadChartData(groupNames) {
+  d3.text('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       const newCsv = zScores.split('\n').map(function (line) {
         const columns = line.split(',') // get the columns
@@ -256,10 +168,10 @@ async function loadChart() {
       }).join('\n')
 
       const rows = newCsv.split('\n')
-      // alert(rows)
+
       // get the first row as header
-      const header = rows.shift() // .revers();
-      // alert(header)
+      const header = rows.shift()
+
       // const header = columnNames;
       const numberOfColumns = header.split(',').length
 
@@ -287,7 +199,7 @@ async function loadChart() {
         tc.type = 'bar'
         tc.orientation = 'h'
         tc.x = parseFloat(zArray[f])
-        tc.y = GroupsArray[f]
+        tc.y = groupNames[f]
         // alert(JSON.stringify(tc))
         farr.push(tc)
       }
@@ -295,20 +207,17 @@ async function loadChart() {
       const data = [
         {
           x: zArray, // columnData,
-          // color: getLayerColor(GroupsArray.indexOf("Banana");),
-          y: GroupsArray, // ['', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+          y: groupNames,
           hovertemplate: `${text}: %{x:.2f}<extra></extra>`,
           type: 'bar',
           orientation: 'h',
           indxArr: [0, 1, 2, 3, 4, 5, 6],
-
           marker: {
             color: ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666']
           }
         }
       ]
-      // Plotly.purge('chart-geodemos');
-      Plotly.newPlot('chart-geodemos', data, hmlayout)
+      return data
     })
 }
 
@@ -347,53 +256,17 @@ function ResetImages(imgid) {
   selectedImg.src = imgsrcarr[imgid]
 }
 
-function addHorizrntalBars(value, text) {
-  // alert(value + text)
-  const GroupsArray = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
-  hmlayout = Object.assign({}, ROW_CHART_LAYOUT)
-
-  hmlayout.height = 500
-  hmlayout.width = 360
-  // layout.barmode = 'group';
-  hmlayout.colorway = GEODEMOS_COLORWAY
-  hmlayout.title = Object.assign({}, ROW_CHART_LAYOUT.title)
-  hmlayout.title.text = text + ' ' + 'Value Distribution (z-scores)'
-  hmlayout.showlegend = false
-  hmlayout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
-  hmlayout.legend.xanchor = 'right'
-  hmlayout.legend.y = 0.1
-  hmlayout.legend.traceorder = 'reversed'
-  hmlayout.xaxis = Object.assign({}, ROW_CHART_LAYOUT.xaxis)
-  hmlayout.xaxis.title = ''
-  // hmlayout.xaxis.range = [-2, 2]
-  hmlayout.yaxis = Object.assign({}, ROW_CHART_LAYOUT.yaxis)
-  hmlayout.yaxis.tickfont = {
-    family: 'PT Sans',
-    size: 10,
-    color: '#313131'
-  }
-  hmlayout.yaxis.titlefont = Object.assign({}, ROW_CHART_LAYOUT.yaxis.titlefont)
-  hmlayout.yaxis.titlefont.size = 16 // bug? need to call this
-  hmlayout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
-  // -hmlayout.hovermode ='closest';
-  // -hmlayout.hoverinfo = "z";
-  // -hmlayout.domain =[0.85,0.9];
-  hmlayout.yaxis.title = ''
-  hmlayout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
-  hmlayout.margin = {
-    l: 20,
-    r: 20, // annotations space
-    t: 20,
-    b: 0
-
-  }
-}
-
 /* Heatmap functions */
 
-function scatterHM() {
+function loadChart() {
   d3.csv('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
+      let lyt = {}
+      const traces = []
+      const ntraces = []
+      const layout = {}
+      const hmlayout = {}
+      let columnNames2 = {}
       columnNames2 = Object.keys(zScores[0])
       columnNames2 = columnNames2.reverse()
       columnNames2 = columnNames2.filter(e => e !== 'cluster')
