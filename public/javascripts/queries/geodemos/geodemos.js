@@ -199,9 +199,15 @@ function getLayerColor(index) {
     '#386cb0',
     '#f0027f',
     '#bf5b17']
-  const GEODEMOS_COLORWAY_CBSAFE = ['#d73027', '#f46d43', '#fdae61', '#fee090', '#abd9e9', '#74add1', '#4575b4']
-  const GEODEMOS_COLORWAY = GEODEMOS_COLORWAY_CATEGORICAL
-  return GEODEMOS_COLORWAY[index]
+  const GEODEMOS_COLORWAY_CBSAFE = ['#d73027',
+    '#f46d43',
+    '#fdae61',
+    '#fee090',
+    '#abd9e9',
+    '#74add1',
+    '#4575b4']
+
+  return GEODEMOS_COLORWAY_CBSAFE[index]
 }
 
 function updateGroupTxt(no) {
@@ -224,8 +230,10 @@ function onEachFeature(feature, layer) {
     width: '250',
     className: 'popupCustom'
   }
+
+  console.log(feature.properties)
   const popTextContent =
-    '<p><b>Group ' + feature.properties.groupnumber + '</b></p>' +
+    '<p><b>Group ' + feature.properties.cork_clusters_Clusters + '</b></p>' +
     '<p><b>' + feature.properties.EDNAME + '</b></p>' +
     '<p><b>' + feature.properties.COUNTYNAME + '</b></p>' +
     '<p><b>SA ' + feature.properties.SMALL_AREA + '</b></p>'

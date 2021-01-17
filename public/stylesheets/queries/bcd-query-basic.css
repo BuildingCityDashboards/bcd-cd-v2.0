@@ -125,9 +125,11 @@
     height: 32px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin-right: 8px;
+    color: white;
+    border-radius: 16px;
 
 }
 
