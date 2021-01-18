@@ -117,8 +117,16 @@
     transition: opacity 1s, max-height 500ms;
 }
 
-.accordion--active .accordion__content__text {
-    padding: 16px 8px;
+.accordion--active .accordion__content p {
+    padding: 0 8px;
+}
+
+.accordion--active .accordion__content h2 {
+    font-size: 18px;
+    padding: 0 8px 8px;
+    color: black;
+    font-weight: 300;
+
 }
 
 .leaflet-container {
