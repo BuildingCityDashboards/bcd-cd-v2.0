@@ -1,37 +1,4 @@
 .accordion {
-    padding: 0;
-    list-style: none;
-    width: 100%
-}
-
-.accordion__item {
-    transition: all 250ms cubic-bezier(0.5, 0, 0.1, 1);
-    /* border: 1px solid #818182; */
-    overflow: hidden;
-    /* margin: 0.25rem 0; */
-}
-
-.accordion__item:focus {
-    outline: none;
-}
-
-.accordion__item:hover {}
-
-.accordion__item:focus .accordion__arrow {
-    outline: none;
-    overflow: visible;
-    outline-offset: -0.5px
-}
-
-.accordion__item:last-child {
-    /* border-bottom:1px solid #818182 */
-}
-
-.accordion--active {
-    /* overflow: visible; */
-}
-
-.accordion__heading {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-appearance: none;
@@ -53,32 +20,30 @@
     cursor: pointer;
     padding: 16px 8px;
     background-color: transparent;
+    list-style: none;
 }
 
-.accordion__heading h1 {
+.accordion h1 {
     letter-spacing: 0.1rem;
     color: #e95d4f;
     font-size: 20px;
 }
 
-.accordion__heading::-moz-focus-inner {
+.accordion::-moz-focus-inner {
     border: 0
 }
 
-.accordion__heading:focus {
+.accordion:focus {
     outline: none;
 }
 
-.accordion__heading:hover {
+.accordion:hover {
     outline: none;
 }
 
-.accordion__heading--active {
+.accordion.open {
     outline: none;
 }
-
-
-
 
 .accordion__arrow {
     transition: all 150ms cubic-bezier(0.5, 0, 0.1, 1);
@@ -86,28 +51,42 @@
     width: 1.25rem;
     padding: .25rem .125rem .25rem .25rem;
     margin: 0 0 0 .25rem;
-    fill: #e95d4f
+    fill: #e95d4f;
+    outline: none;
+    overflow: visible;
+    outline-offset: -0.5px
 }
 
-.accordion__arrow--active {}
+.accordion.open .accordion__arrow {
+    transform: rotate(90deg);
+}
 
-
-.accordion__content,
-.leaflet-container {
+.accordion__content {
     transition: opacity 500ms, max-height 1000ms, padding 1500ms;
     max-height: 0;
     height: auto;
     visibility: hidden;
     opacity: 0;
     padding: 0;
+    width: 100%;
+}
+
+.accordion__content p {
+    padding: 0 8px;
+}
+
+.accordion__content h2 {
+    font-size: 18px;
+    padding: 0 8px 8px;
+    color: black;
+    font-weight: 300;
 }
 
 .accordion__content a {
     /* padding-left: 1rem; */
-
 }
 
-.accordion--active .accordion__content {
+.accordion__content.open {
     /* color: #f8f8f8; */
     padding: 16px 0;
     height: auto;
@@ -117,38 +96,21 @@
     transition: opacity 1s, max-height 500ms;
 }
 
-.accordion--active .accordion__content p {
-    padding: 0 8px;
-}
-
-.accordion--active .accordion__content h2 {
-    font-size: 18px;
-    padding: 0 8px 8px;
-    color: black;
-    font-weight: 300;
-
-}
-
-.leaflet-container {
+.accordion__content.leaflet-container {
     min-height: 0;
 }
 
-.accordion--active .leaflet-container {
+.accordion__content.open.leaflet-container {
     min-height: 280px;
+    padding: 16px 0;
+    height: auto;
+    max-height: 1000px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s, max-height 500ms;
 }
 
-.accordion--active .accordion__arrow {
-    transform: rotate(90deg);
 
-}
-
-.accordion__item:hover .accordion__arrow {}
-
-
-
-
-
-/* bottstrap breakpoints */
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     .accordian-screenshot-container {

@@ -37,11 +37,11 @@ block content
                        | RPubs
             .query__header
                 +accordion({
-                        id:"geodemos-header",
-                        title: "Geodemographics", 
-                        content: "<p> Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units and variables are taken from the 2016 Census of Population results.</p>",
-                        classes: "accordion--active"
-                        })
+                    id:"geodemos-header",
+                    title: "Geodemographics", 
+                    content: "<p> Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units and variables are taken from the 2016 Census of Population results.</p>",
+                    classes: "open"
+                    })
                         
             .query__dropdown-bar 
                 p Select a group
@@ -59,21 +59,21 @@ block content
                     id: "geodemos-map",
                     title: "Groups Map",
                     content: "", 
-                    classes: "accordion--active"
+                    classes: "open"
                     })
-                        #map-geodemos.accordion__content 
+                    #map-geodemos.accordion__content.open 
                 +accordion({
                     id: "geodemos-chart",
                     title: "Values Chart",
                     content: "", 
                     })
-                        #chart-geodemos.accordion__content
+                    #chart-geodemos.accordion__content
                 +accordion({
                     id: "geodemos-description",
                     title: "Group Description",
                     content: "", 
                     })
-                    #geodemos-group-description.accordion__content.accordion__content 
+                    #geodemos-group-description.accordion__content 
                         h2 All Groups
                         p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
 
