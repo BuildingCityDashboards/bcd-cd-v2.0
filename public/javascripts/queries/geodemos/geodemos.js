@@ -2,9 +2,9 @@
 
 **/
 
-import { getCityLatLng } from '../../modules/bcd-maps.js'
+import { getCityLatLng, getCorkBoundsLatLng } from '../../modules/bcd-maps.js'
 async function main() {
-  const minZoom = 8
+  const minZoom = 7
   const maxZoom = 16
   const zoom = minZoom
   // tile layer with correct attribution
@@ -19,6 +19,7 @@ async function main() {
   })
   mapGeodemos.setView(getCityLatLng(), zoom)
   mapGeodemos.addLayer(osmLayer)
+  mapGeodemos.setMaxBounds(mapGeodemos.getBounds())
 
   L.control.locate({
     strings: {
