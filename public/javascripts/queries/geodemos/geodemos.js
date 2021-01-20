@@ -45,15 +45,37 @@ async function main () {
   mapLayers = await loadSmallAreas(mapLayers)
   addLayersToMap(mapLayers, mapGeodemos)
 
-  // Need to stop clicks on map propagating to div beneath
-  const mapDiv = document.getElementById('map-geodemos')
-  L.DomEvent.on(mapDiv, 'click', function (ev) {
-    L.DomEvent.stopPropagation(ev)
-  })
-
   const groupNames = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
   await loadChart()
-  // console.log(data)
+
+  document.getElementById('groups-dropdown').addEventListener('click', function () {
+    this.classList.toggle('show')
+  })
+
+  d3.select('#query-dropdown__content').selectAll('button').on('click', function (b) {
+    const buttonData = $(this).attr('data') // TODO: remove jQ
+    // ResetImages(buttonData)
+    const layerNo = buttonData === 'all' ? 'all' : parseInt(buttonData) - 1
+    mapLayers.forEach(l => {
+      mapGeodemos.removeLayer(l)
+    })
+
+    if (layerNo !== 'all') {
+      document.getElementById('current-group').innerHTML = `<p>Group ${buttonData}</p>`
+      // updateGroupTxt(gn)
+      mapGeodemos.addLayer(mapLayers[layerNo])
+    } else {
+      document.getElementById('current-group').innerHTML = '<p>All Groups</p>'
+      mapLayers.forEach(l => {
+        mapGeodemos.addLayer(l)
+      })
+
+      // 'all' && cb.attr("src")=='/images/icons/ui/Icon_eye_selected.svg')
+
+      // Plotly.react('chart-geodemos', [traces[layerNo]], layout)
+    }
+    // updateGroupTxt('all')
+  })
 }
 
 main()
@@ -368,32 +390,3 @@ function updateGroupTxt (no) {
     d3.select('#group-text').text(dublinRegionsJson[0][no]).style('font-size', '15px')
   })
 }
-
-d3.select('#group-buttons').selectAll('img').on('click', function () {
-  const cb = $(this)
-  const myv = $(this).attr('id')
-  ResetImages(myv)
-  let layerNo = myv === 'all' ? 'all' : parseInt(myv) - 1
-
-  if (layerNo !== 'all') {
-    mapLayers.forEach(l => {
-      mapGeodemos.removeLayer(l)
-    })
-
-    const gn = layerNo + 1
-
-    updateGroupTxt(gn)
-    mapGeodemos.addLayer(mapLayers[layerNo])
-
-    Plotly.react('chart-geodemos', [traces[layerNo]], layout)
-  }
-  // }
-
-  layerNo = myv
-
-  if (layerNo === 'all') { // 'all' && cb.attr("src")=='/images/icons/ui/Icon_eye_selected.svg') {
-    scatterHM()
-    updateGroupTxt('all')
-    AddLayersToMap()
-  }
-})

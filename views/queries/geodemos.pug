@@ -43,9 +43,31 @@ block content
                     classes: "open"
                     })
                         
-            .query__dropdown-bar 
-                p Select a group
-                .query__dropdown All
+            #groups-dropdown.query__dropdown-bar.dropdown 
+                    .query__drop-btn.dropbtn
+                        p Select a group:
+                        #current-group
+                            p All Groups
+                        svg(class="dropdown__arrow" width="7" height="12" viewBox="0 0 7 12")
+                            path(fill-rule="nonzero" d="M5.569 5.994L0 .726.687 0l6.336 5.994-6.335 6.002L0 11.27z")
+                    <div id="query-dropdown__content" class="dropdown-content">
+                        button(class = 'dropdown-button' type='button' data='1')
+                            p Group 1
+                        button(class = 'dropdown-button' type='button' data='2') 
+                            p Group 2
+                        button(class = 'dropdown-button' type='button' data='3') 
+                            p Group 3
+                        button(class = 'dropdown-button' type='button' data='4') 
+                            p Group 4
+                        button(class = 'dropdown-button' type='button' data='5')
+                            p Group 5
+                        button(class = 'dropdown-button' type='button' data='6') 
+                            p Group 6
+                        button(class = 'dropdown-button' type='button' data='7') 
+                            p Group 7
+                        button(class = 'dropdown-button' type='button' data='all') 
+                            p All Groups
+                    </div>
             .query__help
                 .query__help__icon i
                 div 
@@ -76,7 +98,6 @@ block content
                     #geodemos-group-description.accordion__content 
                         h2 All Groups
                         p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
-
                 +accordion({
                     id: "geodemos-heamap",
                     title:"Heatmap"
