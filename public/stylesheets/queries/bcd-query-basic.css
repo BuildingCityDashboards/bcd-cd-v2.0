@@ -213,6 +213,10 @@
     align-items: center;
 }
 
+.draglayer,
+.drag {
+    z-index: -1;
+}
 
 
 
