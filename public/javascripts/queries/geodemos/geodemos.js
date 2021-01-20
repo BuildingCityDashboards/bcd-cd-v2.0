@@ -3,7 +3,7 @@
 **/
 
 import { getCityLatLng } from '../../modules/bcd-maps.js'
-async function main () {
+async function main() {
   const minZoom = 8
   const maxZoom = 16
   const zoom = minZoom
@@ -45,8 +45,10 @@ async function main () {
   mapLayers = await loadSmallAreas(mapLayers)
   addLayersToMap(mapLayers, mapGeodemos)
 
-  const groupNames = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
   await loadChart()
+
+  const descriptions = await d3.json('/data/geodemos/geodemos-group-descriptions.json')
+  console.log(descriptions)
 
   document.getElementById('groups-dropdown').addEventListener('click', function () {
     this.classList.toggle('show')
@@ -55,7 +57,8 @@ async function main () {
   d3.select('#query-dropdown__content').selectAll('button').on('click', function (b) {
     const buttonData = $(this).attr('data') // TODO: remove jQ
     // ResetImages(buttonData)
-    const layerNo = buttonData === 'all' ? 'all' : parseInt(buttonData) - 1
+    const groupNo = buttonData === 'all' ? 'all' : parseInt(buttonData)
+    const layerNo = groupNo === 'all' ? 'all' : parseInt(groupNo) - 1
     mapLayers.forEach(l => {
       mapGeodemos.removeLayer(l)
     })
@@ -74,7 +77,7 @@ async function main () {
 
       // Plotly.react('chart-geodemos', [traces[layerNo]], layout)
     }
-    // updateGroupTxt('all')
+    updateGroupDescription(groupNo, descriptions[groupNo])
   })
 }
 
@@ -82,7 +85,7 @@ main()
 
 /* Map functions */
 
-async function loadSmallAreas (layers) {
+async function loadSmallAreas(layers) {
   // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
 
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
@@ -102,7 +105,7 @@ async function loadSmallAreas (layers) {
   return layers
 }
 
-async function getEmptyLayersArray (total) {
+async function getEmptyLayersArray(total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -115,7 +118,7 @@ async function getEmptyLayersArray (total) {
   return layersArr
 }
 
-function getLayerStyle (index) {
+function getLayerStyle(index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -126,7 +129,7 @@ function getLayerStyle (index) {
   }
 }
 
-function getLayerColor (index) {
+function getLayerColor(index) {
   const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
     '#beaed4',
     '#fdc086',
@@ -145,7 +148,7 @@ function getLayerColor (index) {
   return GEODEMOS_COLORWAY_CBSAFE[index]
 }
 
-function onEachFeature (feature, layer) {
+function onEachFeature(feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -167,7 +170,7 @@ function onEachFeature (feature, layer) {
   })
 }
 
-function addLayersToMap (layers, map) {
+function addLayersToMap(layers, map) {
   layers.forEach((l, i) => {
     if (!map.hasLayer(l)) {
       map.addLayer(l)
@@ -180,7 +183,7 @@ function addLayersToMap (layers, map) {
 
 /* Chart functions */
 
-async function loadChartData (groupNames) {
+async function loadChartData(groupNames) {
   d3.text('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       const newCsv = zScores.split('\n').map(function (line) {
@@ -243,7 +246,7 @@ async function loadChartData (groupNames) {
     })
 }
 
-function ResetImages (imgid) {
+function ResetImages(imgid) {
   const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
     '/images/icons/ui/Icon_eye_selected-1.svg',
     '/images/icons/ui/Icon_eye_selected-2.svg',
@@ -280,7 +283,7 @@ function ResetImages (imgid) {
 
 /* Heatmap functions */
 
-function loadChart () {
+function loadChart() {
   d3.csv('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       let chartLayout = {}
@@ -331,7 +334,7 @@ function loadChart () {
         size: 18
       },
 
-      chartLayout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
+        chartLayout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
       chartLayout.legend.xanchor = 'right'
       chartLayout.legend.y = 0.1
       chartLayout.legend.traceorder = 'reversed'
@@ -376,17 +379,13 @@ function loadChart () {
     }) // end then
 }
 
-/* UI functions */
+/* Description functions */
 
-function updateGroupTxt (no) {
-  if (document.contains(document.getElementById('myhref'))) {
-    document.getElementById('href').remove()
-  }
+function updateGroupDescription(groupNo, contentText) {
+  const title = document.getElementById('geodemos-group-description__title')
+  const titleText = groupNo === 'all' ? 'All Groups' : `Group ${groupNo}`
+  title.innerText = titleText
 
-  d3.json('/data/geodemos/geodem-text-data.json').then(function (dublinRegionsJson) {
-    d3.select('#group-title').text(dublinRegionsJson[1][no]).style('font-size', '27px').style('font-weight', 'bold')
-    //
-    d3.select('#group-title').text(dublinRegionsJson[1][no])// .style("color",getLayerColor(no-1));
-    d3.select('#group-text').text(dublinRegionsJson[0][no]).style('font-size', '15px')
-  })
+  const content = document.getElementById('geodemos-group-description__content')
+  content.innerHTML = contentText
 }
