@@ -21,6 +21,7 @@
     padding: 16px 8px;
     background-color: transparent;
     list-style: none;
+    z-index: 1;
 }
 
 .accordion h1 {
