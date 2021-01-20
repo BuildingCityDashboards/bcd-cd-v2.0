@@ -117,14 +117,17 @@
     justify-content: space-between;
 }
 
+#current-group p {
+    font-weight: 400;
+    ;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
     right: 0;
     top: 41px;
     background-color: #e95d4f;
-    /* min-width: 160px; */
-    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
     z-index: 10000;
 
 }
