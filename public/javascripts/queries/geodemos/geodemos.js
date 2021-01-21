@@ -49,7 +49,7 @@ async function main () {
   const chartTraces = await getChartTraces()
   const chartLayout = await getChartLayout()
 
-  Plotly.newPlot('chart-geodemos', chartTraces, chartLayout, {
+  Plotly.newPlot('chart-test', chartTraces, chartLayout, {
     modeBar: {
       orientation: 'v',
       bgcolor: 'black',
@@ -57,7 +57,6 @@ async function main () {
       activecolor: null
     },
     responsive: true
-
   })
 
   const descriptions = await d3.json('/data/geodemos/geodemos-group-descriptions.json')
