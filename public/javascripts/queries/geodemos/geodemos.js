@@ -3,7 +3,20 @@
 **/
 
 import { getCityLatLng } from '../../modules/bcd-maps.js'
-async function main() {
+import { getTraceDefaults, getRowChartLayout } from '../../modules/bcd-plotly-utils.js'
+
+async function main () {
+  // add event listeners
+  const dd = document.getElementById('groups-dropdown')
+  dd.addEventListener('click', handleClick)
+  // dd.addEventListener('touchstart', handleClick)
+
+  function handleClick (e) {
+    console.log('toggle dropdown')
+    this.classList.toggle('show')
+  }
+
+  // Add map
   const minZoom = 7
   const maxZoom = 16
   const zoom = minZoom
@@ -21,26 +34,26 @@ async function main() {
   mapGeodemos.addLayer(osmLayer)
   mapGeodemos.setMaxBounds(mapGeodemos.getBounds())
 
-  L.control.locate({
-    strings: {
-      title: 'Zoom to your location'
-    }
-  }).addTo(mapGeodemos)
+  // L.control.locate({
+  //   strings: {
+  //     title: 'Zoom to your location'
+  //   }
+  // }).addTo(mapGeodemos)
 
-  mapGeodemos.addControl(new L.Control.OSMGeocoder({
-    placeholder: 'Enter street name, area etc.',
-    bounds: getCityLatLng()
-  }))
+  // mapGeodemos.addControl(new L.Control.OSMGeocoder({
+  //   placeholder: 'Enter street name, area etc.',
+  //   bounds: getCityLatLng()
+  // }))
 
   // Used when an SA is null or otherwise falsey
-  const naStyle = {
-    fillColor: 'grey',
-    weight: 1,
-    opacity: 2,
-    color: 'grey',
-    dashArray: '1',
-    fillOpacity: 0.5
-  }
+  // const naStyle = {
+  //   fillColor: 'grey',
+  //   weight: 1,
+  //   opacity: 2,
+  //   color: 'grey',
+  //   dashArray: '1',
+  //   fillOpacity: 0.5
+  // }
 
   let mapLayers = await getEmptyLayersArray(8)
   mapLayers = await loadSmallAreas(mapLayers)
@@ -58,19 +71,11 @@ async function main() {
     },
     responsive: true
   })
+  console.log('Plotly plot created')
 
   const descriptions = await d3.json('/data/geodemos/geodemos-group-descriptions.json')
 
-  const dd = document.getElementById('groups-dropdown')
-  dd.addEventListener('click', handleClick)
-  // dd.addEventListener('touchstart', handleClick)
-
-  function handleClick(e) {
-    console.log('toggle dropdown')
-    this.classList.toggle('show')
-  }
-
-  d3.select('#query-dropdown__content').selectAll('button').on('click', function (b) {
+  d3.select('#query-dropdown__content').selectAll('button').on('click', function () {
     const buttonData = $(this).attr('data') // TODO: remove jQ
     // ResetImages(buttonData)
     const groupNo = buttonData === 'all' ? 'all' : parseInt(buttonData)
@@ -90,7 +95,7 @@ async function main() {
         mapGeodemos.addLayer(l)
       })
       Plotly.react('chart-geodemos', chartTraces, chartLayout)
-      // 'all' && cb.attr("src")=='/images/icons/ui/Icon_eye_selected.svg')
+      // 'all' && cb.attr("src") == '/images/icons/ui/Icon_eye_selected.svg')
     }
     updateGroupDescription(groupNo, descriptions[groupNo])
   })
@@ -100,7 +105,7 @@ main()
 
 /* Map functions */
 
-async function loadSmallAreas(layers) {
+async function loadSmallAreas (layers) {
   // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
 
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
@@ -120,7 +125,7 @@ async function loadSmallAreas(layers) {
   return layers
 }
 
-async function getEmptyLayersArray(total) {
+async function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -133,7 +138,7 @@ async function getEmptyLayersArray(total) {
   return layersArr
 }
 
-function getLayerStyle(index) {
+function getLayerStyle (index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -144,7 +149,7 @@ function getLayerStyle(index) {
   }
 }
 
-function getLayerColor(index) {
+function getLayerColor (index) {
   const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
     '#beaed4',
     '#fdc086',
@@ -163,7 +168,7 @@ function getLayerColor(index) {
   return GEODEMOS_COLORWAY_CBSAFE[index]
 }
 
-function onEachFeature(feature, layer) {
+function onEachFeature (feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -185,7 +190,7 @@ function onEachFeature(feature, layer) {
   })
 }
 
-function addLayersToMap(layers, map) {
+function addLayersToMap (layers, map) {
   layers.forEach((l, i) => {
     if (!map.hasLayer(l)) {
       map.addLayer(l)
@@ -198,7 +203,7 @@ function addLayersToMap(layers, map) {
 
 /* Chart functions */
 
-async function loadChartData(groupNames) {
+async function loadChartData (groupNames) {
   d3.text('/data/geodemos/cork_zscores.csv')
     .then((zScores) => {
       const newCsv = zScores.split('\n').map(function (line) {
@@ -261,7 +266,7 @@ async function loadChartData(groupNames) {
     })
 }
 
-function ResetImages(imgid) {
+function ResetImages (imgid) {
   const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
     '/images/icons/ui/Icon_eye_selected-1.svg',
     '/images/icons/ui/Icon_eye_selected-2.svg',
@@ -298,39 +303,73 @@ function ResetImages(imgid) {
 
 /* Heatmap functions */
 
-async function getChartTraces() {
+async function getChartTraces () {
   const zScores = await d3.csv('/data/geodemos/cork_zscores.csv')
-
-  const chartTraces = []
+  console.log('zscores')
+  console.log(JSON.stringify(zScores[0]))
+  const traces = []
   let columnNames2 = {}
   columnNames2 = Object.keys(zScores[0])
   columnNames2 = columnNames2.reverse()
   columnNames2 = columnNames2.filter(e => e !== 'cluster')
 
-  zScores.forEach((row, i) => {
-    const ntrace = Object.assign({}, TRACES_DEFAULT)
-    ntrace.type = 'scatter'
-    ntrace.mode = 'markers+text'
+  // const TRACES_DEFAULT = getTraceDefaults('scatter')
 
-    ntrace.marker = Object.assign({}, TRACES_DEFAULT.marker)
-    ntrace.marker = {
+  const TRACES_DEFAULT = {
+    name: 'trace',
+    type: 'scatter',
+    mode: 'lines+markers',
+    opacity: 1.0, // default
+    marker: {
+      symbol: null,
+      color: null, // lines + markers, defaults to colorway
+      line: {
+        width: null
+      }
+    },
+    fill: null,
+    fillcolor: null,
+    hoveron: 'points', // 'points+fills',
+    line: {
+      color: null,
+      shape: 'spline'
+    },
+    text: null,
+    hoverinfo: null,
+    visible: true // 'legendonly'
+  }
+
+  console.log('TRACES_DEFAULT')
+  console.log(TRACES_DEFAULT)
+
+  zScores.forEach((row, i) => {
+    const trace = Object.assign({}, TRACES_DEFAULT)
+    console.log('trace')
+    console.log(trace)
+    trace.type = 'scatter'
+    trace.mode = 'markers+text'
+
+    trace.marker = Object.assign({}, TRACES_DEFAULT.marker)
+    trace.marker = {
       color: getLayerColor(i),
       size: 11
     }
 
-    ntrace.x = columnNames2.map(name2 => {
+    trace.x = columnNames2.map(name2 => {
       return row[name2]
     })
 
-    ntrace.y = columnNames2
+    trace.y = columnNames2
 
-    chartTraces.push(ntrace)
-    ntrace.hovertemplate = `%{x:.2f}<extra>Group No: ${i + 1}</extra>`
+    traces.push(trace)
+    trace.hovertemplate = `%{x:.2f}<extra>Group No: ${i + 1}</extra>`
   })
-  return chartTraces
+  console.log('traces: ' + traces.length)
+  return traces
 }
 
-async function getChartLayout() {
+async function getChartLayout () {
+  const ROW_CHART_LAYOUT = getRowChartLayout()
   const chartLayout = Object.assign({}, ROW_CHART_LAYOUT)
   chartLayout.mode = 'scatter'
   chartLayout.height = 0
@@ -387,7 +426,7 @@ async function getChartLayout() {
 
 /* Description functions */
 
-function updateGroupDescription(groupNo, contentText) {
+function updateGroupDescription (groupNo, contentText) {
   const title = document.getElementById('geodemos-group-description__title')
   const titleText = groupNo === 'all' ? 'All Groups' : `Group ${groupNo}`
   title.innerText = titleText

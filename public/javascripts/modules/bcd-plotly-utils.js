@@ -80,7 +80,7 @@ const TRACE_DEFAULTS_SCATTER = {
   visible: false // 'legendonly'
 }
 
-function getTraceDefaults (type = 'line') {
+function getTraceDefaults(type = 'line') {
   switch (type) {
     case 'line':
       return TRACE_DEFAULTS_LINE
@@ -188,7 +188,7 @@ const LAYOUT_DEFAULTS_SCATTER = {
   }
 }
 
-function getLayoutDefaults (type = 'line') {
+function getLayoutDefaults(type = 'line') {
   switch (type) {
     case 'scatter':
       return LAYOUT_DEFAULTS_SCATTER
@@ -493,6 +493,13 @@ const ROW_CHART_LAYOUT = {
   hovermode: 'closest'
 
 }
+
+function getRowChartLayout() {
+  return ROW_CHART_LAYOUT
+}
+
+export { getRowChartLayout }
+
 
 const ROW_CHART_LAYOUT_SUBPLOTS = {
   height: 700,
