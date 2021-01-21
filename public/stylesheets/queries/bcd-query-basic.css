@@ -2,7 +2,7 @@
     background-color: #eeecec;
     min-width: 320px;
     width: 100vw;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     padding-top: 112px;
 }
 
@@ -213,6 +213,10 @@
     align-items: center;
 }
 
+/* .main-svg {
+    width: 100%;
+} */
+
 .draglayer,
 .drag {
     z-index: -1;
@@ -224,10 +228,34 @@
 @media only screen (orientation: landscape) {}
 
 /* iPad */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1279px) and (orientation: portrait) {}
+@media only screen and (min-width : 768px) {
+    .query {
+        min-width: 768px;
+        width: 100vw;
+        /* min-height: 100vh; */
+        padding-top: calc(56px + 72px);
+    }
+
+    .query__grid {
+        width: 100%;
+        height: 100%;
+        padding: 0 16px;
+        grid-gap: 8px;
+    }
+
+    .query__dropdown-bar {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+    }
+
+    .query__help {
+        grid-column: 3 / 5;
+        grid-row: 3 / 4;
+    }
 
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1279px) and (orientation: landscape) {}
+}
+
 
 
 /* laptop with MDPI devtools */

@@ -44,6 +44,7 @@
 
 .accordion.open {
     outline: none;
+
 }
 
 .accordion__arrow,
@@ -96,11 +97,14 @@
 .accordion__content.open {
     /* color: #f8f8f8; */
     padding: 16px 0;
+    margin: 0 auto;
     height: auto;
     max-height: 1000px;
     visibility: visible;
     opacity: 1;
     transition: opacity 1s, max-height 500ms;
+    margin-bottom: 16px;
+
 }
 
 .accordion__content.leaflet-container {
@@ -109,7 +113,6 @@
 
 .accordion__content.open.leaflet-container {
     min-height: 280px;
-    padding: 16px 0;
     height: auto;
     max-height: 1000px;
     visibility: visible;
@@ -119,19 +122,24 @@
 
 
 /* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-    .accordian-screenshot-container {
-        padding-left: 0rem;
-        margin-top: 1rem;
-    }
-}
+@media (min-width: 576px) {}
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    .accordian-screenshot-container {
-        padding-left: 1rem;
+
+    .accordion__content.open {
+        padding: 16px 0;
+        width: 100%;
+        max-width: 576px;
 
     }
+
+    .accordion__content.open.leaflet-container {
+        width: 100%;
+        /* max-width: 512px; */
+    }
+
+
 
 }
 

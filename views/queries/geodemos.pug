@@ -83,13 +83,16 @@ block content
                     content: "", 
                     classes: "open"
                     })
-                    #map-geodemos.accordion__content.open 
+                    .accordion__content.open
+                        #map-geodemos
                 +accordion({
                     id: "geodemos-chart",
                     title: "Values Chart",
                     content: "", 
+                     classes: "open"
                     })
-                    #chart-geodemos.accordion__content
+                    .accordion__content.open
+                        #chart-geodemos
                 +accordion({
                     id: "geodemos-description",
                     title: "Group Description",
