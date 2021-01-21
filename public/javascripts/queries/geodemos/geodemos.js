@@ -47,9 +47,7 @@ async function main () {
   addLayersToMap(mapLayers, mapGeodemos)
 
   const chartTraces = await getChartTraces()
-  console.log(chartTraces)
   const chartLayout = await getChartLayout()
-  console.log(chartLayout)
 
   Plotly.newPlot('chart-geodemos', chartTraces, chartLayout, {
     modeBar: {
@@ -325,7 +323,6 @@ async function getChartTraces () {
     chartTraces.push(ntrace)
     ntrace.hovertemplate = `%{x:.2f}<extra>Group No: ${i + 1}</extra>`
   })
-  console.log(chartTraces)
   return chartTraces
 }
 
