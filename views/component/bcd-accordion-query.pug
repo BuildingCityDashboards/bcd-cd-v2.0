@@ -1,7 +1,4 @@
 //- accordion
-mixin accordion(id)
-  .accordion(id="accordion-"+id)
-    block
 
 mixin accordion({id='', title='title', content='<p>Content will appear here when available</p>', classes=''})
   .accordion(id=id class=classes)
@@ -11,7 +8,8 @@ mixin accordion({id='', title='title', content='<p>Content will appear here when
       path(fill-rule="nonzero" d="M5.569 5.994L0 .726.687 0l6.336 5.994-6.335 6.002L0 11.27z")
   if(content)
     .accordion__content(class=classes)
-      != content
+      div 
+        != content
   //- optional content add in main view
   block
         
