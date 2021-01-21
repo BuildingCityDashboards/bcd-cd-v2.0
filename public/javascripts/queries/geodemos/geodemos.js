@@ -61,10 +61,14 @@ async function main() {
 
   const descriptions = await d3.json('/data/geodemos/geodemos-group-descriptions.json')
 
-  document.getElementById('groups-dropdown').addEventListener('click', function () {
+  const dd = document.getElementById('groups-dropdown')
+  dd.addEventListener('click', handleClick)
+  // dd.addEventListener('touchstart', handleClick)
+
+  function handleClick(e) {
     console.log('toggle dropdown')
     this.classList.toggle('show')
-  })
+  }
 
   d3.select('#query-dropdown__content').selectAll('button').on('click', function (b) {
     const buttonData = $(this).attr('data') // TODO: remove jQ
