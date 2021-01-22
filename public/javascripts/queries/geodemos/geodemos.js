@@ -3,7 +3,7 @@
 **/
 
 import { getCityLatLng } from '../../modules/bcd-maps.js'
-import { getTraceDefaults, getRowChartLayout } from '../../modules/bcd-plotly-utils.js'
+import { getTraceDefaults, getBasicLayout } from '../../modules/bcd-plotly-utils.js'
 
 const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
   '#beaed4',
@@ -20,86 +20,75 @@ const GEODEMOS_COLORWAY_CBSAFE = ['#d73027',
   '#74add1',
   '#4575b4']
 
-const CHART_COLOR = '#ffffff'
-const CHART_FONT = {
-  family: 'PT Sans',
-  size: 16,
-  color: '#313131'
-}
-const CHART_TITLE_FONT = {
-  family: 'PT Sans',
-  size: 20,
-  color: '#313131'
-}
-const CHART_COLORWAY = ['#e7a4b6', '#cd7eaf', '#a262a9', '#6f4d96', '#3d3b72', '#182844']
+const BASIC_LAYOUT = getBasicLayout()
 
-const ROW_CHART_LAYOUT = {
-  height: 400,
-  margin: {
-    l: 50,
-    r: 0,
-    b: 0,
-    t: 0
-  },
-  title: {
-    text: '',
-    font: {
-      family: null,
-      size: 20
-    },
-    visible: false,
-    xref: 'container',
-    x: 0.0,
-    xanchor: 'left',
-    yref: 'container',
-    y: 1.0,
-    yanchor: 'top'
-  },
-  xaxis: {
-    title: '',
-    titlefont: {
-      size: 16
-    },
-    visible: true,
-    type: null,
-    range: null,
-    fixedrange: true,
-    showticklabels: true,
-    nticks: null,
-    ticks: '',
-    automargin: true,
-    tickfont: {
-      family: null,
-      size: 12
-    }
-  },
-  yaxis: {
-    title: '',
-    titlefont: {
-      size: 16
-    },
-    visible: true,
-    type: null,
-    range: null,
-    fixedrange: true,
-    showticklabels: true,
-    nticks: null,
-    ticks: '',
-    automargin: true,
-    tickfont: {
-      family: null,
-      size: 12
-    }
-  },
-  paper_bgcolor: CHART_COLOR,
-  plot_bgcolor: CHART_COLOR,
-  colorway: CHART_COLORWAY,
-  font: CHART_FONT,
-  showlegend: false,
-  annotations: [],
-  hovermode: 'closest'
+// const BASIC_LAYOUT = {
+//   height: 400,
+//   margin: {
+//     l: 50,
+//     r: 0,
+//     b: 0,
+//     t: 0
+//   },
+//   title: {
+//     text: '',
+//     font: {
+//       family: null,
+//       size: 20
+//     },
+//     visible: false,
+//     xref: 'container',
+//     x: 0.0,
+//     xanchor: 'left',
+//     yref: 'container',
+//     y: 1.0,
+//     yanchor: 'top'
+//   },
+//   xaxis: {
+//     title: '',
+//     titlefont: {
+//       size: 16
+//     },
+//     visible: true,
+//     type: null,
+//     range: null,
+//     fixedrange: true,
+//     showticklabels: true,
+//     nticks: null,
+//     ticks: '',
+//     automargin: true,
+//     tickfont: {
+//       family: null,
+//       size: 12
+//     }
+//   },
+//   yaxis: {
+//     title: '',
+//     titlefont: {
+//       size: 16
+//     },
+//     visible: true,
+//     type: null,
+//     range: null,
+//     fixedrange: true,
+//     showticklabels: true,
+//     nticks: null,
+//     ticks: '',
+//     automargin: true,
+//     tickfont: {
+//       family: null,
+//       size: 12
+//     }
+//   },
+//   paper_bgcolor: CHART_COLOR,
+//   plot_bgcolor: CHART_COLOR,
+//   colorway: CHART_COLORWAY,
+//   font: CHART_FONT,
+//   showlegend: false,
+//   annotations: [],
+//   hovermode: 'closest'
 
-}
+// }
 
 async function main() {
   // Add map
@@ -167,7 +156,7 @@ async function main() {
   const heatmapLayout = await getHeatmapLayout()
   console.log(heatmapTraces)
 
-  Plotly.newPlot('geodemos-heatmap__chart', heatmapTraces, heatmapLayout)
+  // Plotly.newPlot('geodemos-heatmap__chart', heatmapTraces, heatmapLayout)
 
   // add event listeners
   const dd = document.getElementById('groups-dropdown')
@@ -382,58 +371,11 @@ async function getChartTraces(zScores) {
 }
 
 async function getChartLayout() {
-  const ROW_CHART_LAYOUT = getRowChartLayout()
-  const chartLayout = Object.assign({}, ROW_CHART_LAYOUT)
+  const chartLayout = Object.assign({}, BASIC_LAYOUT)
+  console.log(chartLayout)
   chartLayout.mode = 'scatter'
-  chartLayout.height = 0
-  // chartLayout.width = 300
-  chartLayout.responsive = true
-  chartLayout.plot_bgcolor = '#ffffff'
-  chartLayout.paper_bgcolor = '#ffffff'
-
-  chartLayout.title = Object.assign({}, ROW_CHART_LAYOUT.title)
   chartLayout.title.text = 'Variables Value Distribution (z-scores)'
-  chartLayout.title.x = 0.51
-  chartLayout.title.y = 0.99
-  chartLayout.title.xanchor = 'center'
-  chartLayout.title.yanchor = 'top'
-  chartLayout.title.font = {
-    color: '#e95d4f',
-    family: 'Roboto',
-    size: 18
-  }
-  chartLayout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
-  chartLayout.legend.xanchor = 'right'
-  chartLayout.legend.y = 0.1
-  chartLayout.legend.traceorder = 'reversed'
-  chartLayout.xaxis = Object.assign({}, ROW_CHART_LAYOUT.xaxis)
-  chartLayout.xaxis.title = ''
-  chartLayout.xaxis.range = [-2, 2.9]
-  chartLayout.yaxis = Object.assign({}, ROW_CHART_LAYOUT.yaxis)
-  chartLayout.yaxis.tickfont = {
-    family: 'Roboto',
-    size: 12,
-    color: '#e95d4f'
-  }
-  chartLayout.xaxis.tickfont = {
-    family: 'Roboto',
-    size: 12,
-    color: '#e95d4f'
-  }
-
-  chartLayout.yaxis.titlefont = Object.assign({}, ROW_CHART_LAYOUT.yaxis.titlefont)
-  chartLayout.yaxis.titlefont.size = 16 // bug? need to call this
-  chartLayout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
-  chartLayout.yaxis.title = ''
-  chartLayout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
-
-  chartLayout.margin = {
-    l: 0,
-    r: 0, // annotations space
-    t: 40,
-    b: 0
-  }
-
+  // chartLayout.xaxis.range = [-2, 4]
   return chartLayout
 }
 
@@ -451,33 +393,29 @@ function updateGroupDescription(groupNo, contentText) {
 /* Heatmap functions */
 
 function getHeatmapLayout() {
-  const heatmapLayout = Object.assign({}, ROW_CHART_LAYOUT)
+  const heatmapLayout = Object.assign({}, getBasicLayout)
   heatmapLayout.height = 500
-  heatmapLayout.width = 560
+  heatmapLayout.width = 0
   // layout.barmode = 'group';
-  heatmapLayout.plot_bgcolor = '#293135'
-  heatmapLayout.paper_bgcolor = '#293135'
+  heatmapLayout.plot_bgcolor = '#ffffff'
+  heatmapLayout.paper_bgcolor = '#ffffff'
 
   heatmapLayout.colorway = GEODEMOS_COLORWAY_CBSAFE
-  heatmapLayout.title = Object.assign({}, ROW_CHART_LAYOUT.title)
+  heatmapLayout.title = Object.assign({}, BASIC_LAYOUT.title)
   heatmapLayout.title.text = ''
   heatmapLayout.title.x = 0.51
   heatmapLayout.title.y = 0.99
   heatmapLayout.title.xanchor = 'center'
   heatmapLayout.title.yanchor = 'top'
-  heatmapLayout.title.font = {
-    color: '#6fd1f6',
-    family: 'Courier New, monospace',
-    size: 17
-  },
-    heatmapLayout.showlegend = false
-  heatmapLayout.legend = Object.assign({}, ROW_CHART_LAYOUT.legend)
+
+  heatmapLayout.showlegend = false
+  heatmapLayout.legend = Object.assign({}, BASIC_LAYOUT.legend)
   heatmapLayout.legend.xanchor = 'right'
   heatmapLayout.legend.y = 0.1
   heatmapLayout.legend.traceorder = 'reversed'
-  heatmapLayout.xaxis = Object.assign({}, ROW_CHART_LAYOUT.xaxis)
+  heatmapLayout.xaxis = Object.assign({}, BASIC_LAYOUT.xaxis)
   heatmapLayout.xaxis.title = ''
-  heatmapLayout.yaxis = Object.assign({}, ROW_CHART_LAYOUT.yaxis)
+  heatmapLayout.yaxis = Object.assign({}, BASIC_LAYOUT.yaxis)
 
   heatmapLayout.yaxis.tickfont = {
     family: 'PT Sans',
@@ -495,11 +433,11 @@ function getHeatmapLayout() {
     color: '#6fd1f6'
   }
 
-  heatmapLayout.yaxis.titlefont = Object.assign({}, ROW_CHART_LAYOUT.yaxis.titlefont)
+  heatmapLayout.yaxis.titlefont = Object.assign({}, BASIC_LAYOUT.yaxis.titlefont)
   heatmapLayout.yaxis.titlefont.size = 16 // bug? need to call this
-  heatmapLayout.yaxis.title = Object.assign({}, ROW_CHART_LAYOUT.yaxis.title)
+  heatmapLayout.yaxis.title = Object.assign({}, BASIC_LAYOUT.yaxis.title)
   heatmapLayout.yaxis.title = ''
-  heatmapLayout.margin = Object.assign({}, ROW_CHART_LAYOUT.margin)
+  heatmapLayout.margin = Object.assign({}, BASIC_LAYOUT.margin)
   heatmapLayout.margin = {
     l: 20,
     r: 40, // annotations space
@@ -615,67 +553,4 @@ function getHeatmapTraces(zScores) {
     }
   ]
   return heatmapTraces
-}
-
-async function loadChartData(groupNames) {
-  d3.text('/data/geodemos/cork_zscores.csv')
-    .then((zScores) => {
-      const newCsv = zScores.split('\n').map(function (line) {
-        const columns = line.split(',') // get the columns
-        columns.splice(0, 1) // remove total column
-        return columns
-      }).join('\n')
-
-      const rows = newCsv.split('\n')
-
-      // get the first row as header
-      const header = rows.shift()
-
-      // const header = columnNames;
-      const numberOfColumns = header.split(',').length
-
-      // initialize 2D-array with a fixed size
-      const columnData = [...Array(numberOfColumns)].map(item => new Array())
-
-      for (let i = 0; i < rows.length; i++) {
-        const row = rows[i]
-        const rowData = row.split(',')
-
-        for (let j = 0; j < numberOfColumns; j++) {
-          columnData[j].push((rowData[j]))
-        }
-      }
-      const zArray = []
-      for (let r = 0; r < 7; r++) {
-        // alert(columnData[value][r])
-        zArray.push((columnData[value][r]))
-      }
-
-      const farr = []
-      // let tc ={}
-      for (let f = 0; f < zArray.length; f++) {
-        const tc = Object.assign({}, TRACES_DEFAULT)
-        tc.type = 'bar'
-        tc.orientation = 'h'
-        tc.x = parseFloat(zArray[f])
-        tc.y = groupNames[f]
-        // alert(JSON.stringify(tc))
-        farr.push(tc)
-      }
-
-      const data = [
-        {
-          x: zArray, // columnData,
-          y: groupNames,
-          hovertemplate: `${text}: %{x:.2f}<extra></extra>`,
-          type: 'bar',
-          orientation: 'h',
-          indxArr: [0, 1, 2, 3, 4, 5, 6],
-          marker: {
-            color: ['#1b9e77', '#d95f02', '#7570b3', '#e7298a', '#66a61e', '#e6ab02', '#a6761d', '#666666']
-          }
-        }
-      ]
-      return data
-    })
 }
