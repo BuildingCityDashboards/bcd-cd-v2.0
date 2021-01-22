@@ -83,7 +83,12 @@ const BASIC_LAYOUT = {
     xanchor: 'right',
     y: null,
     yanchor: 'top',
-    traceorder: 'reversed'
+    traceorder: 'reversed',
+    font: {
+      color: '#e95d4f',
+      family: 'Roboto',
+      size: 12
+    }
   },
   paper_bgcolor: CHART_COLOR,
   plot_bgcolor: CHART_COLOR,
@@ -95,7 +100,7 @@ const BASIC_LAYOUT = {
 
 }
 
-function getBasicLayout() {
+function getBasicLayout () {
   return BASIC_LAYOUT
 }
 
@@ -163,7 +168,7 @@ const TRACE_DEFAULTS_SCATTER = {
   visible: false // 'legendonly'
 }
 
-function getTraceDefaults(type = 'line') {
+function getTraceDefaults (type = 'line') {
   switch (type) {
     case 'line':
       return TRACE_DEFAULTS_LINE
@@ -271,7 +276,7 @@ const LAYOUT_DEFAULTS_SCATTER = {
   }
 }
 
-function getLayoutDefaults(type = 'line') {
+function getLayoutDefaults (type = 'line') {
   switch (type) {
     case 'scatter':
       return LAYOUT_DEFAULTS_SCATTER

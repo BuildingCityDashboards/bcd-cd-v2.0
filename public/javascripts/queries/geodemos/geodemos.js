@@ -20,77 +20,9 @@ const GEODEMOS_COLORWAY_CBSAFE = ['#d73027',
   '#74add1',
   '#4575b4']
 
-const BASIC_LAYOUT = getBasicLayout()
+const BASIC_LAYOUT = Object.assign({}, getBasicLayout())
 
-// const BASIC_LAYOUT = {
-//   height: 400,
-//   margin: {
-//     l: 50,
-//     r: 0,
-//     b: 0,
-//     t: 0
-//   },
-//   title: {
-//     text: '',
-//     font: {
-//       family: null,
-//       size: 20
-//     },
-//     visible: false,
-//     xref: 'container',
-//     x: 0.0,
-//     xanchor: 'left',
-//     yref: 'container',
-//     y: 1.0,
-//     yanchor: 'top'
-//   },
-//   xaxis: {
-//     title: '',
-//     titlefont: {
-//       size: 16
-//     },
-//     visible: true,
-//     type: null,
-//     range: null,
-//     fixedrange: true,
-//     showticklabels: true,
-//     nticks: null,
-//     ticks: '',
-//     automargin: true,
-//     tickfont: {
-//       family: null,
-//       size: 12
-//     }
-//   },
-//   yaxis: {
-//     title: '',
-//     titlefont: {
-//       size: 16
-//     },
-//     visible: true,
-//     type: null,
-//     range: null,
-//     fixedrange: true,
-//     showticklabels: true,
-//     nticks: null,
-//     ticks: '',
-//     automargin: true,
-//     tickfont: {
-//       family: null,
-//       size: 12
-//     }
-//   },
-//   paper_bgcolor: CHART_COLOR,
-//   plot_bgcolor: CHART_COLOR,
-//   colorway: CHART_COLORWAY,
-//   font: CHART_FONT,
-//   showlegend: false,
-//   annotations: [],
-//   hovermode: 'closest'
-
-// }
-
-async function main () {
+async function main() {
   // Add map
   const minZoom = 7
   const maxZoom = 16
@@ -133,6 +65,7 @@ async function main () {
   let mapLayers = await getEmptyLayersArray(8)
   mapLayers = await loadSmallAreas(mapLayers)
   addLayersToMap(mapLayers, mapGeodemos)
+
   const zScores = await d3.csv('/data/geodemos/cork_zscores.csv')
   const chartTraces = await getChartTraces(zScores)
   const chartLayout = await getChartLayout()
@@ -156,14 +89,22 @@ async function main () {
   const heatmapLayout = await getHeatmapLayout()
   // console.log(heatmapTraces)
 
-  // Plotly.newPlot('geodemos-heatmap__chart', heatmapTraces, heatmapLayout)
+  Plotly.newPlot('geodemos-heatmap__chart', heatmapTraces, heatmapLayout, {
+    modeBar: {
+      orientation: 'v',
+      bgcolor: 'black',
+      color: null,
+      activecolor: null
+    },
+    responsive: true
+  })
 
   // add event listeners
   const dd = document.getElementById('groups-dropdown')
   dd.addEventListener('click', handleDropdownClick)
   // dd.addEventListener('touchstart', handleClick)
 
-  function handleDropdownClick (e) {
+  function handleDropdownClick(e) {
     this.classList.toggle('show')
   }
 
@@ -197,7 +138,7 @@ main()
 
 /* Map functions */
 
-async function loadSmallAreas (layers) {
+async function loadSmallAreas(layers) {
   // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
 
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
@@ -217,7 +158,7 @@ async function loadSmallAreas (layers) {
   return layers
 }
 
-async function getEmptyLayersArray (total) {
+async function getEmptyLayersArray(total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -229,7 +170,7 @@ async function getEmptyLayersArray (total) {
   return layersArr
 }
 
-function getLayerStyle (index) {
+function getLayerStyle(index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -240,11 +181,11 @@ function getLayerStyle (index) {
   }
 }
 
-function getLayerColor (index) {
+function getLayerColor(index) {
   return GEODEMOS_COLORWAY_CBSAFE[index]
 }
 
-function onEachFeature (feature, layer) {
+function onEachFeature(feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -266,7 +207,7 @@ function onEachFeature (feature, layer) {
   })
 }
 
-function addLayersToMap (layers, map) {
+function addLayersToMap(layers, map) {
   layers.forEach((l, i) => {
     if (!map.hasLayer(l)) {
       map.addLayer(l)
@@ -277,7 +218,7 @@ function addLayersToMap (layers, map) {
   })
 }
 
-function ResetImages (imgid) {
+function ResetImages(imgid) {
   const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
     '/images/icons/ui/Icon_eye_selected-1.svg',
     '/images/icons/ui/Icon_eye_selected-2.svg',
@@ -314,13 +255,12 @@ function ResetImages (imgid) {
 
 /* Value chart functions */
 
-async function getChartTraces (zScores) {
+async function getChartTraces(zScores) {
   const traces = []
   let columnNames = {}
   columnNames = Object.keys(zScores[0])
   columnNames = columnNames.reverse()
   columnNames = columnNames.filter(e => e !== 'clusters')
-  console.log(columnNames)
 
   // const TRACES_DEFAULT = getTraceDefaults('scatter')
 
@@ -371,9 +311,8 @@ async function getChartTraces (zScores) {
   return traces
 }
 
-async function getChartLayout () {
-  const chartLayout = Object.assign({}, BASIC_LAYOUT)
-  console.log(chartLayout)
+async function getChartLayout() {
+  const chartLayout = JSON.parse(JSON.stringify(BASIC_LAYOUT))
   chartLayout.mode = 'scatter'
   chartLayout.title.text = 'Variables Value Distribution (z-scores)'
   // chartLayout.xaxis.range = [-2, 4]
@@ -382,7 +321,7 @@ async function getChartLayout () {
 
 /* Description functions */
 
-function updateGroupDescription (groupNo, contentText) {
+function updateGroupDescription(groupNo, contentText) {
   const title = document.getElementById('geodemos-group-description__title')
   const titleText = groupNo === 'all' ? 'All Groups' : `Group ${groupNo}`
   title.innerText = titleText
@@ -393,63 +332,18 @@ function updateGroupDescription (groupNo, contentText) {
 
 /* Heatmap functions */
 
-function getHeatmapLayout () {
-  const heatmapLayout = Object.assign({}, getBasicLayout)
-  heatmapLayout.height = 500
-  heatmapLayout.width = 0
-  // layout.barmode = 'group';
-  heatmapLayout.plot_bgcolor = '#ffffff'
-  heatmapLayout.paper_bgcolor = '#ffffff'
-
+function getHeatmapLayout() {
+  const heatmapLayout = JSON.parse(JSON.stringify(BASIC_LAYOUT))
   heatmapLayout.colorway = GEODEMOS_COLORWAY_CBSAFE
-  heatmapLayout.title = Object.assign({}, BASIC_LAYOUT.title)
-  heatmapLayout.title.text = ''
-  heatmapLayout.title.x = 0.51
-  heatmapLayout.title.y = 0.99
-  heatmapLayout.title.xanchor = 'center'
-  heatmapLayout.title.yanchor = 'top'
-
-  heatmapLayout.showlegend = false
-  heatmapLayout.legend = Object.assign({}, BASIC_LAYOUT.legend)
-  heatmapLayout.legend.xanchor = 'right'
-  heatmapLayout.legend.y = 0.1
+  // heatmapLayout.legend.xanchor = 'right'
+  // heatmapLayout.legend.y = 0.1
+  heatmapLayout.legend.x = 0.0
   heatmapLayout.legend.traceorder = 'reversed'
-  heatmapLayout.xaxis = Object.assign({}, BASIC_LAYOUT.xaxis)
-  heatmapLayout.xaxis.title = ''
-  heatmapLayout.yaxis = Object.assign({}, BASIC_LAYOUT.yaxis)
 
-  heatmapLayout.yaxis.tickfont = {
-    family: 'PT Sans',
-    size: 10,
-    color: '#6fd1f6'
-  }
-  heatmapLayout.xaxis.tickfont = {
-    family: 'PT Sans',
-    size: 10,
-    color: '#6fd1f6'
-  }
-  heatmapLayout.tickfont = {
-    family: 'PT Sans',
-    size: 10,
-    color: '#6fd1f6'
-  }
-
-  heatmapLayout.yaxis.titlefont = Object.assign({}, BASIC_LAYOUT.yaxis.titlefont)
-  heatmapLayout.yaxis.titlefont.size = 16 // bug? need to call this
-  heatmapLayout.yaxis.title = Object.assign({}, BASIC_LAYOUT.yaxis.title)
-  heatmapLayout.yaxis.title = ''
-  heatmapLayout.margin = Object.assign({}, BASIC_LAYOUT.margin)
-  heatmapLayout.margin = {
-    l: 20,
-    r: 40, // annotations space
-    t: 30,
-    b: 0
-
-  }
   return heatmapLayout
 }
 
-function getHeatmapTraces (zScores) {
+function getHeatmapTraces(zScores) {
   const GroupsArray = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
 
   const newCsv = zScores.split('\n').map(function (line) {
