@@ -82,7 +82,7 @@ block content
                     id: "geodemos-chart",
                     title: "Values Chart",
                     content: "", 
-                     classes: "open"
+                    classes: "open"
                     })
                     .accordion__content.open
                         #chart-geodemos
@@ -98,8 +98,13 @@ block content
                             p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
                 +accordion({
                     id: "geodemos-heatmap",
-                    title:"Heatmap"
+                    title:"Heatmap",
+                    content: "", 
+                    classes: "open"
                     })
+                    .accordion__content.open
+                        #geodemos-heatmap__chart
+
 block append scripts
     script(type='text/javascript', src='/lib/d3v5/d3.min.js' )
     script(src="https://cdn.plot.ly/plotly-latest.min.js" type="text/javascript" )
