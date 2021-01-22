@@ -1,20 +1,110 @@
 /*
-Default configuration objects for plotly charts used in Stories
+Default configuration objects for plotly charts
 */
 
 const CHART_FONT = {
+  color: '#e95d4f',
   family: 'Roboto, sans serif',
-  size: 16,
-  color: '#6fd1f6'
+  size: 16
 }
 const CHART_TITLE_FONT = {
+  color: '#e95d4f',
   family: 'Roboto, sans serif',
-  size: 20,
-  color: '#6fd1f6'
+  size: 18
 }
 
 const CHART_COLOR = '#ffffff'
 let CHART_COLORWAY = ['#e7a4b6', '#cd7eaf', '#a262a9', '#6f4d96', '#3d3b72', '#182844']
+
+/* Default Plotly chart layout */
+const BASIC_LAYOUT = {
+  height: 400,
+  margin: {
+    l: 50,
+    r: 0,
+    b: 0,
+    t: 50
+  },
+  title: {
+    text: '',
+    font: CHART_TITLE_FONT,
+    visible: false,
+    xref: 'container',
+    x: 0.0,
+    xanchor: 'left',
+    yref: 'container',
+    y: 1.0,
+    yanchor: 'top'
+  },
+  xaxis: {
+    title: '',
+    titlefont: {
+      color: '#e95d4f',
+      family: 'Roboto',
+      size: 12
+    },
+    visible: true,
+    type: null,
+    range: null,
+    fixedrange: true,
+    showticklabels: true,
+    nticks: null,
+    ticks: '',
+    automargin: true,
+    tickfont: {
+      color: '#e95d4f',
+      family: 'Roboto',
+      size: 12
+    }
+  },
+  yaxis: {
+    title: '',
+    titlefont: {
+      color: '#e95d4f',
+      family: 'Roboto',
+      size: 12
+    },
+    visible: true,
+    type: null,
+    range: null,
+    fixedrange: true,
+    showticklabels: true,
+    nticks: null,
+    ticks: '',
+    automargin: true,
+    tickfont: {
+      color: '#e95d4f',
+      family: 'Roboto',
+      size: 12
+    }
+  },
+  legend: {
+    x: null,
+    xanchor: 'right',
+    y: null,
+    yanchor: 'top',
+    traceorder: 'reversed',
+    font: {
+      color: '#e95d4f',
+      family: 'Roboto',
+      size: 12
+    }
+  },
+  paper_bgcolor: CHART_COLOR,
+  plot_bgcolor: CHART_COLOR,
+  colorway: CHART_COLORWAY,
+  font: CHART_FONT,
+  showlegend: false,
+  annotations: [],
+  hovermode: 'closest'
+
+}
+
+function getBasicLayout() {
+  return BASIC_LAYOUT
+}
+
+export { getBasicLayout }
 
 const TRACE_DEFAULTS = {
   name: 'trace',
@@ -414,92 +504,6 @@ const MULTILINE_CHART_LAYOUT = {
   annotations: [],
   hovermode: 'x'
 }
-
-const ROW_CHART_LAYOUT = {
-  height: 400,
-  margin: {
-    l: 50,
-    r: 0,
-    b: 0,
-    t: 0
-  },
-  title: {
-    text: '',
-    font: {
-      family: null,
-      size: 20
-    },
-    visible: false,
-    xref: 'container',
-    x: 0.0,
-    xanchor: 'left',
-    yref: 'container',
-    y: 1.0,
-    yanchor: 'top'
-  },
-  title: {
-    text: '',
-    font: CHART_TITLE_FONT,
-    visible: false,
-    xref: 'container',
-    x: 0.0,
-    xanchor: 'left',
-    yref: 'container',
-    y: 1.0,
-    yanchor: 'top'
-  },
-  xaxis: {
-    title: '',
-    titlefont: {
-      size: 16
-    },
-    visible: true,
-    type: null,
-    range: null,
-    fixedrange: true,
-    showticklabels: true,
-    nticks: null,
-    ticks: '',
-    automargin: true,
-    tickfont: {
-      family: null,
-      size: 12
-    }
-  },
-  yaxis: {
-    title: '',
-    titlefont: {
-      size: 16
-    },
-    visible: true,
-    type: null,
-    range: null,
-    fixedrange: true,
-    showticklabels: true,
-    nticks: null,
-    ticks: '',
-    automargin: true,
-    tickfont: {
-      family: null,
-      size: 12
-    }
-  },
-  paper_bgcolor: CHART_COLOR,
-  plot_bgcolor: CHART_COLOR,
-  colorway: CHART_COLORWAY,
-  font: CHART_FONT,
-  showlegend: false,
-  annotations: [],
-  hovermode: 'closest'
-
-}
-
-function getRowChartLayout() {
-  return ROW_CHART_LAYOUT
-}
-
-export { getRowChartLayout }
-
 
 const ROW_CHART_LAYOUT_SUBPLOTS = {
   height: 700,
