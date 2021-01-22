@@ -43,7 +43,7 @@ block content
                             p All Groups
                         svg(class="dropdown__arrow" width="7" height="12" viewBox="0 0 7 12")
                             path(fill-rule="nonzero" d="M5.569 5.994L0 .726.687 0l6.336 5.994-6.335 6.002L0 11.27z")
-                    <div id="query-dropdown__content" class="dropdown-content">
+                    #query-dropdown__content.dropdown-content
                         button(class = 'dropdown-button' type='button' data='1')
                             p Group 1
                         button(class = 'dropdown-button' type='button' data='2') 
@@ -60,7 +60,6 @@ block content
                             p Group 7
                         button(class = 'dropdown-button' type='button' data='all') 
                             p All Groups
-                    </div>
                     
             .query__help
                 .query__help__icon i
@@ -98,7 +97,7 @@ block content
                         #geodemos-group-description__content 
                             p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
                 +accordion({
-                    id: "geodemos-heamap",
+                    id: "geodemos-heatmap",
                     title:"Heatmap"
                     })
 block append scripts
