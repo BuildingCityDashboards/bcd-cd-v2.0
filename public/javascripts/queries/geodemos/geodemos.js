@@ -335,6 +335,9 @@ function updateGroupDescription(groupNo, contentText) {
 function getHeatmapLayout() {
   const heatmapLayout = JSON.parse(JSON.stringify(BASIC_LAYOUT))
   heatmapLayout.colorway = GEODEMOS_COLORWAY_CBSAFE
+  heatmapLayout.xaxis.nticks = 8
+  heatmapLayout.margin.b = 56
+  heatmapLayout.xaxis.title.text = 'Group Number'
   // heatmapLayout.legend.xanchor = 'right'
   // heatmapLayout.legend.y = 0.1
   heatmapLayout.legend.x = 0.0
@@ -344,7 +347,7 @@ function getHeatmapLayout() {
 }
 
 function getHeatmapTraces(zScores) {
-  const GroupsArray = ['Group1', 'Group2', 'Group3', 'Group4', 'Group5', 'Group6', 'Group7']
+  const GroupsArray = ['1', '2', '3', '4', '5', '6', '7']
 
   const newCsv = zScores.split('\n').map(function (line) {
     const columns = line.split(',') // get the columns
@@ -375,11 +378,9 @@ function getHeatmapTraces(zScores) {
   }
   const heatmapTraces = [
     {
-
       z: columnData,
       x: GroupsArray,
       y: header.split(','),
-
       hovertemplate: 'z-score: %{z:.2f}<extra></extra>',
       type: 'heatmap',
       hoverinfo: 'z',
@@ -388,7 +389,6 @@ function getHeatmapTraces(zScores) {
       colorbar: {
         tickcolor: '#e95d4f',
         tickfont: {
-          tickcolor: '#e95d4f',
           size: 10
         },
         ticks: 'outside',

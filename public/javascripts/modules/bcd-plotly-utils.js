@@ -20,24 +20,27 @@ let CHART_COLORWAY = ['#e7a4b6', '#cd7eaf', '#a262a9', '#6f4d96', '#3d3b72', '#1
 const BASIC_LAYOUT = {
   height: 400,
   margin: {
-    l: 50,
+    l: 48,
     r: 0,
     b: 0,
-    t: 50
+    t: 64
   },
   title: {
     text: '',
     font: CHART_TITLE_FONT,
     visible: false,
     xref: 'container',
-    x: 0.0,
-    xanchor: 'left',
+    x: 0.5,
+    xanchor: 'center',
     yref: 'container',
-    y: 1.0,
+    y: 0.9,
     yanchor: 'top'
   },
   xaxis: {
-    title: '',
+    title: {
+      text: '',
+      standoff: 12
+    },
     titlefont: {
       color: '#e95d4f',
       family: 'Roboto',
@@ -58,7 +61,10 @@ const BASIC_LAYOUT = {
     }
   },
   yaxis: {
-    title: '',
+    title: {
+      text: '',
+      standoff: 12
+    },
     titlefont: {
       color: '#e95d4f',
       family: 'Roboto',
@@ -100,7 +106,7 @@ const BASIC_LAYOUT = {
 
 }
 
-function getBasicLayout() {
+function getBasicLayout () {
   return BASIC_LAYOUT
 }
 
@@ -170,7 +176,7 @@ const TRACE_DEFAULTS_SCATTER = {
   visible: false // 'legendonly'
 }
 
-function getTraceDefaults(type = 'line') {
+function getTraceDefaults (type = 'line') {
   switch (type) {
     case 'line':
       return TRACE_DEFAULTS_LINE
@@ -278,7 +284,7 @@ const LAYOUT_DEFAULTS_SCATTER = {
   }
 }
 
-function getLayoutDefaults(type = 'line') {
+function getLayoutDefaults (type = 'line') {
   switch (type) {
     case 'scatter':
       return LAYOUT_DEFAULTS_SCATTER
