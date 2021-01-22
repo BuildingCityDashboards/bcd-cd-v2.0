@@ -1,5 +1,5 @@
 /*
-Default configuration objects for plotly charts used in Stories
+Default configuration objects for plotly charts
 */
 
 const CHART_FONT = {
@@ -100,9 +100,11 @@ const BASIC_LAYOUT = {
 
 }
 
-function getBasicLayout () {
+function getBasicLayout() {
   return BASIC_LAYOUT
 }
+
+export { getBasicLayout }
 
 const TRACE_DEFAULTS = {
   name: 'trace',
@@ -168,7 +170,7 @@ const TRACE_DEFAULTS_SCATTER = {
   visible: false // 'legendonly'
 }
 
-function getTraceDefaults (type = 'line') {
+function getTraceDefaults(type = 'line') {
   switch (type) {
     case 'line':
       return TRACE_DEFAULTS_LINE
@@ -276,7 +278,7 @@ const LAYOUT_DEFAULTS_SCATTER = {
   }
 }
 
-function getLayoutDefaults (type = 'line') {
+function getLayoutDefaults(type = 'line') {
   switch (type) {
     case 'scatter':
       return LAYOUT_DEFAULTS_SCATTER
@@ -502,8 +504,6 @@ const MULTILINE_CHART_LAYOUT = {
   annotations: [],
   hovermode: 'x'
 }
-
-export { getBasicLayout }
 
 const ROW_CHART_LAYOUT_SUBPLOTS = {
   height: 700,

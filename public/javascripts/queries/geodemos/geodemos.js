@@ -361,7 +361,7 @@ function getHeatmapTraces(zScores) {
   const numberOfColumns = header.split(',').length
 
   // initialize 2D-array with a fixed size
-  const columnData = [...Array(numberOfColumns)].map(item => new Array())
+  const columnData = [...Array(numberOfColumns)].map(item => [])
 
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i]
@@ -386,27 +386,22 @@ function getHeatmapTraces(zScores) {
       showscale: true,
       fixedrange: true,
       colorbar: {
-        // title: 'z-scores',
-
-        tickcolor: '#6fd1f6',
+        tickcolor: '#e95d4f',
         tickfont: {
-          color: '#6fd1f6',
+          tickcolor: '#e95d4f',
           size: 10
         },
-
         ticks: 'outside',
         dtick: 0.25,
         tickwidth: 2,
         ticklen: 10,
         showticklabels: true,
-        xpad: 35,
-
-        thickness: 40,
+        xpad: 16,
+        thickness: 32,
         thicknessmode: 'pixels',
         len: 0.9,
         lenmode: 'fraction',
         outlinewidth: 0
-
       },
       colorscale: [
 
