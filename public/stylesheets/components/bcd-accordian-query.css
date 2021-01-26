@@ -8,13 +8,9 @@
     cursor: pointer;
     width: 100%;
     color: #e95d4f;
-    display: -ms-flexbox;
     display: inline-flex;
-    -ms-flex-align: center;
     align-items: baseline;
-    -ms-flex-pack: start;
     justify-content: space-between;
-    -ms-flex-direction: row;
     flex-direction: row;
     align-items: center;
     cursor: pointer;
@@ -31,7 +27,7 @@
 }
 
 .accordion::-moz-focus-inner {
-    border: 0
+    border: 0;
 }
 
 .accordion:focus {

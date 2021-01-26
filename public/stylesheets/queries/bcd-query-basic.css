@@ -225,7 +225,7 @@
 
 
 /* landscape */
-@media only screen (orientation: landscape) {}
+@media only screen and (orientation: landscape) {}
 
 /* iPad */
 @media only screen and (min-width : 768px) {
@@ -234,6 +234,7 @@
         width: 100vw;
         /* min-height: 100vh; */
         padding-top: calc(56px + 72px);
+        min-height: 60vh;
     }
 
     .query__grid {
@@ -256,7 +257,7 @@
 
 }
 
-
+@media only screen and (min-width : 768px) {}
 
 /* laptop with MDPI devtools */
 @media only screen and (min-device-width : 1280px) {
