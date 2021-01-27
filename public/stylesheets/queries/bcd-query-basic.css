@@ -268,9 +268,9 @@
         position: relative;
         width: 100vw;
         min-width: 1280px;
-        height: 100vh;
-        min-height: 800px;
-        /* max-height: 100vh; */
+        /* height: 100vh; */
+        min-height: 100vh;
+        max-height: none;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -324,7 +324,7 @@
         grid-row: 3 / 9;
         align-self: flex-start;
         width: 100%;
-        height: auto;
+        height: 800px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
