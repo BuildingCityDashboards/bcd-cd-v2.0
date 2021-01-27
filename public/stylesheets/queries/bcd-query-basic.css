@@ -277,7 +277,7 @@
         padding: 0 24px 24px;
         grid-gap: 16px;
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: 48px repeat(8, auto);
+        grid-template-rows: 32px auto auto auto 256px repeat(3, auto);
         justify-content: flex-start;
         height: auto;
         max-height: none;
@@ -357,7 +357,9 @@
     } */
 
     #accordion-map,
-    #accordion-chart {
+    #accordion-chart,
+    #accordion-group-description,
+    #geodemos-group-description__title {
         display: none;
     }
 
@@ -372,7 +374,13 @@
         grid-row: 1 / 2;
     }
 
-    #geodemos-description {}
+    #geodemos-group-description {
+        grid-column: 1 / 4;
+        grid-row: 5 / 6;
+        overflow-y: auto;
+        height: 100%;
+
+    }
 
 }
 

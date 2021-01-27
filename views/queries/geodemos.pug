@@ -89,17 +89,17 @@ block content
                         })
                         .accordion__content.open
                             #chart-geodemos
-            #geodemos-description
+            #geodemos-group-description
                 +accordion({
                     id: "accordion-group-description",
                     title: "Group Description",
                     content: "", 
                     })
-                    #geodemos-group-description.accordion__content 
-                        h2
-                            #geodemos-group-description__title All Groups
-                        #geodemos-group-description__content 
-                            p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
+                .accordion__content.open 
+                    #geodemos-group-description__title
+                        h2 All Groups
+                    #geodemos-group-description__content 
+                        p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
                 //- +accordion({
                     id: "geodemos-heatmap",
                     title:"Heatmap",

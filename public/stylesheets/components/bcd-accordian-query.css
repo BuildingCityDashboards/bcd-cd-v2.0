@@ -142,7 +142,7 @@
 /* // Large devices (desktops, 992px and up) */
 @media screen and (min-device-width: 1280px) {
     .accordion {
-        padding: 16px 0;
+        padding: 0 0 16px 0;
     }
 
     .accordion__content {
