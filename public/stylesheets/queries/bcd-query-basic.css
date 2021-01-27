@@ -262,72 +262,89 @@
 /* laptop with MDPI devtools */
 @media only screen and (min-device-width : 1280px) {
     .query {
-        min-width: 1280px;
-        width: 100vw;
         max-width: 1920px;
-
+        margin: 0 auto;
+        padding-right: 12px;
+        position: relative;
+        width: 100vw;
+        min-width: 1280px;
+        height: 100vh;
+        min-height: 800px;
+        /* max-height: 100vh; */
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .query__grid {
         width: 100%;
-        padding: calc(56px + 64px) 24px 24px;
-        grid-gap: 24px;
+        padding: 0 24px 24px;
+        grid-gap: 16px;
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: 64px repeat(8, 1fr);
         justify-content: center;
-    }
+        height: auto;
+        max-height: none;
+        overflow-y: visible;
 
-    .query__tab-bar {
-        grid-column: span 4;
-        grid-row: 1/2;
-        background-color: white;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    .query__tab-button {
-        background-color: green;
-        padding: 4px;
     }
 
     .query__source {
-        background-color: white;
+        background-color: transparent;
         grid-column: 10/13;
         grid-row: 1/2;
 
     }
 
     .query__header {
+        padding: 0;
         background-color: white;
         grid-column: span 12;
-        grid-row: 2/4;
+        grid-row: 2/3;
 
     }
 
-    .query__list {
-        background-color: white;
-        grid-column: span 2;
-        grid-row: 4/9;
+    .query__help {
+        grid-column: 1 / 4;
+        grid-row: 4 / 5;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 16px;
     }
 
-    .query__list-item {}
-
-    .query__chart-primary {
-        background-color: white;
-        grid-column: 3/9;
-        grid-row: 4/10;
-
+    .query__dropdown-bar {
+        grid-column: 1 / 4;
+        grid-row: 3 / 4;
     }
 
-    .query__chart-secondary {
-        background-color: white;
-        grid-column: 9/13;
-        grid-row: 4/10;
-
+    .query__viz {
+        background-color: transparent;
+        grid-column: 4 / 13;
+        grid-row: 3 / 9;
+        align-self: flex-start;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-content: flex-start;
+        align-items: flex-start;
+        border: 1px solid green;
+        /* overflow-y: */
     }
 
+    #geodemos-map {
+        border: 1px solid black;
+        grid-column: 1 /2;
+        grid-row: 1 / 2;
+    }
 
+    #geodemos-chart {
+        border: 1px solid black;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
 
 }
 

@@ -140,14 +140,59 @@
 }
 
 /* // Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {}
-
-/* // Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .accordian-screenshot-container {
-        padding-left: 0;
+@media screen and (min-device-width: 1280px) {
+    .accordion {
+        padding: 16px;
     }
+
+    .accordion__content {
+        width: 100%;
+    }
+
+    .accordion__content p {
+        padding: 0 16px;
+
+    }
+
+    .accordion__content h2 {
+        font-size: 18px;
+        padding: 0 8px 8px;
+    }
+
+    .accordion__content a {}
+
+    .accordion__content br {
+        display: none;
+    }
+
+    .accordion__content.open {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        max-height: 1000px;
+        max-width: 100%;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s, max-height 500ms;
+        margin-bottom: 16px;
+    }
+
+    .accordion__content.leaflet-container {
+        min-height: 0;
+    }
+
+    .accordion__content.open.leaflet-container {
+        min-height: 280px;
+        height: auto;
+        max-height: 1000px;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s, max-height 500ms;
+    }
+
 }
+
+
 
 /*
 @media (max-width: 576px){

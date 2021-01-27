@@ -34,7 +34,7 @@ block content
                 +accordion({
                     id:"geodemos-header",
                     title: "Geodemographics", 
-                    content: "<p> Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units, and variables are taken from the <a href=\"https://data.cso.ie/product/c2016sr1\" target=\"_blank\"> 2016 Census of Population results</a>.</p><br><p>This work was carried out by Burcin Yazg-Walsh and is available <a href=\"https://rpubs.com/burcinwalsh/620510\" target=\"_blank\">here</a>.</p>",
+                    content: "<p> Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units, and variables are taken from the <a href=\"https://data.cso.ie/product/c2016sr1\" target=\"_blank\"> 2016 Census of Population results</a>.</p><br><p>This work was carried out by Burcin Yazgi Walsh and is available <a href=\"https://rpubs.com/burcinwalsh/620510\" target=\"_blank\">here</a>.</p>",
                     classes: "open"
                     })
                         
@@ -66,29 +66,31 @@ block content
             .query__help
                 .query__help__icon i
                 div 
-                    p Choose a group to be visualised below on the map. Open the chart to see values. The heatmap shows an overview of statistics for all groups.
-            .query__list list
+                    p Choose a group to be visualised on the map. Open the chart to see values. The heatmap shows an overview of statistics for all groups.
+            //- .query__list list
                 .query__list-item item 1
                 .query__list-item item 2
                 .query__list-item item 3
             .query__viz
-                +accordion({
-                    id: "geodemos-map",
-                    title: "Groups Map",
-                    content: "", 
-                    classes: "open"
-                    })
-                    .accordion__content.open
-                        #map-geodemos
-                +accordion({
-                    id: "geodemos-chart",
-                    title: "Values Chart",
-                    content: "", 
-                    classes: "open"
-                    })
-                    .accordion__content.open
-                        #chart-geodemos
-                +accordion({
+                #geodemos-map
+                    +accordion({
+                        id: "",
+                        title: "Groups Map",
+                        content: "", 
+                        classes: "open"
+                        })
+                        .accordion__content.open
+                            #map-geodemos
+                #geodemos-chart
+                    +accordion({
+                        id: "",
+                        title: "Values Chart",
+                        content: "", 
+                        classes: "open"
+                        })
+                        .accordion__content.open
+                            #chart-geodemos
+                //- +accordion({
                     id: "geodemos-description",
                     title: "Group Description",
                     content: "", 
@@ -98,7 +100,7 @@ block content
                             #geodemos-group-description__title All Groups
                         #geodemos-group-description__content 
                             p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
-                +accordion({
+                //- +accordion({
                     id: "geodemos-heatmap",
                     title:"Heatmap",
                     content: "", 
