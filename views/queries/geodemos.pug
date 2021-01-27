@@ -7,10 +7,9 @@ block append head
 
     //- link(rel='stylesheet', href='https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.css')
     //- link(rel='stylesheet', href='/stylesheets/lib/Control.OSMGeocoder.modified.css')
-    link(rel='stylesheet', href='/stylesheets/queries/bcd-query-basic.css')
-    link(rel='stylesheet', href='/stylesheets/components/bcd-subnav.css')
-    //- link(rel='stylesheet', href='/stylesheets/lib/marker-cluster-modified.css')
     link(rel='stylesheet', href='/stylesheets/components/bcd-map.css')
+    link(rel='stylesheet', href='/stylesheets/components/bcd-subnav.css')
+    link(rel='stylesheet', href='/stylesheets/queries/bcd-query-basic.css')
     link(rel='stylesheet', href='/stylesheets/components/bcd-accordian-query.css')
     //- link(rel='stylesheet', href='/stylesheets/lib/leaflet-chart-modified.css')  
     //- link(rel='stylesheet', href='/stylesheets/spin.css')
@@ -66,24 +65,24 @@ block content
             .query__help
                 .query__help__icon i
                 div 
-                    p Choose a group to be visualised on the map. Open the chart to see values. The heatmap shows an overview of statistics for all groups.
+                    p Choose a group to be visualised on the map and value chart. The heatmap shows an overview of statistics for all groups.
             //- .query__list list
                 .query__list-item item 1
                 .query__list-item item 2
                 .query__list-item item 3
             .query__viz
                 #geodemos-map
-                    //- +accordion({
-                        id: "",
+                    +accordion({
+                        id: "accordion-map",
                         title: "Groups Map",
                         content: "", 
                         classes: "open"
                         })
-                        .accordion__content.open
+                    .accordion__content.open
                             #map-geodemos
                 #geodemos-chart
-                    //- +accordion({
-                        id: "",
+                    +accordion({
+                        id: "accordion-chart",
                         title: "Values Chart",
                         content: "", 
                         classes: "open"

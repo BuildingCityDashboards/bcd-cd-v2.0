@@ -181,8 +181,8 @@
         min-height: 0;
     }
 
-    .accordion__content.open.leaflet-container {
-        min-height: 280px;
+    .leaflet-container {
+        min-height: 400px;
         height: auto;
         max-height: 1000px;
         visibility: visible;

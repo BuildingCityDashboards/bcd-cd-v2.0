@@ -22,9 +22,11 @@ const GEODEMOS_COLORWAY_CBSAFE = ['#d73027',
 
 const BASIC_LAYOUT = Object.assign({}, getBasicLayout())
 
-async function main() {
+const CHART_HEIGHT = 400
+
+async function main () {
   // Add map
-  const minZoom = 7
+  const minZoom = 8
   const maxZoom = 16
   const zoom = minZoom
   // tile layer with correct attribution
@@ -104,7 +106,7 @@ async function main() {
   dd.addEventListener('click', handleDropdownClick)
   // dd.addEventListener('touchstart', handleClick)
 
-  function handleDropdownClick(e) {
+  function handleDropdownClick (e) {
     this.classList.toggle('show')
   }
 
@@ -138,7 +140,7 @@ main()
 
 /* Map functions */
 
-async function loadSmallAreas(layers) {
+async function loadSmallAreas (layers) {
   // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
 
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
@@ -158,7 +160,7 @@ async function loadSmallAreas(layers) {
   return layers
 }
 
-async function getEmptyLayersArray(total) {
+async function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -170,7 +172,7 @@ async function getEmptyLayersArray(total) {
   return layersArr
 }
 
-function getLayerStyle(index) {
+function getLayerStyle (index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -181,11 +183,11 @@ function getLayerStyle(index) {
   }
 }
 
-function getLayerColor(index) {
+function getLayerColor (index) {
   return GEODEMOS_COLORWAY_CBSAFE[index]
 }
 
-function onEachFeature(feature, layer) {
+function onEachFeature (feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -207,7 +209,7 @@ function onEachFeature(feature, layer) {
   })
 }
 
-function addLayersToMap(layers, map) {
+function addLayersToMap (layers, map) {
   layers.forEach((l, i) => {
     if (!map.hasLayer(l)) {
       map.addLayer(l)
@@ -218,7 +220,7 @@ function addLayersToMap(layers, map) {
   })
 }
 
-function ResetImages(imgid) {
+function ResetImages (imgid) {
   const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
     '/images/icons/ui/Icon_eye_selected-1.svg',
     '/images/icons/ui/Icon_eye_selected-2.svg',
@@ -255,7 +257,7 @@ function ResetImages(imgid) {
 
 /* Value chart functions */
 
-async function getChartTraces(zScores) {
+async function getChartTraces (zScores) {
   const traces = []
   let columnNames = {}
   columnNames = Object.keys(zScores[0])
@@ -311,7 +313,7 @@ async function getChartTraces(zScores) {
   return traces
 }
 
-async function getChartLayout() {
+async function getChartLayout () {
   const chartLayout = JSON.parse(JSON.stringify(BASIC_LAYOUT))
   chartLayout.mode = 'scatter'
   chartLayout.title.text = 'Variables Value Distribution (z-scores)'
@@ -321,7 +323,7 @@ async function getChartLayout() {
 
 /* Description functions */
 
-function updateGroupDescription(groupNo, contentText) {
+function updateGroupDescription (groupNo, contentText) {
   const title = document.getElementById('geodemos-group-description__title')
   const titleText = groupNo === 'all' ? 'All Groups' : `Group ${groupNo}`
   title.innerText = titleText
@@ -332,7 +334,7 @@ function updateGroupDescription(groupNo, contentText) {
 
 /* Heatmap functions */
 
-function getHeatmapLayout() {
+function getHeatmapLayout () {
   const heatmapLayout = JSON.parse(JSON.stringify(BASIC_LAYOUT))
   heatmapLayout.colorway = GEODEMOS_COLORWAY_CBSAFE
   heatmapLayout.xaxis.nticks = 8
@@ -346,7 +348,7 @@ function getHeatmapLayout() {
   return heatmapLayout
 }
 
-function getHeatmapTraces(zScores) {
+function getHeatmapTraces (zScores) {
   const GroupsArray = ['1', '2', '3', '4', '5', '6', '7']
 
   const newCsv = zScores.split('\n').map(function (line) {
