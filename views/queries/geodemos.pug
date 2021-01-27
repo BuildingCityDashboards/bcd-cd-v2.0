@@ -33,7 +33,7 @@ block content
                 +accordion({
                     id:"geodemos-header",
                     title: "Geodemographics", 
-                    content: "<p> Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units, and variables are taken from the <a href=\"https://data.cso.ie/product/c2016sr1\" target=\"_blank\"> 2016 Census of Population results</a>.</p><br><p>This work was carried out by Burcin Yazgi Walsh and is available <a href=\"https://rpubs.com/burcinwalsh/620510\" target=\"_blank\">here</a>.</p>",
+                    content: "<p> Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units, and variables are taken from the <a href=\"https://data.cso.ie/product/c2016sr1\" target=\"_blank\"> 2016 Census of Population results</a>. This analysis was carried out by Burcin Yazgi Walsh and is available <a href=\"https://rpubs.com/burcinwalsh/620510\" target=\"_blank\">here</a>.</p>",
                     classes: "open"
                     })
                         
@@ -100,13 +100,14 @@ block content
                         h2 All Groups
                     #geodemos-group-description__content 
                         p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
-                //- +accordion({
-                    id: "geodemos-heatmap",
+            #geodemos-heatmap
+                +accordion({
+                    id: "accordion-heatmap",
                     title:"Heatmap",
                     content: "", 
                     classes: "open"
                     })
-                    .accordion__content.open
+                    //- .accordion__content.open
                         p(style="margin-bottom:32px") The cluster mean for each variable was calculated and plotted on the heatmap below to help to identify the characteristics of each 7 groups. The 33 variables are presented in the rows and clusters in the columns. Higher values of a variable can be identified by darker shade of blues and low values by red within each cluster.
                         #geodemos-heatmap__chart
 

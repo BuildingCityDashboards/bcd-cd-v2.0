@@ -1,3 +1,7 @@
+body {
+    background-color: #eeecec;
+}
+
 .query {
     background-color: #eeecec;
     min-width: 320px;
@@ -125,10 +129,12 @@
     display: none;
     position: absolute;
     right: 0;
-    top: 41px;
+    top: 40px;
     background-color: #e95d4f;
     z-index: 10000;
-
+    border: none;
+    outline: none;
+    padding: 0 16px;
 }
 
 .query__dropdown-bar.show .dropdown-content {
@@ -139,23 +145,26 @@
 
 .dropdown:hover .dropbtn {
     background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 .dropdown-button {
     background-color: transparent;
     color: white;
     outline: none;
+    border: none;
     border-bottom: 2px solid transparent;
-    padding-bottom: 4px;
+    padding: 4px;
 }
 
 .dropdown-button:hover {
     outline: none;
+    border-bottom: 2px solid white;
 }
 
 .dropdown-button:hover p {
     outline: none;
-    border-bottom: 1px solid white;
     font-weight: 400;
 }
 
@@ -259,11 +268,11 @@
 /* laptop with MDPI devtools */
 @media only screen and (min-device-width : 1280px) {
     .query {
-        max-width: 1920px;
+        max-width: 1440px;
         margin: 0 auto;
         padding-right: 12px;
         position: relative;
-        width: 100vw;
+        width: 100%;
         min-width: 1280px;
         /* height: 100vh; */
         min-height: 100vh;
@@ -277,7 +286,7 @@
         padding: 0 24px 24px;
         grid-gap: 16px;
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: 32px auto auto auto 256px repeat(3, auto);
+        grid-template-rows: 32px auto auto auto 300px repeat(3, auto);
         justify-content: flex-start;
         height: auto;
         max-height: none;
@@ -315,7 +324,7 @@
 
     .query__help {
         grid-column: 1 / 4;
-        grid-row: 4 / 5;
+        grid-row: 3 / 4;
         padding: 16px 0;
     }
 
@@ -326,7 +335,7 @@
 
     .query__dropdown-bar {
         grid-column: 1 / 4;
-        grid-row: 3 / 4;
+        grid-row: 4 / 5;
         margin: 0;
     }
 
@@ -334,21 +343,22 @@
         grid-column: 1 / 4;
         grid-row: 5 / 6;
 
+
     }
 
     .query__viz {
         background-color: transparent;
         grid-column: 4 / 13;
-        grid-row: 3 / 9;
+        grid-row: 3 / 6;
         align-self: flex-start;
         width: 100%;
-        /* height: 800px; */
+        height: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr;
         grid-gap: 16px;
-        justify-content: flex-start;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
         /* overflow-y: */
     }
 
@@ -374,12 +384,25 @@
         grid-row: 1 / 2;
     }
 
+    #geodemos-heatmap {
+        grid-column: 4 / 13;
+        grid-row: 6 / 7;
+        background-color: transparent;
+        padding: 16px;
+    }
+
     #geodemos-group-description {
         grid-column: 1 / 4;
         grid-row: 5 / 6;
+        align-self: flex-start;
         overflow-y: auto;
-        height: 100%;
+        height: auto;
+        background-color: white;
+        padding: 16px;
+    }
 
+    #geodemos-group-description p {
+        font-size: 14px;
     }
 
 }
