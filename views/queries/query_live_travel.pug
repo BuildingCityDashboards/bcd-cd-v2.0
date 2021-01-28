@@ -10,6 +10,9 @@ block append head
     link(rel='stylesheet', href='/stylesheets/components/bcd-subnav.css')
     link(rel='stylesheet', href='/stylesheets/queries/bcd-query-basic.css')
     link(rel='stylesheet', href='/stylesheets/components/bcd-accordian-query.css')
+    //- link(rel='stylesheet', href='/stylesheets/queries/query__live-travel.css')
+        //- link(rel='stylesheet', href='/stylesheets/lib/marker-cluster-modified.css')
+    link(rel='stylesheet', href='/stylesheets/components/bcd-map.css')
     //- link(rel='stylesheet', href='/stylesheets/lib/leaflet-chart-modified.css')  
     //- link(rel='stylesheet', href='/stylesheets/spin.css')
 
@@ -26,15 +29,15 @@ block content
             .query__header
                 +accordion({
                     id:"live-travel__header",
-                    title: "<h1>Live Travel Map</h1>", 
+                    title: "<h1>Live Travel</h1>", 
                     content: "<p><a href=\"\" target=\"_blank\"></a>.</p>",
                     classes: "open"
                     })
                         
-            #live-travel-dropdown.query__dropdown-bar.dropdown 
+            #query-dropdown.query__dropdown-bar.dropdown 
                     .query__drop-btn.dropbtn
                         p Select a transport type:
-                        #current-transport
+                        #current-group
                             p All
                         svg(class="dropdown__arrow" width="7" height="12" viewBox="0 0 7 12")
                             path(fill-rule="nonzero" d="M5.569 5.994L0 .726.687 0l6.336 5.994-6.335 6.002L0 11.27z")
@@ -49,7 +52,7 @@ block content
                 div 
                     p Choose a transport type to be visualised on the map.
             .query__viz
-                #live-travel__map
+                #query-map
                     +accordion({
                         id: "accordion-live-travel-map",
                         title: "<h2>Live Travel Map<h2>",
@@ -58,7 +61,7 @@ block content
                         })
                     .accordion__content.open
                             #live-travel-map
-                #geodemos-chart
+                //- #geodemos-chart
                     +accordion({
                         id: "accordion-live-travel-chart",
                         title: "<h2>Chart</h2>",
@@ -67,7 +70,7 @@ block content
                         })
                         .accordion__content.open
                             //- #chart-geodemos
-            #live-travel-description
+            //- #live-travel-description
                 +accordion({
                     id: "accordion-live-travel-description",
                     title: "<h2>Description<h2>",
