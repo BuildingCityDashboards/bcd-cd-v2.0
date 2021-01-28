@@ -22,125 +22,129 @@ const GEODEMOS_COLORWAY_CBSAFE = ['#d73027',
 
 const BASIC_LAYOUT = Object.assign({}, getBasicLayout())
 
+const CHART_HEIGHT = 400
+
 async function main() {
-  // Add map
-  const minZoom = 7
-  const maxZoom = 16
-  const zoom = minZoom
-  // tile layer with correct attribution
-  const BASEMAP = 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png'
-  const ATTRIBUTION = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, © <a href="https://carto.com/">CartoDB </a> contributors'
+  try {
+    // Add map
+    const minZoom = 8
+    const maxZoom = 16
+    const zoom = minZoom
+    // tile layer with correct attribution
+    const BASEMAP = 'https://{s}.basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}.png'
+    const ATTRIBUTION = '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, © <a href="https://carto.com/">CartoDB </a> contributors'
 
-  const mapGeodemos = new L.Map('map-geodemos')
-  const osmLayer = new L.TileLayer(BASEMAP, {
-    minZoom: minZoom,
-    maxZoom: maxZoom,
-    attribution: ATTRIBUTION
-  })
-  mapGeodemos.setView(getCityLatLng(), zoom)
-  mapGeodemos.addLayer(osmLayer)
-  mapGeodemos.setMaxBounds(mapGeodemos.getBounds())
+    const mapGeodemos = new L.Map('map-geodemos')
+    const osmLayer = new L.TileLayer(BASEMAP, {
+      minZoom: minZoom,
+      maxZoom: maxZoom,
+      attribution: ATTRIBUTION
+    })
+    mapGeodemos.setView(getCityLatLng(), zoom)
+    mapGeodemos.addLayer(osmLayer)
+    mapGeodemos.setMaxBounds(mapGeodemos.getBounds())
 
-  // L.control.locate({
-  //   strings: {
-  //     title: 'Zoom to your location'
-  //   }
-  // }).addTo(mapGeodemos)
+    // L.control.locate({
+    //   strings: {
+    //     title: 'Zoom to your location'
+    //   }
+    // }).addTo(mapGeodemos)
 
-  // mapGeodemos.addControl(new L.Control.OSMGeocoder({
-  //   placeholder: 'Enter street name, area etc.',
-  //   bounds: getCityLatLng()
-  // }))
+    // mapGeodemos.addControl(new L.Control.OSMGeocoder({
+    //   placeholder: 'Enter street name, area etc.',
+    //   bounds: getCityLatLng()
+    // }))
 
-  // Used when an SA is null or otherwise falsey
-  // const naStyle = {
-  //   fillColor: 'grey',
-  //   weight: 1,
-  //   opacity: 2,
-  //   color: 'grey',
-  //   dashArray: '1',
-  //   fillOpacity: 0.5
-  // }
+    // Used when an SA is null or otherwise falsey
+    // const naStyle = {
+    //   fillColor: 'grey',
+    //   weight: 1,
+    //   opacity: 2,
+    //   color: 'grey',
+    //   dashArray: '1',
+    //   fillOpacity: 0.5
+    // }
 
-  let mapLayers = await getEmptyLayersArray(8)
-  mapLayers = await loadSmallAreas(mapLayers)
-  addLayersToMap(mapLayers, mapGeodemos)
+    let mapLayers = await getEmptyLayersArray(8)
+    mapLayers = await loadSmallAreas(mapLayers)
+    addLayersToMap(mapLayers, mapGeodemos)
 
-  const zScores = await d3.csv('/data/geodemos/cork_zscores.csv')
-  const chartTraces = await getChartTraces(zScores)
-  const chartLayout = await getChartLayout()
+    const zScores = await d3.csv('/data/geodemos/cork_zscores.csv')
+    const chartTraces = await getChartTraces(zScores)
+    const chartLayout = await getChartLayout()
 
-  Plotly.newPlot('chart-geodemos', chartTraces, chartLayout, {
-    modeBar: {
-      orientation: 'v',
-      bgcolor: 'black',
-      color: null,
-      activecolor: null
-    },
-    responsive: true
-  })
-
-  const descriptions = await d3.json('/data/geodemos/geodemos-group-descriptions.json')
-
-  // Heatmap
-
-  const zScoresTxt = await d3.text('/data/geodemos/cork_zscores.csv') // TODO: rm need for this
-  const heatmapTraces = await getHeatmapTraces(zScoresTxt)
-  const heatmapLayout = await getHeatmapLayout()
-  // console.log(heatmapTraces)
-
-  Plotly.newPlot('geodemos-heatmap__chart', heatmapTraces, heatmapLayout, {
-    modeBar: {
-      orientation: 'v',
-      bgcolor: 'black',
-      color: null,
-      activecolor: null
-    },
-    responsive: true
-  })
-
-  // add event listeners
-  const dd = document.getElementById('groups-dropdown')
-  dd.addEventListener('click', handleDropdownClick)
-  // dd.addEventListener('touchstart', handleClick)
-
-  function handleDropdownClick(e) {
-    this.classList.toggle('show')
-  }
-
-  d3.select('#query-dropdown__content').selectAll('button').on('click', function () {
-    const buttonData = $(this).attr('data') // TODO: remove jQ
-    // ResetImages(buttonData)
-    const groupNo = buttonData === 'all' ? 'all' : parseInt(buttonData)
-    const layerNo = groupNo === 'all' ? 'all' : parseInt(groupNo) - 1
-    mapLayers.forEach(l => {
-      mapGeodemos.removeLayer(l)
+    Plotly.newPlot('chart-geodemos', chartTraces, chartLayout, {
+      modeBar: {
+        orientation: 'v',
+        bgcolor: 'black',
+        color: null,
+        activecolor: null
+      },
+      responsive: true
     })
 
-    if (layerNo !== 'all') {
-      document.getElementById('current-group').innerHTML = `<p>Group ${buttonData}</p>`
-      // updateGroupTxt(gn)
-      mapGeodemos.addLayer(mapLayers[layerNo])
-      Plotly.react('chart-geodemos', [chartTraces[layerNo]], chartLayout)
-    } else {
-      document.getElementById('current-group').innerHTML = '<p>All Groups</p>'
+    const descriptions = await d3.json('/data/geodemos/geodemos-group-descriptions.json')
+
+    // add event listeners
+    const dd = document.getElementById('groups-dropdown')
+    dd.addEventListener('click', toggleDropdownOpen)
+    // dd.addEventListener('touchstart', handleClick)
+
+    d3.select('#query-dropdown__content').selectAll('button').on('click', function () {
+      const buttonData = $(this).attr('data') // TODO: remove jQ
+      // ResetImages(buttonData)
+      const groupNo = buttonData === 'all' ? 'all' : parseInt(buttonData)
+      const layerNo = groupNo === 'all' ? 'all' : parseInt(groupNo) - 1
       mapLayers.forEach(l => {
-        mapGeodemos.addLayer(l)
+        mapGeodemos.removeLayer(l)
       })
-      Plotly.react('chart-geodemos', chartTraces, chartLayout)
-      // 'all' && cb.attr("src") == '/images/icons/ui/Icon_eye_selected.svg')
-    }
-    updateGroupDescription(groupNo, descriptions[groupNo])
-  })
+
+      if (layerNo !== 'all') {
+        document.getElementById('current-group').innerHTML = `<p>Group ${buttonData}</p>`
+        // updateGroupTxt(gn)
+        mapGeodemos.addLayer(mapLayers[layerNo])
+        Plotly.react('chart-geodemos', [chartTraces[layerNo]], chartLayout)
+      } else {
+        document.getElementById('current-group').innerHTML = '<p>All Groups</p>'
+        mapLayers.forEach(l => {
+          mapGeodemos.addLayer(l)
+        })
+        Plotly.react('chart-geodemos', chartTraces, chartLayout)
+        // 'all' && cb.attr("src") == '/images/icons/ui/Icon_eye_selected.svg')
+      }
+      updateGroupDescription(groupNo, descriptions[groupNo])
+    })
+    // Heatmap
+
+    const zScoresTxt = await d3.text('/data/geodemos/cork_zscores.csv') // TODO: rm need for this
+    const heatmapTraces = await getHeatmapTraces(zScoresTxt)
+    const heatmapLayout = await getHeatmapLayout()
+    // console.log(heatmapTraces)
+
+    Plotly.newPlot('geodemos-heatmap__chart', heatmapTraces, heatmapLayout, {
+      modeBar: {
+        orientation: 'v',
+        bgcolor: 'black',
+        color: null,
+        activecolor: null
+      },
+      responsive: true
+    })
+  } catch (e) {
+    console.log('Error creating Geomdemos query')
+    console.log(e)
+  }
 }
 
 main()
 
+function toggleDropdownOpen(e) {
+  this.classList.toggle('show')
+}
+
 /* Map functions */
 
 async function loadSmallAreas(layers) {
-  // const remoteURI = 'https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/Census2016_Theme5Table2_SA/FeatureServer/0/query?where=COUNTYNAME%20%3D%20\'CORK%20COUNTY\'&outFields=OBJECTID,GUID,COUNTY,COUNTYNAME,SMALL_AREA,Shape__Area,Shape__Length&outSR=4326&f=json'
-
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
 
   const corkSAs = await d3.json(staticURI)

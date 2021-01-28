@@ -5,16 +5,11 @@
     -moz-appearance: none;
     appearance: none;
     border: 0;
-    cursor: pointer;
     width: 100%;
     color: #e95d4f;
-    display: -ms-flexbox;
     display: inline-flex;
-    -ms-flex-align: center;
     align-items: baseline;
-    -ms-flex-pack: start;
     justify-content: space-between;
-    -ms-flex-direction: row;
     flex-direction: row;
     align-items: center;
     cursor: pointer;
@@ -31,7 +26,7 @@
 }
 
 .accordion::-moz-focus-inner {
-    border: 0
+    border: 0;
 }
 
 .accordion:focus {
@@ -107,6 +102,20 @@
 
 }
 
+
+
+/* required to stop events colliding on plotly layers even when hidden */
+#geodemos-chart>div.accordion__content>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
+    z-index: -1;
+    width: 0;
+}
+
+#geodemos-chart>div.accordion__content.open>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
+    z-index: -1;
+    width: 100%;
+}
+
+
 .accordion__content.leaflet-container {
     min-height: 0;
 }
@@ -144,14 +153,83 @@
 }
 
 /* // Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {}
-
-/* // Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-    .accordian-screenshot-container {
-        padding-left: 0;
+@media screen and (min-device-width: 1280px) {
+    .accordion {
+        padding: 0 0 16px 0;
+        cursor: auto;
     }
+
+    .accordion h1 {
+        letter-spacing: 0.1rem;
+        color: #e95d4f;
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    .accordion__arrow {
+        display: none;
+    }
+
+
+    .accordion.open .accordion__arrow {
+        display: none;
+    }
+
+
+    /* keep accordians open on desktop */
+    .accordion__content {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        max-height: 1000px;
+        width: 100%;
+        max-width: 100%;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s, max-height 500ms;
+        margin-bottom: 16px;
+    }
+
+    .accordion__content p {
+        padding: 0;
+
+    }
+
+    .accordion__content h2 {
+        font-size: 18px;
+        padding: 0 0 8px 0;
+    }
+
+    .accordion__content a {}
+
+    .accordion__content.open {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        max-height: 1000px;
+        max-width: 100%;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s, max-height 500ms;
+        margin-bottom: 16px;
+    }
+
+    .accordion__content.leaflet-container {
+        min-height: 0;
+    }
+
+    .leaflet-container {
+        min-height: 400px;
+        height: auto;
+        max-height: 1000px;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s, max-height 500ms;
+    }
+
 }
+
+
 
 /*
 @media (max-width: 576px){
@@ -180,7 +258,6 @@
 /* from this https://css-tricks.com/introduction-reduced-motion-media-query/ */
 @media screen and (prefers-reduced-motion: reduce) {
 
-    .accordion__item,
     .accordion__arrow {
         transition: none;
     }
