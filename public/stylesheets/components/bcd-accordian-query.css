@@ -102,6 +102,20 @@
 
 }
 
+
+
+/* required to stop events colliding on plotly layers even when hidden */
+#geodemos-chart>div.accordion__content>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
+    z-index: -1;
+    width: 0;
+}
+
+#geodemos-chart>div.accordion__content.open>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
+    z-index: -1;
+    width: 100%;
+}
+
+
 .accordion__content.leaflet-container {
     min-height: 0;
 }
@@ -188,10 +202,6 @@
 
     .accordion__content a {}
 
-    .accordion__content br {
-        display: none;
-    }
-
     .accordion__content.open {
         padding: 0;
         margin: 0;
@@ -248,7 +258,6 @@
 /* from this https://css-tricks.com/introduction-reduced-motion-media-query/ */
 @media screen and (prefers-reduced-motion: reduce) {
 
-    .accordion__item,
     .accordion__arrow {
         transition: none;
     }

@@ -193,13 +193,6 @@ body {
     text-transform: uppercase;
 }
 
-
-.query__list {
-    display: none;
-}
-
-.query__list-item {}
-
 .query__viz {
     background-color: transparent;
     grid-column: span 4;
@@ -211,14 +204,7 @@ body {
     align-items: center;
 }
 
-/* .main-svg {
-    width: 100%;
-} */
 
-.draglayer,
-.drag {
-    z-index: -1;
-}
 
 #geodemos-map,
 #geodemos-chart {
@@ -228,6 +214,11 @@ body {
 #geodemos-group-description {
     grid-column: 1 / 5;
     grid-row: 6 / 7;
+}
+
+#geodemos-heatmap {
+    grid-column: 1 / 5;
+    grid-row: 7 / 8;
 }
 
 #geodemos-heatmap__text {}
