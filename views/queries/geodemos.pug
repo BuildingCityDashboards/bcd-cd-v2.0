@@ -20,9 +20,6 @@ block navigation
 block content
     .query
         .query__grid
-            //- .query__tab-bar
-                .query__tab-button tab 1
-                .query__tab-button tab 2
             .query__source 
                 p Sources:
                     a(href="https://rpubs.com/burcinwalsh/620510" target="_blank")
@@ -93,14 +90,13 @@ block content
                 +accordion({
                     id: "accordion-group-description",
                     title: "<h2>Group Description<h2>",
-                    content: "", 
+                    content: "",
+                    classes: "open" 
                     })
                 .accordion__content.open 
-                    #geodemos-group-description__title
-                        h2 All Groups
                     #geodemos-group-description__content 
                         p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
-            #geodemos-heatmap
+            //- #geodemos-heatmap
                 +accordion({
                     id: "accordion-heatmap",
                     title:"<h2>Heatmap</h2>",
