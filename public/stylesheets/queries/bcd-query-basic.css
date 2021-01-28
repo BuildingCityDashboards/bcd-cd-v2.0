@@ -228,6 +228,12 @@ body {
     z-index: -1;
 }
 
+#geodemos-heatmap__text {}
+
+#geodemos-heatmap__text p {
+    margin-bottom: 32px;
+}
+
 
 
 /* landscape */
@@ -387,7 +393,43 @@ body {
         grid-column: 4 / 13;
         grid-row: 6 / 7;
         background-color: transparent;
+        padding: 0;
+    }
+
+
+    #geodemos-heatmap__content {
+        grid-column: 4 / 13;
+        grid-row: 6 / 7;
+        background-color: transparent;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-gap: 16px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #geodemos-heatmap__chart {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+
+    }
+
+    #geodemos-heatmap__text {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+        overflow-y: auto;
+        height: auto;
+        background-color: white;
         padding: 16px;
+    }
+
+    #geodemos-heatmap__text p {
+        margin: 0;
+        font-size: 14px;
     }
 
     #geodemos-group-description {
