@@ -5,7 +5,6 @@
     -moz-appearance: none;
     appearance: none;
     border: 0;
-    cursor: pointer;
     width: 100%;
     color: #e95d4f;
     display: inline-flex;
@@ -143,6 +142,7 @@
 @media screen and (min-device-width: 1280px) {
     .accordion {
         padding: 0 0 16px 0;
+        cursor: auto;
     }
 
     .accordion h1 {
@@ -152,8 +152,28 @@
         font-weight: 300;
     }
 
+    .accordion__arrow {
+        display: none;
+    }
+
+
+    .accordion.open .accordion__arrow {
+        display: none;
+    }
+
+
+    /* keep accordians open on desktop */
     .accordion__content {
+        padding: 0;
+        margin: 0;
+        height: auto;
+        max-height: 1000px;
         width: 100%;
+        max-width: 100%;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 1s, max-height 500ms;
+        margin-bottom: 16px;
     }
 
     .accordion__content p {

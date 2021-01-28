@@ -32,7 +32,7 @@ block content
             .query__header
                 +accordion({
                     id:"geodemos-header",
-                    title: "Geodemographics", 
+                    title: "<h1>Geodemographics</h1>", 
                     content: "<p> Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Geographical Small Areas (SAs) are selected as spatial units, and variables are taken from the <a href=\"https://data.cso.ie/product/c2016sr1\" target=\"_blank\"> 2016 Census of Population results</a>. This analysis was carried out by Burcin Yazgi Walsh and is available <a href=\"https://rpubs.com/burcinwalsh/620510\" target=\"_blank\">here</a>.</p>",
                     classes: "open"
                     })
@@ -74,7 +74,7 @@ block content
                 #geodemos-map
                     +accordion({
                         id: "accordion-map",
-                        title: "Groups Map",
+                        title: "<h2>Groups Map<h2>",
                         content: "", 
                         classes: "open"
                         })
@@ -83,7 +83,7 @@ block content
                 #geodemos-chart
                     +accordion({
                         id: "accordion-chart",
-                        title: "Values Chart",
+                        title: "<h2>Values Chart</h2>",
                         content: "", 
                         classes: "open"
                         })
@@ -92,7 +92,7 @@ block content
             #geodemos-group-description
                 +accordion({
                     id: "accordion-group-description",
-                    title: "Group Description",
+                    title: "<h2>Group Description<h2>",
                     content: "", 
                     })
                 .accordion__content.open 
@@ -103,7 +103,7 @@ block content
             #geodemos-heatmap
                 +accordion({
                     id: "accordion-heatmap",
-                    title:"Heatmap",
+                    title:"<h2>Heatmap</h2>",
                     content: "", 
                     classes: "open"
                     })

@@ -22,6 +22,12 @@ body {
     font-size: 20px;
 }
 
+.query h2 {
+    letter-spacing: 0.1rem;
+    color: #e95d4f;
+    font-size: 18px;
+}
+
 .query__grid {
     display: grid;
     width: 100%;
