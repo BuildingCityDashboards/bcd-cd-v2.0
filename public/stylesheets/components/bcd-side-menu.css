@@ -208,8 +208,6 @@ a.side-menu__nav-link {
   grid-area: link;
 }
 
-
-
 .dropdown-item:focus,
 .dropdown-item:hover,
 .dropdown-item:visited {

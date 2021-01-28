@@ -40,10 +40,10 @@ export { getTrafficQueryForDate }
 const groupByNumber = (readings, key, object = {}) => {
   try {
     const grouped = readings.reduce((obj, d) => {
-    // create the key if it doesn't exist
+      // create the key if it doesn't exist
       // console.log(obj)
       if (!obj.hasOwnProperty(`${+d[key]}`)) {
-		    obj[`${+d[key]}`] = {
+        obj[`${+d[key]}`] = {
           dates: {}
         }
       }
