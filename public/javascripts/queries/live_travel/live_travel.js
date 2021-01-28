@@ -50,32 +50,32 @@ API activity checks that the buttons are not disabled
 import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
-(async function main (options) {
+(async function main(options) {
   console.log('load live travel map')
   options =
-    {
-      title: 'Car parks - city',
-      subtitle: 'Fetching data...',
-      id: 'car-parks-card',
-      icon: '/images/icons/home/icons-48px/Car_Icon_48px.svg#Layer_1',
-      info: '',
-      buttons: [
-        {
-          href: 'https://data.corkcity.ie/dataset/parking/resource/6cc1028e-7388-4bc5-95b7-667a59aa76dc',
-          name: 'Cork Smart Gateway',
-          target: '_blank'
-        }],
-      displayoptions: {
-        displayid: 'car-parks-card__display',
-        data: {
-          href: '/api/car-parks/latest'
-        },
-        src: '/javascripts/home/card_car_parks.js',
-        format: ''
-      }
+  {
+    title: 'Car parks - city',
+    subtitle: 'Fetching data...',
+    id: 'car-parks-card',
+    icon: '/images/icons/home/icons-48px/Car_Icon_48px.svg#Layer_1',
+    info: '',
+    buttons: [
+      {
+        href: 'https://data.corkcity.ie/dataset/parking/resource/6cc1028e-7388-4bc5-95b7-667a59aa76dc',
+        name: 'Cork Smart Gateway',
+        target: '_blank'
+      }],
+    displayoptions: {
+      displayid: 'car-parks-card__display',
+      data: {
+        href: '/api/car-parks/latest'
+      },
+      src: '/javascripts/home/card_car_parks.js',
+      format: ''
     }
+  }
 
-  console.log(options)
+  // console.log(options)
 
   const STAMEN_TONER_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
   const STAMEN_TONER_LITE_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
@@ -140,7 +140,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   // let prevBikesTrendString = ''// '(no change)'
   // let prevStandsTrendString = '' // '(no change)'
 
-  async function fetchData () {
+  async function fetchData() {
     //   These locations incorrectly report time (IST indicated but GMT provided)
     const OFFSET_BY_HOUR = ['City Hall - Eglington Street', 'Carrolls Quay', 'Grand Parade', "Saint Finbarr's"]
     console.log('fetch data')
@@ -247,7 +247,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
 })()
 
 /* can return a generic layer with static data when request for data has faile */
-function getMapLayerStatic (json, iconUrl = '') {
+function getMapLayerStatic(json, iconUrl = '') {
   // add a marker to the map
   const CustomMapMarker = getCustomMapMarker()
   const CustomMapIcon = getCustomMapIcon()
@@ -267,14 +267,14 @@ function getMapLayerStatic (json, iconUrl = '') {
   return layerGroup
 }
 
-function carParkPopupInit (d_) {
+function carParkPopupInit(d_) {
   // if no station id none of the mappings will work so escape
   if (!d_.name || !d_.valid) {
     const str = '<div class="popup-error">' +
-            '<div class="row ">' +
-            "We can't get the live Car Park data right now, please try again later" +
-            '</div>' +
-            '</div>'
+      '<div class="row ">' +
+      "We can't get the live Car Park data right now, please try again later" +
+      '</div>' +
+      '</div>'
     return str
   }
 
@@ -288,8 +288,8 @@ function carParkPopupInit (d_) {
   }
   str += '<div class="row ">'
   str += '<span id="carPark-spacescount-' + d_.id + '" class="col-9" >' +
-        d_.free_spaces +
-        ' free spaces</span>'
+    d_.free_spaces +
+    ' free spaces</span>'
   str += '</div>' // close row
 
   // set up a div to display availability
