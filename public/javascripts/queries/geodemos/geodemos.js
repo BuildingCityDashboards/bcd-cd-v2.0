@@ -3,7 +3,7 @@
 **/
 
 import { getCityLatLng } from '../../modules/bcd-maps.js'
-import { getTraceDefaults, getBasicLayout } from '../../modules/bcd-plotly-utils.js'
+import { getBasicLayout } from '../../modules/bcd-plotly-utils.js'
 
 const GEODEMOS_COLORWAY_CATEGORICAL = ['#7fc97f',
   '#beaed4',
@@ -22,9 +22,9 @@ const GEODEMOS_COLORWAY_CBSAFE = ['#d73027',
 
 const BASIC_LAYOUT = Object.assign({}, getBasicLayout())
 
-const CHART_HEIGHT = 400
+// const CHART_HEIGHT = 400
 
-async function main() {
+async function main () {
   try {
     // Add map
     const minZoom = 8
@@ -112,7 +112,7 @@ async function main() {
         Plotly.react('chart-geodemos', chartTraces, chartLayout)
         // 'all' && cb.attr("src") == '/images/icons/ui/Icon_eye_selected.svg')
       }
-      updateGroupDescription(groupNo, descriptions[groupNo])
+      updateGroupDescription(descriptions[groupNo])
     })
     // Heatmap
 
@@ -138,13 +138,13 @@ async function main() {
 
 main()
 
-function toggleDropdownOpen(e) {
+function toggleDropdownOpen (e) {
   this.classList.toggle('show')
 }
 
 /* Map functions */
 
-async function loadSmallAreas(layers) {
+async function loadSmallAreas (layers) {
   const staticURI = '/data/geodemos/cork-geodemos-clusters.geojson'
 
   const corkSAs = await d3.json(staticURI)
@@ -162,7 +162,7 @@ async function loadSmallAreas(layers) {
   return layers
 }
 
-async function getEmptyLayersArray(total) {
+async function getEmptyLayersArray (total) {
   const layersArr = []
   for (let i = 0; i < total; i += 1) {
     layersArr.push(L.geoJSON(null, {
@@ -174,7 +174,7 @@ async function getEmptyLayersArray(total) {
   return layersArr
 }
 
-function getLayerStyle(index) {
+function getLayerStyle (index) {
   return {
     fillColor: getLayerColor(index),
     weight: 0.3,
@@ -185,11 +185,11 @@ function getLayerStyle(index) {
   }
 }
 
-function getLayerColor(index) {
+function getLayerColor (index) {
   return GEODEMOS_COLORWAY_CBSAFE[index]
 }
 
-function onEachFeature(feature, layer) {
+function onEachFeature (feature, layer) {
   const customOptions =
   {
     maxWidth: '400',
@@ -211,7 +211,7 @@ function onEachFeature(feature, layer) {
   })
 }
 
-function addLayersToMap(layers, map) {
+function addLayersToMap (layers, map) {
   layers.forEach((l, i) => {
     if (!map.hasLayer(l)) {
       map.addLayer(l)
@@ -222,44 +222,8 @@ function addLayersToMap(layers, map) {
   })
 }
 
-function ResetImages(imgid) {
-  const imgsrcarr = ['/images/icons/ui/Icon_eye_selected-all.svg',
-    '/images/icons/ui/Icon_eye_selected-1.svg',
-    '/images/icons/ui/Icon_eye_selected-2.svg',
-    '/images/icons/ui/Icon_eye_selected-3.svg',
-    '/images/icons/ui/Icon_eye_selected-4.svg',
-    '/images/icons/ui/Icon_eye_selected-5.svg',
-    '/images/icons/ui/Icon_eye_selected-6.svg',
-    '/images/icons/ui/Icon_eye_selected-7.svg']
-
-  const Oimgsrcarr = ['/images/icons/sdAg.svg',
-    '/images/icons/sd10.svg',
-    '/images/icons/sd2.svg',
-    '/images/icons/sd3.svg',
-    '/images/icons/sd4.svg',
-    '/images/icons/sd5.svg',
-    '/images/icons/sd6.svg',
-    '/images/icons/sd7.svg']
-
-  const myimg3 = document.getElementById('all')
-  myimg3.src = '/images/icons/sdAg.svg'
-
-  for (let i = 1; i < 8; i++) {
-    const myimg2 = document.getElementById(i)
-
-    myimg2.src = Oimgsrcarr[i]// "/images/icons/sd.svg"
-  }
-
-  // if (imgid ==='all')
-  // alert('----'+imgid)
-  const selectedImg = document.getElementById(imgid)
-  if (imgid === 'all') { imgid = 0 }
-  selectedImg.src = imgsrcarr[imgid]
-}
-
 /* Value chart functions */
-
-async function getChartTraces(zScores) {
+async function getChartTraces (zScores) {
   const traces = []
   let columnNames = {}
   columnNames = Object.keys(zScores[0])
@@ -315,7 +279,7 @@ async function getChartTraces(zScores) {
   return traces
 }
 
-async function getChartLayout() {
+async function getChartLayout () {
   const chartLayout = JSON.parse(JSON.stringify(BASIC_LAYOUT))
   chartLayout.mode = 'scatter'
   chartLayout.title.text = 'Variables Value Distribution (z-scores)'
@@ -325,18 +289,14 @@ async function getChartLayout() {
 
 /* Description functions */
 
-function updateGroupDescription(groupNo, contentText) {
-  const title = document.getElementById('geodemos-group-description__title')
-  const titleText = groupNo === 'all' ? 'All Groups' : `Group ${groupNo}`
-  title.innerText = titleText
-
+function updateGroupDescription (contentText) {
   const content = document.getElementById('geodemos-group-description__content')
   content.innerHTML = contentText
 }
 
 /* Heatmap functions */
 
-function getHeatmapLayout() {
+function getHeatmapLayout () {
   const heatmapLayout = JSON.parse(JSON.stringify(BASIC_LAYOUT))
   heatmapLayout.colorway = GEODEMOS_COLORWAY_CBSAFE
   heatmapLayout.xaxis.nticks = 8
@@ -350,7 +310,7 @@ function getHeatmapLayout() {
   return heatmapLayout
 }
 
-function getHeatmapTraces(zScores) {
+function getHeatmapTraces (zScores) {
   const GroupsArray = ['1', '2', '3', '4', '5', '6', '7']
 
   const newCsv = zScores.split('\n').map(function (line) {
