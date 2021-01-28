@@ -86,8 +86,10 @@ async function main () {
     const descriptions = await d3.json('/data/geodemos/geodemos-group-descriptions.json')
 
     // add event listeners
-    const dd = document.getElementById('groups-dropdown')
-    dd.addEventListener('click', toggleDropdownOpen)
+    const dd = document.getElementById('query-dropdown')
+    if (dd) {
+      dd.addEventListener('click', toggleDropdownOpen)
+    }
     // dd.addEventListener('touchstart', handleClick)
 
     d3.select('#query-dropdown__content').selectAll('button').on('click', function () {
@@ -121,7 +123,7 @@ async function main () {
     const heatmapLayout = await getHeatmapLayout()
     // console.log(heatmapTraces)
 
-    Plotly.newPlot('geodemos-heatmap__chart', heatmapTraces, heatmapLayout, {
+    Plotly.newPlot('query-heatmap__chart', heatmapTraces, heatmapLayout, {
       modeBar: {
         orientation: 'v',
         bgcolor: 'black',
@@ -290,7 +292,7 @@ async function getChartLayout () {
 /* Description functions */
 
 function updateGroupDescription (contentText) {
-  const content = document.getElementById('geodemos-group-description__content')
+  const content = document.getElementById('query-group-description__content')
   content.innerHTML = contentText
 }
 
