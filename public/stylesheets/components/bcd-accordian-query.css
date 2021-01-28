@@ -103,12 +103,12 @@
 }
 
 /* required to stop events colliding on plotly layers even when hidden */
-#geodemos-chart>div.accordion__content>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
+#query-chart>div.accordion__content>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
     z-index: -1;
     width: 0;
 }
 
-#geodemos-chart>div.accordion__content.open>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
+#query-chart>div.accordion__content.open>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
     z-index: -1;
     width: 100%;
 }

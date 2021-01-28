@@ -33,7 +33,7 @@ block content
                     classes: "open"
                     })
                         
-            #groups-dropdown.query__dropdown-bar.dropdown 
+            #query-dropdown.query__dropdown-bar.dropdown 
                     .query__drop-btn.dropbtn
                         p Select a group:
                         #current-group
@@ -67,7 +67,7 @@ block content
                 .query__list-item item 2
                 .query__list-item item 3
             .query__viz
-                #geodemos-map
+                #query-map
                     +accordion({
                         id: "accordion-map",
                         title: "<h2>Groups Map<h2>",
@@ -76,7 +76,7 @@ block content
                         })
                     .accordion__content.open
                             #map-geodemos
-                #geodemos-chart
+                #query-chart
                     +accordion({
                         id: "accordion-chart",
                         title: "<h2>Values Chart</h2>",
@@ -85,7 +85,7 @@ block content
                         })
                         .accordion__content.open
                             #chart-geodemos
-            #geodemos-group-description
+            #query-group-description
                 +accordion({
                     id: "accordion-group-description",
                     title: "<h2>Group Description<h2>",
@@ -93,9 +93,9 @@ block content
                     classes: "open" 
                     })
                 .accordion__content.open 
-                    #geodemos-group-description__content 
+                    #query-group-description__content 
                         p The group classifications shown on the map are the result of similarities found in data through the analysis of 35 variables from the census results. The associated values displayed in the chart are considered under the themes of (i) age and marital status; (ii) ethnicity; (iii) housing; (iv) socio-economic group; (iv) education; (v) commuting; (vi) occupation type; (vii) motor car availability and (viii) internet access. 
-            #geodemos-heatmap
+            #query-heatmap
                 +accordion({
                     id: "accordion-heatmap",
                     title:"<h2>Heatmap</h2>",
@@ -103,10 +103,10 @@ block content
                     classes: "open"
                     })
                     .accordion__content.open
-                        #geodemos-heatmap__content
-                            #geodemos-heatmap__text
+                        #query-heatmap__content
+                            #query-heatmap__text
                                 p The cluster mean for each variable was calculated and plotted on the heatmap to help to identify the characteristics of each 7 groups. The 33 variables are presented in the rows and clusters in the columns. Higher values of a variable can be identified by darker shade of blues and low values by red within each cluster.
-                            #geodemos-heatmap__chart
+                            #query-heatmap__chart
 
 block append scripts
     script(type='text/javascript', src='/lib/d3v5/d3.min.js' )
