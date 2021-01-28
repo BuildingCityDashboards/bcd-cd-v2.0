@@ -102,8 +102,6 @@
 
 }
 
-
-
 /* required to stop events colliding on plotly layers even when hidden */
 #geodemos-chart>div.accordion__content>#chart-geodemos>div>div>svg:nth-child(1)>g.draglayer.cursor-crosshair>g>rect.nsewdrag.drag.cursor-pointer {
     z-index: -1;

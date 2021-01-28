@@ -116,9 +116,13 @@
 .side-menu__nav-link {
   display: flex;
   padding: .5rem 1rem;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+a.side-menu__nav-link {
   color: rgba(255, 255, 255, 0.95);
   text-transform: capitalize;
-  align-items: center;
   font-size: .875rem;
   font-weight: 500;
 }
@@ -211,6 +215,10 @@
   background-color: rgba(255, 255, 255, 0.12);
   border-left: 5px solid white;
   text-decoration: none;
+}
+
+a.dropdown-item {
+  color: #ffffff;
 }
 
 .dropdown__toggle {
