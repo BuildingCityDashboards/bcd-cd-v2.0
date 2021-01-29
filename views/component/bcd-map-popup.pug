@@ -1,0 +1,26 @@
+mixin bcd-map-popup({id='', title='title', subtitle='',icon='', info='Information will appear here when available',links=[], data={}, plotoptions={}})
+    div(id=id class='map-popup')
+        .card
+            .card__header
+                h1.card__title=title
+                h2.card__sub-title=subtitle
+            .card__body
+                div(id=plotoptions.chartid class="card__line-chart")
+                  #card-left.card__left
+                  #card-center.card__center
+                  #card-right.card__right
+            .card__info
+                .card__info-border 
+                p.card__info-text=info
+                .card__info__buttons
+                    each l in links
+                        a(href=l.href class="card__link").button #{l.name}
+    script(type="module").
+        import { main } from !{JSON.stringify(plotoptions.src)}
+        (async function(o){
+           main(o);
+         })(!{JSON.stringify(plotoptions)})    
+
+        
+                        
+                    

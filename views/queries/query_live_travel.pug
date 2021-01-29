@@ -6,7 +6,6 @@ block append head
     link(rel='stylesheet', href='https://unpkg.com/leaflet@1.3.1/dist/leaflet.css')
     //- link(rel='stylesheet', href='https://rawgit.com/k4r573n/leaflet-control-osm-geocoder/master/Control.OSMGeocoder.css')
     //- link(rel='stylesheet', href='/stylesheets/lib/Control.OSMGeocoder.modified.css')
-    link(rel='stylesheet', href='/stylesheets/components/bcd-map.css')
     link(rel='stylesheet', href='/stylesheets/components/bcd-subnav.css')
     link(rel='stylesheet', href='/stylesheets/queries/bcd-query-basic.css')
     link(rel='stylesheet', href='/stylesheets/components/bcd-accordian-query.css')
@@ -23,8 +22,8 @@ block content
         .query__grid
             .query__source 
                 p Sources:
-                    a(href="/" target="_blank")
-                       | source
+                    a(href="https://data.corkcity.ie/dataset/parking/resource/6cc1028e-7388-4bc5-95b7-667a59aa76dc" target="_blank")
+                       | Cork Smart Gateway
             .query__header
                 +accordion({
                     id:"live-travel__header",
@@ -37,7 +36,7 @@ block content
                     .query__drop-btn.dropbtn
                         p Select a transport type:
                         #current-group
-                            p All
+                            p Car Parks
                         svg(class="dropdown__arrow" width="7" height="12" viewBox="0 0 7 12")
                             path(fill-rule="nonzero" d="M5.569 5.994L0 .726.687 0l6.336 5.994-6.335 6.002L0 11.27z")
                     .query-dropdown__content.dropdown-content

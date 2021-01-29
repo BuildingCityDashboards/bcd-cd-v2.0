@@ -50,260 +50,261 @@ API activity checks that the buttons are not disabled
 import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
-(async function main(carparkOptions) {
-  console.log('load live travel map')
-  carparkOptions =
-  {
-    title: 'Car parks - city',
-    subtitle: '',
-    id: 'car-parks-card',
-    icon: '/images/icons/home/icons-24px/Car_Icon_48px.svg#Layer_1',
-    info: '',
-    source: [
-      {
-        href: 'https://data.corkcity.ie/dataset/parking/resource/6cc1028e-7388-4bc5-95b7-667a59aa76dc',
-        name: 'Cork Smart Gateway',
-        target: '_blank'
-      }],
-    displayOptions: {
-      displayid: 'car-parks-card__display',
-      data: {
-        href: '/api/car-parks/latest'
-      },
-      src: '',
-      format: ''
+(async function main(options) {
+    console.log('load live travel map')
+    options =
+    {
+        title: 'Car parks - city',
+        subtitle: 'Fetching data...',
+        id: 'car-parks-card',
+        icon: '/images/icons/home/icons-48px/Car_Icon_48px.svg#Layer_1',
+        info: '',
+        buttons: [
+            {
+                href: 'https://data.corkcity.ie/dataset/parking/resource/6cc1028e-7388-4bc5-95b7-667a59aa76dc',
+                name: 'Cork Smart Gateway',
+                target: '_blank'
+            }],
+        displayoptions: {
+            displayid: 'car-parks-card__display',
+            data: {
+                href: '/api/car-parks/latest'
+            },
+            src: '/javascripts/home/card_car_parks.js',
+            format: ''
+        }
     }
-  }
 
-  // console.log(carparkOptions)
+    // console.log(options)
 
-  const STAMEN_TONER_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
-  const STAMEN_TONER_LITE_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
-  const OSM_ATTRIBUTION = 'Map data © <a href="http://openstreetprivateMap.org">OpenStreetMap</a> contributors'
+    const STAMEN_TONER_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
+    const STAMEN_TONER_LITE_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
+    const OSM_ATTRIBUTION = 'Map data © <a href="http://openstreetprivateMap.org">OpenStreetMap</a> contributors'
 
-  const liveTravelOSM = new L.TileLayer(STAMEN_TONER_LITE_URL, {
-    minZoom: 2,
-    maxZoom: 14, // 11 seems to fix 503 tileserver errors
-    attribution: OSM_ATTRIBUTION
-  })
+    const liveTravelOSM = new L.TileLayer(STAMEN_TONER_LITE_URL, {
+        minZoom: 2,
+        maxZoom: 14, // 11 seems to fix 503 tileserver errors
+        attribution: OSM_ATTRIBUTION
+    })
 
-  const liveTravelMap = new L.Map('live-travel-map')
-  liveTravelMap.setView(getCityLatLng(), 12)
-  liveTravelMap.addLayer(liveTravelOSM)
+    const liveTravelMap = new L.Map('live-travel-map')
+    liveTravelMap.setView(getCityLatLng(), 12)
+    liveTravelMap.addLayer(liveTravelOSM)
 
-  liveTravelMap.on('popupopen', function (e) {
-    // markerRefPublic = e.popup._source
-    // console.log("ref: "+JSON.stringify(e))
-  })
+    liveTravelMap.on('popupopen', function (e) {
+        // markerRefPublic = e.popup._source
+        // console.log("ref: "+JSON.stringify(e))
+    })
 
-  const carparkIconUrl = '../images/icons/icons-24px/Car_Icon_24px.svg'
-  const CustomMapIcon = getCustomMapIcon()
+    const carParkIconUrl = '../images/icons/icons-24px/Car_Icon_24px.svg'
+    const CustomMapIcon = getCustomMapIcon()
 
-  // Adds an id field to the markers
-  const CustomMapMarker = getCustomMapMarker()
+    // Adds an id field to the markers
+    const CustomMapMarker = getCustomMapMarker()
 
-  const customCarparkLayer = L.Layer.extend({
+    const customCarparkLayer = L.Layer.extend({
 
-  })
+    })
 
-  let carparkLayerGroup = L.layerGroup()
+    let carParkLayerGroup = L.layerGroup()
 
-  const carparkPopupcarparkOptions = {
-    // 'maxWidth': '500',
-    className: 'carparkPopup'
-  }
+    const carParkPopupOptions = {
+        // 'maxWidth': '500',
+        className: 'carParkPopup'
+    }
 
-  // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
+    // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
 
-  //   const refreshInterval = 100
-  //   let refreshCountdown = refreshInterval
+    //   const refreshInterval = 100
+    //   let refreshCountdown = refreshInterval
 
-  const updateCountdown = function () {
-    // const cd = refreshCountdown / 1000
-    // d3.select('#bikes-bikesCountdown').text('Update in ' + cd)
-    // console.log('Countdown: ' + cd)
-    // if (refreshCountdown > 0) refreshCountdown -= refreshInterval / 2
-  }
+    const updateCountdown = function () {
+        // const cd = refreshCountdown / 1000
+        // d3.select('#bikes-bikesCountdown').text('Update in ' + cd)
+        // console.log('Countdown: ' + cd)
+        // if (refreshCountdown > 0) refreshCountdown -= refreshInterval / 2
+    }
 
-  const RETRY_INTERVAL = 20000
-  const REFRESH_INTERVAL = 30000 * 1
-  let refreshTimeout
-  let lastReadTime
-  const dataAge = 0
+    const RETRY_INTERVAL = 20000
+    const REFRESH_INTERVAL = 30000 * 1
+    let refreshTimeout
+    let lastReadTime
+    const dataAge = 0
 
-  let prevSpacesTotalFree
-  // const indicatorUpSymbol = "<span class='up-arrow'>&#x25B2;</span>"
-  // const indicatorDownSymbol = "<span class='down-arrow'>&#x25BC;</span>"
-  // const indicatorRightSymbol = "<span class='right-arrow'>&#x25BA;</span>"
-  // let prevBikesAvailableDirection = indicatorRightSymbol // '▶'
-  // let prevStandsAvailableDirection = indicatorRightSymbol // '▶'
-  // let prevBikesTrendString = ''// '(no change)'
-  // let prevStandsTrendString = '' // '(no change)'
+    let prevSpacesTotalFree
+    // const indicatorUpSymbol = "<span class='up-arrow'>&#x25B2;</span>"
+    // const indicatorDownSymbol = "<span class='down-arrow'>&#x25BC;</span>"
+    // const indicatorRightSymbol = "<span class='right-arrow'>&#x25BA;</span>"
+    // let prevBikesAvailableDirection = indicatorRightSymbol // '▶'
+    // let prevStandsAvailableDirection = indicatorRightSymbol // '▶'
+    // let prevBikesTrendString = ''// '(no change)'
+    // let prevStandsTrendString = '' // '(no change)'
 
-  async function fetchData() {
-    //   These locations incorrectly report time (IST indicated but GMT provided)
-    const OFFSET_BY_HOUR = [] // ['City Hall - Eglington Street', 'Carrolls Quay', 'Grand Parade', "Saint Finbarr's"]
-    // console.log('fetch data')
-    let csv
-    clearTimeout(refreshTimeout)
-    try {
-      // console.log('fetching data')
-      csv = await fetchCsvFromUrlAsyncTimeout(carparkOptions.displayOptions.data.href, 500)
-      const json = d3.csvParse(csv)
-      console.log()
-      if (json) {
-        liveTravelMap.removeLayer(carparkLayerGroup)
-        carparkLayerGroup.clearLayers()
-        console.log('data updated')
-        console.log('json')
-        console.log(json)
-
-        const date = new Date(json[0].date)
-        lastReadTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0')
-        // .getHour() + ':' + json[0].date.getHours() + getMinutes()
-        // console.log(lastReadTime)
-
-        let spacesTotalFree = 0
-        let latestDate
-        let latestDateMillis = 0
-        const AGE_THRESHOLD_MILLIS = 1000 * 60 * 30 // invalidate data older than n mins
-        console.log('age limit ' + AGE_THRESHOLD_MILLIS)
-
-        /* process data, adding necessary fields and create markers for map */
-        json.forEach((d) => {
-          d.type = 'Car Park'
-          let readingTimeMillis = new Date(d.date).getTime()
-          if (OFFSET_BY_HOUR.includes(d.name)) readingTimeMillis += 1000 * 60 * 60
-          const nowMillis = new Date().getTime()
-
-          // add fields to indicate validity of data based on time
-          const dataAgeMillis = nowMillis - readingTimeMillis
-          d.agemillis = dataAgeMillis
-          d.ageminutes = dataAgeMillis / (1000 * 60)
-          // check reading isn't from the future (!) and is does not exceed age threshold
-          if (!(readingTimeMillis > (nowMillis - 100)) && (dataAgeMillis < AGE_THRESHOLD_MILLIS)) {
-            d.valid = true
-          } else {
-            d.valid = false
-          }
-          /// find the max/latest
-          if (readingTimeMillis > latestDateMillis) {
-            latestDateMillis = readingTimeMillis
-            latestDate = date
-          }
-          spacesTotalFree += +d.free_spaces
-          console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
-
-          // add a marker to the map
-          const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
-            icon: new CustomMapIcon({
-              iconUrl: carparkIconUrl,
-              className: d.valid ? 'online' : 'offline'
-            }),
-            title: d.type + ': ' + d.name,
-            alt: d.type + ' icon'
-          })
-
-          carparkLayerGroup.addLayer(m)
-          m.bindPopup(carparkPopupInit(d), carparkPopupcarparkOptions)
-        })
-
-        // update the map
-        liveTravelMap.addLayer(carparkLayerGroup)
-
-        console.log('latest date')
-        console.log(latestDate)
-
-        console.log(json)
-
-        const nowMillis = new Date().getTime()
-        const dataAgeMinutes = (nowMillis - latestDateMillis) / 1000
-        console.log(nowMillis)
-        console.log(latestDateMillis)
-        console.log(dataAgeMinutes)
+    async function fetchData() {
+        //   These locations incorrectly report time (IST indicated but GMT provided)
+        const OFFSET_BY_HOUR = ['City Hall - Eglington Street', 'Carrolls Quay', 'Grand Parade', "Saint Finbarr's"]
+        console.log('fetch data')
+        let csv
         clearTimeout(refreshTimeout)
-        refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
-      } else {
-        csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
-        const jsonStatic = d3.csvParse(csv)
-        liveTravelMap.removeLayer(carparkLayerGroup)
-        carparkLayerGroup.clearLayers()
-        carparkLayerGroup = getMapLayerStatic(jsonStatic, carparkIconUrl)
-        liveTravelMap.addLayer(carparkLayerGroup)
-        csv = null // for GC
-      }
-    } catch (e) {
-      csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
-      const jsonStatic = d3.csvParse(csv)
-      liveTravelMap.removeLayer(carparkLayerGroup)
-      carparkLayerGroup.clearLayers()
-      carparkLayerGroup = getMapLayerStatic(jsonStatic, carparkIconUrl)
-      liveTravelMap.addLayer(carparkLayerGroup)
-      console.log('data fetch error' + e)
-      refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
+        try {
+            // console.log('fetching data')
+            csv = await fetchCsvFromUrlAsyncTimeout(options.displayoptions.data.href, 500)
+            const json = d3.csvParse(csv)
+            console.log()
+            if (json) {
+                liveTravelMap.removeLayer(carParkLayerGroup)
+                carParkLayerGroup.clearLayers()
+                console.log('data updated')
+                console.log('json')
+                console.log(json)
+
+                const date = new Date(json[0].date)
+                lastReadTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0')
+                // .getHour() + ':' + json[0].date.getHours() + getMinutes()
+                // console.log(lastReadTime)
+
+                let spacesTotalFree = 0
+                let latestDate
+                let latestDateMillis = 0
+                const AGE_THRESHOLD_MILLIS = 1000 * 60 * 30 // invalidate data older than n mins
+                console.log('age limit ' + AGE_THRESHOLD_MILLIS)
+
+                /* process data, adding necessary fields and create markers for map */
+                json.forEach((d) => {
+                    d.type = 'Car Park'
+                    let readingTimeMillis = new Date(d.date).getTime()
+                    if (OFFSET_BY_HOUR.includes(d.name)) readingTimeMillis += 1000 * 60 * 60
+                    const nowMillis = new Date().getTime()
+
+                    // add fields to indicate validity of data based on time
+                    const dataAgeMillis = nowMillis - readingTimeMillis
+                    d.agemillis = dataAgeMillis
+                    d.ageminutes = dataAgeMillis / (1000 * 60)
+                    // check reading isn't from the future (!) and is does not exceed age threshold
+                    if (!(readingTimeMillis > (nowMillis - 100)) && (dataAgeMillis < AGE_THRESHOLD_MILLIS)) {
+                        d.valid = true
+                    } else {
+                        d.valid = false
+                    }
+                    /// find the max/latest
+                    if (readingTimeMillis > latestDateMillis) {
+                        latestDateMillis = readingTimeMillis
+                        latestDate = date
+                    }
+                    spacesTotalFree += +d.free_spaces
+                    console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
+
+                    // add a marker to the map
+                    const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
+                        icon: new CustomMapIcon({
+                            iconUrl: carParkIconUrl,
+                            className: d.valid ? 'online' : 'offline'
+                        }),
+                        title: d.type + ': ' + d.name,
+                        alt: d.type + ' icon'
+                    })
+
+                    carParkLayerGroup.addLayer(m)
+                    m.bindPopup(carParkPopupInit(d), carParkPopupOptions)
+                })
+
+                // update the map
+                liveTravelMap.addLayer(carParkLayerGroup)
+
+                console.log('latest date')
+                console.log(latestDate)
+
+                console.log(json)
+
+                const nowMillis = new Date().getTime()
+                const dataAgeMinutes = (nowMillis - latestDateMillis) / 1000
+                console.log(nowMillis)
+                console.log(latestDateMillis)
+                console.log(dataAgeMinutes)
+                clearTimeout(refreshTimeout)
+                refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
+            } else {
+                csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
+                const jsonStatic = d3.csvParse(csv)
+                liveTravelMap.removeLayer(carParkLayerGroup)
+                carParkLayerGroup.clearLayers()
+                carParkLayerGroup = getMapLayerStatic(jsonStatic, carParkIconUrl)
+                liveTravelMap.addLayer(carParkLayerGroup)
+                csv = null // for GC
+            }
+        } catch (e) {
+            csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
+            const jsonStatic = d3.csvParse(csv)
+            liveTravelMap.removeLayer(carParkLayerGroup)
+            carParkLayerGroup.clearLayers()
+            carParkLayerGroup = getMapLayerStatic(jsonStatic, carParkIconUrl)
+            liveTravelMap.addLayer(carParkLayerGroup)
+            console.log('data fetch error' + e)
+            refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
+        }
     }
-  }
-  fetchData()
+    fetchData()
 })()
 
 /* can return a generic layer with static data when request for data has faile */
 function getMapLayerStatic(json, iconUrl = '') {
-  // add a marker to the map
-  const CustomMapMarker = getCustomMapMarker()
-  const CustomMapIcon = getCustomMapIcon()
-  const layerGroup = new L.LayerGroup()
-  json.forEach((d) => {
-    const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
-      icon: new CustomMapIcon({
-        iconUrl: iconUrl,
-        className: 'offline'
-      }),
-      title: d.type + ': ' + d.name,
-      alt: d.type + ' icon'
+    // add a marker to the map
+    const CustomMapMarker = getCustomMapMarker()
+    const CustomMapIcon = getCustomMapIcon()
+    const layerGroup = new L.LayerGroup()
+    json.forEach((d) => {
+        const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
+            icon: new CustomMapIcon({
+                iconUrl: iconUrl,
+                className: 'offline'
+            }),
+            title: d.type + ': ' + d.name,
+            alt: d.type + ' icon'
+        })
+        layerGroup.addLayer(m)
+        // m.bindPopup(carParkPopupInit(d), carParkPopupOptions)
     })
-    layerGroup.addLayer(m)
-    // m.bindPopup(carparkPopupInit(d), carparkPopupcarparkOptions)
-  })
-  return layerGroup
+    return layerGroup
 }
 
-function carparkPopupInit(d_) {
-  console.log(d_)
-  const d = new Date(d_.date)
-  const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
+function carParkPopupInit(d_) {
+    // if no station id none of the mappings will work so escape
+    if (!d_.name || !d_.valid) {
+        const str = '<div class="popup-error">' +
+            '<div class="row ">' +
+            "We can't get the live Car Park data right now, please try again later" +
+            '</div>' +
+            '</div>'
+        return str
+    }
 
-  // if no station id none of the mappings will work so escape
-  if (!d_.name || !d_.valid) {
-    const str = '<div class="map-popup-error">' +
-      '<div class="row ">' +
-      "We can't get the live Car Park data right now, please try again later" +
-      '</div>' +
-      '</div>'
+    let str = '<div class="map-popup-container">'
+    if (d_.name) {
+        str += '<div class="row ">'
+        str += '<span id="carPark-name-' + d_.id + '" class="col-12">' // id for name div
+        str += '<strong>' + d_.name + '</strong>'
+        str += '</span>' // close bike name div
+        str += '</div>' // close row
+    }
+    str += '<div class="row ">'
+    str += '<span id="carPark-spacescount-' + d_.id + '" class="col-9" >' +
+        d_.free_spaces +
+        ' free spaces</span>'
+    str += '</div>' // close row
+
+    // set up a div to display availability
+    str += '<div class="row ">'
+    str += '<span id="carPark-available-' + d_.id + '" class="col-9" ></span>'
+    str += '</div>' // close row
+
+    // initialise div to hold chart with id linked to station id
+    if (d_.id) {
+        str += '<div class=\"row \">'
+        str += '<span id="carPark-spark-' + d_.id + '"></span>'
+        str += '</div>'
+    }
+    str += '</div>' // closes container
     return str
-  }
-
-  let str = '<div class="map-popup">'
-  if (d_.name) {
-    str += '<div id="carpark-name-' + d_._id + '" class="map-popup__title">' // id for name div
-    str += '<h1>' + d_.name + '</h1>'
-    str += '</div>' // close bike name div
-  }
-
-  str += '<div id="carpark-spacescount-' + d_._id + '" class="map-popup__kpi" ><h1>' +
-    d_.free_spaces +
-    '</h1><p>Free spaces at ' + simpleTime + ' </p></div>'
-
-  str += '<div id="carpark-info-' + d_._id + '" class="map-popup__info" >'
-  str += '<p>Open: ' + d_.opening_times + '</p>'
-  str += '<p> ' + d_.price + '</p>'
-  str += '</div>'
-
-  // initialise div to hold chart with id linked to station id
-  if (d_.id) {
-    str += '<span id="carpark-spark-' + d_._id + '"></span>'
-  }
-  str += '</div>' // closes container
-  return str
 }
 
 // Manage periodic async data fetching
@@ -380,7 +381,7 @@ function carparkPopupInit(d_) {
 // const busClusterToggle = true
 // const trainClusterToggle = true
 // const luasClusterToggle = false
-// const carparkClusterToggle = true
+// const carParkClusterToggle = true
 
 // zoom = 11 // zoom on page load
 // maxZoom = 26
@@ -529,19 +530,19 @@ function carparkPopupInit(d_) {
 // }
 // )
 
-// d3.select('#carparks-checkbox').on('click', function () {
+// d3.select('#carParks-checkbox').on('click', function () {
 //     const cb = d3.select(this)
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (liveTravelMap.hasLayer(carparkCluster)) {
-//                 liveTravelMap.removeLayer(carparkCluster)
+//             if (liveTravelMap.hasLayer(carParkCluster)) {
+//                 liveTravelMap.removeLayer(carParkCluster)
 //                 liveTravelMap.fitBounds(luasCluster.getBounds())
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!liveTravelMap.hasLayer(carparkCluster)) {
-//                 liveTravelMap.addLayer(carparkCluster)
+//             if (!liveTravelMap.hasLayer(carParkCluster)) {
+//                 liveTravelMap.addLayer(carParkCluster)
 //             }
 //         }
 //     }
@@ -660,7 +661,7 @@ function carparkPopupInit(d_) {
 //                 .text('Unavailable')
 //         }
 
-//         if (data.carparks.status === 200 && !(d3.select('#carparks-checkbox').classed('disabled'))) {
+//         if (data.carParks.status === 200 && !(d3.select('#carParks-checkbox').classed('disabled'))) {
 //             d3.select('#parking-activity-icon').attr('src', '/images/icons/activity.svg')
 //             d3.select('#parking-age')
 //                 .text('Awaitng data...') // TODO: call to getAge function from here
