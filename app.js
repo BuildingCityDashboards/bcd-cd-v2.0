@@ -64,12 +64,12 @@ const api = require('./routes/api')
 
 // view engine setup
 app.set('views', [path.join(__dirname, 'views'),
-  path.join(__dirname, 'views/themes'),
-  path.join(__dirname, 'views/stories'),
-  path.join(__dirname, 'views/queries'),
-  path.join(__dirname, 'views/tools'),
-  path.join(__dirname, 'views/portal'),
-  path.join(__dirname, 'views/api')])
+path.join(__dirname, 'views/themes'),
+path.join(__dirname, 'views/stories'),
+path.join(__dirname, 'views/queries'),
+path.join(__dirname, 'views/tools'),
+path.join(__dirname, 'views/portal'),
+path.join(__dirname, 'views/api')])
 
 app.set('view engine', 'pug')
 
@@ -90,6 +90,7 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+  // console.log('error handler')
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}

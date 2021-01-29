@@ -6,18 +6,25 @@ TODO:
 ***/
 
 const getData = async url => {
-    const fetch = require('node-fetch')
-    try {
-        const response = await fetch(url)
-        const csv = await response.text()
-        return csv
-    } catch (error) {
-        return console.log(error)
-    }
+  const fetch = require('node-fetch')
+  try {
+    const response = await fetch(url)
+    const csv = await response.text()
+    return csv
+  } catch (error) {
+    console.log(error)
+    return error
+  }
 }
 
 exports.getLatest = async (req, res, next) => {
-    const url = 'https://data.corkcity.ie/datastore/dump/6cc1028e-7388-4bc5-95b7-667a59aa76dc'
-    const response = await getData(url)
-    res.send(response)
+  const url = 'https://data.corkcity.ie/datastore/dump/6cc1028e-7388-4bc5-95b7-667a59aa76dc'
+  const response = await getData(url)
+  console.log('response: ' + response)
+  res.send(response)
+}
+
+exports.getError = async (req, res, next) => {
+  console.log('get error')
+  res.send()
 }
