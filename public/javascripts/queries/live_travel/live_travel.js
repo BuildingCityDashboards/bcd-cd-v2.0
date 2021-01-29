@@ -68,16 +68,13 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
     displayOptions: {
       displayid: 'car-parks-card__display',
       data: {
-        href: '/api/car-parks/latest'
+        href: '/api/carparks/'
       },
       src: '',
       format: ''
     }
   }
 
-  // console.log(carparkOptions)
-
-  const STAMEN_TONER_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png'
   const STAMEN_TONER_LITE_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png'
   const OSM_ATTRIBUTION = 'Map data © <a href="http://openstreetprivateMap.org">OpenStreetMap</a> contributors'
 
@@ -108,7 +105,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
 
   let carparkLayerGroup = L.layerGroup()
 
-  const carparkPopupcarparkOptions = {
+  const carparkPopupOptions = {
     // 'maxWidth': '500',
     className: 'carparkPopup'
   }
@@ -148,15 +145,13 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
     clearTimeout(refreshTimeout)
     try {
       // console.log('fetching data')
-      csv = await fetchCsvFromUrlAsyncTimeout(carparkOptions.displayOptions.data.href, 500)
-      const json = d3.csvParse(csv)
-      console.log()
-      if (json) {
+      csv = await fetchCsvFromUrlAsyncTimeout('/api/carparks/latest', 500)
+      console.log(csv.length)
+      if (csv.length > 0) {
+        const json = d3.csvParse(csv)
+        console.log(json)
         liveTravelMap.removeLayer(carparkLayerGroup)
         carparkLayerGroup.clearLayers()
-        console.log('data updated')
-        console.log('json')
-        console.log(json)
 
         const date = new Date(json[0].date)
         lastReadTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0')
@@ -167,7 +162,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
         let latestDate
         let latestDateMillis = 0
         const AGE_THRESHOLD_MILLIS = 1000 * 60 * 30 // invalidate data older than n mins
-        console.log('age limit ' + AGE_THRESHOLD_MILLIS)
+        // console.log('age limit ' + AGE_THRESHOLD_MILLIS)
 
         /* process data, adding necessary fields and create markers for map */
         json.forEach((d) => {
@@ -192,7 +187,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
             latestDate = date
           }
           spacesTotalFree += +d.free_spaces
-          console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
+          // console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
 
           // add a marker to the map
           const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
@@ -205,7 +200,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
           })
 
           carparkLayerGroup.addLayer(m)
-          m.bindPopup(carparkPopupInit(d), carparkPopupcarparkOptions)
+          m.bindPopup(carparkPopupInit(d), carparkPopupOptions)
         })
 
         // update the map
@@ -224,6 +219,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
         clearTimeout(refreshTimeout)
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
       } else {
+        // if response not returned, create a map with static data
         csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
         const jsonStatic = d3.csvParse(csv)
         liveTravelMap.removeLayer(carparkLayerGroup)
@@ -251,6 +247,12 @@ function getMapLayerStatic(json, iconUrl = '') {
   // add a marker to the map
   const CustomMapMarker = getCustomMapMarker()
   const CustomMapIcon = getCustomMapIcon()
+
+  const carparkPopupOptions = {
+    // 'maxWidth': '500',
+    className: 'carparkPopup'
+  }
+
   const layerGroup = new L.LayerGroup()
   json.forEach((d) => {
     const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
@@ -262,7 +264,7 @@ function getMapLayerStatic(json, iconUrl = '') {
       alt: d.type + ' icon'
     })
     layerGroup.addLayer(m)
-    // m.bindPopup(carparkPopupInit(d), carparkPopupcarparkOptions)
+    m.bindPopup(carparkPopupInit(d), carparkPopupOptions)
   })
   return layerGroup
 }
@@ -273,11 +275,9 @@ function carparkPopupInit(d_) {
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
 
   // if no station id none of the mappings will work so escape
-  if (!d_.name || !d_.valid) {
+  if (!d_.name || !d_._id) {
     const str = '<div class="map-popup-error">' +
-      '<div class="row ">' +
       "We can't get the live Car Park data right now, please try again later" +
-      '</div>' +
       '</div>'
     return str
   }
@@ -288,14 +288,25 @@ function carparkPopupInit(d_) {
     str += '<h1>' + d_.name + '</h1>'
     str += '</div>' // close bike name div
   }
-
-  str += '<div id="carpark-spacescount-' + d_._id + '" class="map-popup__kpi" ><h1>' +
-    d_.free_spaces +
-    '</h1><p>Free spaces at ' + simpleTime + ' </p></div>'
+  str += '<div id="carpark-spacescount-' + d_._id + '" class="map-popup__kpi" >'
+  if (d_.free_spaces) {
+    str += '<h1>' +
+      d_.free_spaces +
+      '</h1><p>Free spaces at ' + simpleTime + ' </p>'
+  } else {
+    str += '<div class="map-popup-error">' +
+      '<p>We can\'t get the live Car Park data right now, please try again later</p>' +
+      '</div>'
+  }
+  str += '</div>'
 
   str += '<div id="carpark-info-' + d_._id + '" class="map-popup__info" >'
-  str += '<p>Open: ' + d_.opening_times + '</p>'
-  str += '<p> ' + d_.price + '</p>'
+  if (d_.opening_times) {
+    str += '<p>Open: ' + d_.opening_times + '</p>'
+  }
+  if (d_.price) {
+    str += '<p> ' + d_.price + '</p>'
+  }
   str += '</div>'
 
   // initialise div to hold chart with id linked to station id

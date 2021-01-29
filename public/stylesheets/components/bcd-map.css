@@ -96,6 +96,7 @@
   font-weight: 200;
   font-size: 12px;
   margin: 0;
+  padding: 0;
 }
 
 .map-popup__title {
@@ -104,6 +105,7 @@
   padding: 8px 16px;
   display: flex;
   justify-content: flex-start;
+  text-transform: uppercase;
 }
 
 .map-popup__subtitle {
@@ -131,7 +133,7 @@
 .map-popup__kpi p {
   font-size: 14px;
   color: #e95d4f;
-  text-transform: uppercase;
+
 }
 
 .map-popup__info {
@@ -147,11 +149,10 @@
 }
 
 .map-popup-error {
-  padding: 48px;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 /* Need to set height of svg plot in px here */
@@ -180,12 +181,6 @@
   /* color:#fff; text colour */
 }
 
-
-.popup-error {
-  margin: 16px;
-  /* color: white; */
-  font-family: 'Roboto';
-}
 
 /* .dc-chart .axis { display: none; } */
 

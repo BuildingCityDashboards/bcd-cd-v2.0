@@ -12,7 +12,8 @@ const airQualityController = require('../controllers/air_quality_controller')
 router.get('/air-quality/latest', airQualityController.getLatest)
 
 const carParksController = require('../controllers/car_parks_controller')
-router.get('/car-parks/latest', carParksController.getLatest)
+router.get('/carparks/error', carParksController.getError)
+router.get('/carparks/latest', carParksController.getLatest)
 
 // router.get('/data/search/statbank', (req, res, next) => {
 //   // console.log('***\nrequest\n***')
