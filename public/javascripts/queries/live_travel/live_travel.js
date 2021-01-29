@@ -50,8 +50,7 @@ API activity checks that the buttons are not disabled
 import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
-(async function main(carparkOptions) {
-  console.log('load live travel map')
+(async function main (carparkOptions) {
   carparkOptions =
   {
     title: 'Car parks - city',
@@ -137,7 +136,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   // let prevBikesTrendString = ''// '(no change)'
   // let prevStandsTrendString = '' // '(no change)'
 
-  async function fetchData() {
+  async function fetchData () {
     //   These locations incorrectly report time (IST indicated but GMT provided)
     const OFFSET_BY_HOUR = [] // ['City Hall - Eglington Street', 'Carrolls Quay', 'Grand Parade', "Saint Finbarr's"]
     // console.log('fetch data')
@@ -146,10 +145,8 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
     try {
       // console.log('fetching data')
       csv = await fetchCsvFromUrlAsyncTimeout('/api/carparks/latest', 500)
-      console.log(csv.length)
       if (csv.length > 0) {
         const json = d3.csvParse(csv)
-        console.log(json)
         liveTravelMap.removeLayer(carparkLayerGroup)
         carparkLayerGroup.clearLayers()
 
@@ -206,16 +203,8 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
         // update the map
         liveTravelMap.addLayer(carparkLayerGroup)
 
-        console.log('latest date')
-        console.log(latestDate)
-
-        console.log(json)
-
         const nowMillis = new Date().getTime()
         const dataAgeMinutes = (nowMillis - latestDateMillis) / 1000
-        console.log(nowMillis)
-        console.log(latestDateMillis)
-        console.log(dataAgeMinutes)
         clearTimeout(refreshTimeout)
         refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
       } else {
@@ -243,7 +232,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
 })()
 
 /* can return a generic layer with static data when request for data has faile */
-function getMapLayerStatic(json, iconUrl = '') {
+function getMapLayerStatic (json, iconUrl = '') {
   // add a marker to the map
   const CustomMapMarker = getCustomMapMarker()
   const CustomMapIcon = getCustomMapIcon()
@@ -269,8 +258,7 @@ function getMapLayerStatic(json, iconUrl = '') {
   return layerGroup
 }
 
-function carparkPopupInit(d_) {
-  console.log(d_)
+function carparkPopupInit (d_) {
   const d = new Date(d_.date)
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
 
