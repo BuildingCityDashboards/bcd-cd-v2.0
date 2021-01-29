@@ -41,9 +41,12 @@
 .theme__header__scroll-arrow {
   grid-column: 2/4;
   grid-row: 3;
-  align-self: flex-end;
   display: flex;
+  align-self: flex-end;
   justify-content: center;
+  padding-bottom: 56px;
+  z-index: 1;
+
 }
 
 .theme__header__scroll-arrow button {
@@ -119,15 +122,16 @@
   width: 100%;
   height: auto;
   min-height: calc(100vh - 116px);
-  scroll-margin-top: 116px;
+  /* scroll-margin-top: 116px; */
+  /* scroll-snap-margin-top: 116px; */
   text-align: left;
   grid-gap: 8px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 24px auto auto auto auto;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  padding: 116px 16px 16px;
+  margin: -116px 0 48px;
 
-  padding: 16px;
-  margin-bottom: auto;
 }
 
 .theme__text-chart__sources {
