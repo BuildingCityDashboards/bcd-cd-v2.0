@@ -20,11 +20,9 @@ const getData = async url => {
 exports.getLatest = async (req, res, next) => {
   const url = 'https://data.corkcity.ie/datastore/dump/6cc1028e-7388-4bc5-95b7-667a59aa76dc'
   const response = await getData(url)
-  console.log('response: ' + response)
   res.send(response)
 }
 
 exports.getError = async (req, res, next) => {
-  console.log('get error')
   res.send()
 }
