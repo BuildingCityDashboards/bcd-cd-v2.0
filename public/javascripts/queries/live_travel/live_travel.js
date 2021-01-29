@@ -270,7 +270,7 @@ function getMapLayerStatic(json, iconUrl = '') {
 function carparkPopupInit(d_) {
   console.log(d_)
   const d = new Date(d_.date)
-  const simpleTime = d.getHours() + ':' + d.getMinutes()
+  const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
 
   // if no station id none of the mappings will work so escape
   if (!d_.name || !d_.valid) {
