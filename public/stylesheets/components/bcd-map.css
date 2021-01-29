@@ -1,33 +1,5 @@
-/**
- * Author
- *
- *
- *
- * : Liam
- */
-
-/* TODO use proper rules here instead of individual repetition */
-
-/* .leaflet-popup-content { width: 200px !important; height: 150px !important; } */
-
-/* css to customize Leaflet default styles */
-
-/* .custom .leaflet-popup-tip, */
-
-/* for charts in popoups */
-
-/**
- * .custom-popup .leaflet-popup-content-wrapper { background:#2c3e50;
- * color:#fff; font-size:16px; line-height:24px; border-radius: 0px; }
- * .custom-popup .leaflet-popup-content-wrapper a { color:rgba(255,255,255,0.1);
- * } .custom-popup .leaflet-popup-tip-container { width:30px; height:15px; }
- * .custom-popup .leaflet-popup-tip { background: transparent; border: none;
- * box-shadow: none; }
- */
-
-
 .leaflet-container {
-  min-height: 280px
+  min-height: 256px;
 }
 
 .leaflet-div-icon {
@@ -40,17 +12,20 @@
 }
 
 .leaflet-marker-icon {
-  background-color: white;
-  opacity: 0.7;
+  background-color: transparent;
+  fill: black;
+  opacity: 0.8;
 }
 
 .leaflet-marker-icon+.online {
-  background-color: white;
-  opacity: 0.7;
+  background-color: transparent;
+  fill: black;
+  opacity: 0.8;
 }
 
 .leaflet-marker-icon+.offline {
-  background-color: white;
+  background-color: transparent;
+  fill: black;
   opacity: 0.7;
 }
 
@@ -76,52 +51,117 @@
 
 /* } */
 
-.leaflet-popup-error {
-  margin: 40px;
-}
+
 
 .leaflet-popup-content-wrapper {
-  width: 240px;
-  height: 200px;
-  /* background: #001f35; */
+  width: 256px;
+  min-height: 128px;
+  height: auto;
+  background: white;
   font-family: 'Roboto';
   font-weight: 200;
-  opacity: 0.7;
+  opacity: 0.95;
+  padding: 0;
+
 }
 
 .leaflet-popup-content {
-  width: auto;
-  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.map-popup {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  padding: 8px;
 
 }
 
-.leaflet-popup-content svg {
+.map-popup svg {
   transform: translateY(8px)
 }
 
-.leaflet-popup-title {
+.map-popup h1 {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.map-popup h2 {
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.map-popup p {
+  font-weight: 200;
+  font-size: 12px;
+  margin: 0;
+}
+
+.map-popup__title {
   width: 100%;
-  height: 24px;
-  color: white;
-  margin-bottom: 0px;
+  margin: 0;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.map-popup__subtitle {
+  width: 100%;
+  margin: 0;
+  padding: 8px 16px;
 
 }
 
-.leaflet-popup-subtitle {
+.map-popup__kpi {
   width: 100%;
-  height: 24px;
-  margin-bottom: 8px;
-  color: white;
+  margin: 0;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+
+}
+
+.map-popup__kpi h1 {
+  font-size: 28px;
+}
+
+.map-popup__kpi p {
+  font-size: 14px;
+  color: #e95d4f;
+  text-transform: uppercase;
+}
+
+.map-popup__info {
+  width: 100%;
+  margin: 0;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+
+}
+
+.map-popup-error {
+  padding: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 /* Need to set height of svg plot in px here */
 
-.leaflet-popup-chart {
+.map-popup__chart {
   width: 100%;
   height: 100px;
 }
 
-.leaflet-popup-chart svg {
+.map-popup__chart svg {
   width: 100%;
   height: inherit;
 }
@@ -135,26 +175,15 @@
 .bikesStationPopup .leaflet-popup-content {
   width: 250px !important;
   height: 175px !important;
-  color: #ffffff;
+  /* color: #ffffff; */
   /* font-size:16px; line-height:24px; border-radius: 0px; */
   /* color:#fff; text colour */
 }
 
-.carparkPopup .leaflet-popup-content-wrapper {
-  background: #001f35;
-}
-
-.carparkPopup .leaflet-popup-content {
-  width: 250px !important;
-  height: 175px !important;
-  color: #ffffff;
-  /* font-size:16px; line-height:24px; border-radius: 0px; */
-  /* color:#fff; text colour */
-}
 
 .popup-error {
   margin: 16px;
-  color: white;
+  /* color: white; */
   font-family: 'Roboto';
 }
 
