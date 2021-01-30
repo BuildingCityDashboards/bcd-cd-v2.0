@@ -1,18 +1,9 @@
-/***
 
- Car Parks card
-
- TODO:
- - get latest of all readings, not just json[0]
- - add animated update trend arrows
- - blank display if data age exceeds limit
- - add countdown timer to next refresh when data old/error occurs or otherwise indicate last read was successful
-***/
 'use strict'
 
 import { fetchCsvFromUrlAsyncTimeout } from '../modules/bcd-async.js'
 
-async function main (options) {
+async function main(options) {
   // console.log('createChart')
   // console.log(options)
 
@@ -43,7 +34,7 @@ async function main (options) {
   // let prevBikesTrendString = ''// '(no change)'
   // let prevStandsTrendString = '' // '(no change)'
 
-  async function fetchData () {
+  async function fetchData() {
     // console.log('fetch data')
     let csv
     clearTimeout(refreshTimeout)
@@ -74,12 +65,12 @@ async function main (options) {
 
         const leftElement = cardElement.querySelector('#card-left')
         leftElement.innerHTML = '<h1>' + json.length + '</h1>' +
-                    '<h2>Car Parks</h2>'
+          '<h2>Car Parks</h2>'
 
         const rightElement = cardElement.querySelector('#card-right')
         rightElement.innerHTML =
-                    '<h1>' + spacesTotalFree + '</h1>' +
-                    '<h2>Free Spaces</h2>'
+          '<h1>' + spacesTotalFree + '</h1>' +
+          '<h2>Free Spaces</h2>'
 
         const infoElement = cardElement.querySelector('.card__info-text')
         infoElement.innerHTML = `As of <b>${lastReadTime}</b>, across the ${json.length} Cork city car parks there were a total of <b> ${spacesTotalFree} FREE SPACES</b>`
