@@ -9,20 +9,20 @@ router.get('/', function (req, res, next) {
 })
 
 // redirects for old page
-router.get('/pages/index', function (req, res, next) {
-  res.redirect(301, '/')
+router.get('/home', function (req, res, next) {
+  res.redirect(302, '/')
 })
 
 router.get('/index', function (req, res, next) {
   res.redirect(302, '/')
 })
 
-router.get('/home', function (req, res, next) {
-  res.redirect(302, '/')
+router.get('/pages/index', function (req, res, next) {
+  res.redirect(301, '/')
 })
 
 router.get('/.well-known/pki-validation/godaddy.html', function (req, res, next) {
-  res.send('3htnrec99acmov7afigq82f6vj')
+  res.send('f67rjhd2jbo85ti5s6nt4j3hrj')
 })
 
 module.exports = router
