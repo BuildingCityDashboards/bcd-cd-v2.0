@@ -25,7 +25,7 @@ router.get('/live-travel', function (req, res, next) {
 })
 
 router.get('/live-environment', function (req, res, next) {
-  res.render('queries/query_live_travel', {
+  res.render('queries/query_live_environment', {
     title: 'Query: Live Environment',
     page: ''
   })
