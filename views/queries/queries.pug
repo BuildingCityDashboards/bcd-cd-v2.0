@@ -28,13 +28,32 @@ block content
                 description: '<p>Geodemographic classification is a statistical tool that groups spatial units based on socio-economic characteristics.  This query follows the Ireland Geodemographic classification method with a focus on Cork.  Small Areas (SAs) are selected as spatial units and 2016 Census of Population results are used for socio-economic components.</p>', 
                 links: [{
                   href :"queries/geodemos",
-                  name:'Go to Geodemographics query'
+                  name:'Launch Geodeomgraphics'
                   }]
               })
           .carousel-cell
-              +card-sub-home({title: 'Live Travel Map', description: '<i>The Live Travel Map is under construction, please check back soon.</i>'})
+              +card-sub-home({
+                title: 'Live Travel', 
+                description: '<p>The Live Travel query gathers the current status of various travel modes, including public and private transport, bikes schemes, car-park capacities, travel times and more.</p>',
+                links: [{
+                  href :"queries/live-travel",
+                  name:'Launch Live Travel'
+                  }]
+                })
           .carousel-cell
-              +card-sub-home({title: 'Economy at a Glance', description: '<i>Economy at a Glance is under construction, please check back soon.</i>'})    
+              +card-sub-home({
+                title: 'Live Environment', 
+                description: '<i>Live Environment is under construction, please check back soon.</i>',
+                links: [{
+                  href :"queries/live-environment",
+                  name:'Launch Live Environment'
+                  }]
+                })
+          .carousel-cell
+              +card-sub-home({
+                title: 'Economy at a Glance', 
+                description: '<i>Economy at a Glance is under construction, please check back soon.</i>'
+                })    
         </div>
 
 block append scripts
