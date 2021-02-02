@@ -8,7 +8,7 @@ water levels region_id: 6, 15
 import { fetchJsonFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
-(async function main (waterLevelsOptions) {
+(async function main(waterLevelsOptions) {
   waterLevelsOptions =
   {
     title: 'Water Level Monitors',
@@ -35,13 +35,6 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   /************************************
    * OPW Water Levels
    ************************************/
-  // Custom map icons
-  const waterMapIcon = L.icon({
-    iconUrl: '../images/icons/themes/environment/water-15.svg#Layer_1',
-    iconSize: [15, 15] // orig size
-    // iconAnchor: [iconAX, iconAY] //,
-    // popupAnchor: [-3, -76]
-  })
 
   const STAMEN_TERRAIN_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'
   const ATTRIBUTION = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under <a href="https://www.openstreetmap.org/copyright">ODbL</a>.s'
@@ -55,6 +48,14 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   const liveEnvironmentMap = new L.Map('live-environment-map')
   liveEnvironmentMap.setView(getCityLatLng(), 8)
   liveEnvironmentMap.addLayer(liveEnvironmentOSM)
+
+  // Custom map icons
+  const waterMapIcon = L.icon({
+    iconUrl: '../images/icons/themes/environment/water-15.svg#Layer_1',
+    iconSize: [15, 15] // orig size
+    // iconAnchor: [iconAX, iconAY] //,
+    // popupAnchor: [-3, -76]
+  })
 
   const waterLevelsIconUrl = '../images/icons/themes/environment/water-15.svg#Layer_1'
   const CustomMapIcon = getCustomMapIcon()
@@ -78,37 +79,32 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   //   const refreshInterval = 100
   //   let refreshCountdown = refreshInterval
 
-  const RETRY_INTERVAL = 20000
-  const REFRESH_INTERVAL = 30000 * 1
+  const TIMEOUT_INTERVAL = 10000 // interval after which request generates a TO error
+  const RETRY_INTERVAL = 20000 // interval to wait after an error response
+  const REFRESH_INTERVAL = 1000 * 60 * 5 // n minute interval for data refresh
   let refreshTimeout
-  let lastReadTime
-  const dataAge = 0
+  let waterOPWCluster
 
-  let prevSpacesTotalFree
-  // const indicatorUpSymbol = "<span class='up-arrow'>&#x25B2;</span>"
-  // const indicatorDownSymbol = "<span class='down-arrow'>&#x25BC;</span>"
-  // const indicatorRightSymbol = "<span class='right-arrow'>&#x25BA;</span>"
-  // let prevBikesAvailableDirection = indicatorRightSymbol // '▶'
-  // let prevStandsAvailableDirection = indicatorRightSymbol // '▶'
-  // let prevBikesTrendString = ''// '(no change)'
-  // let prevStandsTrendString = '' // '(no change)'
-
-  async function fetchData () {
+  async function fetchData() {
     let json
     clearTimeout(refreshTimeout)
     try {
-      // console.log('fetching data')
+      console.log('fetching data')
 
       json = await fetchJsonFromUrlAsyncTimeout('/data/environment/waterlevel_example.json', 10000)
 
       console.log(json)
       const jsonProcessed = await processWaterLevels(json.features)
       console.log(jsonProcessed)
-      const waterOPWCluster = getLayerWaterLevels(jsonProcessed, waterMapIcon)
+
+      if (liveEnvironmentMap.hasLayer(waterOPWCluster)) {
+        liveEnvironmentMap.removeLayer(waterOPWCluster)
+      }
+      waterOPWCluster = getLayerWaterLevels(jsonProcessed, waterMapIcon)
       liveEnvironmentMap.addLayer(waterOPWCluster)
 
-      // liveEnvironmentMap.removeLayer(waterLevelsLayerGroup)
-      // waterLevelsLayerGroup.clearLayers()
+      clearTimeout(refreshTimeout)
+      refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
 
       //   const date = new Date(json[0].date)
       //   lastReadTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0')
@@ -165,8 +161,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
 
       //   const nowMillis = new Date().getTime()
       //   const dataAgeMinutes = (nowMillis - latestDateMillis) / 1000
-      //   clearTimeout(refreshTimeout)
-      //   refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
+
       // } else {
       //   // if response not returned, create a map with static data
       //   csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
@@ -175,23 +170,18 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
       //   waterLevelsLayerGroup.clearLayers()
       //   waterLevelsLayerGroup = getMapLayerStatic(jsonStatic, waterLevelsIconUrl)
       //   liveEnvironmentMap.addLayer(waterLevelsLayerGroup)
-      //   csv = null // for GC
+      json = null // for GC
       // }
     } catch (e) {
-      // csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
-      // const jsonStatic = d3.csvParse(csv)
-      // liveEnvironmentMap.removeLayer(waterLevelsLayerGroup)
-      // waterLevelsLayerGroup.clearLayers()
-      // waterLevelsLayerGroup = getMapLayerStatic(jsonStatic, waterLevelsIconUrl)
-      // liveEnvironmentMap.addLayer(waterLevelsLayerGroup)
+      // TODO: if data is very stale display error msg in popup
       console.log('data fetch error' + e)
       refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
     }
   }
-  fetchData()
+  fetchData() // intiiate first run
 })()
 
-function processWaterLevels (data_) {
+function processWaterLevels(data_) {
   const regionData = data_.filter(function (d) {
     return d.properties.region_id === 15 || d.properties.region_id === 6
   })
@@ -203,20 +193,91 @@ function processWaterLevels (data_) {
   return regionData
 };
 
-function getLayerWaterLevels (data_, icon_) {
+function getLayerWaterLevels(data_, icon_) {
   const waterOPWCluster = L.markerClusterGroup()
   data_.forEach(function (d, i) {
     waterOPWCluster.addLayer(L.marker(new L.LatLng(d.lat, d.lng), {
       icon: icon_
-    })
-      // .bindPopup(getWaterLevelContent(d))
+    }).bindPopup(getPopupWaterLevels(d))
     )
   })
   return waterOPWCluster
 }
 
+function getPopupWaterLevels(d_) {
+  const d = new Date(d_.properties.datetime)
+  const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
+  const simpleDate = d.getDay() + '/' + (d.getMonth() + 1).toString().padStart(2, '0')
+  console.log(simpleTime + ' on ' + simpleDate)
+
+  // if no station id none of the mappings will work so escape
+  if (!d_.properties.station_name) {
+    const str = '<div class="map-popup-error">' +
+      "We can't get the live water level data  for this site right now, please try again later" +
+      '</div>'
+    return str
+  }
+
+  let str = '<div class="map-popup">'
+  if (d_.properties.station_name) {
+    str += '<div id="waterlevel-name-' + d_._id + '" class="map-popup__title">' // id for name div
+    str += '<h1>' + d_.properties.station_name + '</h1>'
+    str += '</div>'
+  }
+  str += '<div id="waterlevel-count-' + d_._id + '" class="map-popup__kpi" >'
+  if (d_.properties.value) {
+    str += '<h1>' +
+      d_.properties.value +
+      '</h1><p> at ' + simpleTime + ' on ' + simpleDate + ' </p>'
+  } else {
+    str += '<div class="map-popup-error">' +
+      "We can't get the live water level data  for this site right now, please try again later" +
+      '</div>'
+  }
+  str += '</div>'
+
+  str += '<div id="waterlevel-info-' + d_._id + '" class="map-popup__info" >'
+  if (d_.properties.sensor_ref) {
+    str += '<p>Sensor: ' + d_.properties.sensor_ref + '</p>'
+  }
+  str += '</div>'
+
+  // initialise div to hold chart with id linked to station id
+  if (d_.id) {
+    str += '<span id="waterlevel-spark-' + d_._id + '"></span>'
+  }
+  str += '</div>' // closes container
+  return str
+
+  // str += '<div class="leaflet-popup-title">'
+  // if (d_.properties['station.name']) {
+  //   str += '<b>' + d_.properties['station.name'] + '</b><br>'
+  // }
+
+  // str += '</div>' // close title div
+
+  // if (d_.properties['sensor.ref']) {
+  //   str += '<div class="leaflet-popup-subtitle">'
+  //   str += '<b>' + d_.properties['sensor.ref'] + '</b><br>'
+  //   str += '</div>'
+  // }
+
+  // if (d_.type) {
+  //   str += '<div class="leaflet-popup-subtitle" style= "color : green;" ">'
+  //   str += '<b>' + d_.type + '</b><br>'
+  //   str += '</div>'
+  // }
+
+  // //    if (d_.properties["value"]) {
+  // //        str += '<br><b>Water level: </b>' + d_.properties["value"] + '<br>';
+  // //    }
+  // //    if (d_.properties.datetime) {
+  // //        str += '<br>Last updated on ' + popupTime(new Date(d_.properties.datetime)) + '<br>';
+  // //    }
+}
+
 /* can return a generic layer with static data when request for data has faile */
-function getMapLayerStatic (json, iconUrl = '') {
+function getMapLayerStatic(json, iconUrl = '') {
   // add a marker to the map
   const CustomMapMarker = getCustomMapMarker()
   const CustomMapIcon = getCustomMapIcon()
@@ -242,7 +303,7 @@ function getMapLayerStatic (json, iconUrl = '') {
   return layerGroup
 }
 
-function waterLevelsPopupInit (d_) {
+function waterLevelsPopupInit(d_) {
   const d = new Date(d_.date)
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
 
