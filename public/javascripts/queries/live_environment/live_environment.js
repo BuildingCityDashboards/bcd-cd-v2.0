@@ -31,6 +31,18 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
       format: ''
     }
   }
+
+  /************************************
+   * OPW Water Levels
+   ************************************/
+  // Custom map icons
+  const waterMapIcon = L.icon({
+    iconUrl: '../images/icons/themes/environment/water-15.svg#Layer_1',
+    iconSize: [15, 15] // orig size
+    // iconAnchor: [iconAX, iconAY] //,
+    // popupAnchor: [-3, -76]
+  })
+
   const STAMEN_TERRAIN_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'
   const ATTRIBUTION = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under <a href="https://www.openstreetmap.org/copyright">ODbL</a>.s'
 
@@ -43,11 +55,6 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   const liveEnvironmentMap = new L.Map('live-environment-map')
   liveEnvironmentMap.setView(getCityLatLng(), 8)
   liveEnvironmentMap.addLayer(liveEnvironmentOSM)
-
-  liveEnvironmentMap.on('popupopen', function (e) {
-    // markerRefPublic = e.popup._source
-    // console.log("ref: "+JSON.stringify(e))
-  })
 
   const waterLevelsIconUrl = '../images/icons/themes/environment/water-15.svg#Layer_1'
   const CustomMapIcon = getCustomMapIcon()
@@ -97,7 +104,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
       console.log(json)
       const jsonProcessed = await processWaterLevels(json.features)
       console.log(jsonProcessed)
-      const waterOPWCluster = getLayerWaterLevels(jsonProcessed)
+      const waterOPWCluster = getLayerWaterLevels(jsonProcessed, waterMapIcon)
       liveEnvironmentMap.addLayer(waterOPWCluster)
 
       // liveEnvironmentMap.removeLayer(waterLevelsLayerGroup)
@@ -196,11 +203,11 @@ function processWaterLevels (data_) {
   return regionData
 };
 
-function getLayerWaterLevels (data__) {
+function getLayerWaterLevels (data_, icon_) {
   const waterOPWCluster = L.markerClusterGroup()
-  data__.forEach(function (d, i) {
+  data_.forEach(function (d, i) {
     waterOPWCluster.addLayer(L.marker(new L.LatLng(d.lat, d.lng), {
-      // icon: waterMapIcon
+      icon: icon_
     })
       // .bindPopup(getWaterLevelContent(d))
     )
