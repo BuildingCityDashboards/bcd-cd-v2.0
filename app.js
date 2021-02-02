@@ -6,7 +6,7 @@ const logger = require('./utils/logger')
 const console = require('console')
 require('dotenv').config()
 
-// const cron = require('node-cron')
+const cron = require('node-cron')
 const morgan = require('morgan')
 // const sm = require('sitemap');
 const express = require('express')
@@ -112,6 +112,29 @@ if (app.get('env') === 'development') {
 } else {
   console.log('\n\n***App is in production***\n\n')
 }
+
+/*******
+ *
+ * Crons
+ *
+ *******/
+
+const http = require('http')
+const fs = require('fs')
+
+// Water Levels
+cron.schedule('*/15 * * * *', function () {
+  getWaterLevels()
+})
+
+function getWaterLevels() {
+  const waterLevelFile = fs.createWriteStream('./public/data/environment/waterlevel.json')
+  http.get('http://waterlevel.ie/geojson/latest/', function (response) {
+    response.pipe(waterLevelFile)
+  })
+}
+
+getWaterLevels()
 
 /************
  Fetching dublin bikes data via Derilinx API for various time resolutions and spans
@@ -251,16 +274,6 @@ if (app.get('env') === 'development') {
 //     //     });
 //   })
 // })
-
-// // Water Levels
-// // cron.schedule('*/15 * * * *', function () {
-// //   var http = require('http')
-// //   var fs = require('fs')
-// //   var file = fs.createWriteStream('./public/data/Environment/waterlevel.json')
-// //   http.get('http://waterlevel.ie/geojson/latest/', function (response) {
-// //     response.pipe(file)
-// //   })
-// // })
 
 // // Weather (from old Dublin Dashboard)
 // // cron.schedule('*/5 * * * *', function () {

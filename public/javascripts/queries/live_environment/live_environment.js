@@ -1,16 +1,20 @@
+/* Cork
 
+water levels region_id: 6, 15
+
+*/
 'use strict'
 
-import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
+import { fetchJsonFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
-(async function main (carparkOptions) {
-  carparkOptions =
+(async function main (waterLevelsOptions) {
+  waterLevelsOptions =
   {
-    title: 'Car parks - city',
+    title: 'Water Level Monitors',
     subtitle: '',
-    id: 'car-parks-card',
-    icon: '/images/icons/home/icons-24px/Car_Icon_48px.svg#Layer_1',
+    id: '',
+    icon: '/images/icons/themes/environment/water-15.svg#Layer_1',
     info: '',
     source: [
       {
@@ -21,7 +25,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
     displayOptions: {
       displayid: 'car-parks-card__display',
       data: {
-        href: '/api/carparks/'
+        href: '/api/waterLevels/'
       },
       src: '',
       format: ''
@@ -45,7 +49,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
     // console.log("ref: "+JSON.stringify(e))
   })
 
-  const carparkIconUrl = '../images/icons/icons-24px/Car_Icon_24px.svg'
+  const waterLevelsIconUrl = '../images/icons/themes/environment/water-15.svg#Layer_1'
   const CustomMapIcon = getCustomMapIcon()
 
   // Adds an id field to the markers
@@ -55,11 +59,11 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
 
   })
 
-  let carparkLayerGroup = L.layerGroup()
+  const waterLevelsLayerGroup = L.layerGroup()
 
-  const carparkPopupOptions = {
+  const waterLevelsPopupOptions = {
     // 'maxWidth': '500',
-    className: 'carparkPopup'
+    className: 'waterLevelsPopup'
   }
 
   // addSpinner('chart-' + chartDivIds[0], `<b>statbank.cso.ie</b> for table <b>${TABLE_CODE}</b>: <i>Annual Rate of Population Increase</i>`)
@@ -83,98 +87,98 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   // let prevStandsTrendString = '' // '(no change)'
 
   async function fetchData () {
-    //   These locations incorrectly report time (IST indicated but GMT provided)
-    const OFFSET_BY_HOUR = [] // ['City Hall - Eglington Street', 'Carrolls Quay', 'Grand Parade', "Saint Finbarr's"]
-    // console.log('fetch data')
-    let csv
+    let json
     clearTimeout(refreshTimeout)
     try {
       // console.log('fetching data')
-      csv = await fetchCsvFromUrlAsyncTimeout('/api/carparks/latest', 500)
-      if (csv.length > 0) {
-        const json = d3.csvParse(csv)
-        liveEnvironmentMap.removeLayer(carparkLayerGroup)
-        carparkLayerGroup.clearLayers()
 
-        const date = new Date(json[0].date)
-        lastReadTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0')
-        // .getHour() + ':' + json[0].date.getHours() + getMinutes()
-        // console.log(lastReadTime)
+      json = await fetchJsonFromUrlAsyncTimeout('/data/environment/waterlevel_example.json', 10000)
+      console.log(json)
+      // if (csv.length > 0) {
+      // const json = d3.csvParse(csv)
 
-        let spacesTotalFree = 0
-        let latestDate
-        let latestDateMillis = 0
-        const AGE_THRESHOLD_MILLIS = 1000 * 60 * 30 // invalidate data older than n mins
-        // console.log('age limit ' + AGE_THRESHOLD_MILLIS)
+      liveEnvironmentMap.removeLayer(waterLevelsLayerGroup)
+      waterLevelsLayerGroup.clearLayers()
 
-        /* process data, adding necessary fields and create markers for map */
-        json.forEach((d) => {
-          d.type = 'Car Park'
-          let readingTimeMillis = new Date(d.date).getTime()
-          if (OFFSET_BY_HOUR.includes(d.name)) readingTimeMillis += 1000 * 60 * 60
-          const nowMillis = new Date().getTime()
+      //   const date = new Date(json[0].date)
+      //   lastReadTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0')
+      //   // .getHour() + ':' + json[0].date.getHours() + getMinutes()
+      //   // console.log(lastReadTime)
 
-          // add fields to indicate validity of data based on time
-          const dataAgeMillis = nowMillis - readingTimeMillis
-          d.agemillis = dataAgeMillis
-          d.ageminutes = dataAgeMillis / (1000 * 60)
-          // check reading isn't from the future (!) and is does not exceed age threshold
-          if (!(readingTimeMillis > (nowMillis - 100)) && (dataAgeMillis < AGE_THRESHOLD_MILLIS)) {
-            d.valid = true
-          } else {
-            d.valid = false
-          }
-          /// find the max/latest
-          if (readingTimeMillis > latestDateMillis) {
-            latestDateMillis = readingTimeMillis
-            latestDate = date
-          }
-          spacesTotalFree += +d.free_spaces
-          // console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
+      //   let spacesTotalFree = 0
+      //   let latestDate
+      //   let latestDateMillis = 0
+      //   const AGE_THRESHOLD_MILLIS = 1000 * 60 * 30 // invalidate data older than n mins
+      //   // console.log('age limit ' + AGE_THRESHOLD_MILLIS)
 
-          // add a marker to the map
-          const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
-            icon: new CustomMapIcon({
-              iconUrl: carparkIconUrl,
-              className: d.valid ? 'online' : 'offline'
-            }),
-            title: d.type + ': ' + d.name,
-            alt: d.type + ' icon'
-          })
+      //   /* process data, adding necessary fields and create markers for map */
+      //   json.forEach((d) => {
+      //     d.type = 'Car Park'
+      //     let readingTimeMillis = new Date(d.date).getTime()
+      //     if (OFFSET_BY_HOUR.includes(d.name)) readingTimeMillis += 1000 * 60 * 60
+      //     const nowMillis = new Date().getTime()
 
-          carparkLayerGroup.addLayer(m)
-          m.bindPopup(carparkPopupInit(d), carparkPopupOptions)
-        })
+      //     // add fields to indicate validity of data based on time
+      //     const dataAgeMillis = nowMillis - readingTimeMillis
+      //     d.agemillis = dataAgeMillis
+      //     d.ageminutes = dataAgeMillis / (1000 * 60)
+      //     // check reading isn't from the future (!) and is does not exceed age threshold
+      //     if (!(readingTimeMillis > (nowMillis - 100)) && (dataAgeMillis < AGE_THRESHOLD_MILLIS)) {
+      //       d.valid = true
+      //     } else {
+      //       d.valid = false
+      //     }
+      //     /// find the max/latest
+      //     if (readingTimeMillis > latestDateMillis) {
+      //       latestDateMillis = readingTimeMillis
+      //       latestDate = date
+      //     }
+      //     spacesTotalFree += +d.free_spaces
+      //     // console.log(d.date + ' | age: ' + d.ageminutes + ' valid: ' + d.valid)
 
-        // update the map
-        liveEnvironmentMap.addLayer(carparkLayerGroup)
+      //     // add a marker to the map
+      //     const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
+      //       icon: new CustomMapIcon({
+      //         iconUrl: waterLevelsIconUrl,
+      //         className: d.valid ? 'online' : 'offline'
+      //       }),
+      //       title: d.type + ': ' + d.name,
+      //       alt: d.type + ' icon'
+      //     })
 
-        const nowMillis = new Date().getTime()
-        const dataAgeMinutes = (nowMillis - latestDateMillis) / 1000
-        clearTimeout(refreshTimeout)
-        refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
-      } else {
-        // if response not returned, create a map with static data
-        csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
-        const jsonStatic = d3.csvParse(csv)
-        liveEnvironmentMap.removeLayer(carparkLayerGroup)
-        carparkLayerGroup.clearLayers()
-        carparkLayerGroup = getMapLayerStatic(jsonStatic, carparkIconUrl)
-        liveEnvironmentMap.addLayer(carparkLayerGroup)
-        csv = null // for GC
-      }
+      //     waterLevelsLayerGroup.addLayer(m)
+      //     m.bindPopup(waterLevelsPopupInit(d), waterLevelsPopupOptions)
+      //   })
+
+      //   // update the map
+      //   liveEnvironmentMap.addLayer(waterLevelsLayerGroup)
+
+      //   const nowMillis = new Date().getTime()
+      //   const dataAgeMinutes = (nowMillis - latestDateMillis) / 1000
+      //   clearTimeout(refreshTimeout)
+      //   refreshTimeout = setTimeout(fetchData, REFRESH_INTERVAL)
+      // } else {
+      //   // if response not returned, create a map with static data
+      //   csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
+      //   const jsonStatic = d3.csvParse(csv)
+      //   liveEnvironmentMap.removeLayer(waterLevelsLayerGroup)
+      //   waterLevelsLayerGroup.clearLayers()
+      //   waterLevelsLayerGroup = getMapLayerStatic(jsonStatic, waterLevelsIconUrl)
+      //   liveEnvironmentMap.addLayer(waterLevelsLayerGroup)
+      //   csv = null // for GC
+      // }
     } catch (e) {
-      csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
-      const jsonStatic = d3.csvParse(csv)
-      liveEnvironmentMap.removeLayer(carparkLayerGroup)
-      carparkLayerGroup.clearLayers()
-      carparkLayerGroup = getMapLayerStatic(jsonStatic, carparkIconUrl)
-      liveEnvironmentMap.addLayer(carparkLayerGroup)
+      // csv = await fetchCsvFromUrlAsyncTimeout('../../data/transport/car_parks_static/6cc1028e-7388-4bc5-95b7-667a59aa76dc.csv', 500)
+      // const jsonStatic = d3.csvParse(csv)
+      // liveEnvironmentMap.removeLayer(waterLevelsLayerGroup)
+      // waterLevelsLayerGroup.clearLayers()
+      // waterLevelsLayerGroup = getMapLayerStatic(jsonStatic, waterLevelsIconUrl)
+      // liveEnvironmentMap.addLayer(waterLevelsLayerGroup)
       console.log('data fetch error' + e)
       refreshTimeout = setTimeout(fetchData, RETRY_INTERVAL)
     }
   }
-  // fetchData()
+  fetchData()
 })()
 
 /* can return a generic layer with static data when request for data has faile */
@@ -183,9 +187,9 @@ function getMapLayerStatic (json, iconUrl = '') {
   const CustomMapMarker = getCustomMapMarker()
   const CustomMapIcon = getCustomMapIcon()
 
-  const carparkPopupOptions = {
+  const waterLevelsPopupOptions = {
     // 'maxWidth': '500',
-    className: 'carparkPopup'
+    className: 'waterLevelsPopup'
   }
 
   const layerGroup = new L.LayerGroup()
@@ -199,12 +203,12 @@ function getMapLayerStatic (json, iconUrl = '') {
       alt: d.type + ' icon'
     })
     layerGroup.addLayer(m)
-    m.bindPopup(carparkPopupInit(d), carparkPopupOptions)
+    m.bindPopup(waterLevelsPopupInit(d), waterLevelsPopupOptions)
   })
   return layerGroup
 }
 
-function carparkPopupInit (d_) {
+function waterLevelsPopupInit (d_) {
   const d = new Date(d_.date)
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
 
@@ -218,11 +222,11 @@ function carparkPopupInit (d_) {
 
   let str = '<div class="map-popup">'
   if (d_.name) {
-    str += '<div id="carpark-name-' + d_._id + '" class="map-popup__title">' // id for name div
+    str += '<div id="waterLevels-name-' + d_._id + '" class="map-popup__title">' // id for name div
     str += '<h1>' + d_.name + '</h1>'
     str += '</div>' // close bike name div
   }
-  str += '<div id="carpark-spacescount-' + d_._id + '" class="map-popup__kpi" >'
+  str += '<div id="waterLevels-spacescount-' + d_._id + '" class="map-popup__kpi" >'
   if (d_.free_spaces) {
     str += '<h1>' +
       d_.free_spaces +
@@ -234,7 +238,7 @@ function carparkPopupInit (d_) {
   }
   str += '</div>'
 
-  str += '<div id="carpark-info-' + d_._id + '" class="map-popup__info" >'
+  str += '<div id="waterLevels-info-' + d_._id + '" class="map-popup__info" >'
   if (d_.opening_times) {
     str += '<p>Open: ' + d_.opening_times + '</p>'
   }
@@ -245,7 +249,7 @@ function carparkPopupInit (d_) {
 
   // initialise div to hold chart with id linked to station id
   if (d_.id) {
-    str += '<span id="carpark-spark-' + d_._id + '"></span>'
+    str += '<span id="waterLevels-spark-' + d_._id + '"></span>'
   }
   str += '</div>' // closes container
   return str
@@ -325,7 +329,7 @@ function carparkPopupInit (d_) {
 // const busClusterToggle = true
 // const trainClusterToggle = true
 // const luasClusterToggle = false
-// const carparkClusterToggle = true
+// const waterLevelsClusterToggle = true
 
 // zoom = 11 // zoom on page load
 // maxZoom = 26
@@ -474,19 +478,19 @@ function carparkPopupInit (d_) {
 // }
 // )
 
-// d3.select('#carparks-checkbox').on('click', function () {
+// d3.select('#waterLevelss-checkbox').on('click', function () {
 //     const cb = d3.select(this)
 //     if (!cb.classed('disabled')) {
 //         if (cb.classed('active')) {
 //             cb.classed('active', false)
-//             if (liveEnvironmentMap.hasLayer(carparkCluster)) {
-//                 liveEnvironmentMap.removeLayer(carparkCluster)
+//             if (liveEnvironmentMap.hasLayer(waterLevelsCluster)) {
+//                 liveEnvironmentMap.removeLayer(waterLevelsCluster)
 //                 liveEnvironmentMap.fitBounds(luasCluster.getBounds())
 //             }
 //         } else {
 //             cb.classed('active', true)
-//             if (!liveEnvironmentMap.hasLayer(carparkCluster)) {
-//                 liveEnvironmentMap.addLayer(carparkCluster)
+//             if (!liveEnvironmentMap.hasLayer(waterLevelsCluster)) {
+//                 liveEnvironmentMap.addLayer(waterLevelsCluster)
 //             }
 //         }
 //     }
@@ -605,7 +609,7 @@ function carparkPopupInit (d_) {
 //                 .text('Unavailable')
 //         }
 
-//         if (data.carparks.status === 200 && !(d3.select('#carparks-checkbox').classed('disabled'))) {
+//         if (data.waterLevelss.status === 200 && !(d3.select('#waterLevelss-checkbox').classed('disabled'))) {
 //             d3.select('#parking-activity-icon').attr('src', '/images/icons/activity.svg')
 //             d3.select('#parking-age')
 //                 .text('Awaitng data...') // TODO: call to getAge function from here
