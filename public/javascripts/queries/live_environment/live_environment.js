@@ -8,7 +8,7 @@ water levels region_id: 6, 15
 import { fetchJsonFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
-(async function main(waterLevelsOptions) {
+(async function main (waterLevelsOptions) {
   waterLevelsOptions =
   {
     title: 'Water Level Monitors',
@@ -85,17 +85,12 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   let refreshTimeout
   let waterOPWCluster
 
-  async function fetchData() {
+  async function fetchData () {
     let json
     clearTimeout(refreshTimeout)
     try {
-      console.log('fetching data')
-
-      json = await fetchJsonFromUrlAsyncTimeout('/data/environment/waterlevel_example.json', 10000)
-
-      console.log(json)
+      json = await fetchJsonFromUrlAsyncTimeout('/data/environment/waterlevel_example.json', TIMEOUT_INTERVAL)
       const jsonProcessed = await processWaterLevels(json.features)
-      console.log(jsonProcessed)
 
       if (liveEnvironmentMap.hasLayer(waterOPWCluster)) {
         liveEnvironmentMap.removeLayer(waterOPWCluster)
@@ -181,7 +176,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   fetchData() // intiiate first run
 })()
 
-function processWaterLevels(data_) {
+function processWaterLevels (data_) {
   const regionData = data_.filter(function (d) {
     return d.properties.region_id === 15 || d.properties.region_id === 6
   })
@@ -193,7 +188,7 @@ function processWaterLevels(data_) {
   return regionData
 };
 
-function getLayerWaterLevels(data_, icon_) {
+function getLayerWaterLevels (data_, icon_) {
   const waterOPWCluster = L.markerClusterGroup()
   data_.forEach(function (d, i) {
     waterOPWCluster.addLayer(L.marker(new L.LatLng(d.lat, d.lng), {
@@ -204,11 +199,10 @@ function getLayerWaterLevels(data_, icon_) {
   return waterOPWCluster
 }
 
-function getPopupWaterLevels(d_) {
+function getPopupWaterLevels (d_) {
   const d = new Date(d_.properties.datetime)
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
   const simpleDate = d.getDay() + '/' + (d.getMonth() + 1).toString().padStart(2, '0')
-  console.log(simpleTime + ' on ' + simpleDate)
 
   // if no station id none of the mappings will work so escape
   if (!d_.properties.station_name) {
@@ -277,7 +271,7 @@ function getPopupWaterLevels(d_) {
 }
 
 /* can return a generic layer with static data when request for data has faile */
-function getMapLayerStatic(json, iconUrl = '') {
+function getMapLayerStatic (json, iconUrl = '') {
   // add a marker to the map
   const CustomMapMarker = getCustomMapMarker()
   const CustomMapIcon = getCustomMapIcon()
@@ -303,7 +297,7 @@ function getMapLayerStatic(json, iconUrl = '') {
   return layerGroup
 }
 
-function waterLevelsPopupInit(d_) {
+function waterLevelsPopupInit (d_) {
   const d = new Date(d_.date)
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
 
