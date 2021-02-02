@@ -4,7 +4,7 @@
 import { fetchCsvFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
-(async function main(carparkOptions) {
+(async function main (carparkOptions) {
   carparkOptions =
   {
     title: 'Car parks - city',
@@ -27,7 +27,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
       format: ''
     }
   }
-  const STAMEN_TERRAIN_URL = 'https://tile.stamen.com/terrain/{z}/{x}/{y}.jpg'
+  const STAMEN_TERRAIN_URL = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png'
   const ATTRIBUTION = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="https://openstreetmap.org">OpenStreetMap</a>, under <a href="https://www.openstreetmap.org/copyright">ODbL</a>.s'
 
   const liveEnvironmentOSM = new L.TileLayer(STAMEN_TERRAIN_URL, {
@@ -82,7 +82,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   // let prevBikesTrendString = ''// '(no change)'
   // let prevStandsTrendString = '' // '(no change)'
 
-  async function fetchData() {
+  async function fetchData () {
     //   These locations incorrectly report time (IST indicated but GMT provided)
     const OFFSET_BY_HOUR = [] // ['City Hall - Eglington Street', 'Carrolls Quay', 'Grand Parade', "Saint Finbarr's"]
     // console.log('fetch data')
@@ -178,7 +178,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
 })()
 
 /* can return a generic layer with static data when request for data has faile */
-function getMapLayerStatic(json, iconUrl = '') {
+function getMapLayerStatic (json, iconUrl = '') {
   // add a marker to the map
   const CustomMapMarker = getCustomMapMarker()
   const CustomMapIcon = getCustomMapIcon()
@@ -204,7 +204,7 @@ function getMapLayerStatic(json, iconUrl = '') {
   return layerGroup
 }
 
-function carparkPopupInit(d_) {
+function carparkPopupInit (d_) {
   const d = new Date(d_.date)
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
 
