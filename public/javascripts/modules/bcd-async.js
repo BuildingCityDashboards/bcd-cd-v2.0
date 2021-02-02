@@ -26,6 +26,8 @@ const fetchJsonFromUrlAsyncTimeout = async (url, duration = 30000) => {
   }
 }
 
+export { fetchJsonFromUrlAsyncTimeout }
+
 const fetchCsvFromUrlAsyncTimeout = async (url, duration = 30000) => {
   try {
     if (url != null) {
@@ -46,8 +48,6 @@ const fetchCsvFromUrlAsyncTimeout = async (url, duration = 30000) => {
 }
 
 export { fetchCsvFromUrlAsyncTimeout }
-
-export { fetchJsonFromUrlAsyncTimeout }
 
 const forEachAsync = async (array, callback) => {
   for (let index = 0; index < array.length; index++) {

@@ -3,6 +3,7 @@
         "/node_modules/*",
         "/docs/*",
         "/npm Libraries/*",
-        "/bin/*"
+        "/bin/*",
+        "/public/data/*"
     ]
 }

@@ -15,6 +15,10 @@ const carParksController = require('../controllers/car_parks_controller')
 router.get('/carparks/error', carParksController.getError)
 router.get('/carparks/latest', carParksController.getLatest)
 
+const waterLevelController = require('../controllers/water_levels')
+router.get('/water-levels/stations/list', waterLevelController.getStationsList)
+router.get('/water-levels/stations/:ts', waterLevelController.getStationsData)
+
 // router.get('/data/search/statbank', (req, res, next) => {
 //   // console.log('***\nrequest\n***')
 //   fs.readFile('data/search-index.json', (err, json) => {
@@ -38,10 +42,6 @@ router.get('/carparks/latest', carParksController.getLatest)
 // // static trains list
 // router.get('/trainstations/stations/list', trainStationController.getTrainStationsList)
 // router.get('/trainstations/stations/:ts', trainStationController.getTrainStationsData)
-
-// const waterLevelController = require('../controllers/water_levels')
-// router.get('/wlstations/stations/list', waterLevelController.getStationsList)
-// router.get('/wlstations/stations/:ts', waterLevelController.getStationsData)
 
 // const dublinBikesController = require('../controllers/dublinbikes_derilinx')
 // // static station list

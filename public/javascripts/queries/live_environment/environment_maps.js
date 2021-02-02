@@ -1,24 +1,24 @@
-let popupTime = d3.timeFormat('%a %B %d, %H:%M')
+const popupTime = d3.timeFormat('%a %B %d, %H:%M')
 
 proj4.defs('EPSG:29902', '+proj=tmerc +lat_0=53.5 +lon_0=-8 +k=1.000035 \n\
 +x_0=200000 \n\+y_0=250000 +a=6377340.189 +b=6356034.447938534 +units=m +no_defs')
 var firstProjection = 'EPSG:29902'
 var secondProjection = 'EPSG:4326'
-let waterMapLayerSizes = []
+const waterMapLayerSizes = []
 
-// Add an id field to the markers to match with bike station id
-let customWaterStationMarker = L.Marker.extend({
+// Add an id field to the markers to match with id
+const customWaterStationMarker = L.Marker.extend({
   options: {
     sid: 0,
     sfn: ''
   }
 })
 
-let customWaterLayer = L.Layer.extend({
+const customWaterLayer = L.Layer.extend({
 
 })
 
-let watersStationPopupOptons = {
+const watersStationPopupOptons = {
   // 'maxWidth': '500',
   className: 'watersStationPopup'
 }
@@ -27,20 +27,20 @@ let watersStationPopupOptons = {
  * OPW Water Levels
  ************************************/
 // Custom map icons
-let waterMapIcon = L.icon({
+const waterMapIcon = L.icon({
   iconUrl: '/images/environment/water-15.svg',
   iconSize: [15, 15], // orig size
   iconAnchor: [iconAX, iconAY] //,
   // popupAnchor: [-3, -76]
 })
 
-let osmWater = new L.TileLayer(stamenTerrainUrl, {
+const osmWater = new L.TileLayer(stamenTerrainUrl, {
   minZoom: min_zoom,
   maxZoom: 12,
   attribution: stamenTonerAttrib
 })
 
-let waterMap = new L.Map('chart-water-map')
+const waterMap = new L.Map('chart-water-map')
 waterMap.setView(new L.LatLng(dubLat, dubLng), zoom)
 waterMap.addLayer(osmWater)
 let markerRefWater // TODO: fix horrible hack!!!
@@ -48,10 +48,11 @@ waterMap.on('popupopen', function (e) {
   markerRefWater = e.popup._source
 })
 
-let waterOPWCluster = L.markerClusterGroup()
+const waterOPWCluster = L.markerClusterGroup()
+
 function processWaterLevels (data_) {
   // will filter out all data bar Greater Dublin
-  let regionData = data_.filter(function (d) {
+  const regionData = data_.filter(function (d) {
     return d.properties['station.region_id'] === null // Dublin OPW stations have null id
       ||
       d.properties['station.region_id'] === 10
@@ -73,9 +74,9 @@ function initMapWaterLevels (data__) {
     fname = station_ref.concat('_', sensor_ref).concat('.csv')
     station_name = d.properties['station.name']
 
-    let content = ''
+    const content = ''
 
-    let m = new customWaterStationMarker(
+    const m = new customWaterStationMarker(
       new L.LatLng(+d.lat, +d.lng), {
         icon: waterMapIcon,
         sid: d.id,
@@ -91,11 +92,11 @@ function initMapWaterLevels (data__) {
 };
 
 function watersStationPopupInit (d_) {
-  let station_ref = d_.properties['station.ref'].substring(5, 10)
-  let sensor_ref = d_.properties['sensor.ref']
-  let fname = station_ref.concat('_', sensor_ref).concat('.csv')
+  const station_ref = d_.properties['station.ref'].substring(5, 10)
+  const sensor_ref = d_.properties['sensor.ref']
+  const fname = station_ref.concat('_', sensor_ref).concat('.csv')
   if (!d_.id) {
-    let str = '<div class="popup-error">' +
+    const str = '<div class="popup-error">' +
       '<div class="row ">' +
       "We can't get the Water station data right now, please try again later" +
       '</div>' +
@@ -129,8 +130,8 @@ function watersStationPopupInit (d_) {
 }
 
 function getOPWPopup () {
-  let ts = this.options.sfn
-  let sid_ = this.options.sid
+  const ts = this.options.sfn
+  const sid_ = this.options.sid
   var stationdReadingsPerMonthChart = dc.lineChart('#bike-spark-' + sid_)
 
   d3.csv('/api/wlstations/stations/' + ts).then(function (md) {
@@ -144,7 +145,7 @@ function getOPWPopup () {
     var all = ndx.groupAll()
 
     var datetimeDimension = ndx.dimension(function (d) {
-     // d3.isoParse
+      // d3.isoParse
       return d3.isoParse(d.datetime)
     })
 
@@ -167,26 +168,26 @@ function getOPWPopup () {
     }
 
     function reduceInitAvg () {
-      return {count: 0, sum: 0, avg: 0}
+      return { count: 0, sum: 0, avg: 0 }
     }
 
     var statesAvgGroup = datetimeDimension.group().reduce(reduceAddAvg, reduceRemoveAvg, reduceInitAvg, 'value')
     stationdReadingsPerMonthChart
-    .width(200)
-    .height(100)
-    .margins({top: 10, right: 10, bottom: 20, left: 60})
-    .dimension(datetimeDimension)
-    .group(valuePerDayGroup)
-    .x(d3.scaleTime().domain([new Date(md[0].datetime), new Date(md[md.length - 1].datetime)]))
-    .y(d3.scaleLinear().domain([0, d3.max(md, function (d) { return d.value + 100 })]))
-    .elasticX(false)
-    .elasticY(true)
-    .margins({
-      left: 20,
-      top: 15,
-      right: 20,
-      bottom: 20
-    })
+      .width(200)
+      .height(100)
+      .margins({ top: 10, right: 10, bottom: 20, left: 60 })
+      .dimension(datetimeDimension)
+      .group(valuePerDayGroup)
+      .x(d3.scaleTime().domain([new Date(md[0].datetime), new Date(md[md.length - 1].datetime)]))
+      .y(d3.scaleLinear().domain([0, d3.max(md, function (d) { return d.value + 100 })]))
+      .elasticX(false)
+      .elasticY(true)
+      .margins({
+        left: 20,
+        top: 15,
+        right: 20,
+        bottom: 20
+      })
       .renderVerticalGridLines(false)
       .useRightYAxis(true)
       .xyTipsOn(false)
@@ -196,7 +197,7 @@ function getOPWPopup () {
       .renderDataPoints(true)
       .yAxisLabel('value')
       .renderHorizontalGridLines(false)
-      // stationdReadingsPerMonthChart.xAxis(d3.axisTop())
+    // stationdReadingsPerMonthChart.xAxis(d3.axisTop())
     stationdReadingsPerMonthChart.xAxis().ticks(6)
     stationdReadingsPerMonthChart.yAxis().ticks(6)
     stationdReadingsPerMonthChart.render()
@@ -205,7 +206,7 @@ function getOPWPopup () {
 /************************************
  * Hydronet
  ************************************/
-let hydronetCluster = L.markerClusterGroup()
+const hydronetCluster = L.markerClusterGroup()
 
 d3.csv('/data/Environment/Register of Hydrometric Stations in Ireland 2017_Dublin.csv').then(function (data) {
   processHydronet(data)
@@ -213,8 +214,8 @@ d3.csv('/data/Environment/Register of Hydrometric Stations in Ireland 2017_Dubli
 
 function processHydronet (data_) {
   data_.forEach(function (d, i) {
-    let result = proj4(firstProjection, secondProjection,
-      [+d['EASTING'], +d['NORTHING']])
+    const result = proj4(firstProjection, secondProjection,
+      [+d.EASTING, +d.NORTHING])
     d.lat = result[1]
     d.lng = result[0]
     d.type = 'Hydronet Water Level Monitor'
@@ -227,7 +228,7 @@ function processHydronet (data_) {
 
 function initMapHydronet (data__) {
   data__.forEach(function (d, k) {
-    let marker = L.marker(new L.LatLng(d.lat, d.lng), {
+    const marker = L.marker(new L.LatLng(d.lat, d.lng), {
       icon: waterMapIcon
     })
     marker.bindPopup(getHydronetContent(d, k))
@@ -266,7 +267,7 @@ function displayHydronet (k_) {
   )
 }
 
-let displayHydronetBounced = _.debounce(displayHydronet, 100) // debounce using underscore
+const displayHydronetBounced = _.debounce(displayHydronet, 100) // debounce using underscore
 
 function processSoundsites (data_) {
   // console.log("sound data \n"+ JSON.stringify(data_));
@@ -277,11 +278,11 @@ function processSoundsites (data_) {
   initMapSoundsites(data_)
 };
 
-let noiseCluster = L.markerClusterGroup()
+const noiseCluster = L.markerClusterGroup()
 
 function initMapSoundsites (data__) {
   data__.forEach(data__, function (d, i) {
-    let m = L.marker(new L.LatLng(+d['lon'], +d['lat']), {
+    const m = L.marker(new L.LatLng(+d.lon, +d.lat), {
       icon: noiseMapIcon
     })
     m.bindPopup(getSoundsiteContent(d))
@@ -297,8 +298,8 @@ function initMapSoundsites (data__) {
 
 function getSoundsiteContent (d_) {
   let str = ''
-  if (d_['name']) {
-    str += '<b>' + d_['name'] + '</b><br>'
+  if (d_.name) {
+    str += '<b>' + d_.name + '</b><br>'
   }
   if (d_.type) {
     str += d_.type + '<br>'
@@ -310,10 +311,10 @@ function getSoundReading (p_, d_) {
   d3.json('../data/Environment/sound_levels/sound_reading_' + d_.site_id + '.json')
     .then(function (reading) {
       if (reading.aleq) {
-        let lastRead = reading.aleq[reading.aleq.length - 1]
-        let lastTime = reading.times[reading.times.length - 1]
-        let lastDate = reading.dates[reading.dates.length - 1]
-        p_.setContent(getSoundsiteContent(d_, ) +
+        const lastRead = reading.aleq[reading.aleq.length - 1]
+        const lastTime = reading.times[reading.times.length - 1]
+        const lastDate = reading.dates[reading.dates.length - 1]
+        p_.setContent(getSoundsiteContent(d_) +
           '<h2>' + lastRead + ' dB</h2>' +
           'Updated at ' +
           lastTime +
@@ -333,10 +334,10 @@ function getSoundReadings (p_, d_) {
   d3.json('../data/Environment/sound_levels/sound_reading_' + d_.site_id + '.json')
     .then(function (reading) {
       if (reading.aleq) {
-        let lastRead = reading.aleq[reading.aleq.length - 1]
-        let lastTime = reading.times[reading.times.length - 1]
-        let lastDate = reading.dates[reading.dates.length - 1]
-        p_.setContent(getSoundsiteContent(d_, ) +
+        const lastRead = reading.aleq[reading.aleq.length - 1]
+        const lastTime = reading.times[reading.times.length - 1]
+        const lastDate = reading.dates[reading.dates.length - 1]
+        p_.setContent(getSoundsiteContent(d_) +
           '<h2>' + lastRead + ' dB</h2>' +
           'Updated at ' +
           lastTime +
@@ -352,12 +353,12 @@ function getSoundReadings (p_, d_) {
 }
 
 function getSoundsitePopup () {
-  let sid_ = this.options.id
+  const sid_ = this.options.id
 
   d3.json('/api/noise/soundsites/' + sid_ + '/today').then(function (stationData) {
-    let soundsiteSpark = dc.lineChart('#noise-spark-' + sid_)
+    const soundsiteSpark = dc.lineChart('#noise-spark-' + sid_)
     if (stationData.length == 0) {
-      let str = '<div class="popup-error">' +
+      const str = '<div class="popup-error">' +
         '<div class="row ">' +
         "We can't get the noise monitoring data right now, please try again later" +
         '</div>' +
@@ -365,19 +366,19 @@ function getSoundsitePopup () {
       return d3.select('#bike-spark-' + sid_)
         .html(str)
     }
-    let standsCount = stationData[0].bike_stands
-    let ndx = crossfilter(stationData)
-    let timeDim = ndx.dimension(function (d) {
-      return d['last_update']
+    const standsCount = stationData[0].bike_stands
+    const ndx = crossfilter(stationData)
+    const timeDim = ndx.dimension(function (d) {
+      return d.last_update
     })
-    let latest = timeDim.top(1)[0].last_update
+    const latest = timeDim.top(1)[0].last_update
 
-    let availableBikesGroup = timeDim.group().reduceSum(function (d) {
-      return d['available_bikes']
+    const availableBikesGroup = timeDim.group().reduceSum(function (d) {
+      return d.available_bikes
     })
 
-    let start = moment.utc().startOf('day').add(3, 'hours')
-    let end = moment.utc().endOf('day').add(2, 'hours')
+    const start = moment.utc().startOf('day').add(3, 'hours')
+    const end = moment.utc().endOf('day').add(2, 'hours')
 
     soundsiteSpark.width(250).height(100)
     soundsiteSpark.dimension(timeDim)
@@ -399,11 +400,11 @@ function getSoundsitePopup () {
     soundsiteSpark.label(function (d) {
       if (d.x === latest) {
         console.log(JSON.stringify(d))
-        let hour = new Date(d.x).getHours()
-        let mins = new Date(d.x).getMinutes().toString().padStart(2, '0')
-        let end = ((d.y == 1) ? ' bike' : ' bikes')
+        const hour = new Date(d.x).getHours()
+        const mins = new Date(d.x).getMinutes().toString().padStart(2, '0')
+        const end = ((d.y == 1) ? ' bike' : ' bikes')
         //                let str = hour + ':' + mins +
-        let str = JSON.stringify(d.y) + end
+        const str = JSON.stringify(d.y) + end
         //                console.log(str);
         return str
       }
@@ -425,9 +426,9 @@ function getSoundsitePopup () {
 // Note that one button is classed active by default and this must be dealt with
 
 d3.select('#water-opw-btn').on('click', function () {
-  let cb = d3.select('#water-all-btn')
-  let cbs = d3.select('#water-hydronet-btn')
-  let cbt = d3.select('#water-opw-btn')
+  const cb = d3.select('#water-all-btn')
+  const cbs = d3.select('#water-hydronet-btn')
+  const cbt = d3.select('#water-opw-btn')
   if (cb.classed('active')) {
     cb.classed('active', false)
   }
@@ -453,9 +454,9 @@ d3.select('#water-hydronet-btn').on('click', function () {
     cb.classed('active', false)
   } */
 
-  let cb = d3.select('#water-all-btn')
-  let cbs = d3.select('#water-opw-btn')
-  let cbt = d3.select('#water-hydronet-btn')
+  const cb = d3.select('#water-all-btn')
+  const cbs = d3.select('#water-opw-btn')
+  const cbt = d3.select('#water-hydronet-btn')
   if (cb.classed('active')) {
     cb.classed('active', false)
   }
@@ -474,9 +475,9 @@ d3.select('#water-hydronet-btn').on('click', function () {
 })
 
 d3.select('#water-all-btn').on('click', function () {
-  let cb = d3.select('#water-hydronet-btn')
-  let cbs = d3.select('#water-opw-btn')
-  let cbt = d3.select(this)
+  const cb = d3.select('#water-hydronet-btn')
+  const cbs = d3.select('#water-opw-btn')
+  const cbt = d3.select(this)
   if (cb.classed('active')) {
     cb.classed('active', false)
     // cbt.classed('active', true)
