@@ -93,12 +93,15 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
       // console.log('fetching data')
 
       json = await fetchJsonFromUrlAsyncTimeout('/data/environment/waterlevel_example.json', 10000)
-      console.log(json)
-      // if (csv.length > 0) {
-      // const json = d3.csvParse(csv)
 
-      liveEnvironmentMap.removeLayer(waterLevelsLayerGroup)
-      waterLevelsLayerGroup.clearLayers()
+      console.log(json)
+      const jsonProcessed = await processWaterLevels(json.features)
+      console.log(jsonProcessed)
+      const waterOPWCluster = getLayerWaterLevels(jsonProcessed)
+      liveEnvironmentMap.addLayer(waterOPWCluster)
+
+      // liveEnvironmentMap.removeLayer(waterLevelsLayerGroup)
+      // waterLevelsLayerGroup.clearLayers()
 
       //   const date = new Date(json[0].date)
       //   lastReadTime = date.getHours() + ':' + date.getMinutes().toString().padStart(2, '0')
@@ -180,6 +183,30 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   }
   fetchData()
 })()
+
+function processWaterLevels (data_) {
+  const regionData = data_.filter(function (d) {
+    return d.properties.region_id === 15 || d.properties.region_id === 6
+  })
+  regionData.forEach(function (d) {
+    d.lat = +d.geometry.coordinates[1]
+    d.lng = +d.geometry.coordinates[0]
+    d.type = 'OPW GPRS Station Water Level Monitor'
+  })
+  return regionData
+};
+
+function getLayerWaterLevels (data__) {
+  const waterOPWCluster = L.markerClusterGroup()
+  data__.forEach(function (d, i) {
+    waterOPWCluster.addLayer(L.marker(new L.LatLng(d.lat, d.lng), {
+      // icon: waterMapIcon
+    })
+      // .bindPopup(getWaterLevelContent(d))
+    )
+  })
+  return waterOPWCluster
+}
 
 /* can return a generic layer with static data when request for data has faile */
 function getMapLayerStatic (json, iconUrl = '') {
