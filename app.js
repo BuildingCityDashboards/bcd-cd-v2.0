@@ -56,7 +56,7 @@ app.use(morgan('tiny', {
 // get routes files
 const home = require('./routes/home')
 const themes = require('./routes/themes')
-const stories = require('./routes/stories')
+// const stories = require('./routes/stories')
 const queries = require('./routes/queries')
 const tools = require('./routes/tools')
 const portal = require('./routes/portal')
@@ -65,7 +65,7 @@ const api = require('./routes/api')
 // view engine setup
 app.set('views', [path.join(__dirname, 'views'),
 path.join(__dirname, 'views/themes'),
-path.join(__dirname, 'views/stories'),
+// path.join(__dirname, 'views/stories'),
 path.join(__dirname, 'views/queries'),
 path.join(__dirname, 'views/tools'),
 path.join(__dirname, 'views/portal'),
@@ -75,7 +75,7 @@ app.set('view engine', 'pug')
 
 app.use('/', home)
 app.use('/themes', themes)
-app.use('/stories', stories)
+// app.use('/stories', stories)
 app.use('/queries', queries)
 app.use('/tools', tools)
 app.use('/portal', portal)

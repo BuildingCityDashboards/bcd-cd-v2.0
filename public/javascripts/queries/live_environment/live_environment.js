@@ -189,17 +189,25 @@ function processWaterLevels (data_) {
 };
 
 function getLayerWaterLevels (data_, icon_) {
+  const CustomMapMarker = getCustomMapMarker()
   const waterOPWCluster = L.markerClusterGroup()
+
   data_.forEach(function (d, i) {
-    waterOPWCluster.addLayer(L.marker(new L.LatLng(d.lat, d.lng), {
-      icon: icon_
-    }).bindPopup(getPopupWaterLevels(d))
-    )
+    const m = new CustomMapMarker(new L.LatLng(d.lat, d.lng), {
+      icon: icon_,
+      id: d.properties.station_ref
+    })
+    m.bindPopup(getPopupWaterLevels(d))
+    waterOPWCluster.addLayer(m)
+    m.on('popupopen', () => {
+      getPopupPlotWaterLevels(d)
+    })
   })
   return waterOPWCluster
 }
 
 function getPopupWaterLevels (d_) {
+  const id = d_.properties.station_ref
   const d = new Date(d_.properties.datetime)
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
   const simpleDate = d.getDay() + '/' + (d.getMonth() + 1).toString().padStart(2, '0')
@@ -214,11 +222,11 @@ function getPopupWaterLevels (d_) {
 
   let str = '<div class="map-popup">'
   if (d_.properties.station_name) {
-    str += '<div id="waterlevel-name-' + d_._id + '" class="map-popup__title">' // id for name div
+    str += '<div id="waterlevel-name-' + id + '" class="map-popup__title">' // id for name div
     str += '<h1>' + d_.properties.station_name + '</h1>'
     str += '</div>'
   }
-  str += '<div id="waterlevel-count-' + d_._id + '" class="map-popup__kpi" >'
+  str += '<div id="waterlevel-count-' + id + '" class="map-popup__kpi" >'
   if (d_.properties.value) {
     str += '<h1>' +
       d_.properties.value +
@@ -230,119 +238,123 @@ function getPopupWaterLevels (d_) {
   }
   str += '</div>'
 
-  str += '<div id="waterlevel-info-' + d_._id + '" class="map-popup__info" >'
   if (d_.properties.sensor_ref) {
+    str += '<div id="waterlevel-info-' + id + '" class="map-popup__info" >'
     str += '<p>Sensor: ' + d_.properties.sensor_ref + '</p>'
+    str += '</div>'
+    // initialise div to hold chart with id linked to station ref
+    str += '<div id="waterlevel-popup-chart-' + id + '" class="map-popup__chart" ></div>'
   }
-  str += '</div>'
 
-  // initialise div to hold chart with id linked to station id
-  if (d_.id) {
-    str += '<span id="waterlevel-spark-' + d_._id + '"></span>'
-  }
-  str += '</div>' // closes container
   return str
+}
 
-  // str += '<div class="leaflet-popup-title">'
-  // if (d_.properties['station.name']) {
-  //   str += '<b>' + d_.properties['station.name'] + '</b><br>'
+async function getPopupPlotWaterLevels (d) {
+  console.log(d.properties.station_ref)
+  const divId = `waterlevels-site-${d.properties.station_ref}`
+  // const data = await getSiteReadings(d_)
+  // // console.log(data)
+  // if (isToday(data[0].date)) {
+  //   document.getElementById(divId + '-subtitle').innerHTML =
+  //     data[0].date.toString().split(' ')[0] + ' ' +
+  //     data[1].date.toString().split(' ')[1] + ' ' +
+  //     data[2].date.toString().split(' ')[2]
+  //   const options = {
+  //     d: data,
+  //     e: '#' + divId + '-plot',
+  //     yV: 'value',
+  //     xV: 'date',
+  //     dL: 'label',
+  //     titleLabel: 'dB'
+  //   }
+  //   const chart = new ChartLinePopup(options)
+  //   return chart
   // }
 
-  // str += '</div>' // close title div
-
-  // if (d_.properties['sensor.ref']) {
-  //   str += '<div class="leaflet-popup-subtitle">'
-  //   str += '<b>' + d_.properties['sensor.ref'] + '</b><br>'
-  //   str += '</div>'
-  // }
-
-  // if (d_.type) {
-  //   str += '<div class="leaflet-popup-subtitle" style= "color : green;" ">'
-  //   str += '<b>' + d_.type + '</b><br>'
-  //   str += '</div>'
-  // }
-
-  // //    if (d_.properties["value"]) {
-  // //        str += '<br><b>Water level: </b>' + d_.properties["value"] + '<br>';
-  // //    }
-  // //    if (d_.properties.datetime) {
-  // //        str += '<br>Last updated on ' + popupTime(new Date(d_.properties.datetime)) + '<br>';
-  // //    }
+  const str = '<div class="popup-error">' +
+    '<div class="row ">' +
+    "We can't get the noise monitoring data for this location right now, please try again later" +
+    '</div>' +
+    '</div>'
+  // return d3.select('#bike-spark-' + sid_)
+  //   .html(str)
+  // document.getElementById(divId + '-plot').innerHTML = str
+  return str
 }
 
 /* can return a generic layer with static data when request for data has faile */
-function getMapLayerStatic (json, iconUrl = '') {
-  // add a marker to the map
-  const CustomMapMarker = getCustomMapMarker()
-  const CustomMapIcon = getCustomMapIcon()
+// function getMapLayerStatic(json, iconUrl = '') {
+//   // add a marker to the map
+//   const CustomMapMarker = getCustomMapMarker()
+//   const CustomMapIcon = getCustomMapIcon()
 
-  const waterLevelsPopupOptions = {
-    // 'maxWidth': '500',
-    className: 'waterLevelsPopup'
-  }
+//   const waterLevelsPopupOptions = {
+//     // 'maxWidth': '500',
+//     className: 'waterLevelsPopup'
+//   }
 
-  const layerGroup = new L.LayerGroup()
-  json.forEach((d) => {
-    const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
-      icon: new CustomMapIcon({
-        iconUrl: iconUrl,
-        className: 'offline'
-      }),
-      title: d.type + ': ' + d.name,
-      alt: d.type + ' icon'
-    })
-    layerGroup.addLayer(m)
-    m.bindPopup(waterLevelsPopupInit(d), waterLevelsPopupOptions)
-  })
-  return layerGroup
-}
+//   const layerGroup = new L.LayerGroup()
+//   json.forEach((d) => {
+//     const m = new CustomMapMarker(new L.LatLng(d.latitude, d.longitude), {
+//       icon: new CustomMapIcon({
+//         iconUrl: iconUrl,
+//         className: 'offline'
+//       }),
+//       title: d.type + ': ' + d.name,
+//       alt: d.type + ' icon'
+//     })
+//     layerGroup.addLayer(m)
+//     m.bindPopup(waterLevelsPopupInit(d), waterLevelsPopupOptions)
+//   })
+//   return layerGroup
+// }
 
-function waterLevelsPopupInit (d_) {
-  const d = new Date(d_.date)
-  const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
+// function waterLevelsPopupInit (d_) {
+//   const d = new Date(d_.date)
+//   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
 
-  // if no station id none of the mappings will work so escape
-  if (!d_.name || !d_._id) {
-    const str = '<div class="map-popup-error">' +
-      "We can't get the live Car Park data right now, please try again later" +
-      '</div>'
-    return str
-  }
+//   // if no station id none of the mappings will work so escape
+//   if (!d_.name || !id) {
+//     const str = '<div class="map-popup-error">' +
+//       "We can't get the live Car Park data right now, please try again later" +
+//       '</div>'
+//     return str
+//   }
 
-  let str = '<div class="map-popup">'
-  if (d_.name) {
-    str += '<div id="waterLevels-name-' + d_._id + '" class="map-popup__title">' // id for name div
-    str += '<h1>' + d_.name + '</h1>'
-    str += '</div>' // close bike name div
-  }
-  str += '<div id="waterLevels-spacescount-' + d_._id + '" class="map-popup__kpi" >'
-  if (d_.free_spaces) {
-    str += '<h1>' +
-      d_.free_spaces +
-      '</h1><p>Free spaces at ' + simpleTime + ' </p>'
-  } else {
-    str += '<div class="map-popup-error">' +
-      '<p>We can\'t get the live Car Park data right now, please try again later</p>' +
-      '</div>'
-  }
-  str += '</div>'
+//   let str = '<div class="map-popup">'
+//   if (d_.name) {
+//     str += '<div id="waterLevels-name-' + id + '" class="map-popup__title">' // id for name div
+//     str += '<h1>' + d_.name + '</h1>'
+//     str += '</div>' // close bike name div
+//   }
+//   str += '<div id="waterLevels-spacescount-' + id + '" class="map-popup__kpi" >'
+//   if (d_.free_spaces) {
+//     str += '<h1>' +
+//       d_.free_spaces +
+//       '</h1><p>Free spaces at ' + simpleTime + ' </p>'
+//   } else {
+//     str += '<div class="map-popup-error">' +
+//       '<p>We can\'t get the live Car Park data right now, please try again later</p>' +
+//       '</div>'
+//   }
+//   str += '</div>'
 
-  str += '<div id="waterLevels-info-' + d_._id + '" class="map-popup__info" >'
-  if (d_.opening_times) {
-    str += '<p>Open: ' + d_.opening_times + '</p>'
-  }
-  if (d_.price) {
-    str += '<p> ' + d_.price + '</p>'
-  }
-  str += '</div>'
+//   str += '<div id="waterLevels-info-' + id + '" class="map-popup__info" >'
+//   if (d_.opening_times) {
+//     str += '<p>Open: ' + d_.opening_times + '</p>'
+//   }
+//   if (d_.price) {
+//     str += '<p> ' + d_.price + '</p>'
+//   }
+//   str += '</div>'
 
-  // initialise div to hold chart with id linked to station id
-  if (d_.id) {
-    str += '<span id="waterLevels-spark-' + d_._id + '"></span>'
-  }
-  str += '</div>' // closes container
-  return str
-}
+//   // initialise div to hold chart with id linked to station id
+//   if (d_.id) {
+//     str += '<span id="waterLevels-spark-' + id + '"></span>'
+//   }
+//   str += '</div>' // closes container
+//   return str
+// }
 
 // Manage periodic async data fetching
 
