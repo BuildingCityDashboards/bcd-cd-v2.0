@@ -7,18 +7,15 @@ mixin nav-item(name, link)
             //- +svg("","icon__"+link)(class="icon icon--small side-menu__icon")
             span= name
 
-mixin nav-dropdown(name, link)
+mixin nav-dropdown(name, link, subLinks)
     li.side-menu__nav-item.dropdown(class=(active === name? "dropdown--show" : undefined))
         a.side-menu__nav-link.dropdown__link(href="/"+link  class=(active === name ? "" : undefined))
-            //- +svg("","icon__"+link)(class="icon icon--small side-menu__icon")
             span= name
         a.dropdown__toggle
             <svg viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" ></path></svg>
-
-            //- +svg("../../../images/arrow_down.svg","icon__arrow")(class="icon icon--small side-menu__icon")
             span.sr-only Toggle Dropdown
         .dropdown__menu
-            each val, key in themesLinks
+            each val, key in subLinks
                 +dropdown-item(key, val, link) 
         
 
@@ -47,7 +44,9 @@ nav.side-menu
         ul.side-menu__nav
             each parent, key in sideLinks
                 if parent === 'themes'
-                  +nav-dropdown(key, parent)
+                  +nav-dropdown(key, parent, themesLinks)
+                else if parent === 'queries'
+                  +nav-dropdown(key, parent, queriesLinks)
                 else
                   +nav-item(key, parent)
         .side-menu__footer
