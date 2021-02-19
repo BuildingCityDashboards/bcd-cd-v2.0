@@ -8,7 +8,7 @@ water levels region_id: 6, 15
 import { fetchJsonFromUrlAsyncTimeout } from '../../modules/bcd-async.js'
 import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modules/bcd-maps.js'
 
-(async function main(waterLevelsOptions) {
+(async function main (waterLevelsOptions) {
   waterLevelsOptions =
   {
     title: 'Water Level Monitors',
@@ -85,7 +85,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   let refreshTimeout
   let waterOPWCluster
 
-  async function fetchData() {
+  async function fetchData () {
     let json
     clearTimeout(refreshTimeout)
     try {
@@ -176,7 +176,7 @@ import { getCityLatLng, getCustomMapMarker, getCustomMapIcon } from '../../modul
   fetchData() // intiiate first run
 })()
 
-function processWaterLevels(data_) {
+function processWaterLevels (data_) {
   const regionData = data_.filter(function (d) {
     return d.properties.region_id === 15 || d.properties.region_id === 6
   })
@@ -188,7 +188,7 @@ function processWaterLevels(data_) {
   return regionData
 };
 
-function getLayerWaterLevels(data_, icon_) {
+function getLayerWaterLevels (data_, icon_) {
   const CustomMapMarker = getCustomMapMarker()
   const waterOPWCluster = L.markerClusterGroup()
 
@@ -206,7 +206,7 @@ function getLayerWaterLevels(data_, icon_) {
   return waterOPWCluster
 }
 
-function getPopupWaterLevels(d_) {
+function getPopupWaterLevels (d_) {
   const id = d_.properties.station_ref
   const d = new Date(d_.properties.datetime)
   const simpleTime = d.getHours() + ':' + d.getMinutes().toString().padStart(2, '0')
@@ -249,7 +249,7 @@ function getPopupWaterLevels(d_) {
   return str
 }
 
-async function getPopupPlotWaterLevels(d) {
+async function getPopupPlotWaterLevels (d) {
   console.log(d.properties.station_ref)
   const divId = `waterlevels-site-${d.properties.station_ref}`
   // const data = await getSiteReadings(d_)
