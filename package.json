@@ -14,7 +14,7 @@
     "leaflet": "^1.5.1",
     "leaflet-spin": "^1.1.0",
     "logger": "0.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
